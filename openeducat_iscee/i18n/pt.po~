@@ -1,0 +1,6 @@
+#. module: web_calendar
+#. openerp-web
+#: code:addons/web_calendar/static/src/js/web_calendar.js:31
+#, python-format
+msgid "Week"
+msgstr "Semana"

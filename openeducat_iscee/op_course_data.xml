@@ -1,0 +1,9 @@
+<openerp>
+	<data noupdate="1">
+
+		<record id="op_course_evaluation_normal" model="op.course.evaluation">
+			<field name="name">Normal</field>
+		</record>
+
+	</data>
+</openerp>
