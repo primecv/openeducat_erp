@@ -4,7 +4,7 @@
 		<record id="view_op_course_form_iscii" model="ir.ui.view">
 			<field name="name">op.course.form.iscii</field>
 			<field name="model">op.course</field>
-			<field name="inherit_id" ref="openeducat_erp.view_op_course_form"/>
+			<field name="inherit_id" ref="openeducat_core.view_op_course_form"/>
 			<field name="arch" type="xml">
 				<field name="evaluation_type" position="replace">
 					<field name="evaluation_type" required="1"/>
@@ -15,7 +15,7 @@
 		<record id="view_op_course_tree_iscii" model="ir.ui.view">
 			<field name="name">op.course.tree.iscii</field>
 			<field name="model">op.course</field>
-			<field name="inherit_id" ref="openeducat_erp.view_op_course_tree"/>
+			<field name="inherit_id" ref="openeducat_core.view_op_course_tree"/>
 			<field name="arch" type="xml">
 				<field name="evaluation_type" position="replace">
 					<field name="evaluation_type"/>
@@ -26,16 +26,11 @@
 		<record id="view_op_course_search_iscii" model="ir.ui.view">
 			<field name="name">op.course.search.iscii</field>
 			<field name="model">op.course</field>
-			<field name="inherit_id" ref="openeducat_erp.view_op_course_search"/>
+			<field name="inherit_id" ref="openeducat_core.view_op_course_search"/>
 			<field name="arch" type="xml">
 				<field name="evaluation_type" position="replace">
 					<field name="evaluation_type"/>
 				</field>
-
-				<filter string="Evaluation Type" position="replace">
-					<filter string="Evaluation Type" domain="[]"
-							context="{'group_by':'evaluation_type'}" />
-				</filter>
 			</field>
 		</record>
 
@@ -72,9 +67,9 @@
 		<menuitem id="menu_op_course_evaluation" 
 				name="Course Evaluation"
 				sequence="30"
-				parent="openeducat_erp.menu_op_school_config_course" 
+				parent="openeducat_core.menu_op_school_config_course" 
 				action="op_course_evaluation_action" 			
-				groups="openeducat_erp.group_op_back_office,openeducat_erp.group_op_back_office_admin" />
+				groups="openeducat_core.group_op_back_office,openeducat_core.group_op_back_office_admin" />
 
 
 	</data>
