@@ -1,0 +1,1601 @@
+<openerp>
+	<data noupdate="1">
+
+<record id="op_subject_iscee_1" model="op.subject">
+	<field name="name">NAME</field>
+	<field name="code">CODE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_2" model="op.subject">
+	<field name="name">TECNOLOGIAS E SISTEMAS DE INFORMAÇÃO I</field>
+	<field name="code">TSI 1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_3" model="op.subject">
+	<field name="name">TECNOLOGIAS E SISTEMAS DE INFORMAÇÃO II</field>
+	<field name="code">TSI 2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_4" model="op.subject">
+	<field name="name">METODOLOGIAS E COMUNICAÇÃO</field>
+	<field name="code">MCOM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_5" model="op.subject">
+	<field name="name">INGLÊS</field>
+	<field name="code">ING</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_6" model="op.subject">
+	<field name="name">INGLÊS TÉCNICO I</field>
+	<field name="code">INGT1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_7" model="op.subject">
+	<field name="name">METODOLOGIAS DE INVESTIGAÇÃO CIENTÍFICA</field>
+	<field name="code">MIC</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_8" model="op.subject">
+	<field name="name">INGLÊS TÉCNICO II</field>
+	<field name="code">INGT2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_9" model="op.subject">
+	<field name="name">INGLÊS TÉCNICO I</field>
+	<field name="code">IT I</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_10" model="op.subject">
+	<field name="name">INTELIGÊNCIA ARTIFICIAL</field>
+	<field name="code">IA</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_11" model="op.subject">
+	<field name="name">COMPUTAÇÃO MÓVEL</field>
+	<field name="code">CM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_12" model="op.subject">
+	<field name="name">LÍNGUA PORTUGUESA </field>
+	<field name="code">PORT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_13" model="op.subject">
+	<field name="name">CONCEPÇÃO E DESENVOLVIMENTO DE SISTEMAS DE INFORMAÇÃO</field>
+	<field name="code">CDSI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_14" model="op.subject">
+	<field name="name">TECNOLOGIAS E SISTEMAS DE INFORMAÇÃO I</field>
+	<field name="code">TSI I</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_15" model="op.subject">
+	<field name="name">BUSINESS INTELLIGENCE</field>
+	<field name="code">BI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_16" model="op.subject">
+	<field name="name">OUTRA LÍNGUA: ESPANHOL/FRANCÊS</field>
+	<field name="code">LING</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_17" model="op.subject">
+	<field name="name">TECNOLOGIAS E SISTEMAS DE INFORMAÇÃO E COMUNICAÇÃO</field>
+	<field name="code">TSI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_18" model="op.subject">
+	<field name="name">METODOLOGIAS E COMUNICAÇÃO</field>
+	<field name="code">METC</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_19" model="op.subject">
+	<field name="name">METODOLOGIA DE INVESTIGAÇÃO CIENTIFICA</field>
+	<field name="code">MIC</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_20" model="op.subject">
+	<field name="name">OUTRA LÍNGUA: ESPANHOL/FRANCÊS</field>
+	<field name="code">LING</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_21" model="op.subject">
+	<field name="name">INGLÊS 1</field>
+	<field name="code">ING1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_22" model="op.subject">
+	<field name="name">INGLÊS II</field>
+	<field name="code">ING3</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_23" model="op.subject">
+	<field name="name">INFORMÁTICA APLICADA ÀS CIÊNCIAS EMPRESARIAIS</field>
+	<field name="code">INFAPLIC</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_24" model="op.subject">
+	<field name="name">INGLÊS TÉCNICO</field>
+	<field name="code">INGT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_25" model="op.subject">
+	<field name="name">TECNOLOGIAS E SISTEMAS DE INFORMAÇÃO II</field>
+	<field name="code">TSI II</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_26" model="op.subject">
+	<field name="name">FUNDAMENTOS DE BASES DE DADOS I</field>
+	<field name="code">BD1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_27" model="op.subject">
+	<field name="name">INGLÊS TÉCNICO II</field>
+	<field name="code">IT II</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_28" model="op.subject">
+	<field name="name">LÍNGUA INGLESA PARA INFORMÁTICA I</field>
+	<field name="code">INGI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_29" model="op.subject">
+	<field name="name">ALGORITMOS E ESTRUTURA DE DADOS</field>
+	<field name="code">ALG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_30" model="op.subject">
+	<field name="name">FUNDAMENTOS DE BASES DE DADOS II</field>
+	<field name="code">BD2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_31" model="op.subject">
+	<field name="name">DESENVOLVIMENTO WEB</field>
+	<field name="code">DWEB</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_32" model="op.subject">
+	<field name="name">DESENVOLVIMENTO DE SOLUÇÕES CLIENTE SERVIDOR</field>
+	<field name="code">DSCS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_33" model="op.subject">
+	<field name="name">GESTÃO DE SISTEMAS DE INFORMAÇÃO</field>
+	<field name="code">GSI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_34" model="op.subject">
+	<field name="name">GESTÃO DE PROJECTOS DE TECNOLOGIA E SISTEMAS DE INFORMAÇÃO</field>
+	<field name="code">GPSI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_35" model="op.subject">
+	<field name="name">SISTEMAS INFORMÁTICOS DE APOIO À DECISÃO</field>
+	<field name="code">SIAD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_36" model="op.subject">
+	<field name="name">PROJECTO DE DESENVOLVIMENTO ORIENTADO</field>
+	<field name="code">PROJ</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_37" model="op.subject">
+	<field name="name">AUTOMATIZAÇÃO DE TAREFAS DE ESCRITÓRIO</field>
+	<field name="code">ATE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_38" model="op.subject">
+	<field name="name">LÍNGUA INGLESA PARA INFORMÁTICA II</field>
+	<field name="code">INGII</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_39" model="op.subject">
+	<field name="name">FUNDAMENTOS DE SISTEMAS OPERATIVOS</field>
+	<field name="code">SOPR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_40" model="op.subject">
+	<field name="name">COMPUTAÇÃO GRÁFICA E MULTIMÉDIA</field>
+	<field name="code">CGM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_41" model="op.subject">
+	<field name="name">ENGENHARIA SOFTWARE</field>
+	<field name="code">ESOFT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_42" model="op.subject">
+	<field name="name">FUNDAMENTOS DE REDES DE COMUNICAÇÕES</field>
+	<field name="code">REDES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_43" model="op.subject">
+	<field name="name">INGLÊS I</field>
+	<field name="code">INGI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_44" model="op.subject">
+	<field name="name">LINGUA  PORTUGUESA</field>
+	<field name="code">L PORT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_45" model="op.subject">
+	<field name="name">INGLÊS II </field>
+	<field name="code">ING2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_46" model="op.subject">
+	<field name="name">INGLÊS III</field>
+	<field name="code">ING3</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_47" model="op.subject">
+	<field name="name">WEB MARKETING E COMERCIO ELECTRÓNICO</field>
+	<field name="code">WEB</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_48" model="op.subject">
+	<field name="name">TECNOLOGIAS E SISTEMAS DE INFORMAÇÃO</field>
+	<field name="code">TSI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_49" model="op.subject">
+	<field name="name">TECNOLOGIAS DE INFORMAÇÃO E COMUNICAÇÃO</field>
+	<field name="code">INF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_50" model="op.subject">
+	<field name="name">LÍNGUA PORTUGUESA E EXPRESSÃO ORAL</field>
+	<field name="code">PORT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_51" model="op.subject">
+	<field name="name">INGLÊS I</field>
+	<field name="code">ING1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_52" model="op.subject">
+	<field name="name">INGLÊS</field>
+	<field name="code">ING</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_53" model="op.subject">
+	<field name="name">FRANCÊS I</field>
+	<field name="code">FRAN1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_54" model="op.subject">
+	<field name="name">INGLÊS II</field>
+	<field name="code">ING2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_55" model="op.subject">
+	<field name="name">FRANCÊS II</field>
+	<field name="code">FRAN2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_56" model="op.subject">
+	<field name="name">INGLÊS III</field>
+	<field name="code">ING 3</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_57" model="op.subject">
+	<field name="name">INTRODUÇÃO À CONTABILIDADE</field>
+	<field name="code">INTCONT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_58" model="op.subject">
+	<field name="name">CONTABILIDADE FINANCEIRA</field>
+	<field name="code">CONT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_59" model="op.subject">
+	<field name="name">CONTABILIDADE FINANCEIRA INTERMÉDIA</field>
+	<field name="code">CFINT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_60" model="op.subject">
+	<field name="name">CÁLCULO E OPERAÇÕES FINANCEIRAS</field>
+	<field name="code">COF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_61" model="op.subject">
+	<field name="name">CONTABILIDADE DE CUSTOS</field>
+	<field name="code">CCUST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_62" model="op.subject">
+	<field name="name">CONTABILIDADE DAS OPERAÇÕES ESPECIAIS</field>
+	<field name="code">COPE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_63" model="op.subject">
+	<field name="name">CONTABILIDADE DE GESTÃO </field>
+	<field name="code">CGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_64" model="op.subject">
+	<field name="name">COMPLEMENTOS DE CONTABILIDADE FINANCEIRA </field>
+	<field name="code">CCF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_65" model="op.subject">
+	<field name="name">PLANEAMENTO E CONTROLO DE GESTÃO</field>
+	<field name="code">PCG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_66" model="op.subject">
+	<field name="name">CONTABILIDADE DE GRUPOS DE EMPRESAS</field>
+	<field name="code">CGE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_67" model="op.subject">
+	<field name="name">AUDITORIA FINANCEIRA</field>
+	<field name="code">AUDF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_68" model="op.subject">
+	<field name="name">CÁLCULO ACTUARIAL E OPERAÇÕES DE SEGUROS</field>
+	<field name="code">SEG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_69" model="op.subject">
+	<field name="name">PSE- PROJECTO DE SIMULAÇÃO EMPRESARIAL</field>
+	<field name="code">PSE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_70" model="op.subject">
+	<field name="name">CONTABILIDADES SECTORIAIS (BANCÁRIA E DE SEGUROS)</field>
+	<field name="code">BAN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_71" model="op.subject">
+	<field name="name">PSE- PROJECTO DE SIMULAÇÃO EMPRESARIAL</field>
+	<field name="code">PSE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_72" model="op.subject">
+	<field name="name">AUDITORIA FINANCEIRA AVANÇADA I</field>
+	<field name="code">AUDF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_73" model="op.subject">
+	<field name="name">PSE- PROJECTO DE SIMULAÇÃO EMPRESARIAL</field>
+	<field name="code">PSE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_74" model="op.subject">
+	<field name="name">CONTROLO INTERNO </field>
+	<field name="code">CINT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_75" model="op.subject">
+	<field name="name">AUDITORIA FINANCEIRA AVANÇADA II</field>
+	<field name="code">AUAV</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_76" model="op.subject">
+	<field name="name">PA – PROJECTO EM AUDITORIA OU PRÁTICAS DE AUDITORIA</field>
+	<field name="code">PAUD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_77" model="op.subject">
+	<field name="name">CONTABILIDADES SECTORIAIS (BANCÁRIA E DE SEGUROS)</field>
+	<field name="code">BAN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_78" model="op.subject">
+	<field name="name">PSE- PROJECTO DE SIMULAÇÃO EMPRESARIAL</field>
+	<field name="code">PSE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_79" model="op.subject">
+	<field name="name">AUDITORIA INTERNA E OPERACIONAL</field>
+	<field name="code">AUDI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_80" model="op.subject">
+	<field name="name">INTRODUÇÃO À CONTABILIDADE FINANCEIRA</field>
+	<field name="code">ICNT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_81" model="op.subject">
+	<field name="name">CONTABILIDADE FINANCEIRA </field>
+	<field name="code">FIN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_82" model="op.subject">
+	<field name="name">INTRODUÇÃO À CONTABILIDADE DE GESTÃO</field>
+	<field name="code">ICGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_83" model="op.subject">
+	<field name="name">CÁLCULO E OPERAÇÕES FINANCEIRAS</field>
+	<field name="code">COF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_84" model="op.subject">
+	<field name="name">CONTABILIDADE DE GESTÃO </field>
+	<field name="code">CGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_85" model="op.subject">
+	<field name="name">CONTROLO DE GESTÃO</field>
+	<field name="code">CGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_86" model="op.subject">
+	<field name="name">AUDITORIA OPERACIONAL</field>
+	<field name="code">PGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_87" model="op.subject">
+	<field name="name">NOÇÕES DE CONTABILIDADE E ORÇAMENTAÇÃO</field>
+	<field name="code">CONTAB</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_88" model="op.subject">
+	<field name="name">CONTROLO DE GESTÃO</field>
+	<field name="code">CTRL</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_89" model="op.subject">
+	<field name="name">KEY ACCOUNT MANAGEMENT</field>
+	<field name="code">KAM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_90" model="op.subject">
+	<field name="name">CONTABILIDADE FINANCEIRA</field>
+	<field name="code">CONT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_91" model="op.subject">
+	<field name="name">INTRODUÇÃO AO DIREITO</field>
+	<field name="code">INTDIR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_92" model="op.subject">
+	<field name="name">DIREITO EMPRESARIAL</field>
+	<field name="code">DEMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_93" model="op.subject">
+	<field name="name">DIREITO COMERCIAL</field>
+	<field name="code">DC</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_94" model="op.subject">
+	<field name="name">DIREITO FISCAL </field>
+	<field name="code">DFIS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_95" model="op.subject">
+	<field name="name">FISCALIDADE EMPRESARIAL I</field>
+	<field name="code">FIS1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_96" model="op.subject">
+	<field name="name">FISCALIDADE EMPRESARIAL II</field>
+	<field name="code">FIS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_97" model="op.subject">
+	<field name="name">NOÇÕES FUNDAMENTAIS DE DIREITO</field>
+	<field name="code">NFD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_98" model="op.subject">
+	<field name="name">DIREITO COMERCIAL</field>
+	<field name="code">DCOM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_99" model="op.subject">
+	<field name="name">DIREITO DO TRABALHO</field>
+	<field name="code">DT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_100" model="op.subject">
+	<field name="name">FISCALIDADE</field>
+	<field name="code">FIS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_101" model="op.subject">
+	<field name="name">DIREITO APLICADO AO MARKETING</field>
+	<field name="code">DIR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_102" model="op.subject">
+	<field name="name">ORGANIZAÇÃO E LEGISLAÇÃO EM TURISMO</field>
+	<field name="code">OLT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_103" model="op.subject">
+	<field name="name">MACROECONOMIA</field>
+	<field name="code">MACRO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_104" model="op.subject">
+	<field name="name">MICRO ECONOMIA</field>
+	<field name="code">MICRO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_105" model="op.subject">
+	<field name="name">ECONOMIA E COMÉRCIO INTERNACIONAL</field>
+	<field name="code">ECI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_106" model="op.subject">
+	<field name="name">MERCADOS E PRODUTOS FINANCEIROS</field>
+	<field name="code">MPF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_107" model="op.subject">
+	<field name="name">ANÁLISE ECONÓMICA E FINANCEIRA</field>
+	<field name="code">AEF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_108" model="op.subject">
+	<field name="name">GESTÃO FINANCEIRA</field>
+	<field name="code">GFIN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_109" model="op.subject">
+	<field name="name">FINANÇAS EMPRESARIAIS</field>
+	<field name="code">FEMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_110" model="op.subject">
+	<field name="name">FINANÇAS INTERNACIONAIS</field>
+	<field name="code">FINT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_111" model="op.subject">
+	<field name="name">GESTÃO DE RISCOS FINANCEIROS</field>
+	<field name="code">RSK</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_112" model="op.subject">
+	<field name="name">PFE – PROJECTO EM FINANÇAS EMPRESARIAIS </field>
+	<field name="code">PFE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_113" model="op.subject">
+	<field name="name">MACROECONOMIA</field>
+	<field name="code">MACRO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_114" model="op.subject">
+	<field name="name">MICROECONOMIA</field>
+	<field name="code">MICRO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_115" model="op.subject">
+	<field name="name">ANÁLISE FINANCEIRA</field>
+	<field name="code">AFIN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_116" model="op.subject">
+	<field name="name">ECONOMIA MONETÁRIA</field>
+	<field name="code">ECONM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_117" model="op.subject">
+	<field name="name">MERCADOS E PRODUTOS FINANCEIROS</field>
+	<field name="code">MPF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_118" model="op.subject">
+	<field name="name">ECONOMIA GLOBAL</field>
+	<field name="code">ECONG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_119" model="op.subject">
+	<field name="name">FINANÇAS DA EMPRESA</field>
+	<field name="code">FIN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_120" model="op.subject">
+	<field name="name">FINANÇAS INTERNACIONAIS</field>
+	<field name="code">FINT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_121" model="op.subject">
+	<field name="name">NOÇÕES GERAIS DE ECONOMIA</field>
+	<field name="code">ECON</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_122" model="op.subject">
+	<field name="name">INOVAÇÃO E CRIATIVIDADE</field>
+	<field name="code">INOV</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_123" model="op.subject">
+	<field name="name">PESQUISA DE MERCADO</field>
+	<field name="code">PESQ</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_124" model="op.subject">
+	<field name="name">NOÇÕES GERAIS DE ECONOMIA</field>
+	<field name="code">ECO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_125" model="op.subject">
+	<field name="name">NOÇÕES GERAIS DE TURISMO</field>
+	<field name="code">TUR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_126" model="op.subject">
+	<field name="name">ECONOMIA DO TURISMO</field>
+	<field name="code">ECON</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_127" model="op.subject">
+	<field name="name">PLANEAMENTO E DESENVOLVIMENTO TURISTICO</field>
+	<field name="code">PDT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_128" model="op.subject">
+	<field name="name">INTRODUÇÃO ÀS ORGANIZAÇÕES E À GESTÃO</field>
+	<field name="code">IOG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_129" model="op.subject">
+	<field name="name">LOGÍSTICA</field>
+	<field name="code">LOG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_130" model="op.subject">
+	<field name="name">EMPREENDEDORISMO</field>
+	<field name="code">EMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_131" model="op.subject">
+	<field name="name">ÉTICA E COMPORTAMENTO ORGANIZACIONAL</field>
+	<field name="code">ECO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_132" model="op.subject">
+	<field name="name">ÉTICA E REGULAMENTAÇÃO PROFISSIONAL</field>
+	<field name="code">ECO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_133" model="op.subject">
+	<field name="name">SOCIOLOGIA DAS ORGANIZAÇÕES E DO TRABALHO</field>
+	<field name="code">SOT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_134" model="op.subject">
+	<field name="name">INTRODUÇÃO À  GESTÃO</field>
+	<field name="code">IGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_135" model="op.subject">
+	<field name="name">GESTÃO ESTRATÉGICA</field>
+	<field name="code">GESTR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_136" model="op.subject">
+	<field name="name">FACTORES HUMANOS DE GESTÃO</field>
+	<field name="code">FHG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_137" model="op.subject">
+	<field name="name">MARKETING</field>
+	<field name="code">MKT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_138" model="op.subject">
+	<field name="name">GESTÃO DE MARKETING</field>
+	<field name="code">GMKT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_139" model="op.subject">
+	<field name="name">ESTRUTURAS E PROCESSOS ORGANIZACIONAIS</field>
+	<field name="code">EPO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_140" model="op.subject">
+	<field name="name">GESTÃO DE OPERAÇÕES</field>
+	<field name="code">GOPR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_141" model="op.subject">
+	<field name="name">EMPREENDEDORISMO</field>
+	<field name="code">EMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_142" model="op.subject">
+	<field name="name">ELABORAÇÃO DE PLANO DE NEGÓCIOS</field>
+	<field name="code">PNEG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_143" model="op.subject">
+	<field name="name">GESTÃO DE RECURSOS HUMANOS</field>
+	<field name="code">GRH</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_144" model="op.subject">
+	<field name="name">GOVERNO DAS SOCIEDADES E SUSTENTABILIDADE</field>
+	<field name="code">ESTR2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_145" model="op.subject">
+	<field name="name">ANÁLISE E AVALIAÇÃO DE PROJECTOS</field>
+	<field name="code">AAP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_146" model="op.subject">
+	<field name="name">ELABORAÇÃO DE PLANO DE NEGÓCIOS</field>
+	<field name="code">EPN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_147" model="op.subject">
+	<field name="name">PROJECTO SIMULAÇÃO APLICADO À GESTÃO</field>
+	<field name="code">PEA</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_148" model="op.subject">
+	<field name="name">COMPETÊNCIAS TRANSVERSAIS</field>
+	<field name="code">COMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_149" model="op.subject">
+	<field name="name">INTRODUÇÃO ÀS ORGANIZAÇÕES E À GESTÃO</field>
+	<field name="code">IGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_150" model="op.subject">
+	<field name="name">INTRODUÇÃO À GESTÃO</field>
+	<field name="code">IGES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_151" model="op.subject">
+	<field name="name">COMPETÊNCIAS PESSOAIS I</field>
+	<field name="code">CPES</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_152" model="op.subject">
+	<field name="name">GESTÃO DE MARKETING</field>
+	<field name="code">GMKT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_153" model="op.subject">
+	<field name="name">COMPORTAMENTO DO CONSUMIDOR</field>
+	<field name="code">CCONS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_154" model="op.subject">
+	<field name="name">COMPETÊNCIAS PESSOAIS II</field>
+	<field name="code">CPESII</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_155" model="op.subject">
+	<field name="name">GESTÃO DE MARCAS</field>
+	<field name="code">GMAR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_156" model="op.subject">
+	<field name="name">GESTÃO DE CANAIS DE DISTRIBUIÇÃO</field>
+	<field name="code">GCD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_157" model="op.subject">
+	<field name="name">POLITICA DE PRODUTO E DE PREÇO</field>
+	<field name="code">PPP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_158" model="op.subject">
+	<field name="name">NEGOCIAÇÃO COMERCIAL</field>
+	<field name="code">NEG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_159" model="op.subject">
+	<field name="name">LIDERANÇA E GESTÃO DE PESSOAS</field>
+	<field name="code">LID</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_160" model="op.subject">
+	<field name="name">PUBLICIDADE E RELAÇÕES PÚBLICAS</field>
+	<field name="code">PUB</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_161" model="op.subject">
+	<field name="name">PROMOÇÃO DE VENDAS E MARKETING DIRECTO</field>
+	<field name="code">PROM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_162" model="op.subject">
+	<field name="name">MARKETING RELACIONAL</field>
+	<field name="code">MREL</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_163" model="op.subject">
+	<field name="name">LOGÍSTICA E OPERAÇÕES</field>
+	<field name="code">LOG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_164" model="op.subject">
+	<field name="name">MARKETING DE SERVIÇOS</field>
+	<field name="code">MKTS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_165" model="op.subject">
+	<field name="name">ESTRATÉGIA EMPRESARIAL</field>
+	<field name="code">ESTR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_166" model="op.subject">
+	<field name="name">SIMULAÇÃO - JOGO DE MARKETING</field>
+	<field name="code">SIM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_167" model="op.subject">
+	<field name="name">GESTÃO DE LOJAS</field>
+	<field name="code">LOJ</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_168" model="op.subject">
+	<field name="name">GESTÃO DE VENDAS </field>
+	<field name="code">VND</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_169" model="op.subject">
+	<field name="name">GESTÃO DE OPERAÇÕES TURÍSTICAS</field>
+	<field name="code">GOT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_170" model="op.subject">
+	<field name="name">ESTRATÉGIA E NEGÓCIOS INTERNACIONAIS</field>
+	<field name="code">ESTR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_171" model="op.subject">
+	<field name="name">ÉTICA E RESPONSABILIDADE SOCIAL</field>
+	<field name="code">ERS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_172" model="op.subject">
+	<field name="name">EMPREENDEDORISMO</field>
+	<field name="code">EMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_173" model="op.subject">
+	<field name="name">PROJECTO DE EMPRESA</field>
+	<field name="code">PROJ</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_174" model="op.subject">
+	<field name="name">NOVAS TENDÊNCIAS DE MARKETING</field>
+	<field name="code">NTM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_175" model="op.subject">
+	<field name="name">INTRODUÇÃO À GESTÃO</field>
+	<field name="code">GEST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_176" model="op.subject">
+	<field name="name">ANTROPOLOGIA E SOCIOLOGIA DO TURISMO</field>
+	<field name="code">AST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_177" model="op.subject">
+	<field name="name">GEOGRAFIA E ITINERÁRIOS TURÍSTICOS</field>
+	<field name="code">GEO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_178" model="op.subject">
+	<field name="name">MARKETING TURÍSTICO</field>
+	<field name="code">MKT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_179" model="op.subject">
+	<field name="name">GESTÃO SERVIÇOS TURÍSTICOS</field>
+	<field name="code">GST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_180" model="op.subject">
+	<field name="name">COMPORTAMENTO DO CONSUMIDOR</field>
+	<field name="code">CCONS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_181" model="op.subject">
+	<field name="name">AGÊNCIA DE VIAGENS E OPER.TURÍSTICOS</field>
+	<field name="code">AVOT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_182" model="op.subject">
+	<field name="name">EDUCAÇÃO AMBIENTAL DES. SUSTENTAVEL</field>
+	<field name="code">EADS</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_183" model="op.subject">
+	<field name="name">AVALIAÇÃO DO POTENCIAL TURÍSTICO DO TERRITÓRIO</field>
+	<field name="code">APTT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_184" model="op.subject">
+	<field name="name">MERCADOS E PRODUTOS TURÍSTICOS</field>
+	<field name="code">MPTUR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_185" model="op.subject">
+	<field name="name">QUALIDADE E CERTIFICAÇAO EM TURISMO</field>
+	<field name="code">QCT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_186" model="op.subject">
+	<field name="name">ESTUDOS DE MERCADO</field>
+	<field name="code">MER</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_187" model="op.subject">
+	<field name="name">ESTRATÉGIA EMPRESARIAL</field>
+	<field name="code">ESTR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_188" model="op.subject">
+	<field name="name">GESTÃO DE MEIOS DE ALOJAMENTO</field>
+	<field name="code">GMA</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_189" model="op.subject">
+	<field name="name">EMPREENDEDORISMO E PROJECTOS TURÍSTICOS</field>
+	<field name="code">EMPR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_190" model="op.subject">
+	<field name="name">ANIMAÇÃO TURÍSTICA E GESTÃO DE EVENTOS</field>
+	<field name="code">ATGE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_191" model="op.subject">
+	<field name="name">GEOGRAFIA E ITINERÁRIOS TURÍSTICOS</field>
+	<field name="code">GEO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_192" model="op.subject">
+	<field name="name">GESTÃO DE ALIMENTAÇÃO E BEBIDAS</field>
+	<field name="code">GAB</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_193" model="op.subject">
+	<field name="name">GESTÃO DE RECURSOS HUMANOS</field>
+	<field name="code">GRH</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_194" model="op.subject">
+	<field name="name">MATEMÁTICA I</field>
+	<field name="code">MAT 1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_195" model="op.subject">
+	<field name="name">MATEMÁTICA II</field>
+	<field name="code">MAT 2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_196" model="op.subject">
+	<field name="name">ESTATÍSTICA</field>
+	<field name="code">EST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_197" model="op.subject">
+	<field name="name">INVESTIGAÇÃO OPERACIONAL</field>
+	<field name="code">IO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_198" model="op.subject">
+	<field name="name">TÉCNICAS DE APOIO À DECISÃO</field>
+	<field name="code">TAD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_199" model="op.subject">
+	<field name="name">ANÁLISE DE DADOS</field>
+	<field name="code">AD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_200" model="op.subject">
+	<field name="name">ESTATÍSTICA APLICADA À AUDITORIA</field>
+	<field name="code">EST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_201" model="op.subject">
+	<field name="name">MATEMÁTICA I</field>
+	<field name="code">MAT 1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_202" model="op.subject">
+	<field name="name">MATEMÁTICA II</field>
+	<field name="code">MAT2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_203" model="op.subject">
+	<field name="name">ESTATÍSTICA I</field>
+	<field name="code">EST 1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_204" model="op.subject">
+	<field name="name">ESTATÍSTICA II</field>
+	<field name="code">EST2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_205" model="op.subject">
+	<field name="name">INVESTIGAÇÃO OPERACIONAL I</field>
+	<field name="code">IO 1</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_206" model="op.subject">
+	<field name="name">ANÁLISE DE DADOS</field>
+	<field name="code">AD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_207" model="op.subject">
+	<field name="name">INVESTIGAÇÃO OPERACIONAL II</field>
+	<field name="code">IO 2</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_208" model="op.subject">
+	<field name="name">ÁLGEBRA</field>
+	<field name="code">ALBR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_209" model="op.subject">
+	<field name="name">ANÁLISE MATEMÁTICA </field>
+	<field name="code">MAT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_210" model="op.subject">
+	<field name="name">ESTATÍSTICA </field>
+	<field name="code">EST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_211" model="op.subject">
+	<field name="name">ESTATÍSTICA APLICADA AO MARKETING</field>
+	<field name="code">ESTAM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_212" model="op.subject">
+	<field name="name">MATEMÁTICA GERAL</field>
+	<field name="code">MAT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_213" model="op.subject">
+	<field name="name">ESTATÍSTICA APLICADA AO TURISMO</field>
+	<field name="code">EST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_214" model="op.subject">
+	<field name="name">ESTATÍSTICA COMPUTACIONAL</field>
+	<field name="code">ESTCOMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_215" model="op.subject">
+	<field name="name">INTRODUÇÃO À CONTABILIDADE FINANCEIRA</field>
+	<field name="code">ICF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_216" model="op.subject">
+	<field name="name">FINANÇAS EMPRESARIAIS</field>
+	<field name="code">FEMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_217" model="op.subject">
+	<field name="name">MARKETING PARA AS TECNOLOGIAS</field>
+	<field name="code">MKT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_218" model="op.subject">
+	<field name="name">GESTÃO ELECTRÓNICA DE DOCUMENTOS</field>
+	<field name="code">GED</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_219" model="op.subject">
+	<field name="name">DIREITO INFORMÁTICO</field>
+	<field name="code">DIR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_220" model="op.subject">
+	<field name="name">GESTÃO DE OPERAÇÕES</field>
+	<field name="code">GOP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_221" model="op.subject">
+	<field name="name">EMPREENDEDORISMO</field>
+	<field name="code">EMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_222" model="op.subject">
+	<field name="name">GESTÃO DE RECURSOS HUMANOS</field>
+	<field name="code">GRH</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_223" model="op.subject">
+	<field name="name">GESTÃO FINANCEIRA</field>
+	<field name="code">GF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_224" model="op.subject">
+	<field name="name">ANÁLISE DE DADOS</field>
+	<field name="code">AD</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_225" model="op.subject">
+	<field name="name">GESTÃO DE PROCESSOS ELECTRÓNICOS DE NEGÓCIO</field>
+	<field name="code">GPEN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_226" model="op.subject">
+	<field name="name">FUNDAMENTOS DE ECONOMIA</field>
+	<field name="code">ECO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_227" model="op.subject">
+	<field name="name">GESTÃO ESTRATÉGICA</field>
+	<field name="code">GESTR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_228" model="op.subject">
+	<field name="name">MATEMÁTICA I</field>
+	<field name="code">MAT I</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_229" model="op.subject">
+	<field name="name">MACROECONOMIA</field>
+	<field name="code">MACRO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_230" model="op.subject">
+	<field name="name">INTRODUÇÃO ÀS ORGANIZAÇÕES E À GESTÃO</field>
+	<field name="code">IOG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_231" model="op.subject">
+	<field name="name">INTRODUÇÃO AO COMÉRCIO E AOS NEGÓCIOS INTERNACIONAIS</field>
+	<field name="code">ICNI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_232" model="op.subject">
+	<field name="name">INTRODUÇÃO AO DIREITO</field>
+	<field name="code">DIR</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_233" model="op.subject">
+	<field name="name">MATEMÁTICA II</field>
+	<field name="code">MAT II</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_234" model="op.subject">
+	<field name="name">MICROECONOMIA</field>
+	<field name="code">MICRO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_235" model="op.subject">
+	<field name="name">METODOLOGIAS E COMUNICAÇÃO</field>
+	<field name="code">MCOM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_236" model="op.subject">
+	<field name="name">INTRODUÇÃO À CONTABILIDADE FINANCEIRA</field>
+	<field name="code">ICF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_237" model="op.subject">
+	<field name="name">DIREITO EMPRESARIAL</field>
+	<field name="code">DEMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_238" model="op.subject">
+	<field name="name">CÁLCULO E OPERAÇÕES FINANCEIRAS</field>
+	<field name="code">COF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_239" model="op.subject">
+	<field name="name">NEGOCIAÇÃO E TÉCNICAS DE VENDAS</field>
+	<field name="code">NTV</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_240" model="op.subject">
+	<field name="name">GESTÃO ESTRATÉGICA</field>
+	<field name="code">GEST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_241" model="op.subject">
+	<field name="name">CONTABILIDADE FINANCEIRA</field>
+	<field name="code">CF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_242" model="op.subject">
+	<field name="name">ESTATÍSTICA</field>
+	<field name="code">EST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_243" model="op.subject">
+	<field name="name">ECONOMIA INTERNACIONAL</field>
+	<field name="code">ECO</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_244" model="op.subject">
+	<field name="name">MARKETING ESTRATÉGICO</field>
+	<field name="code">MKT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_245" model="op.subject">
+	<field name="name">DIREITO FISCAL </field>
+	<field name="code">DF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_246" model="op.subject">
+	<field name="name">COMPORTAMENTO ORGANIZACIONAL</field>
+	<field name="code">COMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_247" model="op.subject">
+	<field name="name">MERCADOS E PRODUTOS FINANCEIROS</field>
+	<field name="code">MPF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_248" model="op.subject">
+	<field name="name">INTRODUÇÃO À CONTABILIDADE DE GESTÃO</field>
+	<field name="code">ICGEST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_249" model="op.subject">
+	<field name="name">FISCALIDADE</field>
+	<field name="code">FISC</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_250" model="op.subject">
+	<field name="name">MARKETING OPERACIONAL</field>
+	<field name="code">MKTOP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_251" model="op.subject">
+	<field name="name">ANÁLISE ECONÓMICA E FINANCEIRA</field>
+	<field name="code">AEF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_252" model="op.subject">
+	<field name="name">GESTÃO DE NEGÓCIOS INTERNACIONAIS</field>
+	<field name="code">GNI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_253" model="op.subject">
+	<field name="name">CONTABILIDADE DE GESTÃO </field>
+	<field name="code">CGEST</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_254" model="op.subject">
+	<field name="name">CONTRATOS COMERCIAIS</field>
+	<field name="code">CCOM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_255" model="op.subject">
+	<field name="name">LOGÍSTICA INTERNACIONAL</field>
+	<field name="code">LOG</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_256" model="op.subject">
+	<field name="name">GESTÃO ESTRATÉGICA INTERNACIONAL</field>
+	<field name="code">GEI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_257" model="op.subject">
+	<field name="name">OPERAÇÕES DE COMÉRCIO INTERNACIONAL</field>
+	<field name="code">ONI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_258" model="op.subject">
+	<field name="name">FINANÇAS EMPRESARIAIS</field>
+	<field name="code">FEMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_259" model="op.subject">
+	<field name="name">INTERNATIONAL CORPORATE MANAGEMENT</field>
+	<field name="code">ICM</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_260" model="op.subject">
+	<field name="name">POLÍTICA COMERCIAL E INTEGRAÇÃO ECONÓMICA</field>
+	<field name="code">PCI</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_261" model="op.subject">
+	<field name="name">ELABORAÇÃO DE PLANO DE NEGÓCIOS</field>
+	<field name="code">EPN</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_262" model="op.subject">
+	<field name="name">EMPREENDEDORISMO</field>
+	<field name="code">EMP</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_263" model="op.subject">
+	<field name="name">COMÉRCIO ELECTRÓNICO</field>
+	<field name="code">CE</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_264" model="op.subject">
+	<field name="name">FINANÇAS INTERNACIONAIS</field>
+	<field name="code">FINT</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_265" model="op.subject">
+	<field name="name">GESTÃO DE RISCOS FINANCEIROS</field>
+	<field name="code">GRF</field>
+	<field name="type">both</field>
+</record>
+
+<record id="op_subject_iscee_266" model="op.subject">
+	<field name="name">EXTENDED INTERNATIONAL CORPORATE MANAGEMENT </field>
+	<field name="code">EICM</field>
+	<field name="type">both</field>
+</record>
+
+	</data>
+</openerp>

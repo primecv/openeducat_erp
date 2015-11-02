@@ -30,7 +30,8 @@
     'depends': ['openeducat_erp'],
     'data': [
             'op_course_view.xml',
-            'op_course_data.xml'
+            'op_course_data.xml',
+            'data/op_subject_data.xml',
     ],
     'installable': True,
     'auto_install': False,
