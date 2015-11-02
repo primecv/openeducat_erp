@@ -27,7 +27,7 @@
     'complexity': "easy",
     'author': 'Prime Consulting, Cape Verde',
     'website': 'http://www.prime.cv',
-    'depends': ['openeducat_erp'],
+    'depends': ['openeducat_erp', 'openeducat_core'],
     'data': [
             'op_course_view.xml',
             'op_course_data.xml',
