@@ -6,4 +6,10 @@
 		</record>
 
 	</data>
+
+	<data noupdate="1">
+		<record id="op_course_evaluation_avaliacao_continua" model="op.course.evaluation">
+			<field name="name">Avaliação Contínua</field>
+		</record>
+	</data>
 </openerp>
