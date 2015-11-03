@@ -1,0 +1,10 @@
+"id","name","code","evaluation_type:id","payment_term:id","section"
+iscee_course_gestao,"Gestão","GES",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+iscee_course_gestao_plan_turismo,"Gestão e Planeamento em Turismo","GPT",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+iscee_course_gestao_marketing,"Mkt, Gest Com e Empreendedorismo","MKT",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+iscee_course_gestao_informatica,"Informática de Gestão","IG",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+iscee_course_contabilidade,"Contabilidade","CON",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+iscee_course_comercio_negocios,"Comércio e Negócios Internac","CNI",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+iscee_course_gestao_animacao,"Gestão de Animação Turística","GAT",op_course_evaluation_avaliacao_continua,account.account_payment_term_iscee_5days,"I"
+
+
