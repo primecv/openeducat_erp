@@ -19,6 +19,10 @@
 #
 ###############################################################################
 
-import op_course
-import op_student
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+from openerp import models, fields
+
+
+class op_student(models.Model):
+	_inherit = "op.student"
+
+	email = fields.Char('Email')

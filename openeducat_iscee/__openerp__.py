@@ -34,6 +34,7 @@
             'data/account_data.xml',
             'data/op_subject_data.xml',
             'data/op.course.csv',
+            'op_student_view.xml',
     ],
     'installable': True,
     'auto_install': False,
