@@ -1,0 +1,866 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* emsprime_core
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-01 06:57+0000\n"
+"PO-Revision-Date: 2015-10-01 06:57+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_faculty
+msgid "<div class=\"oe_empty_custom_dashboard\">\n"
+"                    <p>\n"
+"                        <b>Your faculty dashboard is empty.</b>\n"
+"                    </p>\n"
+"                    <p>\n"
+"                        To add your first report into this dashboard, go to any\n"
+"                        menu, switch to list or graph view, and click\n"
+"                        <i>'Add to\n"
+"                            Dashboard'\n"
+"                        </i>\n"
+"                        in the extended search options.\n"
+"                    </p>\n"
+"                    <p>\n"
+"                        You can filter and group data before inserting into the\n"
+"                        dashboard using the search options.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_student
+msgid "<div class=\"oe_empty_custom_dashboard\">\n"
+"                    <p>\n"
+"                        <b>Your student dashboard is empty.</b>\n"
+"                    </p>\n"
+"                    <p>\n"
+"                        To add your first report into this dashboard, go to any\n"
+"                        menu, switch to list or graph view, and click\n"
+"                        <i>'Add to\n"
+"                            Dashboard'</i>\n"
+"                        in the extended search options.\n"
+"                    </p>\n"
+"                    <p>\n"
+"                        You can filter and group data before inserting into the\n"
+"                        dashboard using the search options.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "A+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "A-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "AB+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "AB-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: view:res.company:emsprime_core.view_company_form_emsprime_core
+#: field:res.company,accreditation:0
+msgid "Accreditation"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_activity
+msgid "Activity Management"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Address"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Address Detail"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.kanban_view_faculty
+msgid "Address:"
+msgstr ""
+
+#. module: emsprime_core
+#: view:res.company:emsprime_core.view_company_form_emsprime_core
+#: field:res.company,approval_authority:0
+msgid "Approval Authority"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Assigned Roll Numbers"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "B+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "B-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: model:res.groups,name:emsprime_core.group_ems_back_office
+msgid "Back Office"
+msgstr ""
+
+#. module: emsprime_core
+#: model:res.groups,name:emsprime_core.group_ems_back_office_admin
+msgid "Back Office Admin"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.edition:emsprime_core.view_ems_edition_form
+#: view:ems.edition:emsprime_core.view_ems_edition_search
+#: view:ems.edition:emsprime_core.view_ems_edition_tree
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_search
+#: field:ems.enrollment,edition_id:0
+#: view:ems.student:emsprime_core.view_ems_student_search
+#: field:ems.student,edition_id:0
+msgid "Edition"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.student:emsprime_core.kanban_view_student
+msgid "Edition:"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_edition_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_edition_sub
+msgid "Batches"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,birth_date:0
+#: field:ems.student,birth_date:0
+msgid "Birth Date"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_idcard
+msgid "BirthDate :"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_search
+#: field:ems.faculty,blood_group:0
+#: view:ems.student:emsprime_core.view_ems_student_search
+#: field:ems.student,blood_group:0
+msgid "Blood Group"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_idcard
+msgid "Blood Group :"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.action_report_student_bonafide
+#: view:website:emsprime_core.report_student_bonafide
+msgid "Bonafide Certificate"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.subject,type:0
+msgid "Both"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "CCE"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "CWA"
+msgstr ""
+
+#. module: emsprime_core
+#: view:wizard.ems.student:emsprime_core.ems_student_user_create_view
+msgid "Cancel"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "City"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,code:0
+#: field:ems.course,code:0
+#: field:ems.subject,code:0
+msgid "Code"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_config_root
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_root
+msgid "Configuration"
+msgstr ""
+
+#. module: emsprime_core
+#: code:addons/emsprime_core/models/hr.py:43
+#, python-format
+msgid "Configuration Error!"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Country"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.edition:emsprime_core.view_ems_edition_search
+#: field:ems.edition,course_id:0
+#: view:ems.course:emsprime_core.view_ems_course_form
+#: view:ems.course:emsprime_core.view_ems_course_search
+#: view:ems.course:emsprime_core.view_ems_course_tree
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_search
+#: field:ems.enrollment,course_id:0
+#: view:ems.student:emsprime_core.view_ems_student_search
+#: field:ems.student,course_id:0
+#: field:ems.subject,course_id:0
+msgid "Course"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_idcard
+msgid "Course :"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_course
+msgid "Course Management"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.student:emsprime_core.kanban_view_student
+msgid "Course:"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_course_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_course_sub
+msgid "Courses"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+msgid "Create Employee"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_wizard_ems_student
+#: view:wizard.ems.student:emsprime_core.ems_student_user_create_view
+msgid "Create User for selected Student(s)"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.action_student_user_create_view
+#: view:wizard.ems.student:emsprime_core.ems_student_user_create_view
+msgid "Create Users"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,create_uid:0
+#: field:ems.course,create_uid:0
+#: field:ems.faculty,create_uid:0
+#: field:ems.enrollment,create_uid:0
+#: field:ems.student,create_uid:0
+#: field:ems.subject,create_uid:0
+#: field:wizard.ems.student,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,create_date:0
+#: field:ems.course,create_date:0
+#: field:ems.faculty,create_date:0
+#: field:ems.enrollment,create_date:0
+#: field:ems.student,create_date:0
+#: field:ems.subject,create_date:0
+#: field:wizard.ems.student,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.student,roll_number:0
+msgid "Current Roll Number"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "DATE:"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_idcard
+msgid "E-mail :"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Educational"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,emergency_contact:0
+#: field:ems.student,emergency_contact:0
+msgid "Emergency Contact"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_hr_employee
+#: field:ems.faculty,emp_id:0
+msgid "Employee"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.edition:emsprime_core.view_ems_edition_search
+#: field:ems.edition,end_date:0
+msgid "End Date"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.course:emsprime_core.view_ems_course_search
+#: field:ems.course,evaluation_type:0
+msgid "Evaluation Type"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_faculty_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_main
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_main_faculty
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_sub
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_sub_faculty
+msgid "Faculties"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_root
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.faculty:emsprime_core.view_ems_faculty_search
+#: view:ems.faculty:emsprime_core.view_ems_faculty_tree
+#: model:res.groups,name:emsprime_core.group_ems_faculty
+msgid "Faculty"
+msgstr ""
+
+#. module: emsprime_core
+#: view:board.board:emsprime_core.board_faculty_form
+#: model:ir.actions.act_window,name:emsprime_core.open_board_faculty
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_dashboard_faculty
+msgid "Faculty Dashboard"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,gender:0
+#: selection:ems.student,gender:0
+msgid "Female"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "First Name"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "GPA"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.student,gr_no:0
+msgid "GR Number"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,gender:0
+#: field:ems.student,gender:0
+msgid "Gender"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_general_main
+msgid "General"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_general
+msgid "General Management"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.subject,grade_weightage:0
+msgid "Grade Weightage"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.edition:emsprime_core.view_ems_edition_search
+#: view:ems.course:emsprime_core.view_ems_course_search
+#: view:ems.faculty:emsprime_core.view_ems_faculty_search
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_search
+#: view:ems.student:emsprime_core.view_ems_student_search
+#: view:ems.subject:emsprime_core.view_ems_subject_search
+msgid "Group By..."
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "His / Her birthday as recorded in the General Register of the school / collage is"
+msgstr ""
+
+#. module: emsprime_core
+#: code:addons/emsprime_core/models/hr.py:43
+#, python-format
+msgid "Home Address and Working Address should be same!"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,id:0
+#: field:ems.course,id:0
+#: field:ems.faculty,id:0
+#: field:ems.enrollment,id:0
+#: field:ems.student,id:0
+#: field:ems.subject,id:0
+#: field:report.emsprime_core.report_student_bonafide,id:0
+#: field:report.emsprime_core.report_student_idcard,id:0
+#: field:wizard.ems.student,id:0
+msgid "ID"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,id_number:0
+#: field:ems.student,id_number:0
+msgid "ID Card Number"
+msgstr ""
+
+#. module: emsprime_core
+#: view:res.company:emsprime_core.view_company_form_emsprime_core
+msgid "Institute Detail"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_search
+#: view:ems.student:emsprime_core.view_ems_student_search
+msgid "Language"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.kanban_view_faculty
+msgid "Language:"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: field:ems.faculty,last_name:0
+#: view:ems.student:emsprime_core.view_ems_student_form
+#: field:ems.student,last_name:0
+msgid "Last Name"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,write_uid:0
+#: field:ems.course,write_uid:0
+#: field:ems.faculty,write_uid:0
+#: field:ems.enrollment,write_uid:0
+#: field:ems.student,write_uid:0
+#: field:ems.subject,write_uid:0
+#: field:wizard.ems.student,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,write_date:0
+#: field:ems.course,write_date:0
+#: field:ems.faculty,write_date:0
+#: field:ems.enrollment,write_date:0
+#: field:ems.student,write_date:0
+#: field:ems.subject,write_date:0
+#: field:wizard.ems.student,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "Mail:"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,gender:0
+#: selection:ems.student,gender:0
+msgid "Male"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: field:ems.faculty,middle_name:0
+#: view:ems.student:emsprime_core.view_ems_student_form
+#: field:ems.student,middle_name:0
+msgid "Middle Name"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.kanban_view_faculty
+msgid "Mobile:"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.edition,name:0
+#: field:ems.course,name:0
+#: field:ems.subject,name:0
+msgid "Name"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_search
+#: field:ems.faculty,nationality:0
+#: view:ems.student:emsprime_core.view_ems_student_search
+#: field:ems.student,nationality:0
+msgid "Nationality"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "Normal"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "O+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0
+#: selection:ems.student,blood_group:0
+msgid "O-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_root
+#: model:ir.ui.menu,name:emsprime_core.menu_openeducat_reporting_dashboard
+msgid "OpenEduCat"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.student,gender:0
+#: selection:ems.subject,type:0
+msgid "Other"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "PRINCIPAL"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.course:emsprime_core.view_ems_course_search
+#: field:ems.course,parent_id:0
+msgid "Parent Course"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,partner_id:0
+#: field:ems.student,partner_id:0
+msgid "Partner"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Personal Information"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_idcard
+msgid "Phone :"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "Phone:"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,photo:0
+#: field:ems.student,photo:0
+msgid "Photo"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.subject,type:0
+msgid "Practical"
+msgstr ""
+
+#. module: emsprime_core
+#. openerp-web
+#: code:addons/emsprime_core/static/src/xml/base.xml:10
+#, python-format
+msgid "Provided by"
+msgstr ""
+
+#. module: emsprime_core
+#: view:hr.employee:emsprime_core.view_employee_form_address_inherit
+msgid "Related User"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_idcard
+msgid "Roll No :"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_form
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_search
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_tree
+#: field:ems.enrollment,roll_number:0
+#: field:ems.student,roll_number_line:0
+msgid "Roll Number"
+msgstr ""
+
+#. module: emsprime_core
+#: sql_constraint:ems.enrollment:0
+msgid "Roll Number & Student must be unique per Edition!"
+msgstr ""
+
+#. module: emsprime_core
+#: sql_constraint:ems.enrollment:0
+msgid "Roll Number must be unique per Edition!"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.student:emsprime_core.kanban_view_student
+msgid "Roll Number:"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_roll_number_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_roll_number_sub
+msgid "Roll Numbers"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.course,section:0
+msgid "Section"
+msgstr ""
+
+#. module: emsprime_core
+#: field:res.company,signature:0
+msgid "Signature"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.edition:emsprime_core.view_ems_edition_search
+#: field:ems.edition,start_date:0
+msgid "Start Date"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "State"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Street..."
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Street2"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_root
+#: view:ems.enrollment:emsprime_core.view_ems_roll_number_search
+#: field:ems.enrollment,student_id:0
+#: view:ems.student:emsprime_core.view_ems_student_form
+#: view:ems.student:emsprime_core.view_ems_student_search
+#: view:ems.student:emsprime_core.view_ems_student_tree
+#: model:res.groups,name:emsprime_core.group_ems_student
+msgid "Student"
+msgstr ""
+
+#. module: emsprime_core
+#: view:board.board:emsprime_core.board_student_form
+#: model:ir.actions.act_window,name:emsprime_core.open_board_student
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_dashboard_student
+msgid "Student Dashboard"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.action_report_student_idcard
+msgid "Student IdCard"
+msgstr ""
+
+#. module: emsprime_core
+#: sql_constraint:ems.enrollment:0
+msgid "Student must be unique per Edition!"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_student_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_main
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_main_student
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_sub
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_sub_faculty
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_sub_student
+#: view:wizard.ems.student:emsprime_core.ems_student_user_create_view
+#: field:wizard.ems.student,student_ids:0
+msgid "Students"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.subject:emsprime_core.view_ems_subject_form
+#: view:ems.subject:emsprime_core.view_ems_subject_search
+#: view:ems.subject:emsprime_core.view_ems_subject_tree
+msgid "Subject"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_subject
+msgid "Subject Management"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.course,subject_ids:0
+#: field:ems.faculty,faculty_subject_ids:0
+msgid "Subject(s)"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_subject_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_subject_sub
+#: view:ems.course:emsprime_core.view_ems_course_form
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+msgid "Subjects"
+msgstr ""
+
+#. module: emsprime_core
+#. openerp-web
+#: code:addons/emsprime_core/static/src/xml/base.xml:10
+#, python-format
+msgid "Tech Receptives"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.kanban_view_faculty
+msgid "Tel:"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.subject,type:0
+msgid "Theory"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "This is to certify that"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "Title"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "To the best of my knowledge, he / she bears a Good Moral character."
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.subject:emsprime_core.view_ems_subject_search
+#: field:ems.subject,type:0
+msgid "Type"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "User"
+msgstr ""
+
+#. module: emsprime_core
+#: field:res.users,user_line:0
+msgid "User Line"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: emsprime_core
+#: field:ems.faculty,visa_info:0
+#: field:ems.student,visa_info:0
+msgid "Visa Info"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "Year"
+msgstr ""
+
+#. module: emsprime_core
+#: view:ems.faculty:emsprime_core.view_ems_faculty_form
+#: view:ems.student:emsprime_core.view_ems_student_form
+msgid "ZIP"
+msgstr ""
+
+#. module: emsprime_core
+#: view:website:emsprime_core.report_student_bonafide
+msgid "is / was a bonafide student of this school / college studying in"
+msgstr ""
+
+#. module: emsprime_core
+#: view:wizard.ems.student:emsprime_core.ems_student_user_create_view
+msgid "or"
+msgstr ""
+

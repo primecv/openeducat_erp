@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+        <menuitem id="menu_ems_faculty_root" name="Faculties" sequence="20"
+            groups="group_ems_faculty,group_ems_back_office_admin,group_ems_back_office" />
+
+        <menuitem id="menu_ems_dashboard_faculty" name="Dashboard" sequence="10"
+            parent="menu_ems_faculty_root" action="open_board_faculty" />
+    </data>
+</openerp>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <report
+            id="action_report_student_idcard" 
+            model="ems.student" 
+            string="Student IdCard"
+            report_type="qweb-pdf"
+            name="emsprime_core.report_student_idcard" 
+            file="emsprime_core.report_student_idcard"
+        />
+        <report
+            id="action_report_student_bonafide" 
+            model="ems.student" 
+            string="Bonafide Certificate"
+            report_type="qweb-pdf"
+            name="emsprime_core.report_student_bonafide" 
+            file="emsprime_core.report_student_bonafide"
+        />
+    </data>
+</openerp>

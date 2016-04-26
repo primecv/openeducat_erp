@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_ems_semester_tree" model="ir.ui.view">
+            <field name="name">ems.semester.tree</field>
+            <field name="model">ems.semester</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Semester">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="course_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_ems_semester_form" model="ir.ui.view">
+            <field name="name">ems.semester.form</field>
+            <field name="model">ems.semester</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Semester">
+                    <sheet>
+                        <group col="4" name="main">
+                            <field name="name" />
+                            <field name="number" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="course_id" />
+                            <field name="edition_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_ems_semester_search" model="ir.ui.view">
+            <field name="name">ems.semester.search</field>
+            <field name="model">ems.semester</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Semester">
+                    <field name="name" />
+                    <field name="number" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="course_id" />
+                    <field name="edition_id" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Start Date" domain="[]"
+                            context="{'group_by':'start_date'}" />
+                        <filter string="End Date" domain="[]" context="{'group_by':'end_date'}" />
+                        <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_ems_semester_view">
+            <field name="name">Semesters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.semester</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_semester_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_semester_view_form">
+            <field name="act_window_id" ref="act_open_ems_semester_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ems_semester_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_semester_view_tree">
+            <field name="act_window_id" ref="act_open_ems_semester_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_semester_tree" />
+        </record>
+    </data>
+</openerp>

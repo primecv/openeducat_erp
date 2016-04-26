@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="hr_location_action" model= "ir.actions.act_window">
+            <field name="name">Locations</field>
+            <field name="res_model">ems.location</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click create to add a new Location record.</p>
+            </field>
+        </record>
+
+        <record id="hr_location_search_view" model= "ir.ui.view">
+            <field name="name">hr.location.search.view</field>
+            <field name="model">ems.location</field>
+            <field name="arch" type="xml">
+                <search string="Location search">
+                    <field name="name"/>
+                    <field name="level"/>
+                    <group string="Group by">
+                        <filter string="Level" name="level" domain="[]" context="{'group_by':'level'}"/>   
+                        <!--filter string="Belongs to" name="parent" domain="[]" context="{'group_by':'parent_id'}"/-->                
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_location_tree_view" model= "ir.ui.view">
+            <field name="name">hr.location.tree.view</field>
+            <field name="view_type">tree</field>
+            <field name="search_view_id" ref="hr_location_search_view"/>
+            <field name="model">ems.location</field>
+            <field name="arch" type="xml">
+                <tree string="Locations">
+                    <field name="level"/>
+                    <field name="complete_name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="hr_location_form_view" model= "ir.ui.view">
+            <field name="name">hr.location.form.view</field>
+            <field name="view_type">form</field>
+            <field name="model">ems.location</field>
+            <field name="arch" type="xml">
+                <form string="Location">
+                    <field name="parent_id"/>
+                    <field name="name"/>
+                    <field name="level"/>
+                    <field name="latitude"/>
+                    <field name="longitude"/>
+                </form>
+            </field>
+        </record>    
+
+    </data>
+</openerp>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

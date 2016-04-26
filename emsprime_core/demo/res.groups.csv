@@ -1,0 +1,5 @@
+id,name,users
+emsprime_core.group_ems_student,Student,"Student,Administrator"
+emsprime_core.group_ems_faculty,Faculty,"Faculty,Administrator"
+emsprime_core.group_ems_back_office,Back Office,"Back Office,Administrator"
+emsprime_core.group_ems_back_office_admin,Back Office Admin,"Back Office Admin,Administrator"
