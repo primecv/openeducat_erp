@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_ems_facility","name_ems_facility","model_ems_facility","base.group_user",1,1,1,0
+"access_ems_facility_back_office","name_ems_facility_back_office","model_ems_facility","emsprime_core.group_ems_back_office",1,0,0,0
+"access_ems_facility_line","name_ems_facility_line","model_ems_facility_line","base.group_user",1,1,1,0
+"access_ems_facility_line_back_office","name_ems_facility_line_back_office","model_ems_facility_line","emsprime_core.group_ems_back_office",1,0,0,0

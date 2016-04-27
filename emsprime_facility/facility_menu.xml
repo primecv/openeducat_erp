@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_ems_facility_sub" name="Facilities"
+            parent="emsprime_core.menu_ems_school_config_general" sequence="20"
+            action="act_open_ems_facility_view" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" />
+    </data>
+</openerp>
