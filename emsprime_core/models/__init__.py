@@ -30,6 +30,7 @@ from . import enrollment
 from . import student
 from . import subject
 from . import ems_class
+from . import ems_request
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

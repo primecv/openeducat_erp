@@ -1,0 +1,82 @@
+<openerp>
+	<data>
+		<!-- Request Type views -->
+		<record id="ems_request_type_form" model="ir.ui.view">
+			<field name="name">ems.request.type.form</field>
+			<field name="model">ems.request.type</field>
+			<field name="arch" type="xml">
+				<form string="Request Type">
+					<group string="Request Type">
+						<field name="name" required="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="ems_request_type_tree" model="ir.ui.view">
+			<field name="name">ems.request.type.tree</field>
+			<field name="model">ems.request.type</field>
+			<field name="arch" type="xml">
+				<tree string="Request Type">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="ems_request_type_action" model="ir.actions.act_window">
+			<field name="name">Request Type</field>
+			<field name="res_model">ems.request.type</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<!-- EMS Request views -->
+		<record id="ems_request_form" model="ir.ui.view">
+			<field name="name">ems.request.form</field>
+			<field name="model">ems.request</field>
+			<field name="arch" type="xml">
+				<form string="Request">
+					<header>
+						<field name="state" widget="statusbar" statusbar_visible="draft,validate,done" statusbar_colors='{"pending":"red","validate":"green"}'/>
+					</header>
+					<sheet>
+		                <div class="oe_title">
+		                    <label for="name" class="oe_edit_only"/>
+		                    <h1><field name="name" placeholder="Describe the Request..."/></h1>
+		                </div>
+						<group col="4">
+							<field name="request_type_id" options="{'no_create':1, 'no_open':1}" required="1"/>
+							<field name="student_id" required="1"/>
+							<field name="date"/>
+						</group>
+						<group colspan="4">
+							<field name="description" placeholder="Other Info...."/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="ems_request_tree" model="ir.ui.view">
+			<field name="name">ems.request.tree</field>
+			<field name="model">ems.request</field>
+			<field name="arch" type="xml">
+				<tree string="Request">
+					<field name="name"/>
+					<field name="request_type_id"/>
+					<field name="student_id"/>
+					<field name="date"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="ems_request_action" model="ir.actions.act_window">
+			<field name="name">Request</field>
+			<field name="res_model">ems.request</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+	</data>
+</openerp>

@@ -57,6 +57,7 @@
         'views/enrollment_view.xml',
         'views/faculty_view.xml',
         'views/ems_class_view.xml',
+        'views/ems_request_view.xml',
         'views/res_company_view.xml',
         'views/emsprime_template.xml',
         'views/homepage_template.xml',
