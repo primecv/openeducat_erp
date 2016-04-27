@@ -1,0 +1,8 @@
+id,classroom_id:id,facility_id:id,quantity
+ems_facility_line_1,ems_classroom_1,emsprime_facility.ems_facility_1,2
+ems_facility_line_2,ems_classroom_1,emsprime_facility.ems_facility_2,1
+ems_facility_line_3,ems_classroom_1,emsprime_facility.ems_facility_3,1
+ems_facility_line_4,ems_classroom_2,emsprime_facility.ems_facility_1,2
+ems_facility_line_5,ems_classroom_2,emsprime_facility.ems_facility_2,1
+ems_facility_line_6,ems_classroom_3,emsprime_facility.ems_facility_3,1
+ems_facility_line_7,ems_classroom_4,emsprime_facility.ems_facility_4,1

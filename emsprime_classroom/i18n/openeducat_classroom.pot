@@ -1,0 +1,130 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* emsprime_classroom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 11:11+0000\n"
+"PO-Revision-Date: 2015-09-29 11:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: emsprime_classroom
+#: field:ems.asset,asset_id:0
+#: field:ems.classroom,asset_line:0
+msgid "Asset"
+msgstr ""
+
+#. module: emsprime_classroom
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_form
+msgid "Asset Management"
+msgstr ""
+
+#. module: emsprime_classroom
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_search
+msgid "Capacity"
+msgstr ""
+
+#. module: emsprime_classroom
+#: model:ir.ui.menu,name:emsprime_classroom.menu_ems_school_config_class_room
+msgid "Class Room Management"
+msgstr ""
+
+#. module: emsprime_classroom
+#: model:ir.actions.act_window,name:emsprime_classroom.act_open_ems_classroom_view
+#: model:ir.ui.menu,name:emsprime_classroom.menu_ems_classroom_sub
+msgid "Class Rooms"
+msgstr ""
+
+#. module: emsprime_classroom
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_form
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_search
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_tree
+#: field:ems.facility.line,classroom_id:0
+msgid "Classroom"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,code:0
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_search
+#: field:ems.classroom,code:0
+msgid "Code"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.classroom,course_id:0
+msgid "Course"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,create_uid:0
+#: field:ems.classroom,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,create_date:0
+#: field:ems.classroom,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: emsprime_classroom
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_form
+msgid "Facilities"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.classroom,facilities:0
+msgid "Facility Lines"
+msgstr ""
+
+#. module: emsprime_classroom
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_search
+msgid "Group By..."
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,id:0
+#: field:ems.classroom,id:0
+msgid "ID"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,write_uid:0
+#: field:ems.classroom,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,write_date:0
+#: field:ems.classroom,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: emsprime_classroom
+#: view:ems.classroom:emsprime_classroom.view_ems_classroom_search
+#: field:ems.classroom,name:0
+msgid "Name"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.classroom,capacity:0
+msgid "No of Person"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: emsprime_classroom
+#: field:ems.asset,product_uom_qty:0
+msgid "Quantity"
+msgstr ""
+

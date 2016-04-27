@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_ems_classroom","name_ems_classroom","model_ems_classroom","base.group_user",1,1,1,0
+"access_ems_classroom_back_office","name_ems_classroom_back_office","model_ems_classroom","emsprime_core.group_ems_back_office",1,0,0,0
+
+"access_ems_asset","ems_asset","model_ems_asset",,1,1,1,1

@@ -1,0 +1,5 @@
+id,name,code,course_id:id,capacity
+ems_classroom_1,R001,R001,emsprime_core.ems_course_2,20
+ems_classroom_2,R002,R002,emsprime_core.ems_course_1,30
+ems_classroom_3,R003,R003,emsprime_core.ems_course_3,30
+ems_classroom_4,R004,R004,emsprime_core.ems_course_4,25

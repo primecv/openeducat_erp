@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_ems_school_config_class_room" name="Class Room Management" parent="emsprime_core.menu_ems_school_config" sequence="30"/>
+
+        <menuitem id="menu_ems_classroom_sub" name="Class Rooms" sequence="10"
+            parent="menu_ems_school_config_class_room" action="act_open_ems_classroom_view"
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" />
+    </data>
+</openerp>
