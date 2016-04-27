@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_ems_timetable_root" name="TimeTables" sequence="18" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" />
+
+        <menuitem id="menu_ems_timetable_main" parent="menu_ems_timetable_root"
+            sequence="10" name="TimeTables" />
+        <menuitem id="menu_ems_period" string="Periods" parent="menu_ems_timetable_main"
+            sequence="10" action="act_open_ems_period_view" />
+        <menuitem id="menu_ems_timetable" string="TimeTables" parent="menu_ems_timetable_main"
+            sequence="20" action="act_open_ems_timetable_view" />
+        <menuitem id="menu_generate_time_table" string="Generate TimeTables" parent="menu_ems_timetable_main"
+            sequence="30" action="act_open_generate_time_table_view" />
+        <menuitem id="menu_generate_time_table_report" string="Generate TimeTable Report" parent="menu_ems_timetable_main"
+            sequence="40" action="act_open_time_table_report_view" />
+    </data>
+</openerp>

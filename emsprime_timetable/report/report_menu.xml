@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <report
+            id="report_student_timetable_generate"
+            string="TimeTable for Students"
+            model="ems.timetable" report_type="qweb-pdf"
+            file="emsprime_timetable.report_timetable_student_generate"
+            name="emsprime_timetable.report_timetable_student_generate"
+            menu="False"
+            auto="False"
+        />
+
+        <report
+            id="report_teacher_timetable_generate"
+            string="TimeTable for Faculties"
+            model="ems.timetable"
+            report_type="qweb-pdf"
+            file="emsprime_timetable.report_timetable_teacher_generate"
+            name="emsprime_timetable.report_timetable_teacher_generate"
+            menu="False"
+            auto="False"
+        />
+    </data>
+</openerp>

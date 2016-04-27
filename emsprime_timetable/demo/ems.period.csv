@@ -1,0 +1,6 @@
+id,am_pm,duration,hour,minute,name,sequence
+ems_period_1,AM,1,10,00,10AM-11AM,1
+ems_period_2,AM,1,11,00,11AM-12PM,2
+ems_period_3,PM,1,12,00,12PM-1PM,3
+ems_period_4,PM,1,2,00,2PM-3PM,4
+ems_period_5,PM,2,3,00,3PM-5PM,5
