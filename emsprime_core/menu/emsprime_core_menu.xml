@@ -13,6 +13,10 @@
             sequence="10" action="act_open_ems_student_view"
             groups="group_ems_back_office,group_ems_back_office_admin" />
 
+		<menuitem id="menu_ems_request" name="Requests" parent="menu_ems_school_main"
+            sequence="15" action="ems_request_action"
+            groups="group_ems_back_office,group_ems_back_office_admin" />
+
 
         <menuitem id="menu_ems_faculty_main" name="Faculties"
             parent="menu_ems_school_root" sequence="20"
@@ -48,6 +52,10 @@
         <menuitem id="menu_ems_roll_number_sub" name="Roll Numbers"
             parent="menu_ems_school_config_general" sequence="10"
             action="act_open_ems_enrollment_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+
+        <menuitem id="menu_ems_request_type" name="Requests Type"
+            parent="menu_ems_school_config_general" sequence="15"
+            action="ems_request_type_action" groups="group_ems_back_office,group_ems_back_office_admin" />
 
         <!-- Activity Root -->
         <menuitem id="menu_ems_school_config_activity" name="Activity Management" parent="menu_ems_school_config" sequence="40" />
