@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_ems_evaluation_attendees_tree" model="ir.ui.view">
+            <field name="name">ems.evaluation.attendee.tree</field>
+            <field name="model">ems.evaluation.attendee</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Evaluation Attendees">
+                    <field name="student_id" />
+                    <field name="status" />
+                    <field name="marks" />
+                    <field name="note" />
+                    <field name="evaluation_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_ems_evaluation_attendees_form" model="ir.ui.view">
+            <field name="name">ems.evaluation.attendee.form</field>
+            <field name="model">ems.evaluation.attendee</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Evaluation Attendees">
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="course_id" invisible="1" />
+                            <field name="edition_id" invisible="1" />
+                            <field name="evaluation_id" />
+                            <field name="student_id" domain="[('course_id','=',course_id),('edition_id','=',edition_id)]" />
+                            <field name="status" />
+                            <field name="marks" />
+                        </group>
+                        <group string="Note">
+                            <field name="note" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_ems_evaluation_attendees_search" model="ir.ui.view">
+            <field name="name">ems.evaluation.attendee.search</field>
+            <field name="model">ems.evaluation.attendee</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Evaluation Attendees">
+                    <field name="student_id" />
+                    <field name="status" />
+                    <field name="marks" />
+                    <field name="note" />
+                    <field name="evaluation_id" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter string="Status" domain="[]" context="{'group_by':'status'}" />
+                        <filter string="Evaluation" domain="[]" context="{'group_by':'evaluation_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_ems_evaluation_attendees_view">
+            <field name="name">Evaluation Attendees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.evaluation.attendee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_evaluation_attendees_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_evaluation_attendees_view_form">
+            <field name="act_window_id" ref="act_open_ems_evaluation_attendees_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ems_evaluation_attendees_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_evaluation_attendees_view_tree">
+            <field name="act_window_id" ref="act_open_ems_evaluation_attendees_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_evaluation_attendees_tree" />
+        </record>
+    </data>
+</openerp>

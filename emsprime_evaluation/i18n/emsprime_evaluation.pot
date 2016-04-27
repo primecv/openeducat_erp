@@ -1,0 +1,943 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* emsprime_evaluation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 12:17+0000\n"
+"PO-Revision-Date: 2015-09-29 12:17+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation.attendee,status:0
+msgid "Absent"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+#: field:ems.evaluation,attendees_line:0
+msgid "Attendees"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation.session,edition_id:0
+msgid "Edition"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "CCE"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "CWA"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+#: view:student.hall.ticket:emsprime_evaluation.student_hall_ticket_form
+msgid "Cancel"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+#: selection:op.marksheet.register,status:0
+msgid "Cancelled"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.room,capacity:0
+msgid "Capacity"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.room,classroom_id:0
+msgid "Classroom"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.type:emsprime_evaluation.view_ems_evaluation_type_search
+#: field:ems.evaluation.type,code:0
+msgid "Code"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation.session,course_id:0
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Course"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_exam_student_lable
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Course :"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.room:emsprime_evaluation.view_ems_evaluation_room_form
+#: field:ems.evaluation.room,course_ids:0
+msgid "Course(s)"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,create_uid:0
+#: field:ems.evaluation.attendee,create_uid:0
+#: field:ems.evaluation.res.allocation,create_uid:0
+#: field:ems.evaluation.room,create_uid:0
+#: field:ems.evaluation.session,create_uid:0
+#: field:ems.evaluation.type,create_uid:0
+#: field:op.marksheet.line,create_uid:0
+#: field:op.marksheet.register,create_uid:0
+#: field:op.min.clear.criteria,create_uid:0
+#: field:op.pass.status,create_uid:0
+#: field:op.result.exam.line,create_uid:0
+#: field:op.result.line,create_uid:0
+#: field:op.result.template,create_uid:0
+#: field:op.result.template.line,create_uid:0
+#: field:student.hall.ticket,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,create_date:0
+#: field:ems.evaluation.attendee,create_date:0
+#: field:ems.evaluation.res.allocation,create_date:0
+#: field:ems.evaluation.room,create_date:0
+#: field:ems.evaluation.session,create_date:0
+#: field:ems.evaluation.type,create_date:0
+#: field:op.marksheet.line,create_date:0
+#: field:op.marksheet.register,create_date:0
+#: field:op.min.clear.criteria,create_date:0
+#: field:op.pass.status,create_date:0
+#: field:op.result.exam.line,create_date:0
+#: field:op.result.line,create_date:0
+#: field:op.result.template,create_date:0
+#: field:op.result.template.line,create_date:0
+#: field:student.hall.ticket,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Date"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: help:ems.evaluation,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+msgid "Description"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.result.template.line,detailed_report:0
+msgid "Detailed Report"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+#: selection:ems.evaluation,state:0
+msgid "Done"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:op.marksheet.register,status:0
+msgid "Draft"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.session,end_date:0
+msgid "End Date"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,end_time:0
+msgid "End Time"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: code:addons/emsprime_evaluation/models/exam.py:56
+#, python-format
+msgid "Enter proper marks!"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation,evaluation_type:0
+msgid "Evaluation Type"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_tree
+#: field:ems.evaluation,name:0
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: field:ems.evaluation.attendee,evaluation_id:0
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_form
+#: view:ems.evaluation.session:emsprime_evaluation.view_ems_evaluation_session_form
+#: field:ems.evaluation.session,name:0
+#: field:op.marksheet.register,exam_session_id:0
+#: field:op.result.exam.line,evaluation_id:0
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+#: field:op.result.line,evaluation_id:0
+msgid "Exam"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_attendees_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_attendees_sub
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_attendees_sub_faculty
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_form
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_tree
+msgid "Exam Attendees"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation,exam_code:0
+#: field:ems.evaluation.session,exam_code:0
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Exam Code"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.result.template.line,exam_lines:0
+msgid "Exam Lines"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_school_config_exam
+msgid "Exam Management"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Exam Name"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_exam_res_allocation_view
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_form
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_search
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_tree
+msgid "Exam Resource Allocation"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_school_exam_result
+msgid "Exam Result"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.room:emsprime_evaluation.view_ems_evaluation_room_form
+#: view:ems.evaluation.room:emsprime_evaluation.view_ems_evaluation_room_search
+#: view:ems.evaluation.room:emsprime_evaluation.view_ems_evaluation_room_tree
+msgid "Exam Room"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_room_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_room_sub
+msgid "Exam Rooms"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_exam_session
+#: field:ems.evaluation,session_id:0
+#: view:ems.evaluation.session:emsprime_evaluation.view_ems_evaluation_session_form
+#: view:ems.evaluation.session:emsprime_evaluation.view_ems_evaluation_session_search
+#: view:ems.evaluation.session:emsprime_evaluation.view_ems_evaluation_session_tree
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: field:op.result.template,exam_session_id:0
+#: field:op.result.template.line,exam_session_id:0
+#: field:student.hall.ticket,exam_session_id:0
+msgid "Exam Session"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_exam_session_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_session
+msgid "Exam Sessions"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.result.exam.line:emsprime_evaluation.view_ems_result_exam_line_search
+#: view:op.result.exam.line:emsprime_evaluation.view_ems_result_exam_line_tree
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+#: field:op.result.line,exam_tmpl_id:0
+#: view:op.result.template.line:emsprime_evaluation.view_ems_result_template_line_form
+msgid "Exam Template"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_result_exam_line_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_result_exam_line
+msgid "Exam Templates"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation,evaluation_type:0
+#: view:ems.evaluation.type:emsprime_evaluation.view_ems_evaluation_type_form
+#: view:ems.evaluation.type:emsprime_evaluation.view_ems_evaluation_type_search
+#: view:ems.evaluation.type:emsprime_evaluation.view_ems_evaluation_type_tree
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Exam Type"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_type_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_type_sub
+msgid "Exam Types"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.res.allocation,evaluation_ids:0
+#: view:ems.evaluation.session:emsprime_evaluation.view_ems_evaluation_session_form
+#: field:ems.evaluation.session,evaluation_ids:0
+msgid "Exam(s)"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_main
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_main_faculty
+msgid "Exams"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_res_allocation_main
+msgid "Exams Resource Allocation"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_form
+#: field:ems.evaluation.res.allocation,faculty_ids:0
+msgid "Faculty"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:op.result.line,status:0
+msgid "Fail"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "GPA"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_form
+msgid "Generate Result"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: field:op.marksheet.register,generated_by:0
+msgid "Generated By"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.marksheet.register,generated_date:0
+msgid "Generated Date"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: view:ems.evaluation.type:emsprime_evaluation.view_ems_evaluation_type_search
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_search
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+msgid "Group By..."
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Hall Ticket For"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+msgid "Held"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+msgid "Held Exam"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: help:ems.evaluation,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,id:0
+#: field:ems.evaluation.attendee,id:0
+#: field:ems.evaluation.res.allocation,id:0
+#: field:ems.evaluation.room,id:0
+#: field:ems.evaluation.session,id:0
+#: field:ems.evaluation.type,id:0
+#: field:op.marksheet.line,id:0
+#: field:op.marksheet.register,id:0
+#: field:op.min.clear.criteria,id:0
+#: field:op.pass.status,id:0
+#: field:op.result.exam.line,id:0
+#: field:op.result.line,id:0
+#: field:op.result.template,id:0
+#: field:op.result.template.line,id:0
+#: field:report.emsprime_evaluation.report_exam_student_lable,id:0
+#: field:report.emsprime_evaluation.report_marksheet_report,id:0
+#: field:report.emsprime_evaluation.report_ticket,id:0
+#: field:student.hall.ticket,id:0
+msgid "ID"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: help:ems.evaluation,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,message_last_post:0
+msgid "Last Message Date"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,write_uid:0
+#: field:ems.evaluation.attendee,write_uid:0
+#: field:ems.evaluation.res.allocation,write_uid:0
+#: field:ems.evaluation.room,write_uid:0
+#: field:ems.evaluation.session,write_uid:0
+#: field:ems.evaluation.type,write_uid:0
+#: field:op.marksheet.line,write_uid:0
+#: field:op.marksheet.register,write_uid:0
+#: field:op.min.clear.criteria,write_uid:0
+#: field:op.pass.status,write_uid:0
+#: field:op.result.exam.line,write_uid:0
+#: field:op.result.line,write_uid:0
+#: field:op.result.template,write_uid:0
+#: field:op.result.template.line,write_uid:0
+#: field:student.hall.ticket,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,write_date:0
+#: field:ems.evaluation.attendee,write_date:0
+#: field:ems.evaluation.res.allocation,write_date:0
+#: field:ems.evaluation.room,write_date:0
+#: field:ems.evaluation.session,write_date:0
+#: field:ems.evaluation.type,write_date:0
+#: field:op.marksheet.line,write_date:0
+#: field:op.marksheet.register,write_date:0
+#: field:op.min.clear.criteria,write_date:0
+#: field:op.pass.status,write_date:0
+#: field:op.result.exam.line,write_date:0
+#: field:op.result.line,write_date:0
+#: field:op.result.template,write_date:0
+#: field:op.result.template.line,write_date:0
+#: field:student.hall.ticket,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "MarkSheet"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.attendee,marks:0
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+#: field:op.result.line,marks:0
+msgid "Marks"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.report.xml,name:emsprime_evaluation.report_marksheet
+msgid "Marksheet"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_form
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_search
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_tree
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+#: field:op.result.line,marksheet_line_id:0
+#: field:op.result.line,result_id:0
+msgid "Marksheet Line"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_marksheet_line_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_marksheet_line_sub
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_marksheet_line_sub_faculty
+msgid "Marksheet Lines"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_search
+#: field:op.marksheet.line,marksheet_reg_id:0
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_form
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_tree
+#: field:op.marksheet.register,name:0
+msgid "Marksheet Register"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_marksheet_register_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_marksheet_register_sub
+msgid "Marksheet Registers"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_form
+#: field:op.marksheet.register,marksheet_line:0
+msgid "Marksheets"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: help:ems.evaluation,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.pass.status,number:0
+msgid "Minimum Percentage"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_form
+#: field:op.result.template,criteria_ids:0
+msgid "Minimum Qualification Criteria"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Month/Year of Passing"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.room,name:0
+#: view:ems.evaluation.type:emsprime_evaluation.view_ems_evaluation_type_search
+#: field:ems.evaluation.type,name:0
+#: field:op.min.clear.criteria,name:0
+#: field:op.pass.status,name:0
+#: field:op.result.template,name:0
+msgid "Name"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_exam_student_lable
+msgid "Name :"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+#: selection:ems.evaluation,state:0
+msgid "New Exam"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "Normal"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,note:0
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_form
+#: field:ems.evaluation.attendee,note:0
+msgid "Note"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.min.clear.criteria,number:0
+msgid "Number of Failed Subject"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Obtained Marks"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Obtained Marks/Total Marks"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:op.result.line,status:0
+msgid "Pass"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_pass_status_view
+#: model:ir.model,name:emsprime_evaluation.model_ems_pass_status
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_pass_status
+#: view:op.pass.status:emsprime_evaluation.view_ems_pass_status_form
+#: view:op.pass.status:emsprime_evaluation.view_ems_pass_status_tree
+#: field:op.result.template,pass_status_ids:0
+msgid "Pass Status"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,min_marks:0
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Passing Marks"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_form
+msgid "Passing Status"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.result.line,per:0
+#: field:op.result.line,total_marks:0
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Percentage"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation.attendee,status:0
+msgid "Present"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:student.hall.ticket:emsprime_evaluation.student_hall_ticket_form
+msgid "Print"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_min_clearance_criteria_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_min_clearance_criteria
+#: view:op.min.clear.criteria:emsprime_evaluation.view_ems_min_clearance_criteria_form
+#: view:op.min.clear.criteria:emsprime_evaluation.view_ems_min_clearance_criteria_tree
+msgid "Qualification Criteria"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,responsible_id:0
+msgid "Responsible"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_search
+#: field:op.marksheet.line,result:0
+#: view:op.result.exam.line:emsprime_evaluation.view_ems_result_exam_line_form
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Result"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.result.template,result_date:0
+msgid "Result Date"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_result_exam_line
+msgid "Result Exam Line"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_form
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_tree
+msgid "Result Line"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_result_line_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_result_line_sub
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_result_line_sub_faculty
+#: field:op.result.exam.line,result_lines:0
+msgid "Result Lines"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_result_template
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_form
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_search
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_tree
+msgid "Result Template"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_result_template_line
+#: field:op.result.template.line,result_id:0
+msgid "Result Template Line"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_result_template_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_result_template
+msgid "Result Templates"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.min.clear.criteria,result:0
+#: field:op.pass.status,result:0
+msgid "Result to Display"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_form
+#: field:op.marksheet.line,result_line:0
+msgid "Results"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_exam_student_lable
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Roll No :"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.session,room_id:0
+msgid "Room"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_form
+msgid "Schedule Exam"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+msgid "Scheduled"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_exam_student_lable
+msgid "Seating Arrangement for Student Examination"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.res.allocation,exam_session_ids:0
+msgid "Select Exam Session"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_form
+msgid "Session"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.result.template,line_ids:0
+msgid "Session Lines"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.marksheet.line,exam_session_id:0
+#: field:op.result.exam.line,result_id:0
+#: view:op.result.template.line:emsprime_evaluation.view_ems_result_template_line_form
+#: view:op.result.template.line:emsprime_evaluation.view_ems_result_template_line_search
+#: view:op.result.template.line:emsprime_evaluation.view_ems_result_template_line_tree
+msgid "Session Template"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_result_template_line_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_result_template_line
+#: view:op.result.template:emsprime_evaluation.view_ems_result_template_form
+msgid "Session Templates"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+msgid "Standard"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation.session,start_date:0
+msgid "Start Date"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,start_time:0
+msgid "Start Time"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: code:addons/emsprime_evaluation/models/exam.py:62
+#: code:addons/emsprime_evaluation/models/exam_session.py:43
+#, python-format
+msgid "Start Time should be greater than End Time!"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation,state:0
+msgid "State"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: field:ems.evaluation.attendee,status:0
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: field:op.marksheet.register,status:0
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+#: field:op.result.line,status:0
+msgid "Status"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.attendee:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: field:ems.evaluation.attendee,student_id:0
+#: view:ems.evaluation.res.allocation:emsprime_evaluation.view_ems_evaluation_res_allocation_form
+#: field:ems.evaluation.res.allocation,student_ids:0
+#: view:op.marksheet.line:emsprime_evaluation.view_ems_marksheet_line_search
+#: field:op.marksheet.line,student_id:0
+#: field:op.result.line,student_id:0
+msgid "Student"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.report.xml,name:emsprime_evaluation.action_student_hall_ticket_report
+#: view:student.hall.ticket:emsprime_evaluation.student_hall_ticket_form
+msgid "Student Hall Ticket"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.student_hall_ticket_act
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_student_hall_ticket
+msgid "Student Hall Tickets"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.actions.report.xml,name:emsprime_evaluation.report_student_label
+msgid "Student Label"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Student Name"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Student Name :"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation.room:emsprime_evaluation.view_ems_evaluation_room_form
+#: field:ems.evaluation.room,student_ids:0
+msgid "Student(s)"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.result.line:emsprime_evaluation.view_ems_result_line_search
+msgid "Students"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation,subject_id:0
+#: view:website:emsprime_evaluation.report_marksheet_report
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Subject"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Supervisor Sign"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:website:emsprime_evaluation.report_ticket
+msgid "Time"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: field:op.marksheet.register,total_failed:0
+msgid "Total Fail"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,total_marks:0
+#: field:op.marksheet.line,total_marks:0
+#: view:website:emsprime_evaluation.report_marksheet_report
+msgid "Total Marks"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:op.marksheet.register:emsprime_evaluation.view_ems_marksheet_register_search
+#: field:op.marksheet.register,total_pass:0
+msgid "Total Pass"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.marksheet.line,total_per:0
+msgid "Total Percentage"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: selection:op.marksheet.register,status:0
+msgid "Validated"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: view:ems.evaluation:emsprime_evaluation.view_ems_evaluation_search
+#: field:ems.evaluation,venue:0
+msgid "Venue"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:ems.evaluation,website_message_ids:0
+msgid "Website Messages"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: help:ems.evaluation,website_message_ids:0
+msgid "Website communication history"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: field:op.result.exam.line,weightage:0
+msgid "Weightage"
+msgstr ""
+
