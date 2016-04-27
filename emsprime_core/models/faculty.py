@@ -60,18 +60,20 @@ class EmsFaculty(models.Model):
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
 
-    @api.one
-    def create_employee(self):
+    @api.model
+    def create(self, vals):
+        res = super(EmsFaculty, self).create(vals)
         vals = {
-            'name': self.name + ' ' + (self.middle_name or '') +
-            ' ' + self.last_name,
-            'country_id': self.nationality.id,
-            'gender': self.gender,
-            'address_home_id': self.partner_id.id
+            'name': res.name + ' ' + (res.middle_name or '') +
+            ' ' + res.last_name,
+            'country_id': res.nationality and res.nationality.id or False,
+            'gender': res.gender,
+            'address_home_id': res.partner_id.id
         }
-        emp_id = self.env['hr.employee'].create(vals)
-        self.write({'emp_id': emp_id.id})
-        self.partner_id.write({'supplier': True, 'employee': True})
+        emp = self.env['hr.employee'].create(vals)
+        self.write({'emp_id': emp.id})
+        res.partner_id.write({'supplier': True, 'employee': True})
+        return res
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
