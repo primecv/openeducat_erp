@@ -56,7 +56,7 @@ class EmsStudent(models.Model):
     id_number = fields.Char('ID Card Number', size=64)
     photo = fields.Binary('Photo')
     course_id = fields.Many2one('ems.course', 'Course', required=True)
-    edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
+    edition_id = fields.Many2one('ems.edition', 'Edition', required=False)
     roll_number_line = fields.One2many(
         'ems.enrollment', 'student_id', 'Roll Number')
     partner_id = fields.Many2one(
