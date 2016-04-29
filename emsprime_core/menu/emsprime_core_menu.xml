@@ -62,6 +62,11 @@
             parent="menu_ems_school_config_general" sequence="15"
             action="ems_request_type_action" groups="group_ems_back_office,group_ems_back_office_admin" />
 
+		<!-- Locations Menu -->
+        <menuitem id="menu_ems_config_locations" name="Locations"
+            parent="menu_ems_school_config_general" sequence="20"
+            action="hr_location_action" groups="group_ems_back_office,group_ems_back_office_admin" />
+
         <!-- Activity Root -->
         <menuitem id="menu_ems_school_config_activity" name="Activity Management" parent="menu_ems_school_config" sequence="40" />
     </data>
