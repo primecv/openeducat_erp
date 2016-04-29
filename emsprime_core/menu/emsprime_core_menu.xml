@@ -13,6 +13,11 @@
             sequence="10" action="act_open_ems_student_view"
             groups="group_ems_back_office,group_ems_back_office_admin" />
 
+		<!-- Classes Menu -->
+		<menuitem id="menu_ems_student_sub_classes" 
+			parent="menu_ems_school_main" sequence="15"
+			action="act_open_ems_class_view" groups="group_ems_student,group_ems_back_office_admin,group_ems_back_office" />
+
 		<menuitem id="menu_ems_request" name="Requests" parent="menu_ems_school_main"
             sequence="15" action="ems_request_action"
             groups="group_ems_back_office,group_ems_back_office_admin" />
