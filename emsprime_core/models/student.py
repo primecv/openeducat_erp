@@ -68,6 +68,7 @@ class EmsStudent(models.Model):
     location_id = fields.Many2one('ems.location', 'Place of birth')
     mother = fields.Char('Mother', size=255)
     father = fields.Char('Father', size=255)
+    issuer_id = fields.Many2one('ems.location', 'Issuer')
 
     @api.one
     @api.constrains('birth_date')

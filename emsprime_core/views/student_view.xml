@@ -99,6 +99,7 @@
                                     <field name="birth_date" />
                                     <field name="nationality" />
                                     <field name="location_id" />
+									<field name="issuer_id"/>
                                     <field name="visa_info" />
 									<field name="id_number" />
                                     <field name="lang" />
@@ -157,6 +158,7 @@
                     <field name="id_number" />
                     <field name="course_id" />
                     <field name="edition_id" />
+					<field name="issuer_id"/>
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="blood_group" string="Blood Group" domain="[]"
