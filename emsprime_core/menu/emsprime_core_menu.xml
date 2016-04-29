@@ -42,6 +42,8 @@
 
         <menuitem id="menu_ems_course_sub" name="Courses" parent="menu_ems_school_config_course" sequence="10"
             action="act_open_ems_course_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+        <menuitem id="menu_ems_semester_sub" name="Semesters" parent="menu_ems_school_config_course" sequence="15"
+            action="act_open_ems_semester_view" groups="group_ems_back_office,group_ems_back_office_admin" />
         <menuitem id="menu_ems_edition_sub" name="Editions" parent="menu_ems_school_config_course" sequence="20"
             action="act_open_ems_edition_view" groups="group_ems_back_office,group_ems_back_office_admin" />
 
