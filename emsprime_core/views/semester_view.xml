@@ -27,6 +27,7 @@
                             <field name="start_date" />
                             <field name="end_date" />
                             <field name="edition_id" />
+							<field name="subject_ids" widget="many2many_tags"/>
                         </group>
                     </sheet>
                 </form>
