@@ -32,7 +32,6 @@ class EmsSemester(models.Model):
     end_date = fields.Date('End Date', required=True)
     number= fields.Integer('Number')
     code = fields.Char('Code')
-    course_id = fields.Many2one('ems.course', 'Course', required=True)
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
 
     @api.one
