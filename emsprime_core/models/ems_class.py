@@ -29,5 +29,6 @@ class EmsClass(models.Model):
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
     student_ids = fields.Many2many('ems.student', string='Student(s)')
+    semester_id = fields.Many2one('ems.semester', string='Semester')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

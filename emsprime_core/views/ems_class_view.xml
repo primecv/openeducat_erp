@@ -10,6 +10,7 @@
                     <field name="name" />
                     <field name="faculty_id" />
                     <field name="subject_id" />
+					<field name="semester_id" />
                     <field name="student_ids" />
                 </tree>
             </field>
@@ -25,6 +26,7 @@
                             <field name="name" />
                             <field name="faculty_id" />
                             <field name="subject_id" />
+							<field name="semester_id" />
                         </group>
                         <group string="Students" name="subject">
                             <field name="student_ids" nolabel="1"/>
@@ -42,6 +44,7 @@
                     <field name="name" />
                     <field name="faculty_id" />
                     <field name="subject_id" />
+					<field name="semester_id"/>
                 </search>
             </field>
         </record>
