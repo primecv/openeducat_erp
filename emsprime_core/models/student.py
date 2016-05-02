@@ -28,13 +28,12 @@ class EmsStudent(models.Model):
     _inherits = {'res.partner': 'partner_id'}
 
     @api.one
-    @api.depends('roll_number_line', 'edition_id', 'course_id')
+    @api.depends('roll_number_line', 'edition_id')
     def _get_curr_roll_number(self):
         # TO_DO:: Improve the logic by adding sequence field in course.
         if self.roll_number_line:
             for roll_no in self.roll_number_line:
-                if roll_no.course_id == self.course_id and \
-                        roll_no.edition_id == self.edition_id:
+                if roll_no.edition_id == self.edition_id:
                     self.roll_number = roll_no.roll_number
         else:
             self.roll_number = 0
@@ -55,7 +54,7 @@ class EmsStudent(models.Model):
     visa_info = fields.Char('Visa Info', size=64)
     id_number = fields.Char('ID Card Number', size=64)
     photo = fields.Binary('Photo')
-    course_id = fields.Many2one('ems.course', 'Course', required=True)
+    course_ids = fields.Many2many('ems.course', 'ems_student_course_rel', 'student_id', 'course_id', 'Course(s)')
     edition_id = fields.Many2one('ems.edition', 'Edition', required=False)
     roll_number_line = fields.One2many(
         'ems.enrollment', 'student_id', 'Roll Number')
@@ -76,10 +75,6 @@ class EmsStudent(models.Model):
         if self.birth_date > fields.Date.today():
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
-
-    @api.onchange('course_id')
-    def onchange_course(self):
-        self.edition_id = False
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

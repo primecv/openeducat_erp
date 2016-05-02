@@ -27,10 +27,6 @@
                                         </a>
                                     </h4>
                                     <ul>
-                                        <li t-if="record.course_id.raw_value">
-                                            Course:
-                                            <field name="course_id" />
-                                        </li>
                                         <li t-if="record.edition_id.raw_value">
                                             Edition:
                                             <field name="edition_id" />
@@ -65,7 +61,6 @@
                     <field name="last_name" />
                     <field name="blood_group" />
                     <field name="emergency_contact" />
-                    <field name="course_id" />
                     <field name="edition_id" />
                     <field name="nationality" />
                     <field name="blood_group" />
@@ -132,14 +127,13 @@
                             </page>
                             <page name="educational" string="Educational">
                                 <group col="4" colspan="4">
-                                    <field name="course_id" />
-                                    <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" domain="[('course_id', '=', course_id)]"/>
+                                    <field name="course_ids" widget="many2many_tags" placeholder="Select Student Courses...."/>
+                                    <field name="edition_id" context="{'get_parent_edition':1}"/>
                                     <field name="gr_no" />
                                     <field name="roll_number" />
                                     <separator colspan="4" string="Assigned Roll Numbers" />
                                     <field name="roll_number_line" colspan="4" nolabel="1"
-                                        context="{'default_course_id':course_id,
-                                     'default_edition_id':edition_id}" />
+                                        context="{'default_edition_id':edition_id}" />
                                 </group>
                             </page>
                         </notebook>
@@ -156,7 +150,6 @@
                     <field name="name" />
                     <field name="blood_group" />
                     <field name="id_number" />
-                    <field name="course_id" />
                     <field name="edition_id" />
 					<field name="issuer_id"/>
                     <newline />
@@ -166,7 +159,6 @@
                         <filter name="nationality" string="Nationality" domain="[]"
                             context="{'group_by':'nationality'}" />
                         <filter name="language" string="Language" domain="[]" context="{'group_by':'language'}" />
-                        <filter name="course" string="Course" domain="[]" context="{'group_by':'course_id'}" />
                         <filter name="edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                     </group>
                 </search>
