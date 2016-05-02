@@ -27,6 +27,11 @@ class EmsFaculty(models.Model):
     _name = 'ems.faculty'
     _inherits = {'res.partner': 'partner_id'}
 
+    @api.one
+    @api.depends('name', 'first_name', 'last_name')
+    def complete_name(self):
+        return ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
+
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
     middle_name = fields.Char('Middle Name', size=128)
@@ -52,6 +57,7 @@ class EmsFaculty(models.Model):
     location_id = fields.Many2one('ems.location', 'Place of birth')
     faculty_subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
     emp_id = fields.Many2one('hr.employee', 'Employee')
+    complete_name = fields.Char('Faculty Name', compute='complete_name', store=True)
 
     @api.one
     @api.constrains('birth_date')
@@ -75,5 +81,12 @@ class EmsFaculty(models.Model):
         res.partner_id.write({'supplier': True, 'employee': True})
         return res
 
+    @api.multi
+    def name_get(self):
+        result = []
+        for faculty in self:
+            name = ' '.join(filter(bool, [faculty.name, faculty.middle_name, faculty.last_name]))
+            result.append((faculty.id, name))
+        return result
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
