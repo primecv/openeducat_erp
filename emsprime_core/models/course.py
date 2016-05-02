@@ -25,7 +25,7 @@ from openerp import models, fields
 class EmsCourse(models.Model):
     _name = 'ems.course'
 
-    name = fields.Char('Name', size=32, required=True)
+    name = fields.Char('Name', size=124, required=True)
     code = fields.Char('Code', size=8, required=True)
     parent_id = fields.Many2one('ems.course', 'Parent Course')
     section = fields.Char('Section', size=32, required=True)
