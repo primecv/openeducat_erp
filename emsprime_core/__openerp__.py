@@ -59,6 +59,7 @@
         'views/ems_class_view.xml',
         'views/ems_request_view.xml',
         'views/res_company_view.xml',
+        'views/degree_view.xml',
         'views/emsprime_template.xml',
         'views/homepage_template.xml',
         'views/website_assets.xml',

@@ -1,0 +1,34 @@
+<openerp> 
+	<data>
+
+		<record id="ems_course_degree_form" model="ir.ui.view">
+			<field name="name">ems.course.degree.form</field>
+			<field name="model">ems.course.degree</field>
+			<field name="arch" type="xml">
+				<form string="Degree">
+					<group>
+						<field name="name" required="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record id="ems_course_degree_tree" model="ir.ui.view">
+			<field name="name">ems.course.degree.tree</field>
+			<field name="model">ems.course.degree</field>
+			<field name="arch" type="xml">
+				<tree string="Degree" editable="bottom">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="act_ems_course_degree_view" model="ir.actions.act_window">
+			<field name="name">Degrees</field>
+			<field name="res_model">ems.course.degree</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+	</data>
+</openerp>
