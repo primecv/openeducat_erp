@@ -33,6 +33,7 @@ class EmsCourse(models.Model):
         [('normal', 'Normal'), ('GPA', 'GPA'), ('CWA', 'CWA'), ('CCE', 'CCE')],
         'Evaluation Type', default="normal", required=True)
     subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
+    degree_id = fields.Many2one('ems.course.degree', 'Degree')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

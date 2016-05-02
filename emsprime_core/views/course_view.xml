@@ -9,10 +9,11 @@
                 <tree string="Course">
                     <field name="name" />
                     <field name="code" />
-                    <field name="section" />
-                    <field name="evaluation_type" />
-                    <field name="parent_id" />
-                    <field name="subject_ids" />
+                    <field name="section" invisible="1"/>
+                    <field name="evaluation_type"  invisible="1"/>
+					<field name="degree_id"/>
+                    <field name="parent_id"  invisible="1"/>
+                    <field name="subject_ids"  invisible="1"/>
                 </tree>
             </field>
         </record>
@@ -28,6 +29,7 @@
                             <field name="code" />
                             <field name="section" />
                             <field name="evaluation_type" />
+							<field name="degree_id" widget="selection"/>
                             <field name="parent_id" />
                         </group>
                         <group string="Subjects" name="subject">
@@ -47,6 +49,7 @@
                     <field name="code" />
 <!--                    <field name="section" /> -->
                     <field name="evaluation_type" />
+					<field name="degree_id"/>
                     <field name="parent_id" />
                     <newline />
                     <group expand="0" string="Group By...">
