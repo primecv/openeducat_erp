@@ -27,6 +27,7 @@
                             <field name="faculty_id" />
                             <field name="subject_id" />
 							<field name="semester_id" />
+							<field name="year" />
                         </group>
                         <group string="Students" name="subject">
                             <field name="student_ids" nolabel="1"/>
