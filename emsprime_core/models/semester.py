@@ -33,6 +33,7 @@ class EmsSemester(models.Model):
     number= fields.Integer('Number')
     code = fields.Char('Code')
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
+    course_id = fields.Many2one('ems.course', string='Course', related='edition_id.course_id', store=True, readonly=True)
     subject_ids = fields.Many2many('ems.subject', 'ems_semester_subject_rel', 'semester_id', 'subject_id', string='Subjects')
 
     @api.one
