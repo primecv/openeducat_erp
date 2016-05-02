@@ -26,9 +26,9 @@
                             <field name="name" />
                             <field name="faculty_id" />
                             <field name="subject_id" />
-							<field name="semester_id" invisible="1"/>
 							<field name="semester"/>
 							<field name="year" />
+							<field name="semester_id" invisible="1"/>
                         </group>
                         <group string="Students" name="subject">
                             <field name="student_ids" nolabel="1"/>
