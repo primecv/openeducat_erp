@@ -20,10 +20,20 @@
 ###############################################################################
 
 from openerp import models, fields, api
-
+from openerp.exceptions import ValidationError
+from openerp.tools.translate import _
 
 class EmsClass(models.Model):
     _name = 'ems.class'
+
+    @api.one
+    @api.constrains('year')
+    def _check_year(self):
+        for year in self.year:
+           if ord(year) not in (48, 49, 50, 51, 52, 53, 54, 55, 56, 57):
+               raise ValidationError(_("Invalid Year!\n\nYear must be between 2000 - 3000"))
+        if int(self.year) > 3000 or int(self.year) < 2000:
+           raise ValidationError(_("Invalid Date!"))
 
     name = fields.Char('Class Name', size=64, required=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
