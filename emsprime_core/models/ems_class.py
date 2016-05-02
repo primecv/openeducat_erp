@@ -40,6 +40,7 @@ class EmsClass(models.Model):
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
     student_ids = fields.Many2many('ems.student', string='Student(s)')
     semester_id = fields.Many2one('ems.semester', string='Semester')
+    semester = fields.Selection([('I', 'I'), ('II', 'II')], 'Semester')
     year = fields.Char('Year', size=4)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
