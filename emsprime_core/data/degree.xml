@@ -1,0 +1,27 @@
+<openerp>
+	<data noupdate="1">
+
+		<record id="degree_1" model="ems.course.degree">
+			<field name="name">Licenciatura</field>
+		</record>
+
+		<record id="degree_2" model="ems.course.degree">
+			<field name="name">Mestrado</field>
+		</record>
+
+		<record id="degree_3" model="ems.course.degree">
+			<field name="name">Pós-Gradução</field>
+		</record>
+
+		<record id="degree_4" model="ems.course.degree">
+			<field name="name">Doutoramento</field>
+		</record>
+
+		<record id="degree_5" model="ems.course.degree">
+			<field name="name">Curso Superior Profissinalizante</field>
+		</record>
+
+	</data>
+</openerp>
+
+

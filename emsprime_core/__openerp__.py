@@ -67,7 +67,9 @@
         'dashboard/student_dashboard_view.xml',
         'menu/emsprime_core_menu.xml',
         'menu/faculty_menu.xml',
-        'menu/student_menu.xml'
+        'menu/student_menu.xml',
+        
+        'data/degree.xml'
     ],
     'demo': [
         'demo/res.users.csv',
