@@ -11,7 +11,7 @@
                     <field name="faculty_id" />
                     <field name="subject_id" />
 					<field name="semester_id" />
-                    <field name="student_ids" />
+                    <field name="student_ids" invisible="1"/>
                 </tree>
             </field>
         </record>
@@ -28,7 +28,7 @@
                             <field name="subject_id" />
 							<field name="semester_id" />
                         </group>
-                        <group string="Students" name="subject">
+                        <group string="Students" name="subject" invisible="1">
                             <field name="student_ids" nolabel="1"/>
                         </group>
                     </sheet>
