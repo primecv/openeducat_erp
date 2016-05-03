@@ -69,7 +69,9 @@
         'menu/faculty_menu.xml',
         'menu/student_menu.xml',
         
-        'data/degree.xml'
+        'data/degree.xml',
+
+        'report/report_frequency_declaration.xml',
     ],
     'demo': [
         'demo/res.users.csv',
