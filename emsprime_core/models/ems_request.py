@@ -19,7 +19,7 @@
 #
 ###############################################################################
 
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class ems_request_type(models.Model):
@@ -27,18 +27,33 @@ class ems_request_type(models.Model):
     _description = "Request Type"
 
     name = fields.Char('Request Type', required=True)
+    report_id = fields.Many2one('ir.actions.report.xml', 'Report')
 
 class ems_request(models.Model):
     _name = "ems.request"
     _description = "Request"
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
 
     name = fields.Char('Request Name', required=True, track_visibility='onchange', select=True)
     student_id = fields.Many2one('ems.student', 'Student', track_visibility='onchange', select=True)
     request_type_id = fields.Many2one('ems.request.type', string='Request Type', track_visibility='onchange', select=True)
     description = fields.Text('Description')
-    date = fields.Date('Request Date', track_visibility="onchange")
+    date = fields.Date('Request Date', track_visibility="onchange", default=fields.date.today(), readonly=True)
     state = fields.Selection(
         [('draft', 'New Request'), ('validate', 'Validated'),
          ('pending', 'Pending'), ('done', 'Done')],
         'State', default="draft", required=True, track_visibility='onchange', select=True)
+
+    @api.multi
+    def action_validate(self):
+        return self.write({'state':'validate'})
+
+    @api.multi
+    def action_pending(self):
+        return self.write({'state':'pending'})
+
+    @api.multi
+    def action_print(self):
+        self.write({'state':'done'})
+        return self.env['report'].get_action(self, self.request_type_id.report_id.report_name)
 

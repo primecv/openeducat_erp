@@ -6,8 +6,9 @@
 			<field name="model">ems.request.type</field>
 			<field name="arch" type="xml">
 				<form string="Request Type">
-					<group string="Request Type">
+					<group string="Request Type" col="4">
 						<field name="name" required="1"/>
+						<field name="report_id" required="1" options="{'no_open':1, 'no_create':1}"/>
 					</group>
 				</form>
 			</field>
@@ -37,6 +38,9 @@
 			<field name="arch" type="xml">
 				<form string="Request">
 					<header>
+						<button name="action_validate" type="object" string="Validate" states="draft,pending" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
+						<button name="action_pending" type="object" string="Pending" states="draft" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
+						<button name="action_print" type="object" string="Print" states="validate" class="oe_highlight" groups="emsprime_core.group_ems_student"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,validate,done" statusbar_colors='{"pending":"red","validate":"green"}'/>
 					</header>
 					<sheet>
@@ -53,6 +57,9 @@
 							<field name="description" placeholder="Other Info...."/>
 						</group>
 					</sheet>
+		            <div class="oe_chatter">
+		                <field name="message_ids" widget="mail_thread"/>
+		            </div>
 				</form>
 			</field>
 		</record>
