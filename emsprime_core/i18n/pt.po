@@ -1,0 +1,2044 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* emsprime_core
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-03 09:10+0200\n"
+"PO-Revision-Date: 2016-05-03 10:24+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: \n"
+"Language: pt_PT\n"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
+msgid "/ Fátima Timas /"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid "<b>DATE: </b>"
+msgstr "<b>DATA: </b>"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid "<b>PRINCIPAL</b>"
+msgstr "<b>DIRETOR</b>"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_faculty
+msgid "<b>Your faculty dashboard is empty.</b>"
+msgstr "<b>O seu painel de docente está vazio.</b>"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_student
+msgid "<b>Your student dashboard is empty.</b>"
+msgstr "<b>Seu painel de aluno está vazio.</b>"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
+msgid ""
+"<br/>\n"
+"                                                    BirthDate :"
+msgstr ""
+"<br/>\n"
+"                                                    Data de Nascimento :"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
+msgid ""
+"<br/>\n"
+"                                                    Blood Group :"
+msgstr ""
+"<br/>\n"
+"                                                    Grupo Sanguíneo :"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
+msgid ""
+"<br/>\n"
+"                                                    Course :"
+msgstr ""
+"<br/>\n"
+"                                                    Curso :"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
+msgid ""
+"<br/>\n"
+"                                                    E-mail :"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
+msgid ""
+"<br/>\n"
+"                                                    Phone :"
+msgstr ""
+"<br/>\n"
+"                                                    Telefone :"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
+msgid ""
+"<br/>\n"
+"                                                    Roll No :"
+msgstr ""
+"<br/>\n"
+"                                                    N.º de Lançamento :"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid ""
+"<font color=\"white\">.</font>\n"
+"                                            is / was a bonafide student of "
+"this school / college\n"
+"                                            studying\n"
+"                                            in"
+msgstr ""
+"<font color=\"white\">.</font>\n"
+"                                            é / era um estudante inscrito "
+"nesta escola / universidade\n"
+"                                            estudando\n"
+"                                            em"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
+msgid "<span>DECLARAÇÃO Nº 0001 /ISCEE - 2015/2016</span>"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid "<strong>Bonafide Certificate</strong>"
+msgstr "<strong>Declaração de inscrição</strong>"
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "A+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "A-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "AB+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "AB-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_res_company_accreditation
+#: model:ir.ui.view,arch_db:emsprime_core.view_company_form_emsprime_core
+msgid "Accreditation"
+msgstr "Certificação"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_needaction
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_needaction
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_needaction
+msgid "Action Needed"
+msgstr "Ação Necessária"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_active
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_activity
+msgid "Activity Management"
+msgstr "Gestão de Actividades"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Address"
+msgstr "Endereço"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Address Detail"
+msgstr "Endereço Detalhado"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_type
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_type
+msgid "Address Type"
+msgstr "Tipo de endereço"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.kanban_view_faculty
+msgid "Address:"
+msgstr "Endereço:"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_res_company_approval_authority
+#: model:ir.ui.view,arch_db:emsprime_core.view_company_form_emsprime_core
+msgid "Approval Authority"
+msgstr "Entidade Homologadora"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Assigned Roll Numbers"
+msgstr "Atribuir Números de Lançamento"
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "B+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "B-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: model:res.groups,name:emsprime_core.group_ems_back_office
+msgid "Back Office"
+msgstr "Back Office"
+
+#. module: emsprime_core
+#: model:res.groups,name:emsprime_core.group_ems_back_office_admin
+msgid "Back Office Admin"
+msgstr "Administrador de Back Office"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_bank_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_bank_ids
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_barcode
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_barcode
+msgid "Barcode"
+msgstr "Código de Barras"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_parent_id
+msgid "Belongs To"
+msgstr "Pertencente à"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_birth_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_birth_date
+msgid "Birth Date"
+msgstr "Data de Nascimento"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_birthdate
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_birthdate
+msgid "Birthdate"
+msgstr "Data de nascimento"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_blood_group
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_blood_group
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
+msgid "Blood Group"
+msgstr "Grupo Sanguíneo"
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.action_report_student_bonafide
+msgid "Bonafide Certificate"
+msgstr "Declaração de Inscrição"
+
+#. module: emsprime_core
+#: selection:ems.subject,type:0
+msgid "Both"
+msgstr "Ambos"
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "CCE"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "CWA"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_create_employee_view
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_user_create_view
+#: model:ir.ui.view,arch_db:emsprime_core.ems_student_user_create_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_channel_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_channel_ids
+msgid "Channels"
+msgstr "Canais"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_is_company
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "Verificar se o contacto é uma empresa, caso contrário é uma pessoa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_customer
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_customer
+msgid "Check this box if this contact is a customer."
+msgstr "Selecione esta opção se este contacto é um cliente."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_supplier
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_supplier
+msgid ""
+"Check this box if this contact is a vendor. If it's not checked, purchase "
+"people will not see it when encoding a purchase order."
+msgstr ""
+"Assinale esta opção se este contacto é um fornecedor. Se não está marcado, "
+"as pessoas não vão vê-lo quando se codifica uma ordem de compra."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_employee
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Marque esta caixa se o contacto for um colaborador."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_city
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_city
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "City"
+msgstr "Cidade"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_tree
+msgid "Class"
+msgstr "Turma:"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_name
+msgid "Class Name"
+msgstr "Nome da Turma"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_class_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_sub_classes
+msgid "Classes"
+msgstr "Turmas"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.hr_location_action
+msgid "Click create to add a new Location record."
+msgstr "Clique em Criar para adicionar um novo registro de Localização."
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.act_open_ems_faculty_view
+msgid "Click to add Faculties."
+msgstr "Clique para adicionar Docentes."
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.act_open_ems_student_view
+msgid "Click to add new Students."
+msgstr "Clique para adicionar novos Estudantes."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_code
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_code
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_code
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_code
+msgid "Code"
+msgstr "Código"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_color
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_color
+msgid "Color Index"
+msgstr "Índice de Cor"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_commercial_partner_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Entidade Comercial"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_company_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_company_type
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_company_type
+msgid "Company Type"
+msgstr "Tipo de Empresa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_contact_address
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_contact_address
+msgid "Complete Address"
+msgstr "Endereço completo"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config
+msgid "Configuration"
+msgstr "Configuração"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_child_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_child_ids
+msgid "Contacts"
+msgstr "Contatos"
+
+#. module: emsprime_core
+#: selection:ems.location,level:0
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_country_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_country_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Country"
+msgstr "País"
+
+#. module: emsprime_core
+#: selection:ems.location,level:0
+msgid "County"
+msgstr "Município"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_course_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_course_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_course_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_course_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_tree
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+msgid "Course"
+msgstr "Curso"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_course
+msgid "Course Management"
+msgstr "Gestão do Curso"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_form
+msgid "Course Name..."
+msgstr "Nome do Curso"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_course_ids
+msgid "Course(s)"
+msgstr "Curso(s)"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_course_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_course_sub
+msgid "Courses"
+msgstr "Cursos"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.faculty_create_employee_act
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_create_employee_view
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+msgid "Create Employee"
+msgstr "Criar Funcionário"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_wizard_ems_faculty_employee
+msgid "Create Employee and User of Faculty"
+msgstr "Criar Colaborador e Utilizador de Docente"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_wizard_ems_faculty
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_user_create_view
+msgid "Create User for selected Faculty(s)"
+msgstr "Criar Utilizador(es) para Docente(s) selecionados"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_wizard_ems_student
+#: model:ir.ui.view,arch_db:emsprime_core.ems_student_user_create_view
+msgid "Create User for selected Student(s)"
+msgstr "Criar Utilizador(es) para Estudante(s) Selecionado(s)"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.action_faculty_user_create_view
+#: model:ir.actions.act_window,name:emsprime_core.action_student_user_create_view
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_user_create_view
+#: model:ir.ui.view,arch_db:emsprime_core.ems_student_user_create_view
+msgid "Create Users"
+msgstr "Criar Utilizadores"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_create_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_create_date
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_credit_limit
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_credit_limit
+msgid "Credit Limit"
+msgstr "Limite de crédito"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_roll_number
+msgid "Current Roll Number"
+msgstr "Número de Lançamento Actual"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_dashboard_faculty
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_dashboard_student
+msgid "Dashboard"
+msgstr "Painel"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_date
+msgid "Date"
+msgstr "Data"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_message_last_post
+#: model:ir.model.fields,help:emsprime_core.field_ems_request_message_last_post
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "Data da Última Mensagem Inserida no Registo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_id
+#: model:ir.ui.view,arch_db:emsprime_core.ems_course_degree_form
+#: model:ir.ui.view,arch_db:emsprime_core.ems_course_degree_tree
+msgid "Degree"
+msgstr "Formação Académica"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_name
+msgid "Degree Name"
+msgstr "Nome da Formação Académica"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_ems_course_degree_view
+#: model:ir.model,name:emsprime_core.model_ems_course_degree
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_course_degrees_sub
+msgid "Degrees"
+msgstr "Formações Académicas"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Describe the Request..."
+msgstr "Descrever o pedido..."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_description
+msgid "Description"
+msgstr "Descrição"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_report_emsprime_core_report_student_bonafide_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_report_emsprime_core_report_student_idcard_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_display_name
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_display_name
+msgid "Display Name"
+msgstr "Nome a Mostrar"
+
+#. module: emsprime_core
+#: selection:ems.request,state:0
+msgid "Done"
+msgstr "Feito"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_edition_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_edition_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_edition_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_tree
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
+msgid "Edition"
+msgstr "Edição"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.kanban_view_student
+msgid "Edition:"
+msgstr "Edição:"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_edition_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_edition_sub
+msgid "Editions"
+msgstr "Edições"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Educational"
+msgstr "Educacional"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_email
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_email
+msgid "Email"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_notify_email
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_notify_email
+msgid "Email Messages and Notifications"
+msgstr "Mensagens de email e notificações"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_emergency_contact
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_emergency_contact
+msgid "Emergency Contact"
+msgstr "Contacto de Emergência"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_hr_employee
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_emp_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_employee
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_employee
+msgid "Employee"
+msgstr "Funcionário"
+
+#. module: emsprime_core
+#: model:ir.module.category,name:emsprime_core.module_category_emsprime
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_root
+msgid "EmsPrime"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_end_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_end_date
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_search
+msgid "End Date"
+msgstr "Data Final"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_evaluation_type
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_search
+msgid "Evaluation Type"
+msgstr "Tipo de Avaliação"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_faculty_view
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_faculty_ids
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_main
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_root
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_root_sub
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_root_sub_action
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_faculty_sub
+msgid "Faculties"
+msgstr "Docentes"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_faculty_id
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_user_create_view
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_tree
+#: model:res.groups,name:emsprime_core.group_ems_faculty
+msgid "Faculty"
+msgstr "Docente"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.open_board_faculty
+#: model:ir.ui.view,arch_db:emsprime_core.board_faculty_form
+msgid "Faculty Dashboard"
+msgstr "Painel do Docente"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_complete_name
+msgid "Faculty Name"
+msgstr "Nome do Docente"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_father
+msgid "Father"
+msgstr "Pai"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_fax
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_fax
+msgid "Fax"
+msgstr "Fax"
+
+#. module: emsprime_core
+#: selection:ems.faculty,gender:0 selection:ems.student,gender:0
+msgid "Female"
+msgstr "Femenino"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "First Name"
+msgstr "Primeiro Nome"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_follower_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_follower_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_channel_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_channel_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canais)"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_partner_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_partner_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Parceiros)"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
+msgid ""
+"For all intents and purposes at the request of the person concerned declares "
+"that Lucilene da Luz Mota, Degree Student in <b>Tourism</b>, daughter of "
+"<b>Felipe Hilário Mota</b> and <b>Eremita Perpetual da Luz Mota</b>, bearer "
+"of Identity Card No. <b>219588</b>, issued on <b>19.05.2014</b> by the "
+"National Archives of Civil and Criminal identification of <b>São Vicente</"
+"b>, born on <b>21.03.1990</b>, a native of <b>São Vicente</b>, attended the "
+"<b>4th year</b> of that course in the academic year <b>2014/2015</b>."
+msgstr ""
+"Para os devidos efeitos e a pedido do interessado, declara-se que Lucilene "
+"da Luz Mota, Estudante de Licenciatura em <b>Turismo</b>, filha de Felipe "
+"Hilário Mota</b> e <b> Eremita Perpétua da Luz Mota</b>, portador do Bilhete "
+"de Identidade N.º <b>219588</b>,, emitido em <b>19.05.2014</b> pelo Arquivo "
+"Nacional de Registo Civil e Criminal de <b>São Vicente</b>, nascida em "
+"<b>21.03.1990</b>, natural de <b>São Vicente</b>, inscreveu-se no <b>4º ano</"
+"b> do curso no ano lectivo <b>2014/2015</b>."
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.report_ems_frequency_declaration
+msgid "Frequency Declaration"
+msgstr "Declaração de Frequência"
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "GPA"
+msgstr "GPA"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_gr_no
+msgid "GR Number"
+msgstr "Número GR"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_gender
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_gender
+msgid "Gender"
+msgstr "Género"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_general_main
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_general_student
+msgid "General"
+msgstr "Geral"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_general
+msgid "General Management"
+msgstr "Administração Geral"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_grade_weightage
+msgid "Grade Weightage"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_subject_search
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.hr_location_search_view
+msgid "Group by"
+msgstr "Agrupar por"
+
+#. module: emsprime_core
+#: model:ir.module.category,description:emsprime_core.module_category_emsprime
+msgid "Helps you manage your institutes different-different users."
+msgstr "Ajuda a gerenciar diferentes institutos - diferentes usuários."
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid ""
+"His / Her birthday as recorded in the General Register of\n"
+"                                            the\n"
+"                                            school / collage is"
+msgstr ""
+"O aniversário como registado no Cadastro Geral\n"
+"                                            da\n"
+"                                            escola / universidade é"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_id_3186
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_id
+#: model:ir.model.fields,field_description:emsprime_core.field_report_emsprime_core_report_student_bonafide_id
+#: model:ir.model.fields,field_description:emsprime_core.field_report_emsprime_core_report_student_idcard_id
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_id
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_id
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_id
+msgid "ID"
+msgstr "Identificação"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_id_number
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_id_number
+msgid "ID Card Number"
+msgstr "Número de BI"
+
+#. module: emsprime_core
+#: selection:ems.class,semester:0
+msgid "II"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_im_status
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_im_status
+msgid "IM Status"
+msgstr "Estado IM"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_message_unread
+#: model:ir.model.fields,help:emsprime_core.field_ems_request_message_unread
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_message_unread
+msgid "If checked new messages require your attention."
+msgstr "Se marcado, há novas mensagens que pedem a sua atenção."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_message_needaction
+#: model:ir.model.fields,help:emsprime_core.field_ems_request_message_needaction
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Se marcado, há novas mensagens que pedem a sua atenção."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_opt_out
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_opt_out
+msgid ""
+"If opt-out is checked, this contact has refused to receive emails for mass "
+"mailing and marketing campaign. Filter 'Available for Mass Mailing' allows "
+"users to filter the partners when performing mass mailing."
+msgstr ""
+"Se excluir tem o visto, este contato se recusou a receber e-mails para envio "
+"em massa e campanhas de marketing. Filtro \"Disponível para Mass Mailing ' "
+"permite ao utilizador filtrar os parceiros na realização envio em massa."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_lang
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_lang
+msgid ""
+"If the selected language is loaded in the system, all documents related to "
+"this contact will be printed in this language. If not, it will be English."
+msgstr ""
+"Se o idioma selecionado é carregado no sistema, todos os documentos "
+"relacionados a este contato serão impressos neste idioma. Se não, será o "
+"Inglês."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_image
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_image
+msgid "Image"
+msgstr "Imagem"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_company_form_emsprime_core
+msgid "Institute Detail"
+msgstr "Informações do Instituto"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_ref
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_ref
+msgid "Internal Reference"
+msgstr "Referência Interna"
+
+#. module: emsprime_core
+#: code:addons/emsprime_core/models/ems_class.py:36
+#, python-format
+msgid "Invalid Date!"
+msgstr "Data Inválida!"
+
+#. module: emsprime_core
+#: code:addons/emsprime_core/models/ems_class.py:34
+#, python-format
+msgid ""
+"Invalid Year!\n"
+"\n"
+"Year must be between 2000 - 3000"
+msgstr ""
+"Ano Inválido!\n"
+"\n"
+"O ano deve ser entre 2000 - 3000"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_is_follower
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_is_follower
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_is_follower
+msgid "Is Follower"
+msgstr "É um seguidor"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_is_company
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_is_company
+msgid "Is a Company"
+msgstr "É uma empresa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_customer
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_customer
+msgid "Is a Customer"
+msgstr "É um cliente"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_supplier
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_supplier
+msgid "Is a Vendor"
+msgstr "É um fornecedor"
+
+#. module: emsprime_core
+#: selection:ems.location,level:0
+msgid "Island"
+msgstr "Ilha"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_issuer_id
+msgid "Issuer"
+msgstr "Emitente"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_function
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_function
+msgid "Job Position"
+msgstr "Cargo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_lang
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_lang
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
+msgid "Language"
+msgstr "Idioma"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.kanban_view_faculty
+msgid "Language:"
+msgstr "Idioma:"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_last_post
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_last_post
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_last_post
+msgid "Last Message Date"
+msgstr "Data da Última Mensagem"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_report_emsprime_core_report_student_bonafide___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_report_emsprime_core_report_student_idcard___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee___last_update
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student___last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_last_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_last_name
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Last Name"
+msgstr "Apelido"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_write_uid
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualização por"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_write_date
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_write_date
+msgid "Last Updated on"
+msgstr "Última Actualização em"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_last_login
+msgid "Latest Connection"
+msgstr "Ligação mais recente"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_latitude
+msgid "Latitude"
+msgstr "Latitude"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.hr_location_search_view
+msgid "Level"
+msgstr "Nível"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.hr_location_form_view
+msgid "Location"
+msgstr "Localização"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.hr_location_search_view
+msgid "Location search"
+msgstr "Busca de localização"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.hr_location_action
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_config_locations
+#: model:ir.ui.view,arch_db:emsprime_core.hr_location_tree_view
+msgid "Locations"
+msgstr "Localizações"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_login
+msgid "Login"
+msgstr "Iniciar sessão"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_longitude
+msgid "Longitude"
+msgstr "Longitude"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid "Mail:"
+msgstr "Mail:"
+
+#. module: emsprime_core
+#: selection:ems.faculty,gender:0 selection:ems.student,gender:0
+msgid "Male"
+msgstr "Masculino"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_image_medium
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_image_medium
+msgid "Medium-sized image"
+msgstr "Imagem de média dimensão"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_image_medium
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_image_medium
+msgid ""
+"Medium-sized image of this contact. It is automatically resized as a "
+"128x128px image, with aspect ratio preserved. Use this field in form views "
+"or some kanban views."
+msgstr ""
+"Imagem de tamanho médio deste contacto. É automaticamente redimensionado "
+"como uma imagem de 128x128px, com formato de imagem preservado. Utilize este "
+"campo com visualização de formulário ou visualizações Kanban."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_ids
+msgid "Messages"
+msgstr "Mensagens"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_middle_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_middle_name
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Middle Name"
+msgstr "Segundo Nome"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_mobile
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_mobile
+msgid "Mobile"
+msgstr "Telemóvel"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.kanban_view_faculty
+msgid "Mobile:"
+msgstr "Telemóvel:"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_mother
+msgid "Mother"
+msgstr "Mãe"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_complete_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_name
+msgid "Name"
+msgstr "Nome"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_nationality
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_nationality
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
+msgid "Nationality"
+msgstr "Nacionalidade"
+
+#. module: emsprime_core
+#: selection:ems.request,state:0
+msgid "New Request"
+msgstr "Novo Pedido"
+
+#. module: emsprime_core
+#: selection:ems.course,evaluation_type:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_comment
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_comment
+msgid "Notes"
+msgstr "Notas"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_number
+msgid "Number"
+msgstr "Número"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_needaction_counter
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_needaction_counter
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de Ações"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_message_needaction_counter
+#: model:ir.model.fields,help:emsprime_core.field_ems_request_message_needaction_counter
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensagens que requerem uma ação"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_message_unread_counter
+#: model:ir.model.fields,help:emsprime_core.field_ems_request_message_unread_counter
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensagens por ler"
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "O+ve"
+msgstr ""
+
+#. module: emsprime_core
+#: selection:ems.faculty,blood_group:0 selection:ems.student,blood_group:0
+msgid "O-ve"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_opt_out
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_opt_out
+msgid "Opt-Out"
+msgstr "Opção saída"
+
+#. module: emsprime_core
+#: selection:ems.student,gender:0 selection:ems.subject,type:0
+msgid "Other"
+msgstr "Outro"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Other Info...."
+msgstr "Outras Informações"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_parent_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_search
+msgid "Parent Course"
+msgstr "Parent Course"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_parent_name
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_parent_name
+msgid "Parent name"
+msgstr "Nome dos Pais"
+
+#. module: emsprime_core
+#: selection:ems.location,level:0
+msgid "Parish"
+msgstr "Freguesia"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_partner_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_partner_id
+msgid "Partner"
+msgstr "Parceiro"
+
+#. module: emsprime_core
+#: selection:ems.request,state:0
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Pending"
+msgstr "Pendente"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Personal Information"
+msgstr "Informação Pessoal"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_phone
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_phone
+msgid "Phone"
+msgstr "Telefone"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid "Phone:"
+msgstr "Telefone:"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_photo
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_photo
+msgid "Photo"
+msgstr "Fotografia"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_location_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_location_level
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_location_id
+msgid "Place of birth"
+msgstr "Lugar de Nascimento"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_notify_email
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_notify_email
+msgid ""
+"Policy to receive emails for new messages pushed to your personal Inbox:\n"
+"- Never: no emails are sent\n"
+"- All Messages: for every notification you receive in your Inbox"
+msgstr ""
+"Política de receber e-mails para novas mensagens empurrado para sua caixa de "
+"entrada pessoal :\n"
+"- Nunca: nenhum e-mails é enviado\n"
+"- Todas as mensagens: para cada notificação que você recebe na sua caixa de "
+"entrada"
+
+#. module: emsprime_core
+#: selection:ems.subject,type:0
+msgid "Practical"
+msgstr "Prático "
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
+msgid "Praia, 26 of Abril, 2016"
+msgstr "Praia, 26 de Abril de 2016"
+
+#. module: emsprime_core
+#. openerp-web
+#: code:addons/emsprime_core/static/src/xml/base.xml:10
+#, python-format
+msgid "Prime Consulting"
+msgstr "Prime Consulting"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: emsprime_core
+#. openerp-web
+#: code:addons/emsprime_core/static/src/xml/base.xml:10
+#, python-format
+msgid "Provided by"
+msgstr "Concedido por"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_parent_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_parent_id
+msgid "Related Company"
+msgstr "Empresa Relacionada"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_employee_form_address_inherit
+msgid "Related User"
+msgstr "Utilizador Relacionado"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_report_id
+msgid "Report"
+msgstr "Relatório"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.ems_request_action
+#: model:ir.model,name:emsprime_core.model_ems_request
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_tree
+msgid "Request"
+msgstr "Requisitar"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_date
+msgid "Request Date"
+msgstr "Data do Pedido"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_name
+msgid "Request Name"
+msgstr "Nome do Pedido"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.ems_request_type_action
+#: model:ir.model,name:emsprime_core.model_ems_request_type
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_request_type_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_name
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_type_form
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_type_tree
+msgid "Request Type"
+msgstr "Tipo de Pedido"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_request
+msgid "Requests"
+msgstr "Pedidos"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_request_type
+msgid "Requests Type"
+msgstr "Tipos de Pedidos"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_roll_number
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_roll_number_line
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_tree
+msgid "Roll Number"
+msgstr "Número de Registo"
+
+#. module: emsprime_core
+#: sql_constraint:ems.enrollment:0
+msgid "Roll Number & Student must be unique per Edition!"
+msgstr "Número de registo e estudante devem ser únicos por edição."
+
+#. module: emsprime_core
+#: sql_constraint:ems.enrollment:0
+msgid "Roll Number must be unique per Edition!"
+msgstr "Número de registo deve ser único por edição!"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.kanban_view_student
+msgid "Roll Number:"
+msgstr "Número de Registo:"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_enrollment_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_roll_number_sub
+msgid "Roll Numbers"
+msgstr "Números de Registo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_property_product_pricelist
+#: model:ir.model.fields,field_description:emsprime_core.field_res_users_property_product_pricelist
+msgid "Sale Pricelist"
+msgstr "Lista de Preços de Vendas"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_team_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_team_id
+msgid "Sales Team"
+msgstr "Equipa de vendas"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_user_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_user_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_section
+msgid "Section"
+msgstr "Secção "
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Select Student Courses...."
+msgstr "Selecionar os cursos dos estudantes..."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_use_parent_address
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_use_parent_address
+msgid ""
+"Select this if you want to set company's address information  for this "
+"contact"
+msgstr ""
+"Selecione esta opção se deseja definir informações sobre o endereço da "
+"empresa para este contato"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_semester
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_semester_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_tree
+msgid "Semester"
+msgstr "Semestre"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_semester_view
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_semester_sub
+msgid "Semesters"
+msgstr "Semestres"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_res_company_signature
+msgid "Signature"
+msgstr "Assinatura"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_signup_expiration
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_signup_expiration
+msgid "Signup Expiration"
+msgstr "Sessão Expirou"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_signup_token
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_signup_token
+msgid "Signup Token"
+msgstr "Código de Registo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_signup_type
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_signup_type
+msgid "Signup Token Type"
+msgstr "Tipo de Código de Registo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_signup_valid
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_signup_valid
+msgid "Signup Token is Valid"
+msgstr "Código de Registo é Válido"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_signup_url
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_signup_url
+msgid "Signup URL"
+msgstr "URL de Registo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_image_small
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_image_small
+msgid "Small-sized image"
+msgstr "Imagem pequena"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_image_small
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_image_small
+msgid ""
+"Small-sized image of this contact. It is automatically resized as a 64x64px "
+"image, with aspect ratio preserved. Use this field anywhere a small image is "
+"required."
+msgstr ""
+"Imagem em pequeno formato para este contacto. É automaticamente "
+"redimensionada para 64x64px com o aspecto do rácio preservado. Utilize este "
+"campo onde quer que uma imagem pequena seja necessária."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_start_date
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_start_date
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_search
+msgid "Start Date"
+msgstr "Data de Início"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_state_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_state
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_state_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "State"
+msgstr "Estado"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_street
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_street
+msgid "Street"
+msgstr "Rua"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Street..."
+msgstr "Rua..."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_street2
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_street2
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Street2"
+msgstr "Rua2"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_student_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_student_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_tree
+#: model:res.groups,name:emsprime_core.group_ems_student
+msgid "Student"
+msgstr "Discente"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.open_board_student
+#: model:ir.ui.view,arch_db:emsprime_core.board_student_form
+msgid "Student Dashboard"
+msgstr "Painel do Discente"
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.action_report_student_idcard
+msgid "Student IdCard"
+msgstr "BI do Estudante"
+
+#. module: emsprime_core
+#: sql_constraint:ems.enrollment:0
+msgid "Student must be unique per Edition!"
+msgstr "O discente deve ser único por Edição!"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_student_ids
+msgid "Student(s)"
+msgstr "Discente(s)"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_student_view
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_student_student_ids
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_main
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_main_student
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_root
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_sub
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_student_sub_student
+#: model:ir.ui.view,arch_db:emsprime_core.ems_student_user_create_view
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_form
+msgid "Students"
+msgstr "Discentes"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_subject_id
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_subject_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_subject_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_subject_tree
+msgid "Subject"
+msgstr "Unidade Curricular"
+
+#. module: emsprime_core
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_school_config_subject
+msgid "Subject Management"
+msgstr "Gestão da(s) Unidade(s) Curricular(es)"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_subject_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_faculty_subject_ids
+msgid "Subject(s)"
+msgstr "Unidade(s) Curricular(es)"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,name:emsprime_core.act_open_ems_subject_view
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_semester_subject_ids
+#: model:ir.ui.menu,name:emsprime_core.menu_ems_subject_sub
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+msgid "Subjects"
+msgstr "Unidades Curriculares"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_vat
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_vat
+msgid "TIN"
+msgstr "TIN"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_category_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_category_id
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_vat
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_vat
+msgid ""
+"Tax Identification Number. Fill it if the company is subjected to taxes. "
+"Used by the some of the legal statements."
+msgstr ""
+"Número de Identificação Fiscal. Preencha se a empresa está sujeita a "
+"impostos. Usado por algumas das declarações legais."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_company_type
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_company_type
+msgid ""
+"Technical field, used only to display a boolean using a radio button. As for "
+"Odoo v9 RadioButton cannot be used on boolean fields, this one serves as "
+"interface. Due to the old API limitations with interface function field, we "
+"implement it by hand instead of a true function field. When migrating to the "
+"new API the code should be simplified."
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.kanban_view_faculty
+msgid "Tel:"
+msgstr "Tel:"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
+msgid "The Director of the Praia Complex"
+msgstr "O Director do Polo Universitário da Praia."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_user_id
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_user_id
+msgid ""
+"The internal user that is in charge of communicating with this contact if "
+"any."
+msgstr ""
+"O usuário interno que se encarrega de comunicar com este contacto, se houver."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_tz
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_tz
+msgid ""
+"The partner's timezone, used to output proper date and time values inside "
+"printed reports. It is important to set a value for this field. You should "
+"use the same timezone that is otherwise used to pick and render date and "
+"time values: your computer's timezone."
+msgstr ""
+"O fuso horário do cliente, utilizado para data de saída adequada e valores "
+"de tempo dentro de relatórios impressos. É importante definir um valor para "
+"este campo. Deve utilizar o mesmo fuso horário que é de outra forma "
+"utilizado para escolher e processar os valores de data e hora: o fuso "
+"horário do seu computador."
+
+#. module: emsprime_core
+#: selection:ems.subject,type:0
+msgid "Theory"
+msgstr "Teoria "
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
+msgid ""
+"This declaration will be authenticated with the stamp in use at the "
+"Institute."
+msgstr "Esta declaração será autenticada com o carimbo em uso no Instituto."
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_image
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_image
+msgid ""
+"This field holds the image used as avatar for this contact, limited to "
+"1024x1024px"
+msgstr ""
+"Este campo contém a imagem utilizada como avatar para este contacto, "
+"limitado a 1024x1024px."
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid "This is to certify that"
+msgstr "Isto é para certificar que"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_property_product_pricelist
+#: model:ir.model.fields,help:emsprime_core.field_res_users_property_product_pricelist
+msgid ""
+"This pricelist will be used, instead of the default one, for sales to the "
+"current partner"
+msgstr ""
+"Esta lista de preços será utilizada, em vez do padrão, para as vendas para o "
+"parceiro atual"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_tz
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_tz
+msgid "Timezone"
+msgstr "Fuso horário"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_tz_offset
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_tz_offset
+msgid "Timezone offset"
+msgstr "Diferença de fuso horário"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_title
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_title
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "Title"
+msgstr "Título"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_faculty
+msgid ""
+"To add your first report into this dashboard, go to any\n"
+"                        menu, switch to list or graph view, and click\n"
+"                        <i>'Add to\n"
+"                            Dashboard'\n"
+"                        </i>\n"
+"                        in the extended search options."
+msgstr ""
+"Para adicionar o seu primeiro relatório a este painel, ir a qualquer\n"
+"                        menu, mude para a lista ou vista de gráfico e clique "
+"em\n"
+"                        <i>'Adicionar ao\n"
+"                            Painel'\n"
+"                        </i>\n"
+"                       nas opções de pesquisas estendidas."
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_student
+msgid ""
+"To add your first report into this dashboard, go to any\n"
+"                        menu, switch to list or graph view, and click\n"
+"                        <i>'Add to\n"
+"                            Dashboard'</i>\n"
+"                        in the extended search options."
+msgstr ""
+"Para adicionar o seu primeiro relatório a este painel, ir a qualquer\n"
+"                        menu, mude para a lista ou vista de gráfico e clique "
+"em\n"
+"                        <i>'Adiconar ao\n"
+"                            Painel'</i>\n"
+"                        Nas opções de pesquisas estendidas."
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+msgid ""
+"To the best of my knowledge, he / she bears a Good Moral\n"
+"                                            character."
+msgstr ""
+"Tanto quanto sei, ele / ela ostenta um bom caráter\n"
+"                                            moral."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_type
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_subject_search
+msgid "Type"
+msgstr "Tipo"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_unread
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_unread
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_unread
+msgid "Unread Messages"
+msgstr "Mensagens por ler"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_message_unread_counter
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_message_unread_counter
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de Mensagens por Ler"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_use_parent_address
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_use_parent_address
+msgid "Use Company Address"
+msgstr "Utilize o Endereço da Empresa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_login
+msgid "Used to log into the system"
+msgstr "Utilizado para entrar no sistema"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_type
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_type
+msgid ""
+"Used to select automatically the right address according to the context in "
+"sales and purchases documents."
+msgstr ""
+"Utilizado para selecionar automaticamente o endereço correto de acordo com o "
+"contexto em documentos de vendas e compras."
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "User"
+msgstr "Usuário"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_res_users_user_line
+msgid "User Line"
+msgstr "Linha do Usuário"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_res_users
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_user_ids
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_user_ids
+msgid "Users"
+msgstr "Utilizadores"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: emsprime_core
+#: selection:ems.request,state:0
+msgid "Validated"
+msgstr "Validado"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_visa_info
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_visa_info
+msgid "Visa Info"
+msgstr "Informações do Visa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_wizard_ems_faculty_employee_user_boolean
+msgid "Want to create user too ?"
+msgstr "Quer também criar um usuário?"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_website
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_website
+msgid "Website"
+msgstr "Página Web"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_website_message_ids
+msgid "Website Messages"
+msgstr "Mensagens da página web"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_request_website_message_ids
+msgid "Website communication history"
+msgstr "Histórico de Comunicação do Website"
+
+#. module: emsprime_core
+#: model:ir.model.fields,help:emsprime_core.field_ems_faculty_website
+#: model:ir.model.fields,help:emsprime_core.field_ems_student_website
+msgid "Website of Partner or Company"
+msgstr "Website dos Parceiros ou Empresa"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_class_year
+#: model:ir.ui.view,arch_db:emsprime_core.report_student_bonafide
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_search
+msgid "Year"
+msgstr "Ano"
+
+#. module: emsprime_core
+#: model:ir.actions.act_window,help:emsprime_core.open_board_faculty
+#: model:ir.actions.act_window,help:emsprime_core.open_board_student
+msgid ""
+"You can filter and group data before inserting into the\n"
+"                        dashboard using the search options."
+msgstr ""
+"Pode filtrar e agrupar dados antes de inserir no\n"
+"                        painel utilizando as opções de busca."
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_form
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
+msgid "ZIP"
+msgstr "Código Postal"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_zip
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_student_zip
+msgid "Zip"
+msgstr "Código Postal"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_class
+msgid "ems.class"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_course
+msgid "ems.course"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_edition
+msgid "ems.edition"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_enrollment
+msgid "ems.enrollment"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_faculty
+msgid "ems.faculty"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_location
+msgid "ems.location"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_semester
+msgid "ems.semester"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_student
+msgid "ems.student"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_ems_subject
+msgid "ems.subject"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_user_create_view
+#: model:ir.ui.view,arch_db:emsprime_core.ems_student_user_create_view
+msgid "or"
+msgstr "ou"
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_report_emsprime_core_report_student_bonafide
+msgid "report.emsprime_core.report_student_bonafide"
+msgstr ""
+
+#. module: emsprime_core
+#: model:ir.model,name:emsprime_core.model_report_emsprime_core_report_student_idcard
+msgid "report.emsprime_core.report_student_idcard"
+msgstr ""
