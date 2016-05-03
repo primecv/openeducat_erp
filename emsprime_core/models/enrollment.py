@@ -33,7 +33,7 @@ class EmsEnrollment(models.Model):
 
     @api.onchange('student_id')
     def onchange_student(self):
-        self.course_id = self.student_id.course_id
+        #self.course_id = self.student_id.course_id
         self.edition_id = self.student_id.edition_id
 
     _sql_constraints = [
