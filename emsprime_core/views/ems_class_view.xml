@@ -48,6 +48,11 @@
                     <field name="faculty_id" />
                     <field name="subject_id" />
 					<field name="semester_id"/>
+					<field name="year"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}"/>
+                        <filter string="Year" domain="[]" context="{'group_by':'year'}"/>
+					</group>
                 </search>
             </field>
         </record>
