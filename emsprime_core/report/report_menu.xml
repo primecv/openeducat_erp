@@ -17,5 +17,16 @@
             name="emsprime_core.report_student_bonafide" 
             file="emsprime_core.report_student_bonafide"
         />
+
+        <report 
+            id="report_ems_frequency_declaration"
+            string="Frequency Declaration"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_frequency_declaration" 
+            name="emsprime_core.report_frequency_declaration" 
+			menu="False"
+        />
+
     </data>
 </openerp>
