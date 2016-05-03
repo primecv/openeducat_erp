@@ -1,0 +1,526 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* emsprime_timetable
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-03 10:57+0200\n"
+"PO-Revision-Date: 2016-05-03 11:06+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: \n"
+"Language: pt_PT\n"
+
+#. module: emsprime_timetable
+#: selection:ems.period,minute:0
+msgid "00"
+msgstr ""
+
+#. module: emsprime_timetable
+#: selection:ems.period,hour:0
+msgid "10"
+msgstr ""
+
+#. module: emsprime_timetable
+#: selection:ems.period,hour:0
+msgid "11"
+msgstr ""
+
+#. module: emsprime_timetable
+#: selection:ems.period,hour:0
+msgid "12"
+msgstr ""
+
+#. module: emsprime_timetable
+#: selection:ems.period,minute:0
+msgid "15"
+msgstr ""
+
+#. module: emsprime_timetable
+#: selection:ems.period,minute:0
+msgid "30"
+msgstr ""
+
+#. module: emsprime_timetable
+#: selection:ems.period,minute:0
+msgid "45"
+msgstr ""
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+msgid "<b>Class: </b>"
+msgstr "<b>Turma: </b>"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "<b>Faculty Name :</b>"
+msgstr "<b>Nome do Docente :</b>"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "<b>From Date: </b>"
+msgstr "<b>A partir de: </b>"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "<b>To Date:</b>"
+msgstr "<b>Até à data:</b>"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "<strong> Faculty TimeTables</strong>"
+msgstr "<strong> Horário do Docente</strong>"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+msgid "<strong>TimeTables</strong>"
+msgstr "<strong>Horários</strong>"
+
+#. module: emsprime_timetable
+#: selection:ems.period,am_pm:0
+msgid "AM"
+msgstr ""
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_am_pm
+msgid "AM/PM"
+msgstr "de manhã/ de tarde"
+
+#. module: emsprime_timetable
+#: model:ir.actions.act_window,name:emsprime_timetable.act_ems_faculty_period_today
+msgid "Book"
+msgstr "Livro"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_class_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_class_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_class_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_class_id
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_search
+msgid "Class"
+msgstr "Turma"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_timetable_kanban
+msgid "Class:"
+msgstr "Turma:"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_classroom_id
+msgid "Classroom"
+msgstr "Sala de Aula"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_time_table_report_form
+msgid "Close"
+msgstr "Fechar"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_color
+msgid "Color Index"
+msgstr "Índice de Cor"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_create_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_create_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_create_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_create_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_create_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_create_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_create_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_create_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_day
+msgid "Day"
+msgstr "Dia"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_type
+msgid "Days"
+msgstr "Dias"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_timetable_kanban
+msgid "Delete"
+msgstr "Eliminar"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_display_name
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_display_name
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_display_name
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_display_name
+#: model:ir.model.fields,field_description:emsprime_timetable.field_report_emsprime_timetable_report_timetable_student_generate_display_name
+#: model:ir.model.fields,field_description:emsprime_timetable.field_report_emsprime_timetable_report_timetable_teacher_generate_display_name
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_display_name
+msgid "Display Name"
+msgstr "Nome a Mostrar"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_duration
+msgid "Duration"
+msgstr "Duração"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_timetable_kanban
+msgid "Edit"
+msgstr "Editar"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_end_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_end_date
+msgid "End Date"
+msgstr "Data Final"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_end_datetime
+msgid "End Time"
+msgstr "Hora de Térmno"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "FRI"
+msgstr "FRI"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_faculty_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_faculty_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_faculty_id
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_search
+#: selection:time.table.report,state:0
+msgid "Faculty"
+msgstr "Docente"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_timetable_kanban
+msgid "Faculty:"
+msgstr "Docente:"
+
+#. module: emsprime_timetable
+#: selection:ems.timetable,type:0 selection:gen.time.table.line,day:0
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Friday"
+msgstr "Sexta-feira"
+
+#. module: emsprime_timetable
+#: model:ir.model,name:emsprime_timetable.model_gen_time_table_line
+msgid "Generate Time Table Lines"
+msgstr "Criar Linha de Horários"
+
+#. module: emsprime_timetable
+#: model:ir.model,name:emsprime_timetable.model_time_table_report
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_time_table_report_form
+msgid "Generate Time Table Report"
+msgstr "Criar Relatório de Horários"
+
+#. module: emsprime_timetable
+#: model:ir.actions.act_window,name:emsprime_timetable.act_open_time_table_report_view
+#: model:ir.ui.menu,name:emsprime_timetable.menu_generate_time_table_report
+msgid "Generate TimeTable Report"
+msgstr "Criar elatório de Horários"
+
+#. module: emsprime_timetable
+#: model:ir.actions.act_window,name:emsprime_timetable.act_open_generate_time_table_view
+#: model:ir.model,name:emsprime_timetable.model_generate_time_table
+#: model:ir.ui.menu,name:emsprime_timetable.menu_generate_time_table
+msgid "Generate TimeTables"
+msgstr "Criar Horários"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_search
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_hour
+msgid "Hours"
+msgstr "Horas"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_report_emsprime_timetable_report_timetable_student_generate_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_report_emsprime_timetable_report_timetable_teacher_generate_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_id
+msgid "ID"
+msgstr "Identificação"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period___last_update
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable___last_update
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line___last_update
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table___last_update
+#: model:ir.model.fields,field_description:emsprime_timetable.field_report_emsprime_timetable_report_timetable_student_generate___last_update
+#: model:ir.model.fields,field_description:emsprime_timetable.field_report_emsprime_timetable_report_timetable_teacher_generate___last_update
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report___last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_write_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_write_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_write_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_write_uid
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualização por"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_write_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_write_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_write_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_write_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_write_date
+msgid "Last Updated on"
+msgstr "Última Actualização em"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.timetable_faculty_dashboard_form_view
+msgid "Lectures for Today"
+msgstr "Palestras para Hoje"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "MON"
+msgstr "SEG"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_minute
+msgid "Minute"
+msgstr "Minuto"
+
+#. module: emsprime_timetable
+#: selection:ems.timetable,type:0 selection:gen.time.table.line,day:0
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Monday"
+msgstr "Segunda-feira"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_name
+msgid "Name"
+msgstr "Nome"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "PERIOD"
+msgstr "PERÍODO"
+
+#. module: emsprime_timetable
+#: selection:ems.period,am_pm:0
+msgid "PM"
+msgstr "de tarde"
+
+#. module: emsprime_timetable
+#: model:ir.actions.act_window,name:emsprime_timetable.act_ems_student_period_today
+#: model:ir.model,name:emsprime_timetable.model_ems_period
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_period_id
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_period_id
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_period_form
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_period_search
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_period_tree
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_search
+msgid "Period"
+msgstr "Período"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.timetable_student_dashboard_form_view
+msgid "Period for Today"
+msgstr "Períodos para Hoje"
+
+#. module: emsprime_timetable
+#: model:ir.actions.act_window,name:emsprime_timetable.act_open_ems_period_view
+#: model:ir.ui.menu,name:emsprime_timetable.menu_ems_period
+msgid "Periods"
+msgstr "Períodos "
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Proceed"
+msgstr "Avançar"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "SAT"
+msgstr "SAB"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_faculty_property_product_pricelist
+msgid "Sale Pricelist"
+msgstr "Lista de Preços de Vendas"
+
+#. module: emsprime_timetable
+#: selection:ems.timetable,type:0 selection:gen.time.table.line,day:0
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_state
+msgid "Select"
+msgstr "Selecionar "
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_period_sequence
+msgid "Sequence"
+msgstr "Sequência"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_start_date
+#: model:ir.model.fields,field_description:emsprime_timetable.field_time_table_report_start_date
+msgid "Start Date"
+msgstr "Data de Início"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_timetable_start_datetime
+msgid "Start Time"
+msgstr "Hora de Início"
+
+#. module: emsprime_timetable
+#: selection:time.table.report,state:0
+msgid "Student"
+msgstr "Discente"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "THUR"
+msgstr "QUI"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "TUES"
+msgstr "TER"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_gen_time_table_line_form
+msgid "Table Line"
+msgstr "Linha de Tabela"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,help:emsprime_timetable.field_ems_faculty_property_product_pricelist
+msgid ""
+"This pricelist will be used, instead of the default one, for sales to the "
+"current partner"
+msgstr ""
+"Esta lista de preços será utilizada, em vez do padrão, para as vendas "
+"para o parceiro atual"
+
+#. module: emsprime_timetable
+#: selection:ems.timetable,type:0 selection:gen.time.table.line,day:0
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Thursday"
+msgstr "Quinta-feira"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_gen_time_table_line_gen_time_table
+msgid "Time Table"
+msgstr "Horário"
+
+#. module: emsprime_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines_1
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines_2
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines_3
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines_4
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines_5
+#: model:ir.model.fields,field_description:emsprime_timetable.field_generate_time_table_time_table_lines_6
+msgid "Time Table Lines"
+msgstr "Linha de Horários"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_time_table_report_form
+msgid "Time Table Report"
+msgstr "Relatório de Horários"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_gen_time_table_line_tree
+msgid "TimeTable Line"
+msgstr "Linha de Horários"
+
+#. module: emsprime_timetable
+#: model:ir.actions.report.xml,name:emsprime_timetable.report_teacher_timetable_generate
+msgid "TimeTable for Faculties"
+msgstr "Horários para Docentes"
+
+#. module: emsprime_timetable
+#: model:ir.actions.report.xml,name:emsprime_timetable.report_student_timetable_generate
+msgid "TimeTable for Students"
+msgstr "Horários para Discentes"
+
+#. module: emsprime_timetable
+#: model:ir.actions.act_window,name:emsprime_timetable.act_open_ems_timetable_view
+#: model:ir.model,name:emsprime_timetable.model_ems_timetable
+#: model:ir.model.fields,field_description:emsprime_timetable.field_ems_faculty_timetable_ids
+#: model:ir.ui.menu,name:emsprime_timetable.menu_ems_timetable
+#: model:ir.ui.menu,name:emsprime_timetable.menu_ems_timetable_main
+#: model:ir.ui.menu,name:emsprime_timetable.menu_ems_timetable_root
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_faculty_form_timetable_inherit
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_calendar
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_form
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_search
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_tree
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "TimeTables"
+msgstr "Horários"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_ems_timetable_search
+msgid "Today"
+msgstr "Hoje"
+
+#. module: emsprime_timetable
+#: selection:ems.timetable,type:0 selection:gen.time.table.line,day:0
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Tuesday"
+msgstr "Terça-feira"
+
+#. module: emsprime_timetable
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_student_generate
+#: model:ir.ui.view,arch_db:emsprime_timetable.report_timetable_teacher_generate
+msgid "WED"
+msgstr "QUA"
+
+#. module: emsprime_timetable
+#: selection:ems.timetable,type:0 selection:gen.time.table.line,day:0
+#: model:ir.ui.view,arch_db:emsprime_timetable.view_generate_time_table_form
+msgid "Wednesday"
+msgstr "Quarta-feira"
+
+#. module: emsprime_timetable
+#: model:ir.model,name:emsprime_timetable.model_ems_faculty
+msgid "ems.faculty"
+msgstr ""
+
+#. module: emsprime_timetable
+#: model:ir.model,name:emsprime_timetable.model_report_emsprime_timetable_report_timetable_student_generate
+msgid "report.emsprime_timetable.report_timetable_student_generate"
+msgstr ""
+
+#. module: emsprime_timetable
+#: model:ir.model,name:emsprime_timetable.model_report_emsprime_timetable_report_timetable_teacher_generate
+msgid "report.emsprime_timetable.report_timetable_teacher_generate"
+msgstr ""
