@@ -1,0 +1,485 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* emsprime_evaluation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-03 10:45+0200\n"
+"PO-Revision-Date: 2016-05-03 10:52+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: \n"
+"Language: pt_PT\n"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation.attendee,status:0
+msgid "Absent"
+msgstr "Ausente"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_needaction
+msgid "Action Needed"
+msgstr "Ação Necessária"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendees_line
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "Attendees"
+msgstr "Presentes"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "CCE"
+msgstr "CCE"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "CWA"
+msgstr "CWA"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_capacity
+msgid "Capacity"
+msgstr "Capacidade"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_class_id
+msgid "Class"
+msgstr "Turma"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_classroom_id
+msgid "Classroom"
+msgstr "Turma"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_code
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_type_search
+msgid "Code"
+msgstr "Código"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_exam_configuration
+msgid "Configuration"
+msgstr "Configuração"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_course_id
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Course"
+msgstr "Curso"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_course_ids
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_room_form
+msgid "Course(s)"
+msgstr "Curso(s)"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_create_uid
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_create_uid
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_create_uid
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_create_date
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_create_date
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_create_date
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,help:emsprime_evaluation.field_ems_evaluation_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "Data da Última Mensagem Inserida no Registo"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "Description"
+msgstr "Descrição"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_display_name
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_display_name
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_display_name
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_display_name
+msgid "Display Name"
+msgstr "Nome a Mostrar"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "Done"
+msgstr "Feito"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_edition_id
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Edition"
+msgstr "Edição"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_end_time
+msgid "End Time"
+msgstr "Hora de Térmno"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_main
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_root
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_school_exam_result
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_tree
+msgid "Evaluation"
+msgstr "Avaliação"
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_attendees_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_attendees_sub
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_form
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_tree
+msgid "Evaluation Attendees"
+msgstr "Presentes na Avaliação"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_room_form
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_room_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_room_tree
+msgid "Evaluation Room"
+msgstr "Sala de Avaliação"
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_room_view
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_room_sub
+msgid "Evaluation Rooms"
+msgstr "Salas de Avaliação"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_evaluation_type
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Evaluation Type"
+msgstr "Tipo de Avaliação"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_evaluation_type_sub
+msgid "Evaluation Types"
+msgstr "Tipos de Avaliação"
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_view
+msgid "Evaluations"
+msgstr "Avaliações"
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_evaluation_id
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_name
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Exam"
+msgstr "Exame"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_exam_code
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Exam Code"
+msgstr "Código do Exame"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_session_id
+msgid "Exam Session"
+msgstr "Sessão de Exame"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_exam_type
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_type_form
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_type_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_type_tree
+msgid "Exam Type"
+msgstr "Tipo de Exame"
+
+#. module: emsprime_evaluation
+#: model:ir.actions.act_window,name:emsprime_evaluation.act_open_ems_evaluation_type_view
+msgid "Exam Types"
+msgstr "Tipos de Exame"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canais)"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Parceiros)"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "GPA"
+msgstr "GPA"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.menu,name:emsprime_evaluation.menu_ems_exam_general
+msgid "General"
+msgstr "Geral"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_type_search
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+msgid "Held"
+msgstr "Realizado"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "Held Exam"
+msgstr "Exame Realizado"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_id
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_id
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_id_3085
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_id
+msgid "ID"
+msgstr "Identificação"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,help:emsprime_evaluation.field_ems_evaluation_message_unread
+msgid "If checked new messages require your attention."
+msgstr "Se marcado, há novas mensagens que pedem a sua atenção."
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,help:emsprime_evaluation.field_ems_evaluation_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Se marcado, há novas mensagens que pedem a sua atenção."
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_is_follower
+msgid "Is Follower"
+msgstr "É um seguidor"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_last_post
+msgid "Last Message Date"
+msgstr "Data da Última Mensagem"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation___last_update
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee___last_update
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room___last_update
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type___last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_write_uid
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_write_uid
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_write_uid
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualização por"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_write_date
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_write_date
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_write_date
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_write_date
+msgid "Last Updated on"
+msgstr "Última Actualização em"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_marks
+msgid "Marks"
+msgstr "Notas"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_ids
+msgid "Messages"
+msgstr "Mensagens"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_name
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_type_name
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_type_search
+msgid "Name"
+msgstr "Nome"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "New Exam"
+msgstr "Novo Exame"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,evaluation_type:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_note
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_note
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_form
+msgid "Note"
+msgstr "Nota"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de Ações"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,help:emsprime_evaluation.field_ems_evaluation_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensagens que requerem uma ação"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,help:emsprime_evaluation.field_ems_evaluation_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensagens por ler"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_min_marks
+msgid "Passing Marks"
+msgstr "Notas de Aprovação"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation.attendee,status:0
+msgid "Present"
+msgstr "Presente"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_responsible_id
+msgid "Responsible"
+msgstr "Responsável"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_id
+msgid "Room"
+msgstr "Sala"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_form
+msgid "Schedule Exam"
+msgstr "Marcar Exame"
+
+#. module: emsprime_evaluation
+#: selection:ems.evaluation,state:0
+msgid "Scheduled"
+msgstr "Marcado"
+
+#. module: emsprime_evaluation
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Standard"
+msgstr "Padrão"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_start_time
+msgid "Start Time"
+msgstr "Hora de Início"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_state
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "State"
+msgstr "Estado"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_status
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_search
+msgid "Status"
+msgstr "Estado"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_attendee_student_id
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_attendees_search
+msgid "Student"
+msgstr "Discente"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_room_student_ids
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_room_form
+msgid "Student(s)"
+msgstr "Discente(s)"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_subject_id
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Subject"
+msgstr "Unidade Curricular"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_total_marks
+msgid "Total Marks"
+msgstr "Classificações Totais"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_unread
+msgid "Unread Messages"
+msgstr "Mensagens por ler"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de Mensagens por Ler"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_venue
+#: model:ir.ui.view,arch_db:emsprime_evaluation.view_ems_evaluation_search
+msgid "Venue"
+msgstr "Local"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,field_description:emsprime_evaluation.field_ems_evaluation_website_message_ids
+msgid "Website Messages"
+msgstr "Mensagens da página web"
+
+#. module: emsprime_evaluation
+#: model:ir.model.fields,help:emsprime_evaluation.field_ems_evaluation_website_message_ids
+msgid "Website communication history"
+msgstr "Histórico de Comunicação do Website"
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_evaluation_attendee
+msgid "ems.evaluation.attendee"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_evaluation_room
+msgid "ems.evaluation.room"
+msgstr ""
+
+#. module: emsprime_evaluation
+#: model:ir.model,name:emsprime_evaluation.model_ems_evaluation_type
+msgid "ems.evaluation.type"
+msgstr ""
