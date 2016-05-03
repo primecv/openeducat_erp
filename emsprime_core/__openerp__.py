@@ -70,6 +70,7 @@
         'menu/student_menu.xml',
         
         'data/degree.xml',
+        'data/request.xml',
 
         'report/report_frequency_declaration.xml',
     ],

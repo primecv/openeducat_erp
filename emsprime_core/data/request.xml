@@ -1,0 +1,11 @@
+<openerp>
+	<data noupdate="1">
+	
+		<record id="request_type_frequency_declaration" model="ems.request.type">
+			<field name="name">Frequency Declaration</field>
+			<field name="report_id" ref="emsprime_core.report_ems_frequency_declaration"/>
+		</record>
+
+	</data>
+</openerp>
+
