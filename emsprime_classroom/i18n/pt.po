@@ -1,0 +1,158 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* emsprime_classroom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-03 10:41+0200\n"
+"PO-Revision-Date: 2016-05-03 10:43+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7\n"
+"Last-Translator: \n"
+"Language: pt_PT\n"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_asset_id
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_asset_line
+msgid "Asset"
+msgstr "Ativo"
+
+#. module: emsprime_classroom
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_form
+msgid "Asset Management"
+msgstr "Gestão de ativos"
+
+#. module: emsprime_classroom
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_search
+msgid "Capacity"
+msgstr "Capacidade"
+
+#. module: emsprime_classroom
+#: model:ir.ui.menu,name:emsprime_classroom.menu_ems_school_config_class_room
+msgid "Class Room Management"
+msgstr "Gestão das Turmas"
+
+#. module: emsprime_classroom
+#: model:ir.actions.act_window,name:emsprime_classroom.act_open_ems_classroom_view
+#: model:ir.ui.menu,name:emsprime_classroom.menu_ems_classroom_sub
+msgid "Class Rooms"
+msgstr "Turmas"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_facility_line_classroom_id
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_form
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_search
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_tree
+msgid "Classroom"
+msgstr "Turma"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_code
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_code
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_search
+msgid "Code"
+msgstr "Código"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_course_id
+msgid "Course"
+msgstr "Curso"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_create_uid
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_create_date
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_display_name
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_display_name
+msgid "Display Name"
+msgstr "Nome a Mostrar"
+
+#. module: emsprime_classroom
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_form
+msgid "Facilities"
+msgstr "Instalações"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_facilities
+msgid "Facility Lines"
+msgstr "Linhas de Instalações"
+
+#. module: emsprime_classroom
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_search
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_id
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_id
+msgid "ID"
+msgstr "Identificação"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset___last_update
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom___last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_write_uid
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualização por"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_write_date
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_write_date
+msgid "Last Updated on"
+msgstr "Última Actualização em"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_name
+#: model:ir.ui.view,arch_db:emsprime_classroom.view_ems_classroom_search
+msgid "Name"
+msgstr "Nome"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_classroom_capacity
+msgid "No of Person"
+msgstr "N.º de Pessoas"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_product_id
+msgid "Product"
+msgstr "Produto"
+
+#. module: emsprime_classroom
+#: model:ir.model.fields,field_description:emsprime_classroom.field_ems_asset_product_uom_qty
+msgid "Quantity"
+msgstr "Quantidade"
+
+#. module: emsprime_classroom
+#: model:ir.model,name:emsprime_classroom.model_ems_asset
+msgid "ems.asset"
+msgstr ""
+
+#. module: emsprime_classroom
+#: model:ir.model,name:emsprime_classroom.model_ems_classroom
+msgid "ems.classroom"
+msgstr ""
+
+#. module: emsprime_classroom
+#: model:ir.model,name:emsprime_classroom.model_ems_facility_line
+msgid "ems.facility.line"
+msgstr ""
