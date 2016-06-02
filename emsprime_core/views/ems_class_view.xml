@@ -32,13 +32,7 @@
 							<field name="semester_id" invisible="1"/>
                         </group>
                         <group string="Students" name="subject">
-                            <field name="student_ids" nolabel="1">
-				<tree string="Students" editable="bottom">
-					<field name="roll_number"/>
-					<field name="name"/>
-					<field name="last_name"/>
-				</tree>
-			    </field>
+                            <field name="enrollment_ids" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>
