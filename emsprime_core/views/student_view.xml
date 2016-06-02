@@ -133,7 +133,13 @@
                                     <field name="roll_number" />
                                     <separator colspan="4" string="Assigned Roll Numbers" />
                                     <field name="roll_number_line" colspan="4" nolabel="1"
-                                        context="{'default_edition_id':edition_id}" />
+                                        context="{'default_edition_id':edition_id}" >
+										<tree string="Enrollment">
+								            <field name="roll_number" />
+								            <field name="course_id" />
+								            <field name="edition_id" />
+										</tree>
+									</field>
                                 </group>
                             </page>
                         </notebook>
