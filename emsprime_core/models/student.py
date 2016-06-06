@@ -21,22 +21,28 @@
 
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
-
+from datetime import datetime, date
 
 class EmsStudent(models.Model):
     _name = 'ems.student'
     _inherits = {'res.partner': 'partner_id'}
 
     @api.one
-    @api.depends('roll_number_line', 'edition_id')
-    def _get_curr_roll_number(self):
-        # TO_DO:: Improve the logic by adding sequence field in course.
-        if self.roll_number_line:
-            for roll_no in self.roll_number_line:
-                if roll_no.edition_id == self.edition_id:
-                    self.roll_number = roll_no.roll_number
-        else:
-            self.roll_number = 0
+    @api.depends('roll_number_line')
+    def _get_curr_enrollment(self):
+        self.roll_number = ''
+        self.course_id = False
+        self.edition_id = False
+        #check current date with the latest enrollment edition:
+        for enrollment in self.roll_number_line:
+            edition_id = enrollment.edition_id
+            start_date = datetime.strptime(edition_id.start_date, '%Y-%m-%d').date()
+            end_date = datetime.strptime(edition_id.end_date, '%Y-%m-%d').date()
+            today = date.today()
+            if today >= start_date and today <= end_date:
+                self.roll_number = enrollment.roll_number
+                self.edition_id = edition_id.id
+                self.course_id = enrollment.course_id.id
 
     middle_name = fields.Char('Middle Name', size=128)
     last_name = fields.Char('Last Name', size=128, required=True)
@@ -55,14 +61,16 @@ class EmsStudent(models.Model):
     id_number = fields.Char('ID Card Number', size=64)
     photo = fields.Binary('Photo')
     course_ids = fields.Many2many('ems.course', 'ems_student_course_rel', 'student_id', 'course_id', 'Course(s)')
-    edition_id = fields.Many2one('ems.edition', 'Edition', required=False)
+    #edition_id = fields.Many2one('ems.edition', 'Edition', required=False)
     roll_number_line = fields.One2many(
         'ems.enrollment', 'student_id', 'Roll Number')
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
-    roll_number = fields.Char(
-        'Current Roll Number', compute='_get_curr_roll_number',
-        size=8, store=True)
+
+    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True)
+    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True)
+    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True)
+
     gr_no = fields.Char("GR Number", size=20)
     location_id = fields.Many2one('ems.location', 'Place of birth')
     mother = fields.Char('Mother', size=255)

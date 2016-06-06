@@ -27,6 +27,10 @@
                                         </a>
                                     </h4>
                                     <ul>
+                                        <li t-if="record.course_id.raw_value">
+                                            Course:
+                                            <field name="course_id" />
+                                        </li>
                                         <li t-if="record.edition_id.raw_value">
                                             Edition:
                                             <field name="edition_id" />
@@ -78,6 +82,8 @@
                         <field name="photo" widget="image" class="oe_left oe_avatar" />
                         <div name="title_name" class="oe_title">
                             <h3><field name="title" placeholder="Title" style="width: 30%%" /></h3>
+							<label for="roll_number" attrs="{'invisible':[('roll_number','=',False)]}"/>
+							<field name="roll_number" class="oe_inline" attrs="{'invisible':[('roll_number','=',False)]}"/>
                             <h1><table>
                                 <tr>
                                 <td><field name="name" required="1" placeholder="First Name" style="padding-right:10px" /></td>
@@ -126,11 +132,16 @@
                                 </group>
                             </page>
                             <page name="educational" string="Educational">
+								<group colspan="4" attrs="{'invisible':[('course_id','!=',False)]}">
+									<div>
+										<h2 style="color:#f86242;">Student does not have active Enrollment!</h2>
+									</div>
+								</group>
                                 <group col="4" colspan="4">
-                                    <field name="course_ids" widget="many2many_tags" placeholder="Select Student Courses...."/>
-                                    <field name="edition_id" context="{'get_parent_edition':1}"/>
-                                    <field name="gr_no" />
-                                    <field name="roll_number" />
+									<field name="course_id" readonly="1" attrs="{'invisible':[('course_id','=',False)]}"/>
+                                    <field name="edition_id" context="{'get_parent_edition':1}" readonly="1" attrs="{'invisible':[('edition_id','=',False)]}"/>
+                                    <field name="course_ids" widget="many2many_tags" placeholder="Select Student Courses...." invisible="1"/> <!-- not required for now -->
+                                    <field name="gr_no" invisible="1"/> <!-- not required for now -->
                                     <separator colspan="4" string="Assigned Roll Numbers" />
                                     <field name="roll_number_line" colspan="4" nolabel="1"
                                         context="{'default_edition_id':edition_id}" >
