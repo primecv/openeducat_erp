@@ -34,15 +34,24 @@ class EmsStudent(models.Model):
         self.course_id = False
         self.edition_id = False
         #check current date with the latest enrollment edition:
+        count = 0
         for enrollment in self.roll_number_line:
-            edition_id = enrollment.edition_id
-            start_date = datetime.strptime(edition_id.start_date, '%Y-%m-%d').date()
-            end_date = datetime.strptime(edition_id.end_date, '%Y-%m-%d').date()
-            today = date.today()
-            if today >= start_date and today <= end_date:
-                self.roll_number = enrollment.roll_number
-                self.edition_id = edition_id.id
-                self.course_id = enrollment.course_id.id
+            if count == 0:
+                edition_id = enrollment.edition_id.id
+                course_id = enrollment.course_id.id
+                roll_number = enrollment.roll_number
+
+                start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                count = count + 1
+            else:
+                if start_date < datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date():
+                    start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                    edition_id = enrollment.edition_id.id
+                    course_id = enrollment.course_id.id
+                    roll_number = enrollment.roll_number
+            self.roll_number = roll_number
+            self.edition_id = edition_id
+            self.course_id = course_id
 
     middle_name = fields.Char('Middle Name', size=128)
     last_name = fields.Char('Last Name', size=128, required=True)
