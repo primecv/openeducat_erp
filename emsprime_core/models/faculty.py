@@ -28,9 +28,9 @@ class EmsFaculty(models.Model):
     _inherits = {'res.partner': 'partner_id'}
 
     @api.one
-    @api.depends('name', 'first_name', 'last_name')
-    def complete_name(self):
-        return ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
+    @api.depends('name', 'middle_name', 'last_name')
+    def _get_complete_name(self):
+        self.complete_name = ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
 
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
@@ -57,7 +57,7 @@ class EmsFaculty(models.Model):
     location_id = fields.Many2one('ems.location', 'Place of birth')
     faculty_subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
     emp_id = fields.Many2one('hr.employee', 'Employee')
-    complete_name = fields.Char('Faculty Name', compute='complete_name', store=True)
+    complete_name = fields.Char('Faculty Name', compute='_get_complete_name', store=False)
 
     @api.one
     @api.constrains('birth_date')
