@@ -59,16 +59,16 @@
             <field name="arch" type="xml">
                 <tree string="Student">
                     <field name="roll_number" />
-                    <field name="title" />
+                    <field name="title" invisible="1"/>
                     <field name="name" />
-                    <field name="middle_name" />
+                    <field name="middle_name" invisible="1"/>
                     <field name="last_name" />
                     <field name="blood_group" />
                     <field name="emergency_contact" />
+					<field name="course_id" />
                     <field name="edition_id" />
                     <field name="nationality" />
-                    <field name="blood_group" />
-                    <field name="lang" />
+                    <field name="lang" invisible="1" />
                 </tree>
             </field>
         </record>
