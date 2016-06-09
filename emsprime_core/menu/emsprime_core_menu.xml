@@ -71,6 +71,11 @@
             parent="menu_ems_school_config_general" sequence="20"
             action="hr_location_action" groups="group_ems_back_office,group_ems_back_office_admin" />
 
+		<!-- Attachments Type Menu -->
+        <menuitem id="menu_ems_config_attachments_types" name="Attachments Type"
+            parent="menu_ems_school_config_general" sequence="25"
+            action="act_open_ems_attachment_type_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+			
         <!-- Activity Root -->
         <menuitem id="menu_ems_school_config_activity" name="Activity Management" parent="menu_ems_school_config" sequence="40" />
     </data>

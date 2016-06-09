@@ -29,7 +29,7 @@ class EmsAttachment(models.Model):
 
     dates_fname = fields.Char('Filename', size=100, required=True)
     attachment_type_id = fields.Many2one('ems.attachment.type', 'Type', required=True)
-    attachment = fields.binary('Type')
+    attachment = fields.Binary('Type')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
