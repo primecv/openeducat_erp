@@ -28,6 +28,11 @@ class EmsStudent(models.Model):
     _inherits = {'res.partner': 'partner_id'}
 
     @api.one
+    @api.depends('name', 'middle_name', 'last_name')
+    def _get_complete_name(self):
+        self.complete_name = ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
+
+    @api.one
     @api.depends('roll_number_line')
     def _get_curr_enrollment(self):
         self.roll_number = ''
@@ -86,6 +91,7 @@ class EmsStudent(models.Model):
     father = fields.Char('Father', size=255)
     issuer_id = fields.Many2one('ems.location', 'Issuer')
     institutional_email = fields.Char('Institutional email', size=128)
+    complete_name = fields.Char('Name', compute='_get_complete_name', store=True)
 
     @api.one
     @api.constrains('birth_date')

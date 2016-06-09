@@ -28,12 +28,7 @@
                                         </a>
                                     </h4>
                                     <ul>
-                                        <li t-if="record.course_id.raw_value">
-                                            Course:
-                                            <field name="course_id" />
-                                        </li>
                                         <li t-if="record.edition_id.raw_value">
-                                            Edition:
                                             <field name="edition_id" />
                                         </li>
                                     </ul>
@@ -56,8 +51,7 @@
             <field name="arch" type="xml">
                 <tree string="Student">
                     <field name="roll_number" />
-                    <field name="name" />
-                    <field name="last_name" />
+                    <field name="complete_name" />
 					<field name="course_id" />
                     <field name="edition_id" />
                 </tree>
