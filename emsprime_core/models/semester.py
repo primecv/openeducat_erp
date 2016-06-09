@@ -26,14 +26,15 @@ from openerp.exceptions import ValidationError
 class EmsSemester(models.Model):
     _name = 'ems.semester'
 
-    name = fields.Char('Name', size=32, required=True)
+    name = fields.Char('Name', size=32, required=False)
     start_date = fields.Date(
         'Start Date', required=True, default=fields.Date.today())
     end_date = fields.Date('End Date', required=True)
     number= fields.Integer('Number')
     code = fields.Char('Code')
+    course_id = fields.Many2one('ems.course', 'Course', required=True)
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
-    course_id = fields.Many2one('ems.course', string='Course', related='edition_id.course_id', store=True, readonly=True)
+    #course_id = fields.Many2one('ems.course', string='Course', related='edition_id.course_id', store=True, readonly=True)
     subject_ids = fields.Many2many('ems.subject', 'ems_semester_subject_rel', 'semester_id', 'subject_id', string='Subjects')
     semester = fields.Selection([('1', 'I'), ('2', 'II')], 'Semester')
     year = fields.Char('Year', size=4)
