@@ -35,6 +35,8 @@ class EmsSemester(models.Model):
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
     course_id = fields.Many2one('ems.course', string='Course', related='edition_id.course_id', store=True, readonly=True)
     subject_ids = fields.Many2many('ems.subject', 'ems_semester_subject_rel', 'semester_id', 'subject_id', string='Subjects')
+    semester = fields.Selection([('1', 'I'), ('2', 'II')], 'Semester')
+    year = fields.Char('Year', size=4)
 
     @api.one
     @api.constrains('start_date', 'end_date')
