@@ -45,10 +45,6 @@
                                                 <field name="email" />
                                             </a>
                                         </li>
-                                        <li t-if="record.lang.raw_value">
-                                            Language:
-                                            <field name="lang" />
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -67,10 +63,10 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <tree string="Faculty">
-                    <field name="title" />
 					<field name="complete_name"/>
-                    <field name="blood_group" />
-                    <field name="emergency_contact" />
+					<field name="degree_id" />
+					<field name="institutional_email" />
+					<field name="mobile" />
                 </tree>
             </field>
         </record>
@@ -100,6 +96,7 @@
                             <field name="phone" />
                             <field name="mobile" />
                             <field name="email" />
+                            <field name="institutional_email" />
                         </group>
                         <notebook colspan="4">
                             <page name="personal_information" string="Personal Information">
@@ -107,9 +104,8 @@
                                     <field name="birth_date" />
                                     <field name="nationality" />
                                     <field name="location_id" />
+                                    <field name="degree_id" />
                                     <field name="lang" />
-                                    <field name="emergency_contact" context="{'show_address': 1}"
-                                        options='{"always_reload": True}' />
                                     <field name='emp_id' />
                                 </group>
                                 <group string="Address Detail" name="address">
@@ -141,14 +137,13 @@
             <field name="arch" type="xml">
                 <search string="Faculty">
                     <field name="complete_name" />
-                    <field name="blood_group" />
+                    <field name="degree_id" />
                     <newline />
                     <group expand="0" string="Group By...">
-                        <filter name="blood_group" string="Blood Group" domain="[]"
-                            context="{'group_by':'blood_group'}" />
+                        <filter name="degree" string="Degree" domain="[]"
+                            context="{'group_by':'degree_id'}" />
                         <filter name="nationality" string="Nationality" domain="[]"
                             context="{'group_by':'nationality'}" />
-                        <filter name="language" string="Language" domain="[]" context="{'group_by':'lang'}" />
                     </group>
                 </search>
             </field>

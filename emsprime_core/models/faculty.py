@@ -58,6 +58,8 @@ class EmsFaculty(models.Model):
     faculty_subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
     emp_id = fields.Many2one('hr.employee', 'Employee')
     complete_name = fields.Char('Faculty Name', compute='_get_complete_name', store=False)
+    institutional_email = fields.Char('Institutional email', size=128)
+    degree_id = fields.Many2one('ems.course.degree', 'Degree')
 
     @api.one
     @api.constrains('birth_date')
