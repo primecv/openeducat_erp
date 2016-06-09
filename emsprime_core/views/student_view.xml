@@ -15,6 +15,7 @@
                                     </a>
                                 </div>
                                 <div class="oe_kanban_details">
+									<h2><field name="roll_number" /></h2>
                                     <h4>
                                         <a type="open">
                                             <field name="name" />
@@ -34,10 +35,6 @@
                                         <li t-if="record.edition_id.raw_value">
                                             Edition:
                                             <field name="edition_id" />
-                                        </li>
-                                        <li t-if="record.roll_number.raw_value">
-                                            Roll Number:
-                                            <field name="roll_number" />
                                         </li>
                                     </ul>
                                 </div>
@@ -63,10 +60,10 @@
                     <field name="last_name" />
 					<field name="course_id" />
                     <field name="edition_id" />
-                    <field name="nationality" />
                 </tree>
             </field>
         </record>
+		
         <record id="view_ems_student_form" model="ir.ui.view">
             <field name="name">ems.student.form</field>
             <field name="model">ems.student</field>
@@ -99,8 +96,6 @@
                                     <field name="mother" />
                                     <field name="father" />
                                     <field name="user_id" string="User"/>
-                                    <field name="emergency_contact" context="{'show_address': 1}"
-                                        options='{"always_reload": True}' />
                                 </group>
                                 <group string="Address Detail" name="address">
                                     <label for="street" string="Address" />
@@ -157,17 +152,14 @@
             <field name="arch" type="xml">
                 <search string="Student">
                     <field name="name" />
-                    <field name="blood_group" />
+                    <field name="roll_number" />
                     <field name="id_number" />
+                    <field name="course_id" />
                     <field name="edition_id" />
-					<field name="issuer_id"/>
                     <newline />
                     <group expand="0" string="Group By...">
-                        <filter name="blood_group" string="Blood Group" domain="[]"
-                            context="{'group_by':'blood_group'}" />
-                        <filter name="nationality" string="Nationality" domain="[]"
-                            context="{'group_by':'nationality'}" />
-                        <filter name="language" string="Language" domain="[]" context="{'group_by':'language'}" />
+                        <filter name="course" string="Course" domain="[]"
+                            context="{'group_by':'course_id'}" />
                         <filter name="edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                     </group>
                 </search>
