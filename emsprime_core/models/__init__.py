@@ -20,8 +20,8 @@
 ##############################################################################
 
 from . import location
-from . import attachment_type
-from . import attachment
+#from . import attachment_type
+#from . import attachment
 from . import course
 from . import edition
 from . import semester
