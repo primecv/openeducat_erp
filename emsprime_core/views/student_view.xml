@@ -90,11 +90,15 @@
                                     <field name="birth_date" />
                                     <field name="nationality" />
                                     <field name="location_id" />
-									<field name="issuer_id"/>
 									<field name="id_number" />
+									<field name="issuer_id"/>
                                     <field name="lang" />
                                     <field name="mother" />
                                     <field name="father" />
+                                    <field name="phone" />
+                                    <field name="mobile" />
+                                    <field name="email" />
+                                    <field name="institutional_email" />
                                     <field name="user_id" string="User"/>
                                 </group>
                                 <group string="Address Detail" name="address">

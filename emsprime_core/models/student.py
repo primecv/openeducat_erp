@@ -85,6 +85,7 @@ class EmsStudent(models.Model):
     mother = fields.Char('Mother', size=255)
     father = fields.Char('Father', size=255)
     issuer_id = fields.Many2one('ems.location', 'Issuer')
+    institutional_email = fields.Char('Institutional email', size=128)
 
     @api.one
     @api.constrains('birth_date')
