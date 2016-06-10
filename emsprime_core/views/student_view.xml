@@ -131,12 +131,14 @@
 								            <field name="roll_number" />
 								            <field name="course_id" />
 								            <field name="edition_id" />
+											<field name="type" />
 										</tree>
 										<form string="Enrollment">
 											<group col="4">
 										        <field name="roll_number" />
 										        <field name="course_id" />
 										        <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
+												<field name="type" />
 											</group>
 										</form>
 									</field>
