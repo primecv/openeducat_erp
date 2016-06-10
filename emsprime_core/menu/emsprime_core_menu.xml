@@ -70,7 +70,29 @@
         <menuitem id="menu_ems_config_locations" name="Locations"
             parent="menu_ems_school_config_general" sequence="20"
             action="hr_location_action" groups="group_ems_back_office,group_ems_back_office_admin" />
+		<delete id="menu_ems_config_locations" model="ir.ui.menu"/>
 
+        <menuitem id="menu_ems_config_location" name="Locations"
+            parent="menu_ems_school_config_general" sequence="20"
+            groups="group_ems_back_office,group_ems_back_office_admin" />
+		
+		<menuitem id="menu_ems_location_country" 
+			parent="menu_ems_config_location"
+			action="hr_location_country_action"
+			sequence="2"/>
+		<menuitem id="menu_ems_location_island" 
+			parent="menu_ems_config_location"
+			action="hr_location_island_action"
+			sequence="4"/>
+		<menuitem id="menu_ems_location_county" 
+			parent="menu_ems_config_location"
+			action="hr_location_county_action"
+			sequence="6"/>
+		<menuitem id="menu_ems_location_parish" 
+			parent="menu_ems_config_location"
+			action="hr_location_parish_action"
+			sequence="8"/>
+		
 		<!-- Attachments Type Menu -->
         <menuitem id="menu_ems_config_attachments_types" name="Attachments Types"
             parent="menu_ems_school_config_general" sequence="25"
