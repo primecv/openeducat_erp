@@ -111,6 +111,9 @@
                                     <field name="lang" />
                                     <field name='emp_id' />
                                 </group>
+                                <group string="Training Areas" name="training_area">
+                                    <field name="training_area_line" colspan="4" nolabel="1" />
+                                </group>								
                                 <group string="Address Detail" name="address">
                                     <label for="street" string="Address" />
                                     <div name="div_address">
