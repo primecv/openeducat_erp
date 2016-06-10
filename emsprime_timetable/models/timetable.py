@@ -37,7 +37,7 @@ class EmsTimetable(models.Model):
     #course_id = fields.Many2one('ems.course', 'Course', required=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     #edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
-    classroom_id = fields.Many2one('ems.classroom', 'Classroom', required=True)
+    classroom_id = fields.Many2one('ems.classroom', 'Classroom')
     class_id = fields.Many2one('ems.class', 'Class', required=True)
     color = fields.Integer('Color Index')
     type = fields.Selection(
