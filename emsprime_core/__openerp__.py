@@ -52,6 +52,7 @@
         'views/location_view.xml',
         'views/attachment_type_view.xml',
         'views/attachment_view.xml',
+        'views/training_area_view.xml',
         'views/course_view.xml',
         'views/edition_view.xml',
         'views/semester_view.xml',

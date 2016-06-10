@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+###############################################################################
 #
 #    Tech-Receptives Solutions Pvt. Ltd.
-#    Copyright (C) 2009-TODAY Tech Receptives(<http://www.techreceptives.com>).
+#    Copyright (C) 2009-TODAY Tech-Receptives(<http://www.techreceptives.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Lesser General Public License as
@@ -17,24 +17,19 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-##############################################################################
+###############################################################################
 
-from . import location
-from . import attachment_type
-from . import attachment
-from . import training_area
-from . import course
-from . import edition
-from . import semester
-from . import faculty
-from . import hr
-from . import res_company
-from . import enrollment
-from . import student
-from . import subject
-from . import ems_class
-from . import ems_request
-from . import degree
+from openerp import models, fields, api
+from openerp.exceptions import ValidationError
+
+
+class EmsTrainingArea(models.Model):
+    _name = 'ems.training.area'
+
+    name = fields.Char('Area', size=128, required=True)
+    entity = fields.Char('Entity', size=128, required=True)
+    country_id = fields.Many2one('res.country', 'Country')
+    faculty_id = fields.Many2one('ems.faculty', 'Faculty')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
