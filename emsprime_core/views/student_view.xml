@@ -93,24 +93,7 @@
                                     <field name="lang" />
                                     <field name="mother" />
                                     <field name="father" />
-                                    <field name="phone" />
-                                    <field name="mobile" />
-                                    <field name="email" />
-                                    <field name="institutional_email" />
                                     <field name="user_id" string="User"/>
-                                </group>
-                                <group string="Address Detail" name="address">
-                                    <label for="street" string="Address" />
-                                    <div name="div_address">
-                                        <field name="street" placeholder="Street..." />
-                                        <field name="street2" placeholder="Street2" />
-                                        <div class="address_format">
-                                            <field name="city" placeholder="City" style="width: 40%%" />
-                                            <field name="zip" placeholder="ZIP" style="width: 20%%" />
-                                        </div>
-                                        <field name="country_id" placeholder="Country" class="oe_no_button"
-                                            options='{"no_open": True}' />
-                                    </div>
                                 </group>
                             </page>
                             <page name="educational" string="Educational">
@@ -144,6 +127,28 @@
 									</field>
                                 </group>
                             </page>
+                            <page name="contacts" string="Contacts">
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Contacts" />
+                                    <field name="phone" />
+                                    <field name="mobile" />
+                                    <field name="email" />
+                                    <field name="institutional_email" />
+                                </group>
+                                <group string="Address Detail" name="address">
+                                    <label for="street" string="Address" />
+                                    <div name="div_address">
+                                        <field name="street" placeholder="Street..." />
+                                        <field name="street2" placeholder="Street2" />
+                                        <div class="address_format">
+                                            <field name="city" placeholder="City" style="width: 40%%" />
+                                            <field name="zip" placeholder="ZIP" style="width: 20%%" />
+                                        </div>
+                                        <field name="country_id" placeholder="Country" class="oe_no_button"
+                                            options='{"no_open": True}' />
+                                    </div>
+                                </group>								
+                            </page>								
                             <page name="attachment" string="Attachments">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Attachments" />
