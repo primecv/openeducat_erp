@@ -57,7 +57,7 @@ class EmsLocation(models.Model):
 				('2','Island'),
 				('3','County'),
 				('4','Parish')
-		], string='Place of birth', required=True)
+		], string='Location type', required=True)
 
 
 
