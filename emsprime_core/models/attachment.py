@@ -27,7 +27,7 @@ class EmsAttachment(models.Model):
     _name = 'ems.attachment'
     _rec_name = 'attachment_type_id'
 
-    dates_fname = fields.Char('Filename', size=100, required=True)
+    dates_fname = fields.Char('Filename', size=100)
     attachment_type_id = fields.Many2one('ems.attachment.type', 'Type', required=True)
     attachment = fields.Binary('Attachment')
     student_id = fields.Many2one('ems.student', 'Student')
