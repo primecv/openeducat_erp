@@ -26,6 +26,7 @@ from datetime import datetime, date
 class EmsStudent(models.Model):
     _name = 'ems.student'
     _inherits = {'res.partner': 'partner_id'}
+    _rec_name = "complete_name"
 
     @api.one
     @api.depends('name', 'middle_name', 'last_name')
