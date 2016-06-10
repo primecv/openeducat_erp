@@ -50,7 +50,7 @@
 		                </div>
 						<group col="4">
 							<field name="request_type_id" options="{'no_create':1, 'no_open':1}" required="1"/>
-							<field name="student_id" required="1"/>
+							<field name="enrollment_id" required="1"/>
 							<field name="date"/>
 						</group>
 						<group colspan="4">
@@ -71,7 +71,7 @@
 				<tree string="Request">
 					<field name="name"/>
 					<field name="request_type_id"/>
-					<field name="student_id"/>
+					<field name="enrollment_id"/>
 					<field name="date"/>
 					<field name="state"/>
 				</tree>
