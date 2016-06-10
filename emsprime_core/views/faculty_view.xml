@@ -125,6 +125,25 @@
                             <page name="subjects" string="Subjects">
                                 <field name="faculty_subject_ids" colspan="4" nolabel="1" />
                             </page>
+                            <page name="attachment" string="Attachments">
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Attachments" />
+                                    <field name="attachment_line" colspan="4" nolabel="1">
+										<tree string="Attachments">
+											<field name="attachment_type_id" />
+											<field name="attachment" filename="dates_fname" />
+											<field name="dates_fname" select="1" invisible="1"/>
+										</tree>
+										<form string="Attachment">
+											<group col="4">
+										        <field name="attachment_type_id" />
+										        <field name="attachment" filename="dates_fname" widget="binary" />
+										        <field name="dates_fname" select="1" invisible="1" />
+											</group>
+										</form>
+									</field>
+                                </group>
+                            </page>								
                         </notebook>
                     </sheet>
                 </form>
