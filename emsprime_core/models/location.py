@@ -50,7 +50,7 @@ class EmsLocation(models.Model):
 
     name = fields.Char(string='Name', required=True)
     complete_name = fields.Char(string='Name', store=True, compute='_location_name_get_fnc')
-    parent_id = fields.Many2one('ems.location', string='Belongs To', required=True)
+    parent_id = fields.Many2one('ems.location', string='Belongs To', required=False)
     latitude = fields.Float(string='Latitude')
     longitude = fields.Float(string='Longitude')
     level = fields.Selection([('1','Country'),
