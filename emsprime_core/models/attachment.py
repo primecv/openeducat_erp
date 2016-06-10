@@ -32,6 +32,7 @@ class EmsAttachment(models.Model):
     attachment = fields.Binary('Attachment')
     student_id = fields.Many2one('ems.student', 'Student')
     faculty_id = fields.Many2one('ems.faculty', 'Faculty')
+    course_id = fields.Many2one('ems.course', 'Course')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

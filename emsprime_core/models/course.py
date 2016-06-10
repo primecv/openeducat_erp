@@ -34,6 +34,7 @@ class EmsCourse(models.Model):
         'Evaluation Type', default="normal", required=True)
     subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
     degree_id = fields.Many2one('ems.course.degree', 'Degree')
+    attachment_line = fields.One2many('ems.attachment', 'course_id', 'Attachments')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
