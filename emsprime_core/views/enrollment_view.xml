@@ -11,6 +11,7 @@
                     <field name="student_id" />
                     <field name="course_id" />
                     <field name="edition_id" />
+					<field name="type" />
                 </tree>
             </field>
         </record>
@@ -26,6 +27,7 @@
                             <field name="student_id" />
                             <field name="course_id" />
                             <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
+                            <field name="type" />
                         </group>
                     </sheet>
                 </form>
@@ -40,6 +42,7 @@
                     <field name="roll_number" />
                     <field name="course_id" />
                     <field name="edition_id" />
+					<field name="type" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="Roll Number" domain="[]"
@@ -47,6 +50,7 @@
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
                         <filter string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter string="Type" domain="[]" context="{'group_by':'type'}" />
                     </group>
                 </search>
             </field>
