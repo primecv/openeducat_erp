@@ -60,6 +60,7 @@ class EmsFaculty(models.Model):
     complete_name = fields.Char('Faculty Name', compute='_get_complete_name', store=False)
     institutional_email = fields.Char('Institutional email', size=128)
     degree_id = fields.Many2one('ems.course.degree', 'Degree')
+    attachment_line = fields.One2many('ems.attachment', 'faculty_id', 'Attachments')
 
     @api.one
     @api.constrains('birth_date')
