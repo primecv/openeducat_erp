@@ -94,6 +94,10 @@ class EmsStudent(models.Model):
     institutional_email = fields.Char('Institutional email', size=128)
     complete_name = fields.Char('Name', compute='_get_complete_name', store=True)
     attachment_line = fields.One2many('ems.attachment', 'student_id', 'Attachments')
+    country_id = fields.Many2one('ems.location', 'Country')
+    island_id = fields.Many2one('ems.location', 'Island')
+    county_id = fields.Many2one('ems.location', 'County')
+    parish_id = fields.Many2one('ems.location', 'Parish')
 
     @api.one
     @api.constrains('birth_date')
