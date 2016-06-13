@@ -82,6 +82,9 @@
                                 <group col="4" colspan="4" name="personal_detail">
                                     <field name="gender" />
                                     <field name="birth_date" />
+									<separator colspan="4" string="Filiation" />
+                                    <field name="mother" />
+                                    <field name="father" />									
                                     <field name="nationality" />
 									<field name="id_number" />
 									<field name="issuer_id"/>
@@ -90,9 +93,6 @@
 									<field name="island_id" domain="[('level','=','2')]" context="{'form_view_ref':'emsprime_core.hr_location_island_form_view', 'default_level':'2'}"/>
 									<field name="county_id" domain="[('level','=','3')]" context="{'form_view_ref':'emsprime_core.hr_location_county_form_view', 'default_level':'3'}"/>
 									<field name="parish_id" domain="[('level','=','4')]" context="{'form_view_ref':'emsprime_core.hr_location_parish_form_view', 'default_level':'4'}"/>
-									<separator colspan="4" string="Filiation" />
-                                    <field name="mother" />
-                                    <field name="father" />
                                 </group>
                             </page>
                             <page name="educational" string="Educational">
@@ -125,7 +125,7 @@
 										</form>
 									</field>
                                 </group>
-                            </page>
+                            </page>						
                             <page name="contacts" string="Contacts">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Contacts" />
@@ -147,7 +147,21 @@
                                             options='{"no_open": True}' />
                                     </div>
                                 </group>								
-                            </page>								
+                            </page>	
+                            <page name="qualifications" string="Qualifications">
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Qualifications" />
+                                    <field name="app_course_year" />
+                                    <field name="app_course_academic_year"/>
+                                    <field name="app_course_area"/>
+                                    <field name="math_final_average"/>
+                                    <field name="course_option_1"/>
+                                    <field name="course_option_2"/>
+                                    <field name="course_option_3"/>
+                                    <field name="schedule_choice"/>
+                                    <field name="sponsorship"/>
+                                </group>
+							</page>								
                             <page name="attachment" string="Attachments">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Attachments" />
@@ -167,7 +181,7 @@
 									</field>
                                 </group>
                             </page>
-                            <page name="contacts" string="System">
+                            <page name="system" string="System">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="System" />
                                     <field name="lang" />

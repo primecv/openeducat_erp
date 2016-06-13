@@ -98,7 +98,22 @@ class EmsStudent(models.Model):
     island_id = fields.Many2one('ems.location', 'Island')
     county_id = fields.Many2one('ems.location', 'County')
     parish_id = fields.Many2one('ems.location', 'Parish')
-
+    app_course_year = fields.Char("Course/Year", size=255)
+    app_course_academic_year = fields.Char("Academic Year", size=64)
+    app_course_area = fields.Char("Area", size=255)
+    math_final_average = fields.Float('Math Final Average')
+    course_option_1 = fields.Many2one('ems.course', 'Course - Option 1')
+    course_option_2 = fields.Many2one('ems.course', 'Course - Option 2')
+    course_option_3 = fields.Many2one('ems.course', 'Course - Option 3')
+    schedule_choice = fields.Selection(
+        [('morning', 'Morning'), ('afternoon', 'Afternoon'),
+         ('evening', 'Evening')],
+        'Schedule Choice', default="morning")
+    sponsorship = fields.Selection(
+        [('own_expenses', 'Own Expenses'), ('scholarship', 'Scholarship'),
+         ('company', 'Company')],
+        'Sponsorship', default="own_expenses")		
+	
     @api.one
     @api.constrains('birth_date')
     def _check_birthdate(self):
