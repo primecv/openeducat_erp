@@ -34,6 +34,7 @@
                             <field name="evaluation_type" />
 							<field name="degree_id" widget="selection"/>
                             <field name="parent_id" />
+							<field name="active"/>
                         </group>
 						<group col="4" colspan="4">
 							<separator colspan="4" string="Attachments" />
@@ -73,6 +74,8 @@
                     <field name="parent_id" />
                     <newline />
                     <group expand="0" string="Group By...">
+						<filter name="degree" string="Degree" domain="[]" 
+							context="{'group_by':'degree_id'}"/>
                         <filter string="Evaluation Type" domain="[]"
                             context="{'group_by':'evaluation_type'}" />
                         <filter string="Parent Course" domain="[]"
