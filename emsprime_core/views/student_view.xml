@@ -148,7 +148,7 @@
                                     </div>
                                 </group>								
                             </page>	
-                            <page name="qualifications" string="Qualifications">
+                            <page name="applications" string="Applications">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Qualifications" />
                                     <field name="app_course_year" />
