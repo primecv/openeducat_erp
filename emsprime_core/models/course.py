@@ -19,8 +19,8 @@
 #
 ###############################################################################
 
-from openerp import models, fields
-
+from openerp import models, fields, api
+from lxml import etree
 
 class EmsCourse(models.Model):
     _name = 'ems.course'
@@ -37,5 +37,27 @@ class EmsCourse(models.Model):
     active = fields.Boolean(string="Active", default=True)
     attachment_line = fields.One2many('ems.attachment', 'course_id', 'Attachments')
 
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        """Dynamically format Degree Filters To Course search view
+        """
+        res = super(EmsCourse, self).fields_view_get(
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        if view_type == 'search':
+            degree_ids = self.env['ems.course.degree'].search([('id','>',0)])
+            degrees, degree_ref = [], []
+            if degree_ids:
+                for degree in degree_ids:
+                    degrees.append(degree.name)
+                    degree_ref.append(degree.id)
+                for r in range(0, len(degrees)):
+                    doc = etree.XML(res['arch'])
+                    sfilter = etree.Element('filter')
+                    sfilter.set('string', degrees[r])
+                    sfilter.set('domain', "[('degree_id','=',%s)]"%(degree_ref[r]))
+                    node = doc.xpath("//field[@name='parent_id']")
+                    node[0].addnext(sfilter)
+                    res['arch'] = etree.tostring(doc)
+        return res
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
