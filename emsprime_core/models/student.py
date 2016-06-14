@@ -121,6 +121,11 @@ class EmsStudent(models.Model):
         [('own_expenses', 'Own Expenses'), ('scholarship', 'Scholarship'),
          ('company', 'Company')],
         'Sponsorship', default="own_expenses")		
+    state = fields.Selection([('draft', 'New'),
+                              ('submit', 'Submitted'),
+                              ('received', 'Received'),
+                              ('confirmed', 'Accepted'),
+                              ('rejected', 'Rejected')], 'State', default='draft')
 	
     @api.one
     @api.constrains('birth_date')
@@ -128,6 +133,22 @@ class EmsStudent(models.Model):
         if self.birth_date > fields.Date.today():
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
+
+    @api.multi
+    def action_submit(self):
+        return self.write({'state': 'submit'})
+
+    @api.multi
+    def action_received(self):
+        return self.write({'state': 'received'})
+
+    @api.multi
+    def action_confirm(self):
+        return self.write({'state': 'confirmed'})
+
+    @api.multi
+    def action_reject(self):
+        return self.write({'state': 'rejected'})
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
