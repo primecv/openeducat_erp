@@ -3,15 +3,15 @@
     <data>
         <!-- Openeducat Menu -->
         <menuitem id="menu_ems_school_root" name="EmsPrime"
-            sequence="10" groups="group_ems_back_office,group_ems_back_office_admin" />
+            sequence="10" groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin" />
 
 
         <menuitem id="menu_ems_school_main" name="Students" parent="menu_ems_school_root"
-            sequence="10" groups="group_ems_back_office,group_ems_back_office_admin" />
+            sequence="10" groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin" />
 
         <menuitem id="menu_ems_student_sub" name="Students" parent="menu_ems_school_main"
             sequence="10" action="act_open_ems_student_view"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin" />
 
 		<!-- Classes Menu -->
 		<menuitem id="menu_ems_student_sub_classes" 
