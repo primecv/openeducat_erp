@@ -23,6 +23,11 @@ from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from datetime import datetime, date
 
+@api.model
+def _lang_get(self):
+    languages = self.env['res.lang'].search([])
+    return [(language.code, language.name) for language in languages]
+
 class EmsStudent(models.Model):
     _name = 'ems.student'
     _inherits = {'res.partner': 'partner_id'}
@@ -75,6 +80,7 @@ class EmsStudent(models.Model):
     visa_info = fields.Char('Visa Info', size=64)
     id_number = fields.Char('ID Card Number', size=64)
     photo = fields.Binary('Photo')
+    lang = fields.Selection(_lang_get, 'Language', default='pt_PT')
     course_ids = fields.Many2many('ems.course', 'ems_student_course_rel', 'student_id', 'course_id', 'Course(s)')
     #edition_id = fields.Many2one('ems.edition', 'Edition', required=False)
     roll_number_line = fields.One2many(
