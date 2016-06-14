@@ -35,6 +35,6 @@ from . import subject
 from . import ems_class
 from . import ems_request
 from . import degree
-
+from . import mail_message
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
