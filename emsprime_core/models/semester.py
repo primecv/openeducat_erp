@@ -26,7 +26,12 @@ from openerp.exceptions import ValidationError
 class EmsSemester(models.Model):
     _name = 'ems.semester'
 
-    name = fields.Char('Name', size=32, required=False)
+    @api.one
+    @api.depends('semester')
+    def _get_name(self):
+        self.name = str(self.semester) + 'º' + ' Semester'
+
+    name = fields.Char('Name', compute='_get_name', store=True)
     start_date = fields.Date(
         'Start Date', required=False, default=fields.Date.today())
     end_date = fields.Date('End Date', required=False)
@@ -37,15 +42,15 @@ class EmsSemester(models.Model):
     #course_id = fields.Many2one('ems.course', string='Course', related='edition_id.course_id', store=True, readonly=True)
     subject_ids = fields.Many2many('ems.subject', 'ems_semester_subject_rel', 'semester_id', 'subject_id', string='Subjects')
     subject_line = fields.One2many('ems.semester.subject', 'semester_id', 'Subjects')
-    semester = fields.Selection([('1', 'I'), 
-                                ('2', 'II'), 
-                                ('3', 'III'),
-                                ('4', 'IV'),
-                                ('5', 'V'),
-                                ('6', 'VI'),
-                                ('7', 'VII'),
-                                ('8', 'VIII'),
-                                ('9', 'IX')
+    semester = fields.Selection([('1', '1'), 
+                                ('2', '2'), 
+                                ('3', '3'),
+                                ('4', '4'),
+                                ('5', '5'),
+                                ('6', '6'),
+                                ('7', '7'),
+                                ('8', '8'),
+                                ('9', '9')
 
             ], 'Semester')
     year = fields.Char('Year', size=4)
