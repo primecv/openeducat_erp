@@ -97,6 +97,7 @@ class EmsStudent(models.Model):
     mother = fields.Char('Mother', size=255)
     father = fields.Char('Father', size=255)
     issuer_id = fields.Many2one('ems.location', 'Issuer')
+    issue_date = fields.Date('Issue Date')
     institutional_email = fields.Char('Institutional email', size=128)
     complete_name = fields.Char('Name', compute='_get_complete_name', store=True)
     attachment_line = fields.One2many('ems.attachment', 'student_id', 'Attachments')
