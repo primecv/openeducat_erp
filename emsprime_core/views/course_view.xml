@@ -71,6 +71,9 @@
 <!--                    <field name="section" /> -->
                     <field name="evaluation_type" />
 					<field name="degree_id"/>
+					<filter string="Active" domain="[('active','=',True)]" name="filter_active"/>
+					<filter string="Inactive" domain="[('active','=',False)]" name="filter_inactive"/>
+                    <newline />
                     <field name="parent_id" />
                     <newline />
                     <group expand="0" string="Group By...">
