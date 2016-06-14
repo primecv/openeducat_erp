@@ -55,14 +55,6 @@ class EmsSemester(models.Model):
             ], 'Semester')
     year = fields.Char('Year', size=4)
 
-    @api.one
-    @api.constrains('start_date', 'end_date')
-    def check_dates(self):
-        start_date = fields.Date.from_string(self.start_date)
-        end_date = fields.Date.from_string(self.end_date)
-        if start_date > end_date:
-            raise ValidationError("End Date cannot be set before Start Date.")
-
 class EmsSemesterSubject(models.Model):
     _name = "ems.semester.subject"
     _description = "Semester Subjects"
