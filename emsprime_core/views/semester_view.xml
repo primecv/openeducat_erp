@@ -27,11 +27,20 @@
                             <field name="course_id" />
                             <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
                             <field name="semester" />
-                            <field name="year" />
-                            <field name="start_date" />
-                            <field name="end_date" />
-							<field name="subject_ids" widget="many2many_tags"/>
+                            <field name="year" invisible="1"/>
+                            <field name="start_date" invisible="1"/>
+                            <field name="end_date" invisible="1"/>
                         </group>
+						<group colspan="4" string="Subjects">
+							<field name="subject_line" widget="one2many_list" nolabel="1">
+								<tree editable="bottom" string="Semester Subjects">
+									<field name="subject_id" required="1"/>
+									<field name="week_work_load" widget="float_time"/>
+									<field name="student_contact" widget="float_time"/>
+									<field name="ects"/>
+								</tree>
+							</field>
+						</group>
                     </sheet>
                 </form>
             </field>
