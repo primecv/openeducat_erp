@@ -79,6 +79,7 @@ class EmsStudent(models.Model):
         'res.partner', 'Emergency Contact')
     visa_info = fields.Char('Visa Info', size=64)
     id_number = fields.Char('ID Card Number', size=64)
+    passport_no = fields.Char('Passport/BI', size=20)
     photo = fields.Binary('Photo')
     lang = fields.Selection(_lang_get, 'Language', default='pt_PT')
     course_ids = fields.Many2many('ems.course', 'ems_student_course_rel', 'student_id', 'course_id', 'Course(s)')
