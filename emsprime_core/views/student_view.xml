@@ -188,6 +188,7 @@
 		                                <field name="course_option_3"/>
 									</group>
 									<group>
+	                                    <field name="university_center_id"/>
 	                                    <field name="schedule_choice"/>
     	                                <field name="sponsorship"/>
 									</group>
