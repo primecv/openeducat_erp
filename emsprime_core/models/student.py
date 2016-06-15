@@ -22,6 +22,7 @@
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from datetime import datetime, date
+from lxml import etree
 
 @api.model
 def _lang_get(self):
@@ -140,6 +141,32 @@ class EmsStudent(models.Model):
         if self.birth_date > fields.Date.today():
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
+
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        """Filter Courses with Editions having Start Date greater than today's date
+           Applicable only in Student form.
+        """
+        res = super(EmsStudent, self).fields_view_get(
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        if view_type == 'form': 
+            doc = etree.XML(res['arch'])
+            today = fields.Date.today()
+            editions = self.env['ems.edition'].search([('start_date', '>', today)])
+            courses = []
+            if editions:
+                for edition in editions:
+                    courses.append(edition.course_id.id)
+                for node in doc.xpath("//field[@name='course_option_1']"):
+                    node.set('domain', "[('id','in',%s)]"%(courses))
+                res['arch'] = etree.tostring(doc)
+                for node in doc.xpath("//field[@name='course_option_2']"):
+                    node.set('domain', "[('id','in',%s)]"%(courses))
+                res['arch'] = etree.tostring(doc)
+                for node in doc.xpath("//field[@name='course_option_3']"):
+                    node.set('domain', "[('id','in',%s)]"%(courses))
+                res['arch'] = etree.tostring(doc)
+        return res
 
     @api.multi
     def action_submit(self):
