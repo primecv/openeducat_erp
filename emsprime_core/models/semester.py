@@ -63,6 +63,7 @@ class EmsSemesterSubject(models.Model):
     subject_id = fields.Many2one('ems.subject', 'Subject')
     week_work_load = fields.Float('CHS', help='Weekly Work Load')
     student_contact = fields.Float('Contact', help='Hours of Contact with Student')
+    work = fields.Integer('Work')
     ects = fields.Integer('ECTS')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
