@@ -134,6 +134,8 @@ class EmsStudent(models.Model):
     pcity = fields.Char('City')
     pzip = fields.Char('PostCode')
     pcountry_id = fields.Many2one('res.country', 'Country')
+    portuguese_final_average = fields.Float('Portuguese Grade')
+    final_average = fields.Float('Final Average')
 	
     @api.one
     @api.constrains('birth_date')
