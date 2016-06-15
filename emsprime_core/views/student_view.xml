@@ -142,19 +142,33 @@
                                     <field name="email" />
                                     <field name="institutional_email" />
                                 </group>
-                                <group string="Address Detail" name="address">
-                                    <label for="street" string="Address" />
-                                    <div name="div_address">
-                                        <field name="street" placeholder="Street..." />
-                                        <field name="street2" placeholder="Street2" />
-                                        <div class="address_format">
-                                            <field name="city" placeholder="City" style="width: 40%%" />
-                                            <field name="zip" placeholder="ZIP" style="width: 20%%" />
-                                        </div>
-                                        <field name="country_id" placeholder="Country" class="oe_no_button"
-                                            options='{"no_open": True}' />
-                                    </div>
-                                </group>								
+
+								<group>
+						            <group string="Academical Address">
+							            <label for="street" string="Address"/>
+							            <div name="div_address">
+							                <field name="street" placeholder="Street..."/>
+							                <field name="street2"/>
+							                <div class="address_format">
+							                    <field name="city" placeholder="City" style="width: 50%%"/>
+							                    <field name="zip" placeholder="Postcode" style="width: 40%%"/>
+							                </div>
+							                <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+							            </div>
+									</group>
+									<group string="Permanant Address">
+										<label for="pstreet" string="Address"/>
+										<div name="div_paddress">
+										    <field name="pstreet" placeholder="Street..."/>
+										    <field name="pstreet2"/>
+										    <div class="address_format">
+										        <field name="pcity" placeholder="City" style="width: 50%%"/>
+										        <field name="pzip" placeholder="Postcode" style="width: 40%%"/>
+										    </div>
+										    <field name="pcountry_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+										</div>
+									</group>
+								</group>
                             </page>	
                             <page name="applications" string="Applications">
                                 <group col="4" colspan="4">
@@ -162,12 +176,19 @@
                                     <field name="app_course_year" />
                                     <field name="app_course_academic_year"/>
                                     <field name="app_course_area"/>
+									<field name="high_school_score"/>
                                     <field name="math_final_average"/>
-                                    <field name="course_option_1"/>
-                                    <field name="course_option_2"/>
-                                    <field name="course_option_3"/>
-                                    <field name="schedule_choice"/>
-                                    <field name="sponsorship"/>
+								</group>
+								<group string="Options" colspan="4">
+									<group>
+		                                <field name="course_option_1"/>
+		                                <field name="course_option_2"/>
+		                                <field name="course_option_3"/>
+									</group>
+									<group>
+	                                    <field name="schedule_choice"/>
+    	                                <field name="sponsorship"/>
+									</group>
                                 </group>
 							</page>								
                             <page name="attachment" string="Attachments">

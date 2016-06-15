@@ -113,6 +113,7 @@ class EmsStudent(models.Model):
     course_option_1 = fields.Many2one('ems.course', 'Course - Option 1')
     course_option_2 = fields.Many2one('ems.course', 'Course - Option 2')
     course_option_3 = fields.Many2one('ems.course', 'Course - Option 3')
+    high_school_score = fields.Char('High School')
     schedule_choice = fields.Selection(
         [('morning', 'Morning'), ('afternoon', 'Afternoon'),
          ('evening', 'Evening')],
@@ -126,6 +127,12 @@ class EmsStudent(models.Model):
                               ('received', 'Received'),
                               ('confirmed', 'Accepted'),
                               ('rejected', 'Rejected')], 'State', default='draft')
+    #Permanant Address fields:
+    pstreet = fields.Char('Street')
+    pstreet2 = fields.Char('Street2')
+    pcity = fields.Char('City')
+    pzip = fields.Char('PostCode')
+    pcountry_id = fields.Many2one('res.country', 'Country')
 	
     @api.one
     @api.constrains('birth_date')
