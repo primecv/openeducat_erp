@@ -35,7 +35,7 @@
             <field name="arch" type="xml">
                 <tree string="Locations">
                     <field name="level"/>
-                    <field name="complete_name"/>
+                    <field name="name"/>
                 </tree>
             </field>
         </record>
