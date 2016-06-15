@@ -166,6 +166,7 @@ class EmsStudent(models.Model):
                 for node in doc.xpath("//field[@name='course_option_3']"):
                     node.set('domain', "[('id','in',%s)]"%(courses))
                 res['arch'] = etree.tostring(doc)
+                print"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ReS \n",res['arch']
         return res
 
     @api.multi
