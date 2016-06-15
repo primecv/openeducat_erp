@@ -136,6 +136,7 @@ class EmsStudent(models.Model):
     pcountry_id = fields.Many2one('res.country', 'Country')
     portuguese_final_average = fields.Float('Portuguese Grade')
     final_average = fields.Float('Final Average')
+    university_center_id = fields.Many2one('ems.university.center', 'University Center')
 	
     @api.one
     @api.constrains('birth_date')
