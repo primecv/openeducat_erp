@@ -74,6 +74,7 @@
         
         'data/degree.xml',
         'data/request.xml',
+        'data/res_users.xml',
 
         'report/report_frequency_declaration.xml',
     ],

@@ -1,0 +1,20 @@
+<openerp>
+	<data noupdate="1">
+
+        <record model="res.partner" id="partner_candidato">
+            <field name="name">Candidato</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="customer" eval="False"/>
+            <field name="email"></field>
+        </record>
+
+		<record id="emsprime_core.user_candidato" model="res.users">
+            <field name="name">Candidato</field>
+            <field name="login">candidato</field>
+            <field name="password">2016</field>
+            <field name="groups_id" eval="[(6,0,[ref('emsprime_core.group_ems_applicant')])]"/>
+            <field name="partner_id" ref="partner_candidato"/>
+		</record>
+
+	</data>
+</openerp>
