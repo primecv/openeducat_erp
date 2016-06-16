@@ -156,7 +156,7 @@
 							                <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
 							            </div>
 									</group>
-									<group string="Permanant Address">
+									<group string="Permanent Address">
 										<label for="pstreet" string="Address"/>
 										<div name="div_paddress">
 										    <field name="pstreet" placeholder="Street..."/>
