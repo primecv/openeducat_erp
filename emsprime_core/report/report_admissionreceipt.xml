@@ -6,10 +6,11 @@
         <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
-			<div align="center"><strong>BOLETIM DE INSCRIÇÃO</strong></div>
-			<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+			<div align="center" style="color:gray;"><strong>BOLETIM DE INSCRIÇÃO</strong></div>
             
-			<div class="row">
+			<div class="row" style="color:gray;">
+				<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+				
 				<strong>Dados Pessoais </strong> <br/>
 
 				<strong>Nome</strong>: <span t-field="o.complete_name" style="text-transform:uppercase;"/><br/>
@@ -30,10 +31,10 @@
 
 				<strong>Telefone</strong>: <span t-field="o.phone"/> <strong>Telemóvel</strong>: <span t-field="o.mobile"/><br/>
 				<strong>Email Pessoal</strong>: <span t-field="o.email"/> <br/>
-				<strong>Residência Académica</strong>: <span t-field="o.street"/><span t-if="o.street2">,<span t-field="o.street2"/></span>
-				<span t-if="o.city">,<span t-field="o.city"/></span>
-				<span t-if="o.zip">,<span t-field="o.zip"/></span>
-				<span t-if="o.country_id">,<span t-field="o.country_id.name"/></span>
+				<strong>Residência Académica</strong>: <span t-field="o.street"/><span t-if="o.street2">, <span t-field="o.street2"/></span>
+				<span t-if="o.city">, <span t-field="o.city"/></span>
+				<span t-if="o.zip">, <span t-field="o.zip"/></span>
+				<span t-if="o.country_id">, <span t-field="o.country_id.name"/></span>
 				<br/>
 				<strong>Residência Permanente</strong>: <span t-field="o.pstreet"/><span t-if="o.pstreet2">, <span t-field="o.pstreet2"/></span>
 				<span t-if="o.pcity">, <span t-field="o.pcity"/></span>
