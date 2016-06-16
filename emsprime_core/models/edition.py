@@ -89,7 +89,7 @@ class EmsEdition(models.Model):
 
             if new_course_id:
                 self.env.cr.execute("""update ems_course set is_active=%s where id=%s"""%(state, new_course_id))
-                self.env.cr.execute("""update ems_course set is_active=%s where id=%s"""%(state, course_id))
+                self.env.cr.execute("""update ems_course set is_active=False where id=%s"""%(course_id))
             else:
                 self.env.cr.execute("""update ems_course set is_active=%s where id=%s"""%(state, course_id))
         return super(EmsEdition, self).write(vals)
