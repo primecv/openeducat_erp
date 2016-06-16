@@ -103,7 +103,7 @@
 									<field name="parish_id" domain="[('level','=','4')]" context="{'form_view_ref':'emsprime_core.hr_location_parish_form_view', 'default_level':'4'}"/>
                                 </group>
                             </page>
-                            <page name="educational" string="Educational">
+                            <page name="educational" string="Educational" groups="group_ems_student,group_ems_faculty,group_ems_back_office,group_ems_back_office_admin">
 								<group colspan="4" attrs="{'invisible':[('course_id','!=',False)]}">
 									<div>
 										<h2 style="color:#f86242;">Student does not have active Enrollment!</h2>
