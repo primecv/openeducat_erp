@@ -51,7 +51,7 @@
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/> <br/>
 
-				<strong>Candidatura </strong>: <br/>
+				<strong>Candidatura</strong><br/>
 				<strong>1ª Opção</strong>: <span t-field="o.course_option_1.name"/> <br/>
 				<strong>2ª Opção</strong>: <span t-field="o.course_option_2.name"/> <br/>
 				<strong>3ª Opção</strong>: <span t-field="o.course_option_3.name"/> <br/>
