@@ -184,9 +184,9 @@
 								</group>
 								<group string="Options" colspan="4">
 									<group>
-		                                <field name="course_option_1"/>
-		                                <field name="course_option_2"/>
-		                                <field name="course_option_3"/>
+		                                <field name="course_option_1" domain="[('is_active','=',True)]"/>
+		                                <field name="course_option_2" domain="[('is_active','=',True)]"/>
+		                                <field name="course_option_3" domain="[('is_active','=',True)]"/>
 									</group>
 									<group>
 	                                    <field name="university_center_id"/>

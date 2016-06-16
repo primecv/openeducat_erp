@@ -55,4 +55,30 @@ class EmsEdition(models.Model):
         return super(EmsEdition, self).name_search(
             name, args, operator=operator, limit=limit)
 
+    @api.model
+    def create(self, vals):
+        """Mark Related course as Active if condition matched.
+        """
+        course_id = vals.get('course_id', False)
+        if course_id:
+            if vals['start_date'] > fields.Date.today():
+                self.env.cr.execute("""update ems_course set is_active=True where id=%s"""%(course_id))
+        return super(EmsEdition, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        """Mark Related course as Active if condition matched.
+        """
+        for edition in self:
+            old_course_id = edition.course_id.id
+            course_id = False
+            if 'course_id' in vals:
+                course_id = vals['course_id']
+            if course_id:
+                start_date = vals.get('start_date', edition.start_date)
+                if start_date > fields.Date.today():
+                    self.env.cr.execute("""update ems_course set is_active=True where id=%s"""%(course_id))
+                self.env.cr.execute("""update ems_course set is_active=False where id=%s"""%(old_course_id))
+        return super(EmsEdition, self).write(vals)
+        
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

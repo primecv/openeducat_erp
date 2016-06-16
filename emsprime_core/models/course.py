@@ -36,6 +36,7 @@ class EmsCourse(models.Model):
     degree_id = fields.Many2one('ems.course.degree', 'Degree')
     active = fields.Boolean(string="Active", default=True)
     attachment_line = fields.One2many('ems.attachment', 'course_id', 'Attachments')
+    is_active = fields.Boolean('Is Active for Enrollment?', default=False)
 
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
