@@ -24,7 +24,7 @@
 
 				<div style="width: 100%; height: 1px; background: black; overflow: hidden;"/> <br/>
 
-				<strong>Dados de Contato</strong>: <br/>
+				<strong>Dados de Contato</strong><br/>
 
 				<strong>Telefone</strong>: <span t-field="o.phone"/> <strong>Telemóvel</strong>: <span t-field="o.mobile"/><br/>
 				<strong>Email Pessoal</strong>: <span t-field="o.email"/> <br/>
