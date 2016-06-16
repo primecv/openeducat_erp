@@ -6,10 +6,10 @@
         <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
-			<div align="center" style="color:gray;"><strong>BOLETIM DE INSCRIÇÃO</strong></div>
+			<div align="center" style="color:#666666;"><strong>BOLETIM DE INSCRIÇÃO</strong></div><br/>
             
 			<div class="row" style="color:gray;">
-				<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/><br/>
 				
 				<strong>Dados Pessoais </strong> <br/>
 
@@ -25,16 +25,13 @@
 				<span t-field="o.issue_date"/><span t-if="o.issuer"> - </span>
 				<span t-field="o.issuer"/><br/><br/>
 
-				<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/> <br/>
 
 				<strong>Dados de Contato</strong><br/>
 
 				<strong>Telefone</strong>: <span t-field="o.phone"/> <strong>Telemóvel</strong>: <span t-field="o.mobile"/><br/>
 				<strong>Email Pessoal</strong>: <span t-field="o.email"/> <br/>
-				<strong>Residência Académica</strong>: <span t-field="o.street"/><span t-if="o.street2">, <span t-field="o.street2"/></span>
-				<span t-if="o.city">, <span t-field="o.city"/></span>
-				<span t-if="o.zip">, <span t-field="o.zip"/></span>
-				<span t-if="o.country_id">, <span t-field="o.country_id.name"/></span>
+				<strong>Residência Académica</strong>: <span t-field="o.street"/><span t-if="o.street2">, <span t-field="o.street2"/></span><span t-if="o.city">, <span t-field="o.city"/></span><span t-if="o.zip">, <span t-field="o.zip"/></span><span t-if="o.country_id">, <span t-field="o.country_id.name"/></span>
 				<br/>
 				<strong>Residência Permanente</strong>: <span t-field="o.pstreet"/><span t-if="o.pstreet2">, <span t-field="o.pstreet2"/></span>
 				<span t-if="o.pcity">, <span t-field="o.pcity"/></span>
@@ -42,7 +39,7 @@
 				<span t-if="o.pcountry_id">, <span t-field="o.pcountry_id.name"/></span>
 				<br/><br/>
 
-				<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/> <br/>
 
 				<strong>Habilitações Literárias  </strong> <br/>
 
@@ -55,7 +52,7 @@
 				<strong>Nota de Língua Portuguesa</strong>: <span t-field="o.portuguese_final_average"/>
 				<br/> <br/>
 
-				<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/> <br/>
 
 				<strong>Candidatura </strong>: <br/>
 				<strong>1ª Opção</strong>: <span t-field="o.course_option_1.name"/> <br/>
@@ -70,7 +67,7 @@
 				<span t-if="o.schedule_choice == 'evening' ">Evening</span>
 				<br/><br/>
 
-				<div style="width: 100%; height: 1px; background: gray; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/> <br/>
 
 				<strong>Documentos Entregues </strong> (<span t-esc="len(o.attachment_line)"/>)
 				<div>
