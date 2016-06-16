@@ -70,7 +70,7 @@
 				<div style="color:666666;">
 					<table >
 						<tr t-foreach="o.attachment_line" t-as="att">
-							<td> <span t-field="att.attachment_type_id.name"/> </td>
+							<td> <span t-field="att.attachment_type_id.name"  style="color:666666;"/> </td>
 						</tr>
 					</table>
 				</div>
