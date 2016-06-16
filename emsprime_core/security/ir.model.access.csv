@@ -21,6 +21,9 @@ access_ems_res_partner_backoffice_admin,name_ems_res_partner_backoffice_admin,ba
 ,,,,,,,
 access_ems_res_country_student,name_ems_res_country_student,base.model_res_country,group_ems_student,1,0,0,0
 access_ems_res_country_faculty,name_ems_res_country_faculty,base.model_res_country,group_ems_faculty,1,0,0,0
+access_ems_res_country_back_office,name_ems_res_country_back_office,base.model_res_country,group_ems_back_office,1,0,0,0
+access_ems_res_country_back_office_admin,name_ems_res_country_back_office_admin,base.model_res_country,group_ems_back_office_admin,1,0,0,0
+,,,,,,,
 ,,,,,,,
 access_ems_subject_faculty,name_ems_subject_faculty,model_ems_subject,group_ems_faculty,1,0,0,0
 access_ems_subject_student,name_ems_subject_student,model_ems_subject,group_ems_student,1,0,0,0
@@ -81,3 +84,9 @@ access_ems_location_student,ems_location_student,model_ems_location,group_ems_st
 access_ems_location_faculty,ems_location_faculty,model_ems_location,group_ems_faculty,1,0,0,0
 access_ems_location_back_office,name_ems_location_back_office,model_ems_location,group_ems_back_office,1,1,1,1
 access_ems_location_back_office_admin,name_ems_location_back_office_admin,model_ems_location,group_ems_back_office_admin,1,1,1,1
+,,,,,,,
+access_ems_university_center_applicant,access_ems_university_center_applicant,model_ems_university_center,group_ems_applicant,1,0,0,0
+access_ems_university_center_student,access_ems_university_center_student,model_ems_university_center,group_ems_student,1,0,0,0
+access_ems_university_center_faculty,access_ems_university_center_faculty,model_ems_university_center,group_ems_faculty,1,0,0,0
+access_ems_university_center_back_office,access_ems_university_center_back_office,model_ems_university_center,group_ems_back_office,1,1,1,1
+access_ems_university_center_back_office_admin,access_ems_university_center_back_office_admin,model_ems_university_center,group_ems_back_office_admin,1,1,1,1
