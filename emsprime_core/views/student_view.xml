@@ -122,6 +122,7 @@
 								            <field name="course_id" />
 								            <field name="edition_id" />
 											<field name="type" />
+											<field name="create_date" string="Date"/>
 										</tree>
 										<form string="Enrollment">
 											<group col="4">
