@@ -97,6 +97,11 @@
         <menuitem id="menu_ems_config_attachments_types" name="Attachments Types"
             parent="menu_ems_school_config_general" sequence="25"
             action="act_open_ems_attachment_type_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+
+		<!-- University center Type Menu -->
+        <menuitem id="menu_ems_config_university_center" name="University center"
+            parent="menu_ems_school_config_general" sequence="30"
+            action="act_open_ems_university_center_view" groups="group_ems_back_office,group_ems_back_office_admin" />
 			
         <!-- Activity Root -->
         <menuitem id="menu_ems_school_config_activity" name="Activity Management" parent="menu_ems_school_config" sequence="40" />

@@ -177,7 +177,9 @@
                                     <field name="app_course_academic_year"/>
                                     <field name="app_course_area"/>
 									<field name="high_school_score"/>
+                                    <field name="final_average"/>
                                     <field name="math_final_average"/>
+                                    <field name="portuguese_final_average"/>
 								</group>
 								<group string="Options" colspan="4">
 									<group>
@@ -186,6 +188,7 @@
 		                                <field name="course_option_3"/>
 									</group>
 									<group>
+	                                    <field name="university_center_id"/>
 	                                    <field name="schedule_choice"/>
     	                                <field name="sponsorship"/>
 									</group>
