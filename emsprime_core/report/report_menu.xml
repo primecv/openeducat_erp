@@ -28,5 +28,15 @@
 			menu="False"
         />
 
+        <report 
+            id="action_report_admission_receipt"
+            string="Admission Receipt"
+            model="ems.student" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_admissionreceipt" 
+            name="emsprime_core.report_admissionreceipt" 
+			header="False"
+        />
+
     </data>
 </openerp>

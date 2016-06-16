@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_admissionreceipt_document">
+    <t t-call="report.external_layout">
+        <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
+        <div class="page">
+            <div class="oe_structure"/>
+
+            <div class="row">
+				<strong>Dados Pessoais </strong> <br/>
+
+				<strong>Nome</strong>: <span t-field="o.complete_name"/><br/>
+				<strong>Data de Nascimento</strong>: <span t-field="o.birth_date"/><br/>
+				<strong>Naturalidade</strong>: <span t-field="o.parish_id.name"/><span t-if="o.county_id.name"> / </span> 
+				<span t-field="o.county_id.name"/><span t-if="o.country_id.name"> / </span>
+				<span t-field="o.country_id.name"/><br/>
+				<strong>Filiação</strong>: <span t-field="o.father"/>
+				<span t-if="o.mother"> e <span t-field="o.mother"/></span> <br/>
+
+				<strong>Identificação</strong>: <span t-field="o.passport_no"/><span t-if="o.issue_date"> - </span> 
+				<span t-field="o.issue_date"/><span t-if="o.issuer"> - </span>
+				<span t-field="o.issuer"/><br/><br/>
+
+				<div style="width: 100%; height: 1px; background: black; overflow: hidden;"/> <br/>
+
+				<strong>Dados de Contato</strong>: <br/>
+
+				<strong>Telefone</strong>: <span t-field="o.phone"/> <strong>Telemóvel</strong>: <span t-field="o.mobile"/><br/>
+				<strong>Email Pessoal</strong>: <span t-field="o.email"/> <br/>
+				<strong>Residência Académica</strong>: <span t-field="o.street"/><span t-if="o.street2">, <span t-field="o.street2"/></span>
+				<span t-if="o.city">, <span t-field="o.city"/></span>
+				<span t-if="o.zip">, <span t-field="o.zip"/></span>
+				<span t-if="o.country_id">, <span t-field="o.country_id.name"/></span>
+				<br/>
+				<strong>Residência Permanente</strong>: <span t-field="o.pstreet"/><span t-if="o.pstreet2">, <span t-field="o.pstreet2"/></span>
+				<span t-if="o.pcity">, <span t-field="o.pcity"/></span>
+				<span t-if="o.pzip">, <span t-field="o.pzip"/></span>
+				<span t-if="o.pcountry_id">, <span t-field="o.pcountry_id.name"/></span>
+				<br/><br/>
+
+				<div style="width: 100%; height: 1px; background: black; overflow: hidden;"/> <br/>
+
+				<strong>Habilitações Literárias  </strong> <br/>
+
+				<strong>Ano de Escolaridade</strong>: <span t-field="o.app_course_year"/> <br/>
+				<strong>Escola Secundária</strong>: <span t-field="o.high_school_score"/> <br/>
+				<strong>Ano Letivo</strong>: <span t-field="o.app_course_academic_year"/> <br/>
+				<strong>Área</strong>: <span t-field="o.app_course_area"/> <br/>
+				<strong>Média Final</strong>: <span t-field="o.final_average"/> <br/>
+				<strong>Nota de Matemática</strong>: <span t-field="o.math_final_average"/> <br/>
+				<strong>Nota de Língua Portuguesa</strong>: <span t-field="o.portuguese_final_average"/>
+				<br/> <br/>
+
+				<div style="width: 100%; height: 1px; background: black; overflow: hidden;"/> <br/>
+
+				<strong>Candidatura </strong>: <br/>
+				<strong>1ª Opção</strong>: <span t-field="o.course_option_1.name"/> <br/>
+				<strong>2ª Opção</strong>: <span t-field="o.course_option_2.name"/> <br/>
+				<strong>3ª Opção</strong>: <span t-field="o.course_option_3.name"/> <br/>
+				<strong>Polo Universitário</strong>: <span t-field="o.university_center_id.name"/> <br/>
+				<strong>Modo de Financiamento</strong>: <span t-if="o.sponsorship == 'own_expenses' ">Own Expenses</span>
+				<span t-if="o.sponsorship == 'scholarship' ">Scholarship</span>
+				<span t-if="o.sponsorship == 'company' ">Company</span> <br/>
+				<strong>Preferência de Horário</strong>: <span t-if="o.schedule_choice == 'morning' ">Morning</span>
+				<span t-if="o.schedule_choice == 'afternoon' ">Afternoon</span>
+				<span t-if="o.schedule_choice == 'evening' ">Evening</span>
+				<br/><br/>
+
+				<div style="width: 100%; height: 1px; background: black; overflow: hidden;"/> <br/>
+
+				<strong>Documentos Entregues </strong> (<span t-esc="len(o.attachment_line)"/>)
+				<div>
+					<table >
+						<tr t-foreach="o.attachment_line" t-as="att">
+							<td> <span t-field="att.attachment_type_id.name"/> </td>
+						</tr>
+					</table>
+				</div>
+
+            </div>
+
+            <div class="oe_structure"/>
+        </div>
+
+    </t>
+</template>
+
+<template id="report_admissionreceipt">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_admissionreceipt_document" t-lang="doc.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

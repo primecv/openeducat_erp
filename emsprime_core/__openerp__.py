@@ -78,6 +78,7 @@
         'data/res_users.xml',
 
         'report/report_frequency_declaration.xml',
+        'report/report_admissionreceipt.xml',
     ],
     'demo': [
         'demo/res.users.csv',
