@@ -144,7 +144,7 @@
                                 </group>
 
 								<group>
-						            <group string="Academical Address">
+						            <group string="Academic Address">
 							            <label for="street" string="Address"/>
 							            <div name="div_address">
 							                <field name="street" placeholder="Street..."/>
