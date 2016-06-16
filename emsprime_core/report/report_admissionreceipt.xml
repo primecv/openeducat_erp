@@ -8,7 +8,7 @@
             <div class="oe_structure"/>
 			<div align="center" style="color:#666666;"><strong>BOLETIM DE INSCRIÇÃO</strong></div><br/>
             
-			<div class="row" style="color:gray;">
+			<div class="row" style="color:666666;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/><br/>
 				
 				<strong>Dados Pessoais </strong> <br/>
@@ -70,7 +70,7 @@
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden;"/> <br/>
 
 				<strong>Documentos Entregues </strong> (<span t-esc="len(o.attachment_line)"/>)
-				<div>
+				<div style="color:666666;">
 					<table >
 						<tr t-foreach="o.attachment_line" t-as="att">
 							<td> <span t-field="att.attachment_type_id.name"/> </td>
