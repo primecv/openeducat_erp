@@ -13,57 +13,57 @@
 				
 				<strong>Personal Data </strong> <br/>
 
-				<strong>Name</strong>: <span t-field="o.complete_name" style="text-transform:uppercase;"/><br/>
-				<strong>Birth Date</strong>: <span t-field="o.birth_date"/><br/>
+				<strong>Name</strong>: <span t-field="o.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Birth Date</strong>: <span t-field="o.birth_date"/> ***<br/>
 				<strong>Nationality</strong>: <span t-field="o.parish_id.name"/><span t-if="o.county_id.name"> / </span> 
 				<span t-field="o.county_id.name"/><span t-if="o.island_id.name"> / </span>
 				<span t-field="o.island_id.name"/><span t-if="o.country_id.name"> / </span>
-				<span t-field="o.country_id.name"/><br/>
+				<span t-field="o.country_id.name"/> ***<br/>
 				<strong>Filiation</strong>: <span t-field="o.father"/>
-				<span t-if="o.mother"> e <span t-field="o.mother"/></span> <br/>
+				<span t-if="o.mother"> e <span t-field="o.mother"/></span> ***<br/>
 
 				<strong>Identification</strong>: <span t-field="o.passport_no"/><span t-if="o.issue_date"> - </span> 
 				<span t-field="o.issue_date"/><span t-if="o.issuer"> - </span>
-				<span t-field="o.issuer"/><br/><br/>
+				<span t-field="o.issuer"/> ***<br/><br/>
 
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Contact Details</strong><br/>
 
-				<strong>Phone</strong>: <span t-field="o.phone"/> <br/>
-				<strong>Mobile</strong>: <span t-field="o.mobile"/><br/>
-				<strong>Personal Email</strong>: <span t-field="o.email"/> <br/>
-				<strong>Academic Residence</strong>: <span t-field="o.street"/><span t-if="o.street2">, <span t-field="o.street2"/></span><span t-if="o.city">, <span t-field="o.city"/></span><span t-if="o.zip">, <span t-field="o.zip"/></span><span t-if="o.country_id">, <span t-field="o.country_id.name"/></span>
+				<strong>Phone</strong>: <span t-field="o.phone"/> ***<br/>
+				<strong>Mobile</strong>: <span t-field="o.mobile"/> ***<br/>
+				<strong>Personal Email</strong>: <span t-field="o.email"/> ***<br/>
+				<strong>Academic Residence</strong>: <span t-field="o.street"/><span t-if="o.street2">, <span t-field="o.street2"/></span><span t-if="o.city">, <span t-field="o.city"/></span><span t-if="o.zip">, <span t-field="o.zip"/></span><span t-if="o.country_id">, <span t-field="o.country_id.name"/></span> ***
 				<br/>
-				<strong>Permanent Residence</strong>: <span t-field="o.pstreet"/><span t-if="o.pstreet2">, <span t-field="o.pstreet2"/></span><span t-if="o.pcity">, <span t-field="o.pcity"/></span><span t-if="o.pzip">, <span t-field="o.pzip"/></span><span t-if="o.pcountry_id">, <span t-field="o.pcountry_id.name"/></span>
+				<strong>Permanent Residence</strong>: <span t-field="o.pstreet"/><span t-if="o.pstreet2">, <span t-field="o.pstreet2"/></span><span t-if="o.pcity">, <span t-field="o.pcity"/></span><span t-if="o.pzip">, <span t-field="o.pzip"/></span><span t-if="o.pcountry_id">, <span t-field="o.pcountry_id.name"/></span> ***
 				<br/><br/>
 
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Educational Qualification  </strong> <br/>
 
-				<strong>Education Year</strong>: <span t-field="o.app_course_year"/> <br/>
-				<strong>Secondary School</strong>: <span t-field="o.high_school_score"/> <br/>
-				<strong>School Year</strong>: <span t-field="o.app_course_academic_year"/> <br/>
-				<strong>Area</strong>: <span t-field="o.app_course_area"/> <br/>
-				<strong>Final Average</strong>: <span t-field="o.final_average"/> <br/>
-				<strong>Math Final Average</strong>: <span t-field="o.math_final_average"/> <br/>
-				<strong>Average Portuguese Language</strong>: <span t-field="o.portuguese_final_average"/>
+				<strong>Education Year</strong>: <span t-field="o.app_course_year"/> ***<br/>
+				<strong>Secondary School</strong>: <span t-field="o.high_school_score"/> ***<br/>
+				<strong>School Year</strong>: <span t-field="o.app_course_academic_year"/> ***<br/>
+				<strong>Area</strong>: <span t-field="o.app_course_area"/> ***<br/>
+				<strong>Final Average</strong>: <span t-field="o.final_average"/> ***<br/>
+				<strong>Math Final Average</strong>: <span t-field="o.math_final_average"/> ***<br/>
+				<strong>Average Portuguese Language</strong>: <span t-field="o.portuguese_final_average"/> ***
 				<br/> <br/>
 
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Application</strong><br/>
-				<strong>Option 1</strong>: <span t-field="o.course_option_1.name"/> <br/>
-				<strong>Option 2</strong>: <span t-field="o.course_option_2.name"/> <br/>
-				<strong>Option 3</strong>: <span t-field="o.course_option_3.name"/> <br/>
-				<strong>University Center</strong>: <span t-field="o.university_center_id.name"/> <br/>
+				<strong>Option 1</strong>: <span t-field="o.course_option_1.name"/> ***<br/>
+				<strong>Option 2</strong>: <span t-field="o.course_option_2.name"/> ***<br/>
+				<strong>Option 3</strong>: <span t-field="o.course_option_3.name"/> ***<br/>
+				<strong>University Center</strong>: <span t-field="o.university_center_id.name"/> ***<br/>
 				<strong>Sponsorship</strong>: <span t-if="o.sponsorship == 'own_expenses' ">Own Expenses</span>
 				<span t-if="o.sponsorship == 'scholarship' ">Scholarship</span>
-				<span t-if="o.sponsorship == 'company' ">Company</span> <br/>
+				<span t-if="o.sponsorship == 'company' ">Company</span> ***<br/>
 				<strong>Time Preference</strong>: <span t-if="o.schedule_choice == 'morning' ">Morning</span>
 				<span t-if="o.schedule_choice == 'afternoon' ">Afternoon</span>
-				<span t-if="o.schedule_choice == 'evening' ">Evening</span>
+				<span t-if="o.schedule_choice == 'evening' ">Evening</span> ***
 				<br/><br/>
 
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
@@ -72,10 +72,13 @@
 				<div style="color:333333;">
 					<table >
 						<tr t-foreach="o.attachment_line" t-as="att">
-							<td> <span t-field="att.attachment_type_id.name"  style="color:333333;"/> </td>
+							<td> <span t-field="att.attachment_type_id.name"  style="color:333333;"/> *** </td>
 						</tr>
 					</table>
 				</div>
+
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
+				<span class="text-center">*** Check the accuracy of the data in this application form.</span>
 
             </div>
 
