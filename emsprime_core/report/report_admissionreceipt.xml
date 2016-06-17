@@ -94,7 +94,7 @@
 <template id="report_admissionreceipt">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="emsprime_core.report_admissionreceipt_document" t-lang="doc.partner_id.lang"/>
+            <t t-call="emsprime_core.report_admissionreceipt_document" t-lang="doc.lang"/>
         </t>
     </t>
 </template>
