@@ -20,7 +20,7 @@
 ###############################################################################
 
 from openerp import models, fields, api
-
+from datetime import datetime
 
 class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
@@ -49,5 +49,23 @@ class EmsEnrollment(models.Model):
          'unique(student_id,course_id,edition_id)',
          'Student must be unique per Edition!'),
     ]
+
+    @api.model
+    def create(self, vals):
+        last_rec = self.search([('id','>',0),('roll_number','!=', '')], order='id desc', limit=1)
+        next_seq = '001'
+        if last_rec:
+            last_seq = last_rec.roll_number
+            try:
+                seq = last_seq.split('.')[1]
+                next_seq = str(int(seq) + 1)
+                while len(next_seq) < 3:
+                    next_seq = '0' + next_seq
+            except Exception:
+                pass
+        year = datetime.now().date().year
+        idno = str(year) + '.' + next_seq
+        vals['roll_number'] = idno
+        return super(EmsEnrollment, self).create(vals)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
