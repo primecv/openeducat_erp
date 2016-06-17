@@ -39,6 +39,7 @@
     'website': 'http://www.prime.cv',
     'depends': ['board', 'document', 'hr', 'web', 'website'],
     'data': [
+        'report/layouts.xml',
         'report/report_student_bonafide.xml',
         'report/report_student_idcard.xml',
         'report/report_menu.xml',
