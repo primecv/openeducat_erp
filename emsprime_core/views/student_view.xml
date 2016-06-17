@@ -238,12 +238,14 @@
                     <field name="course_id" />
                     <field name="edition_id" />
                     <field name="state" />
+                    <field name="type_current_enroll" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="course" string="Course" domain="[]"
                             context="{'group_by':'course_id'}" />
                         <filter name="edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                         <filter name="state" string="State" domain="[]" context="{'group_by':'state'}" />
+                        <filter name="type_current_enroll" string="Type of current enrollment" domain="[]" context="{'group_by':'type_current_enroll'}" />
                     </group>
                 </search>
             </field>

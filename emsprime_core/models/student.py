@@ -146,7 +146,7 @@ class EmsStudent(models.Model):
     portuguese_final_average = fields.Float('Average Portuguese')
     final_average = fields.Float('Final Average')
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
-    type_current_enroll = fields.Char(string='Type current enrollment', compute='_get_curr_enrollment', store=True)
+    type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True)
 	
     @api.one
     @api.constrains('birth_date')
