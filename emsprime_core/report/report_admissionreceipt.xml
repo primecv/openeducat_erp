@@ -6,7 +6,7 @@
         <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
-			<div align="center" style="color:#333333;"><strong>STUDENT APPLICATION</strong></div><br/>
+			<div align="center" style="color:#333333;"><strong>STUDENT APPLICATION <span t-if="o.id_number">​Nº <span t-field="o.id_number"/></span></strong></div><br/>
             
 			<div class="row" style="color:333333;">
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/><br/>
