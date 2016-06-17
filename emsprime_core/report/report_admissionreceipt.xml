@@ -17,7 +17,7 @@
 				<strong>Data de Nascimento</strong>: <span t-field="o.birth_date"/><br/>
 				<strong>Naturalidade</strong>: <span t-field="o.parish_id.name"/><span t-if="o.county_id.name"> / </span> 
 				<span t-field="o.county_id.name"/><span t-if="o.island_id.name"> / </span>
-				<span t-field="o.island_id.name"/><br/><span t-if="o.country_id.name"> / </span>
+				<span t-field="o.island_id.name"/><span t-if="o.country_id.name"> / </span>
 				<span t-field="o.country_id.name"/><br/>
 				<strong>Filiação</strong>: <span t-field="o.father"/>
 				<span t-if="o.mother"> e <span t-field="o.mother"/></span> <br/>
