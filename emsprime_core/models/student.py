@@ -138,24 +138,6 @@ class EmsStudent(models.Model):
     final_average = fields.Float('Final Average')
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
 	
-    @api.model
-    def create(self, vals):
-        last_rec = self.search([('id','>',0),('id_number','!=', '')], order='id desc', limit=1)
-        next_seq = '001'
-        if last_rec:
-            last_seq = last_rec.id_number
-            try:
-                seq = last_seq.split('.')[1]
-                next_seq = str(int(seq) + 1)
-                while len(next_seq) < 3:
-                    next_seq = '0' + next_seq
-            except Exception:
-                pass
-        year = datetime.now().date().year
-        idno = str(year) + '.' + next_seq
-        vals['id_number'] = idno
-        return super(EmsStudent, self).create(vals)
-
     @api.one
     @api.constrains('birth_date')
     def _check_birthdate(self):
@@ -169,6 +151,19 @@ class EmsStudent(models.Model):
 
     @api.multi
     def action_received(self):
+        for student in self:
+            if not student.course_option_1:
+                raise ValidationError('Missing Course Option 1.')
+            course_id = student.course_option_1.id
+            editions = self.env['ems.edition'].search([('course_id','=',course_id)], limit=1)
+            edition_id = False
+            for edition in editions:
+               edition_id = edition.id
+            if course_id and edition_id:
+                enrollment_id = self.env['ems.enrollment'].create({'course_id': course_id, 
+                                                                   'edition_id': edition_id,
+                                                                   'student_id': student.id,
+                                                                   'type': 'C'})
         return self.write({'state': 'received'})
 
     @api.multi
