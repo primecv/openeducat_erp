@@ -6,10 +6,10 @@
         <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
-			<div align="center" style="color:#222222;"><strong>BOLETIM DE INSCRIÇÃO</strong></div><br/>
+			<div align="center" style="color:#333333;"><strong>BOLETIM DE INSCRIÇÃO</strong></div><br/>
             
-			<div class="row" style="color:222222;">
-				<div style="width: 100%; height: 1px; background-color:#222222; overflow: hidden;"/><br/>
+			<div class="row" style="color:333333;">
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/><br/>
 				
 				<strong>Dados Pessoais </strong> <br/>
 
@@ -26,7 +26,7 @@
 				<span t-field="o.issue_date"/><span t-if="o.issuer"> - </span>
 				<span t-field="o.issuer"/><br/><br/>
 
-				<div style="width: 100%; height: 1px; background-color:#222222; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Dados de Contato</strong><br/>
 
@@ -37,7 +37,7 @@
 				<strong>Residência Permanente</strong>: <span t-field="o.pstreet"/><span t-if="o.pstreet2">, <span t-field="o.pstreet2"/></span><span t-if="o.pcity">, <span t-field="o.pcity"/></span><span t-if="o.pzip">, <span t-field="o.pzip"/></span><span t-if="o.pcountry_id">, <span t-field="o.pcountry_id.name"/></span>
 				<br/><br/>
 
-				<div style="width: 100%; height: 1px; background-color:#222222; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Habilitações Literárias  </strong> <br/>
 
@@ -50,7 +50,7 @@
 				<strong>Nota de Língua Portuguesa</strong>: <span t-field="o.portuguese_final_average"/>
 				<br/> <br/>
 
-				<div style="width: 100%; height: 1px; background-color:#222222; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Candidatura</strong><br/>
 				<strong>1ª Opção</strong>: <span t-field="o.course_option_1.name"/> <br/>
@@ -65,13 +65,13 @@
 				<span t-if="o.schedule_choice == 'evening' ">Evening</span>
 				<br/><br/>
 
-				<div style="width: 100%; height: 1px; background-color:#222222; overflow: hidden;"/> <br/>
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
 
 				<strong>Documentos Entregues </strong> (<span t-esc="len(o.attachment_line)"/>)
-				<div style="color:222222;">
+				<div style="color:333333;">
 					<table >
 						<tr t-foreach="o.attachment_line" t-as="att">
-							<td> <span t-field="att.attachment_type_id.name"  style="color:222222;"/> </td>
+							<td> <span t-field="att.attachment_type_id.name"  style="color:333333;"/> </td>
 						</tr>
 					</table>
 				</div>
