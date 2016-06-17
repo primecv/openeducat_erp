@@ -78,7 +78,9 @@
 				</div>
 
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> <br/>
-				<strong class="text-center">*** Check the accuracy of the data in this application form.</strong>
+				<div class="text-center">
+					<h4><strong>*** Check the accuracy of the data in this application form.</strong></h4>
+				</div>
 
             </div>
 
