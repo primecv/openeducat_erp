@@ -2,7 +2,7 @@
 <openerp>
 <data>
 <template id="report_admissionreceipt_document">
-    <t t-call="report.external_layout">
+    <t t-call="emsprime_core.external_layout">
         <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
         <div class="page">
             <div class="oe_structure"/>
