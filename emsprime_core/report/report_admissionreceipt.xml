@@ -9,7 +9,7 @@
 			<div align="center" style="color:#333333;"><strong>STUDENT APPLICATION <span t-if="o.roll_number">​Nº <span t-field="o.roll_number"/></span></strong></div><br/>
             
 			<div class="row" style="color:333333;">
-				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/><br/>
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/>
 				
 				<strong>Personal Data </strong> <br/>
 
