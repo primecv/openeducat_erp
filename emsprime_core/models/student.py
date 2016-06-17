@@ -45,6 +45,7 @@ class EmsStudent(models.Model):
         self.roll_number = ''
         self.course_id = False
         self.edition_id = False
+        self.type_current_enroll = ''
         #check current date with the latest enrollment edition:
         count = 0
         for enrollment in self.roll_number_line:
@@ -52,6 +53,7 @@ class EmsStudent(models.Model):
                 edition_id = enrollment.edition_id.id
                 course_id = enrollment.course_id.id
                 roll_number = enrollment.roll_number
+                type_current_enroll = enrollment.type
 
                 start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
                 count = count + 1
@@ -61,9 +63,16 @@ class EmsStudent(models.Model):
                     edition_id = enrollment.edition_id.id
                     course_id = enrollment.course_id.id
                     roll_number = enrollment.roll_number
+                    type_current_enroll = enrollment.type
+            if type_current_enroll=='C':
+                type_current_enroll='Candidatura'
+            else:
+                type_current_enroll='Matricula'
+
             self.roll_number = roll_number
             self.edition_id = edition_id
             self.course_id = course_id
+            self.type_current_enroll = type_current_enroll
 
     middle_name = fields.Char('Middle Name', size=128)
     last_name = fields.Char('Last Name', size=128, required=True)
@@ -137,6 +146,7 @@ class EmsStudent(models.Model):
     portuguese_final_average = fields.Float('Average Portuguese')
     final_average = fields.Float('Final Average')
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
+    type_current_enroll = fields.Char(string='Type current enrollment', compute='_get_curr_enrollment', store=True)
 	
     @api.one
     @api.constrains('birth_date')
