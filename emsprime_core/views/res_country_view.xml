@@ -2,8 +2,8 @@
 <openerp>
     <data>
         <record id="view_country_form_emsprime_core" model="ir.ui.view">
-            <field name="name">res.company.form.emsprime.core</field>
-            <field name="model">res.company</field>
+            <field name="name">res.country.form.emsprime.core</field>
+            <field name="model">res.country</field>
             <field name="priority">99</field>
             <field name="inherit_id" ref="base.view_country_form" />
             <field name="arch" type="xml">
