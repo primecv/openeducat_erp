@@ -89,8 +89,8 @@
                                 <group col="4" colspan="4" name="personal_detail">
                                     <field name="gender" />
                                     <field name="birth_date" />
-                                    <field name="mother" />
                                     <field name="father" />		
+                                    <field name="mother" />
 									<separator string="Personal Id" colspan="4"/>						
                                     <field name="nationality" />
 									<field name="passport_no"/>
