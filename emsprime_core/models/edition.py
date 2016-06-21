@@ -32,6 +32,7 @@ class EmsEdition(models.Model):
         'Start Date', required=True, default=fields.Date.today())
     end_date = fields.Date('End Date', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
+    university_center_id = fields.Many2one('ems.university.center', 'University Center')
 
     @api.one
     @api.constrains('start_date', 'end_date')

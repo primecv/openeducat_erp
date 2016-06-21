@@ -12,6 +12,7 @@
                     <field name="start_date" />
                     <field name="end_date" />
                     <field name="course_id" />
+					<field name="university_center_id"/>
                 </tree>
             </field>
         </record>
@@ -28,6 +29,7 @@
                             <field name="start_date" />
                             <field name="end_date" />
                             <field name="course_id" />
+							<field name="university_center_id"/>
                         </group>
                     </sheet>
                 </form>
@@ -44,12 +46,14 @@
                     <field name="start_date" />
                     <field name="end_date" />
                     <field name="course_id" />
+					<field name="university_center_id"/>
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="Start Date" domain="[]"
                             context="{'group_by':'start_date'}" />
                         <filter string="End Date" domain="[]" context="{'group_by':'end_date'}" />
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
                     </group>
                 </search>
             </field>
