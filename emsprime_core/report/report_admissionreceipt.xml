@@ -19,7 +19,7 @@
 				<span t-field="o.county_id.name"/><span t-if="o.island_id.name"> / </span>
 				<span t-field="o.island_id.name"/><span t-if="o.country_id.name"> / </span>
 				<span t-field="o.country_id.name"/> ***<br/>
-				<strong>Nationality</strong>: <span t-field="o.nationality.name"/> ***<br/>
+				<strong>Nationality</strong>: <span t-field="o.nationality.citizenship"/> ***<br/>
 				<strong>Filiation</strong>: <span t-field="o.father"/>
 				<span t-if="o.mother"> e <span t-field="o.mother"/></span> ***<br/>
 
