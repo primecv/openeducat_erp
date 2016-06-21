@@ -12,5 +12,12 @@
                 </xpath>
             </field>
         </record>
+        <record id="action_ems_country" model="ir.actions.act_window">
+            <field name="name">Countries</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.country</field>
+            <field name="view_type">form</field>
+            <field name="help">Display and manage the list of all countries that can be assigned to your partner records. You can create or delete countries to make sure the ones you are working on will be maintained.</field>
+        </record>			
     </data>
 </openerp>
