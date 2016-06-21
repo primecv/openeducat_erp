@@ -32,7 +32,9 @@ def _lang_get(self):
 class EmsStudent(models.Model):
     _name = 'ems.student'
     _inherits = {'res.partner': 'partner_id'}
+    _inherit = ['ir.needaction_mixin', 'mail.thread']
     _rec_name = "complete_name"
+    _description = "Student"
 
     @api.one
     @api.depends('name', 'middle_name', 'last_name')
