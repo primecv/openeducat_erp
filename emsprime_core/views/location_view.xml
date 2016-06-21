@@ -80,6 +80,17 @@
                 </form>
             </field>
         </record>
+        <record id="hr_location_country_tree_view" model= "ir.ui.view">
+            <field name="name">hr.location.country.tree.view</field>
+            <field name="model">ems.location</field>
+            <field name="arch" type="xml">
+                <tree string="Locations">
+                    <field name="level"/>
+                    <field name="name"/>
+					<field name="citizenship"/>
+                </tree>
+            </field>
+        </record>
         <record id="hr_location_country_action" model= "ir.actions.act_window">
             <field name="name">Countries</field>
             <field name="res_model">ems.location</field>
@@ -94,7 +105,7 @@
         <record id="hr_location_country_action_view1" model="ir.actions.act_window.view">
             <field eval="1" name="sequence"/>
             <field name="view_mode">tree</field>
-            <field name="view_id" ref="hr_location_tree_view"/>
+            <field name="view_id" ref="hr_location_country_tree_view"/>
             <field name="act_window_id" ref="hr_location_country_action"/>
         </record>
         <record id="hr_location_country_action_view2" model="ir.actions.act_window.view">
