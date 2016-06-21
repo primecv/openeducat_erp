@@ -59,7 +59,7 @@ class EmsEnrollment(models.Model):
             try:
                 seq = last_seq.split('.')[1]
                 next_seq = str(int(seq) + 1)
-                while len(next_seq) < 5:
+                while len(next_seq) < 3:
                     next_seq = '0' + next_seq
             except Exception:
                 pass
