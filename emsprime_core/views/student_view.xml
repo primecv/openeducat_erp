@@ -98,9 +98,9 @@
 									<field name="issuer"/>
 									<separator string="Place of Birth" colspan="4"/>
 									<field name="country_id" domain="[('level','=','1')]" context="{'form_view_ref':'emsprime_core.hr_location_country_form_view', 'default_level':'1'}" options="{'no_create':1, 'create':0}"/>
-									<field name="island_id" domain="[('level','=','2')]" context="{'form_view_ref':'emsprime_core.hr_location_island_form_view', 'default_level':'2'}" options="{'no_create':1, 'create':0}"/>
-									<field name="county_id" domain="[('level','=','3')]" context="{'form_view_ref':'emsprime_core.hr_location_county_form_view', 'default_level':'3'}" options="{'no_create':1, 'create':0}"/>
-									<field name="parish_id" domain="[('level','=','4')]" context="{'form_view_ref':'emsprime_core.hr_location_parish_form_view', 'default_level':'4'}" options="{'no_create':1, 'create':0}"/>
+									<field name="island_id" domain="[('level','=','2'),('parent_id','=',country_id)]" context="{'form_view_ref':'emsprime_core.hr_location_island_form_view', 'default_level':'2'}" options="{'no_create':1, 'create':0}"/>
+									<field name="county_id" domain="[('level','=','3'),('parent_id','=',island_id)]" context="{'form_view_ref':'emsprime_core.hr_location_county_form_view', 'default_level':'3'}" options="{'no_create':1, 'create':0}"/>
+									<field name="parish_id" domain="[('level','=','4'),('parent_id','=',county_id)]" context="{'form_view_ref':'emsprime_core.hr_location_parish_form_view', 'default_level':'4'}" options="{'no_create':1, 'create':0}"/>
                                 </group>
                             </page>
                             <page name="educational" string="Educational" groups="emsprime_core.group_ems_student,emsprime_core.group_ems_faculty,emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin">

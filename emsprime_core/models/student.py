@@ -158,6 +158,12 @@ class EmsStudent(models.Model):
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
 
+    @api.onchange('country_id')
+    def _onchange_country(self):
+        self.island_id = False
+        self.county_id = False
+        self.parish_id = False
+
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
         context = self._context or {}
