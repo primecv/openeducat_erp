@@ -86,7 +86,7 @@ class EmsStudent(models.Model):
     gender = fields.Selection(
         [('m', 'Male'), ('f', 'Female'),
          ('o', 'Other')], 'Gender', required=True)
-    nationality = fields.Many2one('res.country', 'Nationality')
+    nationality = fields.Many2one('ems.location', 'Nationality')
     emergency_contact = fields.Many2one(
         'res.partner', 'Emergency Contact')
     visa_info = fields.Char('Visa Info', size=64)

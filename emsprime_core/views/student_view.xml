@@ -92,7 +92,7 @@
                                     <field name="father" />		
                                     <field name="mother" />
 									<separator string="Personal Id" colspan="4"/>						
-                                    <field name="nationality" />
+                                    <field name="nationality" domain="[('level','=','1')]" context="{'form_view_ref':'emsprime_core.hr_location_country_form_view', 'default_level':'1'}"/>
 									<field name="passport_no"/>
 									<field name="issue_date"/>
 									<field name="issuer"/>
