@@ -19,8 +19,8 @@
 #
 ###############################################################################
 
-from openerp import models, fields
-
+from openerp import models, fields, api, _
+from openerp.exceptions import ValidationError
 
 class EmsSubject(models.Model):
     _name = 'ems.subject'
@@ -34,5 +34,15 @@ class EmsSubject(models.Model):
          ('both', 'Both'), ('other', 'Other')],
         'Type', default="theory", required=True)
 
+    @api.multi
+    @api.constrains('name')
+    def _check_name(self):
+        for subject in self:
+            subjects = self.search([('id','!=',self.id)])
+            subject_list = []
+            for all_subject in subjects:
+                subject_list.append(all_subject.name.strip().lower())
+            if subject.name.strip().lower() in subject_list:
+                raise ValidationError(_('Subject "%s" already Exists.')%(subject.name.lower()))
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
