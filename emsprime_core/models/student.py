@@ -101,9 +101,9 @@ class EmsStudent(models.Model):
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
 
-    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True)
-    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True)
-    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True)
+    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
+    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
+    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
 
     gr_no = fields.Char("GR Number", size=20)
     location_id = fields.Many2one('ems.location', 'Place of birth')
@@ -112,7 +112,7 @@ class EmsStudent(models.Model):
     issuer = fields.Char('Issuer')
     issue_date = fields.Date('Issue Date')
     institutional_email = fields.Char('Institutional email', size=128)
-    complete_name = fields.Char('Name', compute='_get_complete_name', store=True)
+    complete_name = fields.Char('Name', compute='_get_complete_name', store=True, track_visibility='onchange')
     attachment_line = fields.One2many('ems.attachment', 'student_id', 'Attachments')
     country_id = fields.Many2one('ems.location', 'Country')
     island_id = fields.Many2one('ems.location', 'Island')
@@ -138,7 +138,7 @@ class EmsStudent(models.Model):
                               ('submit', 'Submitted'),
                               ('received', 'Received'),
                               ('confirmed', 'Accepted'),
-                              ('rejected', 'Rejected')], 'State', default='draft')
+                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange')
     #Permanant Address fields:
     pstreet = fields.Char('Street')
     pstreet2 = fields.Char('Street2')
@@ -156,6 +156,31 @@ class EmsStudent(models.Model):
         if self.birth_date > fields.Date.today():
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        context = self._context or {}
+        user = context.get('uid')
+        imd = self.env['ir.model.data']
+        student_access_groups = ['emsprime_core.group_ems_faculty', 
+                                 'emsprime_core.group_ems_back_office', 
+                                 'emsprime_core.group_ems_back_office_admin' ]
+        allowed_group_ids = []
+        for group in student_access_groups:
+            group_id = imd.xmlid_to_res_id(group)
+            if group_id:
+                allowed_group_ids.append(group_id)
+        user_groups = []
+        groups = [user_groups.append(group.id) for group in self.env['res.users'].browse(user).groups_id]
+        student_read = False
+        for user_group in user_groups:
+            if user_group in allowed_group_ids:
+                student_read = True
+        if not student_read:
+            self._cr.execute(""" select id from ems_student where create_uid=%s and state='draft' """%(user))
+            student_list = [r[0] for r in self._cr.fetchall()]
+            args += [('id', 'in', student_list)]
+        return super(EmsStudent, self).search(args, offset, limit, order, count=count)
 
     @api.multi
     def action_submit(self):
