@@ -154,7 +154,7 @@
 							                    <field name="city" placeholder="City" style="width: 50%%"/>
 							                    <field name="zip" placeholder="Postcode" style="width: 40%%"/>
 							                </div>
-							                <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+							                <field name="acountry_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "create":0, "no_create":1}' domain="[('level','=','1')]"/>
 							            </div>
 									</group>
 									<group string="Permanent Address">
@@ -166,7 +166,7 @@
 										        <field name="pcity" placeholder="City" style="width: 50%%"/>
 										        <field name="pzip" placeholder="Postcode" style="width: 40%%"/>
 										    </div>
-										    <field name="pcountry_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+										    <field name="pcountry_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "create":0, "no_create":1}' domain="[('level','=','1')]"/>
 										</div>
 									</group>
 								</group>
