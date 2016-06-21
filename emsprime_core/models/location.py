@@ -53,11 +53,15 @@ class EmsLocation(models.Model):
     parent_id = fields.Many2one('ems.location', string='Belongs To', required=False)
     latitude = fields.Float(string='Latitude')
     longitude = fields.Float(string='Longitude')
+    citizenship = fields.Char('Citizenship')
     level = fields.Selection([('1','Country'),
 				('2','Island'),
 				('3','County'),
 				('4','Parish')
 		], string='Location type', required=True)
 
-
+    @api.onchange('name')
+    def _onchange_country_name(self):
+        if self.level == '1':
+            self.citizenship = self.name
 

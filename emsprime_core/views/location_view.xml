@@ -73,6 +73,7 @@
 							<field name="level" readonly="1"/>
 							<field name="latitude"/>
 							<field name="longitude"/>
+							<field name="citizenship"/>
 							<field name="parent_id" invisible="1"/>
 						</group>
 					</sheet>
