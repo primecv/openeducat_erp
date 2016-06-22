@@ -26,12 +26,12 @@ class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
     _rec_name = 'roll_number'
 
-    roll_number = fields.Char('Roll Number', size=8, required=True)
+    roll_number = fields.Char('Roll Number', size=15, required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     type = fields.Selection(
-        [('M', 'Matricula'), ('C', 'Candidatura')], 'Tipo', required=True)
+        [('M', 'Matricula'), ('C', 'Candidatura')], 'Tipo', required=True, default='M')
 
     @api.onchange('student_id')
     def onchange_student(self):
