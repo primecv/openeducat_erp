@@ -167,7 +167,7 @@ class EmsStudent(models.Model):
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
         context = self._context or {}
-        user = context.get('uid')
+        user = context.get('uid', False)
         imd = self.env['ir.model.data']
         student_access_groups = ['emsprime_core.group_ems_faculty', 
                                  'emsprime_core.group_ems_back_office', 
@@ -183,7 +183,7 @@ class EmsStudent(models.Model):
         for user_group in user_groups:
             if user_group in allowed_group_ids:
                 student_read = True
-        if not student_read:
+        if not student_read and user:
             self._cr.execute(""" select id from ems_student where create_uid=%s and state='draft' """%(user))
             student_list = [r[0] for r in self._cr.fetchall()]
             args += [('id', 'in', student_list)]
