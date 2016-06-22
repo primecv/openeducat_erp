@@ -22,6 +22,11 @@
             sequence="15" action="ems_request_action"
             groups="group_ems_back_office,group_ems_back_office_admin" />
 
+		<!-- Enrollments Menu -->
+
+		<menuitem id="menu_ems_enrollment" name="Enrollments" parent="menu_ems_school_main"
+            sequence="25" action="act_open_ems_enrollment_view"
+            groups="group_ems_back_office,group_ems_back_office_admin" />
 
         <menuitem id="menu_ems_faculty_main" name="Faculties"
             parent="menu_ems_school_root" sequence="20"

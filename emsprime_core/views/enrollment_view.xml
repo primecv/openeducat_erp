@@ -40,6 +40,7 @@
             <field name="arch" type="xml">
                 <search string="Roll Number">
                     <field name="roll_number" />
+                    <field name="student_id" />
                     <field name="course_id" />
                     <field name="edition_id" />
 					<field name="type" />
