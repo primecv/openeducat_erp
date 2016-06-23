@@ -243,6 +243,7 @@
                     <field name="edition_id" />
                     <field name="state" />
                     <field name="type_current_enroll" />
+					<field name="institutional_email" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="course" string="Course" domain="[]"
