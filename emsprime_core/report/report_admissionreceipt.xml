@@ -2,10 +2,29 @@
 <openerp>
 <data>
 <template id="report_admissionreceipt_document">
-    <t t-call="emsprime_core.external_layout">
-        <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.lang})" />
+		<t t-foreach="p" t-as="o">
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-1" style="margin-top:15px;">
+		            <img t-if="o.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
+		        </div>
+		        <div class="col-xs-11 text-center" style="margin-top:25px;">
+					INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS<br/>
+					POLO UNIVERSITÁRIO ­<span t-if="o.university_center_id">- <span t-field="o.university_center_id.name"/></span><br/>
+					SERVIÇOS ACADÉMICOS
+				</div>
+		    </div>
+		</div>
+
+		<div class="footer">
+		    <div class="text-center" style="margin-bottom:5px;">
+				Recebido em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> por <span t-field="o.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
+		    </div>
+		</div>
+
         <div class="page">
-            <div class="oe_structure"/>
 			<div align="center" style="color:#333333;"><strong>STUDENT APPLICATION <span t-if="o.roll_number">​Nº <span t-field="o.roll_number"/></span></strong></div><br/>
             
 			<div class="row" style="color:333333;">
@@ -85,7 +104,6 @@
 
             </div>
 
-            <div class="oe_structure"/>
         </div>
 
     </t>
