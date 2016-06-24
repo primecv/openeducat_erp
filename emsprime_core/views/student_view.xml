@@ -249,6 +249,7 @@
                         <filter name="course" string="Course" domain="[]"
                             context="{'group_by':'course_id'}" />
                         <filter name="edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
+						<filter name="university_center_id" string="University Center" domain="[]" context="{'group_by':'university_center_id'}"/>
                         <filter name="state" string="State" domain="[]" context="{'group_by':'state'}" />
                         <filter name="type_current_enroll" string="Type of current enrollment" domain="[]" context="{'group_by':'type_current_enroll'}" />
                     </group>
