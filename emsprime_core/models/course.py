@@ -33,6 +33,7 @@ class EmsCourse(models.Model):
         [('normal', 'Normal'), ('GPA', 'GPA'), ('CWA', 'CWA'), ('CCE', 'CCE')],
         'Evaluation Type', default="normal", required=True)
     subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
+    subject_line = fields.One2many('ems.course.subject', 'course_id', string="Subject(s)")
     degree_id = fields.Many2one('ems.course.degree', 'Degree')
     active = fields.Boolean(string="Active", default=True)
     attachment_line = fields.One2many('ems.attachment', 'course_id', 'Attachments')
@@ -60,5 +61,29 @@ class EmsCourse(models.Model):
                     node[0].addnext(sfilter)
                     res['arch'] = etree.tostring(doc)
         return res
+
+class EmsCourseSubject(models.Model):
+    _name = "ems.course.subject"
+    _description = "Course Subjects"
+
+    course_id = fields.Many2one('ems.course', string='Course')
+    subject_id = fields.Many2one('ems.subject', string='Subject')
+    week_work_load = fields.Float('CHS', help='Weekly Work Load')
+    student_contact = fields.Float('Contact', help='Hours of Contact with Student')
+    work = fields.Integer('Work')
+    ects = fields.Integer('ECTS')
+    semester = fields.Selection([('1', '1'), 
+                                ('2', '2'), 
+                                ('3', '3'),
+                                ('4', '4'),
+                                ('5', '5'),
+                                ('6', '6'),
+                                ('7', '7'),
+                                ('8', '8'),
+                                ('9', '9')
+            ], 'Semester')
+
+    _sql_constraints = [('uniq_course_subject','unique(course_id, subject_id)','Subject must be Unique per Course.')]
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
