@@ -26,6 +26,7 @@
                             <field name="code" />
                             <field name="type" />
 							<field name="grade_weightage" />
+							<field name="semester" />
                         </group>
                     </sheet>
                 </form>
@@ -40,9 +41,11 @@
                     <field name="name" />
                     <field name="code" />
                     <field name="type" />
+					<field name="semester" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="Type" domain="[]" context="{'group_by':'type'}" />
+						<filter string="Semester" domain="[]" context="{'group_by': 'semester'}"/>
                     </group>
                 </search>
             </field>
