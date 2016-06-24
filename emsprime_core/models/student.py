@@ -165,6 +165,29 @@ class EmsStudent(models.Model):
         self.parish_id = False
 
     @api.model
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        """Dynamically format University Center Filters On Student search view
+        """
+        res = super(EmsStudent, self).fields_view_get(
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        if view_type == 'search':
+            center_ids = self.env['ems.university.center'].search([('id','>',0)])
+            centers, center_ref = [], []
+            if center_ids:
+                for center in center_ids:
+                    centers.append(center.name)
+                    center_ref.append(center.id)
+                for r in range(0, len(centers)):
+                    doc = etree.XML(res['arch'])
+                    sfilter = etree.Element('filter')
+                    sfilter.set('string', centers[r])
+                    sfilter.set('domain', "[('university_center_id','=',%s)]"%(center_ref[r]))
+                    node = doc.xpath("//field[@name='institutional_email']")
+                    node[0].addnext(sfilter)
+                    res['arch'] = etree.tostring(doc)
+        return res
+
+    @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
         context = self._context or {}
         user = context.get('uid', False)
