@@ -1,0 +1,36 @@
+<openerp>
+	<data>
+
+		<record id="ems_enrollment_import_form" model="ir.ui.view">
+			<field name="name">Enrollment Import</field>
+			<field name="model">ems.enrollment.import</field>
+			<field name="arch" type="xml">
+				<form string="Enrollment Import">
+					<group colspan="2">
+						<field name="file" filename="name" required="1"/>
+						<field name="name" invisible="1"/>
+					</group>
+					<footer>
+						<button name="do_import" type="object" string="Import" class="oe_highlight"/>or
+						<button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="ems_enrollment_import_action" model="ir.actions.act_window">
+			<field name="name">EMS Enrollment Import</field>
+			<field name="res_model">ems.enrollment.import</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="menu_ems_enrollment_import"
+			parent="menu_ems_school_admin_tools"
+			sequence="1"
+			action="ems_enrollment_import_action"
+			groups="base.group_system"/>
+
+	</data>
+</openerp>

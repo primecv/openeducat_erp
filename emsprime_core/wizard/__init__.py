@@ -22,6 +22,6 @@
 from . import faculty_create_employee_wizard
 from . import faculty_create_user_wizard
 from . import students_create_user_wizard
-
+from . import ems_enrollment_import
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
