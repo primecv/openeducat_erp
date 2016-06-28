@@ -73,4 +73,9 @@ class EmsEnrollment(models.Model):
             vals['roll_number'] = idno
         return super(EmsEnrollment, self).create(vals)
 
+    @api.one
+    def action_validate(self):
+        return self.write({'state': 'validate'})
+            
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
