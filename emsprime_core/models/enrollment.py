@@ -31,8 +31,9 @@ class EmsEnrollment(models.Model):
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
+    academic_year = fields.Char('Academic Year', size=4)
     type = fields.Selection(
-        [('M', 'Matricula'), ('C', 'Candidatura')], 'Tipo', required=True, default='M')
+        [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
 
     @api.onchange('student_id')
     def onchange_student(self):
