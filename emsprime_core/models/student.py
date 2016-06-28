@@ -51,25 +51,28 @@ class EmsStudent(models.Model):
         #check current date with the latest enrollment edition:
         count = 0
         for enrollment in self.roll_number_line:
-            if count == 0:
-                edition_id = enrollment.edition_id.id
-                course_id = enrollment.course_id.id
-                roll_number = enrollment.roll_number
-                type_current_enroll = enrollment.type
-
-                start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
-                count = count + 1
-            else:
-                if start_date < datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date():
-                    start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+            try:
+                if count == 0:
                     edition_id = enrollment.edition_id.id
                     course_id = enrollment.course_id.id
                     roll_number = enrollment.roll_number
                     type_current_enroll = enrollment.type
-            if type_current_enroll=='C':
-                type_current_enroll='Candidatura'
-            else:
-                type_current_enroll='Matricula'
+
+                    start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                    count = count + 1
+                else:
+                    if start_date < datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date():
+                        start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                        edition_id = enrollment.edition_id.id
+                        course_id = enrollment.course_id.id
+                        roll_number = enrollment.roll_number
+                        type_current_enroll = enrollment.type
+                if type_current_enroll=='C':
+                    type_current_enroll='Candidatura'
+                else:
+                    type_current_enroll='Matricula'
+            except Exception:
+                pass
 
             self.roll_number = roll_number
             self.edition_id = edition_id
