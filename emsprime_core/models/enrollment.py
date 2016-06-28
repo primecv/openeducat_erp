@@ -30,6 +30,7 @@ class EmsEnrollment(models.Model):
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
+    state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
     type = fields.Selection(
         [('M', 'Matricula'), ('C', 'Candidatura')], 'Tipo', required=True, default='M')
 
