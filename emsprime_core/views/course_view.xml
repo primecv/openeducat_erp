@@ -27,15 +27,15 @@
 		                    <label for="name" class="oe_edit_only"/>
 		                    <h2><field name="name" placeholder="Course Name..."/></h2>
 		                </div>
+						<group colspan="4" col="4" name="main">
+							<field name="code" />
+							<field name="section" />
+							<field name="evaluation_type" />
+							<field name="degree_id" widget="selection"/>
+							<field name="parent_id" />
+							<field name="active"/>
+						</group>
                         <notebook colspan="4">						
-							<group colspan="4" col="4" name="main">
-								<field name="code" />
-								<field name="section" />
-								<field name="evaluation_type" />
-								<field name="degree_id" widget="selection"/>
-								<field name="parent_id" />
-								<field name="active"/>
-							</group>
                             <page name="subjects" string="Subjects">						
 								<group name="subject">
 									<separator string="Subjects" colspan="4"/> 
