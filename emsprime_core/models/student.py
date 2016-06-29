@@ -167,6 +167,16 @@ class EmsStudent(models.Model):
         self.county_id = False
         self.parish_id = False
 
+    @api.multi
+    @api.depends('name', 'roll_number')
+    def name_get(self):
+        result = []
+        for student in self:
+            rollno = student.roll_number and str(student.roll_number) + ' - ' or ''
+            name = rollno + '' + student.name + ' ' + student.last_name
+            result.append((student.id, name))
+        return result
+
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         """Dynamically format University Center Filters On Student search view
