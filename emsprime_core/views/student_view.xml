@@ -132,14 +132,9 @@
 												<field name="academic_year" required="1" />
 												<field name="type" />
 											</group>
-											<group>
-												<group>
-													<button name="action_load_subjects" type="object" string="Course Subjects" attrs="{'invisible':[('type','!=','I')]}"/>
-												</group>
-												<group/>
-											</group>
 											<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
-												<field name="subject_ids" nolabel="1" readonly="1" attrs="{'invisible':[('type','!=','I')]}"/>
+												<field name="subject_ids_copy" invisible="1"/><newline/>
+												<field name="subject_ids" nolabel="1" attrs="{'invisible':[('type','!=','I')], 'readonly':[('course_id','=',False)]}" domain="[('id','in',(subject_ids_copy[0][2]))]"/>
 											</group>
 										</form>
 									</field>
