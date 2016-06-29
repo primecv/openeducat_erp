@@ -32,6 +32,7 @@ class EmsEnrollment(models.Model):
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
     academic_year = fields.Char('Academic Year', size=4)
+    subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
     type = fields.Selection(
         [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
 
@@ -73,6 +74,34 @@ class EmsEnrollment(models.Model):
             idno = str(year) + '.' + next_seq
             vals['roll_number'] = idno
         return super(EmsEnrollment, self).create(vals)
+
+    @api.multi
+    def action_load_subjects(self):
+        for enrollment in self:
+            course_subjects = []
+            subject_list = [course_subjects.append(x.subject_id.id) for x in enrollment.edition_id.course_id.subject_line]
+            #subjects = []
+            #for subject in enrollment.subject_ids:
+            #    subjects.append(subject.id)
+            #for subject in subjects:
+            #    course_subjects.pop(course_subjects.index(subject))
+
+            wiz_id = self.env['ems.enrollment.inscricao.subject'].create({})
+            for subject in course_subjects:
+                self.env['ems.enrollment.inscricao.subject.line'].create({'subject_id': subject, 'form_id': wiz_id.id})
+            context = {}
+            context['active_id'] = self.id
+            context['active_model'] = self._name
+            return {
+                'name': ('Select Subjects'),
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'ems.enrollment.inscricao.subject',
+                'type': 'ir.actions.act_window',
+                'res_id': wiz_id.id,
+                'context': context,
+                'target': 'new'
+            }
 
     @api.one
     def action_validate(self):

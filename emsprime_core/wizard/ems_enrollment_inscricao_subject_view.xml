@@ -1,0 +1,30 @@
+<openerp>
+	<data>
+
+		<record id="ems_enrollment_inscricao_subject_form" model="ir.ui.view">
+			<field name="name">ems.enrollment.inscricao.subject.form</field>
+			<field name="model">ems.enrollment.inscricao.subject</field>
+			<field name="arch" type="xml">
+				<form string="Select Subjects">
+					<separator string="Subjects"/>
+					<field name="name" invisible="1"/>
+					<field name="subject_line">
+				        <tree string="Subject" editable="bottom" create="0" delete="0">
+							<field name="temp_check" string="Add/Remove" style="width:10%"/>
+							<field name="subject_id" readonly="1"/>
+				        </tree>
+					</field>
+					<footer>
+						<button name="action_select_all" type="object" string="Select All"/>
+						<button name="action_deselect_all" type="object" string="Deselect All"/>
+                        <button name="action_add_selected" type="object" string="Add Selected" class="oe_highlight"/>
+                        <button name="action_add_all" type="object" string="Add All" class="oe_highlight"/> or 
+                        <button name="cancel" special="cancel" string="Cancel" class="oe_link"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

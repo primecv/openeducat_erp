@@ -34,6 +34,15 @@
                             <field name="type" />
 							<field name="academic_year" required="1" />
                         </group>
+						<group>
+							<group>
+								<button name="action_load_subjects" type="object" string="Course Subjects" attrs="{'invisible':[('type','!=','I')]}"/>
+							</group>
+							<group/>
+						</group>
+						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
+							<field name="subject_ids" nolabel="1" readonly="1" attrs="{'invisible':[('type','!=','I')]}"/>
+						</group>
                     </sheet>
                 </form>
             </field>
