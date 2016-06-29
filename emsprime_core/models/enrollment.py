@@ -34,6 +34,7 @@ class EmsEnrollment(models.Model):
     state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
     academic_year = fields.Char('Academic Year', size=4)
     subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
+    subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
     type = fields.Selection(
         [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
 
@@ -44,6 +45,25 @@ class EmsEnrollment(models.Model):
             self.update({'edition_id': self.student_id.edition_id})
         else:
             self.update({'edition_id': False})
+
+    @api.onchange('course_id')
+    def onchange_course(self):
+        self.update({'edition_id': False})
+        if not self.course_id:
+            self.update({'subject_ids_copy':[[6,0,[]]]})
+        else:
+            subjects = []
+            subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
+            self.update({'subject_ids_copy': [[6,0,subjects]]})
+
+    @api.onchange('type')
+    def onchange_type(self):
+        if not self.course_id:
+            self.update({'subject_ids_copy':[[6,0,[]]]})
+        else:
+            subjects = []
+            subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
+            self.update({'subject_ids_copy': [[6,0,subjects]]})
 
     @api.constrains('type', 'student_id')
     def check_inscricao_enrollment(self):
@@ -70,7 +90,7 @@ class EmsEnrollment(models.Model):
     @api.model
     def create(self, vals):
         if 'type' in vals and vals['type'] == 'C':
-            last_rec = self.search([('id','>',0),('roll_number','!=', '')], order='id desc', limit=1)
+            last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','C')], order='id desc', limit=1)
             next_seq = '00001'
             if last_rec:
                 last_seq = last_rec.roll_number
@@ -83,6 +103,21 @@ class EmsEnrollment(models.Model):
                     pass
             year = datetime.now().date().year
             idno = str(year) + '.' + next_seq
+            vals['roll_number'] = idno
+        elif 'type' in vals and vals['type'] == 'I':
+            last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','I'), ('roll_number','ilike', '%INS%')], order='id desc', limit=1)
+            next_seq = '001'
+            if last_rec:
+                last_seq = last_rec.roll_number
+                try:
+                    seq = last_seq.split('.')[0]
+                    next_seq = str(int(seq) + 1)
+                    while len(next_seq) < 3:
+                        next_seq = '0' + next_seq
+                except Exception:
+                    pass
+            year = datetime.now().date().year
+            idno = next_seq + '.INS.' + str(year)
             vals['roll_number'] = idno
         return super(EmsEnrollment, self).create(vals)
 
