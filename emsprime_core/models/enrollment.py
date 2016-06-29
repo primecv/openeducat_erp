@@ -19,8 +19,9 @@
 #
 ###############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 from datetime import datetime
+from openerp.exceptions import ValidationError
 
 class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
@@ -43,6 +44,16 @@ class EmsEnrollment(models.Model):
             self.update({'edition_id': self.student_id.edition_id})
         else:
             self.update({'edition_id': False})
+
+    @api.constrains('type', 'student_id')
+    def check_inscricao_enrollment(self):
+        for enrollment in self:
+            if enrollment.type == 'I':
+                student = enrollment.student_id.id
+                matriculas = self.search([('student_id','=',student), ('type','=','M')])
+                if not matriculas:
+                    raise ValidationError(_('Inscrição enrollment cannot be created.\nStudent must be enrolled with Matricula type.'))
+        return True
 
     _sql_constraints = [
         ('unique_name_roll_number_id',
