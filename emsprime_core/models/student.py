@@ -141,7 +141,7 @@ class EmsStudent(models.Model):
                               ('submit', 'Submitted'),
                               ('received', 'Received'),
                               ('confirmed', 'Accepted'),
-                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange',translate=True)
+                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange',translate=False)
     #Permanant Address fields:
     pstreet = fields.Char('Street')
     pstreet2 = fields.Char('Street2')
