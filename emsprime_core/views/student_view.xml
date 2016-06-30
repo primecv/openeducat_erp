@@ -67,9 +67,9 @@
 					<header>
 						<button name="action_submit" string="Submit" type="object" states="draft" class="oe_highlight" groups="emsprime_core.group_ems_applicant,emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin"/>
 						<button name="action_received" string="Received" type="object" states="submit" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin"/>
-						<button name="action_confirm" type="object" string="Enroll" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin"/>
-						<button name="action_reject" type="object" string="Reject" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin"/>
-						<field name="state" widget="statusbar" statusbar_visible="" />
+						<button name="action_confirm" type="object" string="Enroll" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" invisible="1"/>
+						<button name="action_reject" type="object" string="Reject" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" invisible="1"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,submit,received" />
 					</header>
                     <sheet>
                         <field name="photo" widget="image" class="oe_left oe_avatar" />
