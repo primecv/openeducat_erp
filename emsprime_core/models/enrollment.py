@@ -38,26 +38,23 @@ class EmsEnrollment(models.Model):
     type = fields.Selection(
         [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
 
-    @api.onchange('student_id')
-    def onchange_student(self):
-        #self.course_id = self.student_id.course_id
-        if self.student_id.edition_id:
-            self.update({'edition_id': self.student_id.edition_id})
-        else:
-            self.update({'edition_id': False})
+    @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
+    def onchange_enrollment_data(self):
+        if self.type == 'I':
+            if self.student_id and self.student_id.course_id:
+                subjects = []
+                subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
+                self.update({
+                    'edition_id': self.student_id.edition_id.id,
+                    'course_id': self.student_id.course_id.id,
+                    'subject_ids_copy': [[6,0,subjects]]
+                })
+            else:
+               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})
 
     @api.onchange('course_id')
     def onchange_course(self):
         self.update({'edition_id': False})
-        if not self.course_id:
-            self.update({'subject_ids_copy':[[6,0,[]]]})
-        else:
-            subjects = []
-            subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
-            self.update({'subject_ids_copy': [[6,0,subjects]]})
-
-    @api.onchange('type')
-    def onchange_type(self):
         if not self.course_id:
             self.update({'subject_ids_copy':[[6,0,[]]]})
         else:
