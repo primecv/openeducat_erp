@@ -33,6 +33,13 @@ class EmsEdition(models.Model):
     end_date = fields.Date('End Date', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
+    subject_ids = fields.Many2many('ems.course.subject', compute='_compute_subject_ids', string='Subjects associated to this Edition')
+
+    @api.multi
+    @api.depends('course_id')
+    def _compute_subject_ids(self):
+        for edition in self:
+            edition.subject_ids = self.env['ems.course.subject'].search([('course_id', '=', edition.course_id.id)]) or []
 
     @api.one
     @api.constrains('start_date', 'end_date')
