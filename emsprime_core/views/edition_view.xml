@@ -32,10 +32,10 @@
 							<field name="university_center_id"/>
                         </group>
                         <notebook colspan="4">						
-                            <page name="subjects" string="Subjects">
+                            <page name="subjects" string="Subjects">						
 								<group name="subject">
 									<separator string="Subjects" colspan="4"/> 
-									<field name="subject_ids" nolabel="1" readonly="1">
+									<field name="subject_line" nolabel="1">
 										<tree string="Subjects" editable="bottom">
 											<field name="subject_id" required="1"/>
 											<field name="semester"/>
@@ -46,6 +46,7 @@
 										</tree>
 									</field>
 								</group>
+								<button name="reload_subjects" type="object" string="Reload Course Subjects"/>
 							</page>
 						</notebook>
                     </sheet>

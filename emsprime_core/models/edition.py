@@ -33,13 +33,7 @@ class EmsEdition(models.Model):
     end_date = fields.Date('End Date', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
-    subject_ids = fields.Many2many('ems.course.subject', compute='_compute_subject_ids', string='Subjects associated to this Edition')
-
-    @api.multi
-    @api.depends('course_id')
-    def _compute_subject_ids(self):
-        for edition in self:
-            edition.subject_ids = self.env['ems.course.subject'].search([('course_id', '=', edition.course_id.id)]) or []
+    subject_line = fields.One2many('ems.edition.subject', 'edition_id', string="Subject(s)")
 
     @api.one
     @api.constrains('start_date', 'end_date')
@@ -101,5 +95,65 @@ class EmsEdition(models.Model):
             else:
                 self.env.cr.execute("""update ems_course set is_active=%s where id=%s"""%(state, course_id))
         return super(EmsEdition, self).write(vals)
-        
+
+    @api.onchange('course_id')
+    @api.multi
+    def onchange_course(self):
+        vals = {}
+        if not self.course_id:
+            vals['subject_line'] = [[6, 0, []]]
+            self.update(vals)
+        else:
+            lines = []
+            for subject in self.course_id.subject_line:
+                line_data = [0, False, {
+                                'subject_id': subject.subject_id.id,
+                                'week_work_load': subject.week_work_load,
+                                'student_contact': subject.student_contact,
+                                'work': subject.work,
+                                'ects': subject.ects,
+                                'semester': subject.semester
+                            }]
+                lines.append(line_data)
+            vals['subject_line'] = lines
+            self.update(vals)
+
+    @api.multi
+    def reload_subjects(self):
+        for edition in self:
+            self.subject_line.unlink()
+            for subject in edition.course_id.subject_line:
+                self.env['ems.edition.subject'].create({
+                    'edition_id': edition.id,
+                    'subject_id': subject.subject_id.id,
+                    'week_work_load': subject.week_work_load,
+                    'student_contact': subject.student_contact,
+                    'work': subject.work,
+                    'ects': subject.ects,
+                    'semester': subject.semester
+                })
+
+class EmsEditionSubject(models.Model):
+    _name = "ems.edition.subject"
+    _description = "Edition Subjects"
+
+    edition_id = fields.Many2one('ems.edition', string='Edition')
+    subject_id = fields.Many2one('ems.subject', string='Subject')
+    week_work_load = fields.Float('CHS', help='Weekly Work Load')
+    student_contact = fields.Float('Contact', help='Hours of Contact with Student')
+    work = fields.Integer('Work')
+    ects = fields.Integer('ECTS')
+    semester = fields.Selection([('1', '1'), 
+                                ('2', '2'), 
+                                ('3', '3'),
+                                ('4', '4'),
+                                ('5', '5'),
+                                ('6', '6'),
+                                ('7', '7'),
+                                ('8', '8'),
+                                ('9', '9')
+            ], 'Semester')
+
+    _sql_constraints = [('uniq_edition_subject','unique(edition_id, subject_id)','Subject must be Unique per Edition.')]
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
