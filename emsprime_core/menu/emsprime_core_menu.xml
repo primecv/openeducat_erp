@@ -24,6 +24,10 @@
 
 		<!-- Enrollments Menu -->
 
+		<menuitem id="menu_ems_candidate_enrollment" name="Candidates" parent="menu_ems_school_main"
+            sequence="23" action="act_open_ems_candidate_enrollment_view"
+            groups="group_ems_back_office,group_ems_back_office_admin" />
+
 		<menuitem id="menu_ems_enrollment" name="Enrollments" parent="menu_ems_school_main"
             sequence="25" action="act_open_ems_enrollment_view"
             groups="group_ems_back_office,group_ems_back_office_admin" />
