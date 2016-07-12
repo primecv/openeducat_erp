@@ -55,6 +55,7 @@
             <field name="arch" type="xml">
                 <search string="Roll Number">
                     <field name="roll_number" />
+					<field name="state"/>
                     <field name="student_id" />
                     <field name="course_id" />
                     <field name="edition_id" />
@@ -63,6 +64,7 @@
                     <group expand="0" string="Group By...">
                         <filter string="Roll Number" domain="[]"
                             context="{'group_by':'roll_number'}" />
+						<filter string="State" domain="[]" context="{'group_by':'state'}" />
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
                         <filter string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
