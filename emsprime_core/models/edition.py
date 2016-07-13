@@ -137,7 +137,6 @@ class EmsEdition(models.Model):
     def do_student_inscriptions(self):
         """Function to generate Inscription type of Enrollments for Students with Validated Matricula Enrollment
         """
-        1) If Edition has 
         for edition in self:
             course_id = edition.course_id.id
             start_year = datetime.strptime(edition.start_date, "%Y-%m-%d").year
