@@ -98,7 +98,7 @@ class EmsEnrollment(models.Model):
             year = datetime.now().date().year
             idno = str(year) + '.' + next_seq
             vals['roll_number'] = idno
-        elif 'type' in vals and vals['type'] == 'I':
+        elif 'type' in vals and vals['type'] == 'I' and 'no_rollno' not in self._context:
             last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','I'), ('roll_number','ilike', '%INS%')], order='id desc', limit=1)
             next_seq = '001'
             if last_rec:

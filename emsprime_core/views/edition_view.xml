@@ -22,6 +22,9 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <form string="Edition">
+					<header>
+						<button name="do_student_inscriptions" type="object" string="Load Student Inscriptions"/>
+					</header>
                     <sheet>
                         <group col="4" name="main">
                             <field name="name" />

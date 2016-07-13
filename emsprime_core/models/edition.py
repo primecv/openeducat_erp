@@ -21,7 +21,7 @@
 
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
-
+from datetime import datetime
 
 class EmsEdition(models.Model):
     _name = 'ems.edition'
@@ -132,6 +132,53 @@ class EmsEdition(models.Model):
                     'ects': subject.ects,
                     'semester': subject.semester
                 })
+
+    @api.multi
+    def do_student_inscriptions(self):
+        """Function to generate Inscription type of Enrollments for Students with Validated Matricula Enrollment
+        """
+        1) If Edition has 
+        for edition in self:
+            course_id = edition.course_id.id
+            start_year = datetime.strptime(edition.start_date, "%Y-%m-%d").year
+            end_year = datetime.strptime(edition.end_date, "%Y-%m-%d").year
+            current_year = datetime.now().date().year
+            if end_year < current_year:
+                current_year = end_year
+            diff = current_year - start_year
+            if diff > 0:
+                enrollments = self.env['ems.enrollment'].search([('edition_id','=',edition.id),
+                                                                 ('type','=','M'),
+                                                                 ('state','=','validate')])
+                students, enrollments2 = [], []
+                for enrollment in enrollments:
+                    student_id = enrollment.student_id.id
+                    inscr_enrollment = self.env['ems.enrollment'].search([('edition_id','=',edition.id),
+                                                                          ('student_id','=',student_id),
+                                                                          ('type','=','I')])
+                    if not inscr_enrollment:
+                        students.append(enrollment.student_id.id)
+                        enrollments2.append(enrollment)
+
+                for enrollment in enrollments2:
+                    for academic_year in range(0, diff):
+                        count = academic_year * 2
+                        sem1, sem2 = count + 1, count + 2
+                        subjects = []
+                        subjects2 = [subjects.append(line.subject_id.id) for line in enrollment.course_id.subject_line \
+                                     if line.semester in (str(sem1), str(sem2))]
+                        enrollment_data = {
+                                'roll_number': str(enrollment.roll_number) + '.' + str(start_year + academic_year),
+                                'student_id': enrollment.student_id.id,
+                                'type': 'I',
+                                'course_id': enrollment.course_id.id,
+                                'edition_id': enrollment.edition_id.id,
+                                'subject_ids': [[6,0,subjects]]
+                        }
+                        ctx = dict(self._context)
+                        ctx['no_rollno'] = True
+                        ctx_inscription = ctx.copy()
+                        iscription_id = self.env['ems.enrollment'].with_context(ctx_inscription).create(enrollment_data)
 
 class EmsEditionSubject(models.Model):
     _name = "ems.edition.subject"
