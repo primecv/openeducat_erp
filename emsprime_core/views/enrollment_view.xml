@@ -27,11 +27,11 @@
 					</header>
                     <sheet>
                         <group col="4">
-                            <field name="roll_number" />
+                            <field name="type" />
                             <field name="student_id" />
                             <field name="course_id" />
                             <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
-                            <field name="type" />
+                            <field name="roll_number" />
 							<field name="academic_year" required="0" invisible="1"/>
                         </group>
 						<!--group>
