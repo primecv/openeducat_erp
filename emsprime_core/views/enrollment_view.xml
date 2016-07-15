@@ -79,7 +79,6 @@
             <field name="arch" type="xml">
                 <pivot string="Enrollments">
                     <field name="course_id" type="row"/>
-					<field name="edition_id" type="row"/>
 					<field name="state" type="col"/>
                 </pivot>
             </field>
