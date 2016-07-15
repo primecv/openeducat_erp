@@ -88,7 +88,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ems.enrollment</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_mode">pivot,tree,form</field>
             <field name="search_view_id" ref="view_ems_enrollment_search" />
             <field name="domain">[('type','=','M')]</field>
             <field name="context">{'default_type':'M'}</field>
@@ -111,7 +111,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ems.enrollment</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_mode">pivot,tree,form</field>
             <field name="search_view_id" ref="view_ems_enrollment_search" />
             <field name="domain">[('type','=','C')]</field>
             <field name="context">{'default_type': 'C'}</field>
