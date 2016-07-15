@@ -84,7 +84,7 @@
             </field>
         </record>
         <record model="ir.actions.act_window" id="act_open_ems_enrollment_view">
-            <field name="name">Roll Numbers</field>
+            <field name="name">Enrollments</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ems.enrollment</field>
             <field name="view_type">form</field>
@@ -113,7 +113,7 @@
         </record>
 		<!--Candidates Menu-->
         <record model="ir.actions.act_window" id="act_open_ems_candidate_enrollment_view">
-            <field name="name">Roll Numbers</field>
+            <field name="name">Candidates</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ems.enrollment</field>
             <field name="view_type">form</field>
