@@ -105,6 +105,12 @@
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_ems_enrollment_tree" />
         </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_enrollment_view_pivot">
+            <field name="act_window_id" ref="act_open_ems_enrollment_view" />
+            <field name="sequence" eval="5" />
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="view_enrollment_pivot" />
+        </record>
 		<!--Candidates Menu-->
         <record model="ir.actions.act_window" id="act_open_ems_candidate_enrollment_view">
             <field name="name">Roll Numbers</field>
