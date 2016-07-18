@@ -37,6 +37,7 @@ class EmsEnrollment(models.Model):
     subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
     type = fields.Selection(
         [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
+    period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
 
     @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
     def onchange_enrollment_data(self):
