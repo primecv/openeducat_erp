@@ -49,6 +49,7 @@
 							<field name="subject_line" attrs="{'required':[('type','=','I')]}">
 								<tree string="Subjects" editable="top">
 									<field name="subject_id" required="1"/>
+									<field name="semester"/>
 									<field name="ect"/>
 									<field name="grade"/>
 									<field name="evaluation_type"/>
