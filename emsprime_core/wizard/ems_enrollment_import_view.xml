@@ -11,7 +11,7 @@
 						<field name="name" invisible="1"/>
 					</group>
 					<footer>
-						<button name="load_inscription_subjects" type="object" string="Load Subjects" class="oe_highlight"/>
+						<button name="load_inscription_subjects" type="object" string="Load Subjects" class="oe_highlight" invisible="1"/>
 						<button name="do_import" type="object" string="Import" class="oe_highlight"/>or
 						<button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
 					</footer>
