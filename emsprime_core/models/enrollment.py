@@ -35,6 +35,7 @@ class EmsEnrollment(models.Model):
     academic_year = fields.Char('Academic Year', size=4)
     subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
+    subject_line = fields.One2many('ems.enrollment.inscription.subject', 'inscription_id', 'Subjects')
     type = fields.Selection(
         [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
@@ -148,5 +149,27 @@ class EmsEnrollment(models.Model):
     def action_validate(self):
         return self.write({'state': 'validate'})
             
+
+class EmsEnrollmentInscriptionSubject(models.Model):
+    _name = "ems.enrollment.inscription.subject"
+    _description = "Inscription Subjects"
+    _order = "semester asc"
+
+    inscription_id = fields.Many2one('ems.enrollment', 'Inscription')
+    subject_id = fields.Many2one('ems.subject', 'Subject')
+    semester = fields.Selection([('1', '1'), 
+                                ('2', '2'), 
+                                ('3', '3'),
+                                ('4', '4'),
+                                ('5', '5'),
+                                ('6', '6'),
+                                ('7', '7'),
+                                ('8', '8'),
+                                ('9', '9')
+            ], 'Semester')
+    ect = fields.Integer('ECT')
+    grade = fields.Float('Grade')
+    evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
