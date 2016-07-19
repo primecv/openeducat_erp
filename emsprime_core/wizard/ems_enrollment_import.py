@@ -11,7 +11,20 @@ class ems_enrollment_import(models.TransientModel):
 
 	file = fields.Binary('File')
 	name = fields.Char('Name')
-	
+
+	@api.multi	
+	def load_inscription_subjects(self):
+		inscriptions = self.env['ems.enrollment'].search([('type','=','I')])
+		for insc in inscriptions:
+			subjects = []
+			subjectline = [subjects.append(i.id) for i in insc.subject_ids]
+			for subject in subjects:
+				course_id = insc.course_id.id
+				course = self.env['ems.course.subject'].search([('subject_id','=',subject), ('course_id','=',course_id)])
+				semester = course.semester
+				vals = {'subject_id': subject, 'inscription_id': insc.id, 'semester': semester}
+				self.env['ems.enrollment.inscription.subject'].create(vals)
+
 	def do_import(self, cr, uid, ids, context=None):
 		for rec in self.browse(cr, uid, ids):
 			if not rec.file:
