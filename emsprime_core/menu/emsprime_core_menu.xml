@@ -28,6 +28,10 @@
             sequence="23" action="act_open_ems_candidate_enrollment_view"
             groups="group_ems_back_office,group_ems_back_office_admin" />
 
+		<menuitem id="menu_ems_inscription_enrollment" parent="menu_ems_school_main"
+            sequence="26" action="act_open_ems_inscription_enrollment_view"
+            groups="group_ems_back_office,group_ems_back_office_admin" />
+
 		<menuitem id="menu_ems_enrollment" name="Enrollments" parent="menu_ems_school_main"
             sequence="25" action="act_open_ems_enrollment_view"
             groups="group_ems_back_office,group_ems_back_office_admin" />
