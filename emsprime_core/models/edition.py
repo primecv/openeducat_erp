@@ -177,7 +177,7 @@ class EmsEdition(models.Model):
                         ctx = dict(self._context)
                         ctx['no_rollno'] = True
                         ctx_inscription = ctx.copy()
-                        iscription_id = self.env['ems.enrollment'].with_context(ctx_inscription).create(enrollment_data)
+                        inscription_id = self.env['ems.enrollment'].with_context(ctx_inscription).create(enrollment_data)
                         for subject in subjects:
                             course_id = enrollment.course_id.id
                             course = self.env['ems.course.subject'].search([('subject_id','=',subject), ('course_id','=',course_id)])
