@@ -182,7 +182,7 @@ class EmsEdition(models.Model):
                             course_id = enrollment.course_id.id
                             course = self.env['ems.course.subject'].search([('subject_id','=',subject), ('course_id','=',course_id)])
                             semester = course.semester
-                            vals = {'subject_id': subject, 'inscription_id': inscription_id, 'semester': semester}
+                            vals = {'subject_id': subject, 'inscription_id': inscription_id.id, 'semester': semester}
                             self.env['ems.enrollment.inscription.subject'].create(vals)
 
 
