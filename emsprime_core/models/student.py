@@ -183,6 +183,25 @@ class EmsStudent(models.Model):
         """
         res = super(EmsStudent, self).fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        if view_type == 'form':
+            today = fields.Date.today()
+            editions = self.env['ems.edition'].search([('start_date','>',today)])
+            courses = []
+            course_list = [courses.append(edition.course_id.id) for edition in editions]
+            if courses:
+                doc = etree.XML(res['arch'])
+                for node in doc.xpath("//field[@name='course_option_1']"):
+                    node.set('domain', "[('id','in',%s)]"%(courses))
+                    node.set('widget', 'selection')
+                    res['arch'] = etree.tostring(doc)
+                for node in doc.xpath("//field[@name='course_option_2']"):
+                    node.set('domain', "[('id','in',%s)]"%(courses))
+                    node.set('widget', 'selection')
+                    res['arch'] = etree.tostring(doc)
+                for node in doc.xpath("//field[@name='course_option_3']"):
+                    node.set('domain', "[('id','in',%s)]"%(courses))
+                    node.set('widget', 'selection')
+                    res['arch'] = etree.tostring(doc)
         if view_type == 'search':
             center_ids = self.env['ems.university.center'].search([('id','>',0)])
             centers, center_ref = [], []
