@@ -71,6 +71,7 @@
                     <field name="student_id" />
                     <field name="course_id" />
                     <field name="edition_id" />
+					<field name="university_center_id"/>
 					<field name="type" />
                     <newline />
                     <group expand="0" string="Group By...">
@@ -80,6 +81,7 @@
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
                         <filter string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
                         <filter string="Type" domain="[]" context="{'group_by':'type'}" />
                     </group>
                 </search>
