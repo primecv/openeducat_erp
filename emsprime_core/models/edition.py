@@ -57,45 +57,6 @@ class EmsEdition(models.Model):
         return super(EmsEdition, self).name_search(
             name, args, operator=operator, limit=limit)
 
-    @api.model
-    def create(self, vals):
-        """Mark Related course as Active if condition matched.
-        """
-        course_id = vals.get('course_id', False)
-        if course_id:
-            if vals['start_date'] > fields.Date.today():
-                self.env.cr.execute("""update ems_course set is_active=True where id=%s"""%(course_id))
-        return super(EmsEdition, self).create(vals)
-
-    @api.multi
-    def write(self, vals):
-        """Mark Related course as Active if condition matched.
-        """
-        for edition in self:
-            start_date = edition.start_date
-            new_start_date = False
-            if 'start_date' in vals:
-                new_start_date = vals['start_date']
-            course_id = edition.course_id.id
-            new_course_id = False
-            if 'course_id' in vals:
-                new_course_id = vals['course_id']
-
-            state = False
-            if new_start_date:
-                if new_start_date > fields.Date.today():
-                    state = True
-            else:
-                if start_date > fields.Date.today():
-                    state = True
-
-            if new_course_id:
-                self.env.cr.execute("""update ems_course set is_active=%s where id=%s"""%(state, new_course_id))
-                self.env.cr.execute("""update ems_course set is_active=False where id=%s"""%(course_id))
-            else:
-                self.env.cr.execute("""update ems_course set is_active=%s where id=%s"""%(state, course_id))
-        return super(EmsEdition, self).write(vals)
-
     @api.onchange('course_id')
     @api.multi
     def onchange_course(self):
