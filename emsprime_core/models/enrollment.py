@@ -27,6 +27,12 @@ class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
     _rec_name = 'roll_number'
 
+    @api.one
+    @api.depends('edition_id')
+    def _get_year(self):
+        year = datetime.strptime(self.edition_id.start_date, '%Y-%m-%d').date().year
+        self.year = year
+
     roll_number = fields.Char('Roll Number', size=15, required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
@@ -39,6 +45,8 @@ class EmsEnrollment(models.Model):
     type = fields.Selection(
         [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
+    university_center_id = fields.Many2one('ems.university.center', related="edition_id.university_center_id", string='University Center', store=True)
+    year = fields.Char(string='Year', compute='_get_year', store=True)
 
     @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
     def onchange_enrollment_data(self):
