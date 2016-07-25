@@ -11,6 +11,7 @@ class ems_enrollment_import(models.TransientModel):
 
 	file = fields.Binary('File')
 	name = fields.Char('Name')
+	type = fields.Selection([('e','Matricula Enrollment'),('g', 'Inscription Grades')], 'Type', help="Matricula Enrollment: To Import Matricula Enrollments\nInscription Grades: To update Grades on Inscription Enrollment Subjects")
 
 	@api.multi	
 	def load_inscription_subjects(self):
@@ -57,35 +58,59 @@ class ems_enrollment_import(models.TransientModel):
 							curr_cell += 1
 							cell_value = worksheet.cell_value(curr_row, curr_cell)
 							result.append(cell_value)
-						if result:
-							vals = {
-								'roll_number': result[0],
-								'type': 'M',
-							}
-							student_id, course_id, edition_id = False, False, False
-							email = result[1]
-							students = self.pool.get('ems.student').search(cr, uid, [('email','=',email.strip().lower())])
-							if students:
-								student_id = students[0]
-								vals['student_id'] = student_id
+						if rec.type == 'g':#Inscription Subjects Grade Update
+							if result and result[2] and result[4] and result[5]:
+								student_code = str(result[2]).strip()
+								subject_code = str(result[4]).strip()
+								grade = result[5]
 
-							edition_code = result[4]
-							editions = self.pool.get('ems.edition').search(cr, uid, [('code','=',edition_code.strip().upper())])
-							if editions:
-								edition_id = editions[0]
-								vals['edition_id'] = edition_id
-								course_id = self.pool.get('ems.edition').browse(cr, uid, [edition_id])[0].course_id.id
-								vals['course_id'] = course_id
+								student_id = self.pool.get('ems.student').search(cr, uid, [('roll_number','=',student_code)])
+								if student_id: student_id = student_id[0]
+								subject_id = self.pool.get('ems.subject').search(cr, uid, [('code','=',subject_code)])
+								if subject_id: subject_id = subject_id[0]
+								if subject_id and student_id:
+									enrollment_ids = self.pool.get('ems.enrollment').search(cr, uid, [
+															('student_id','=',student_id),
+															('type','=','I')])
+									subject_line_id = self.pool.get('ems.enrollment.inscription.subject').search(cr, uid, [
+															('inscription_id','in',enrollment_ids),
+															('subject_id','=',subject_id)])
+									if len(subject_line_id) == 1:
+										success = success + 1
+										self.pool.get('ems.enrollment.inscription.subject').write(cr, uid, subject_line_id,
+															{'grade': grade})
+									else:
+										fail = fail + 1
+						if rec.type == 'e':#Matricula Enrollment Import
+							if result:
+								vals = {
+									'roll_number': result[0],
+									'type': 'M',
+								}
+								student_id, course_id, edition_id = False, False, False
+								email = result[1]
+								students = self.pool.get('ems.student').search(cr, uid, [('email','=',email.strip().lower())])
+								if students:
+									student_id = students[0]
+									vals['student_id'] = student_id
+
+								edition_code = result[4]
+								editions = self.pool.get('ems.edition').search(cr, uid, [('code','=',edition_code.strip().upper())])
+								if editions:
+									edition_id = editions[0]
+									vals['edition_id'] = edition_id
+									course_id = self.pool.get('ems.edition').browse(cr, uid, [edition_id])[0].course_id.id
+									vals['course_id'] = course_id
 	
-							if edition_id and student_id and course_id:
-								exstudent = self.pool.get('ems.enrollment').search(cr, uid, [('student_id','=',vals['student_id']),('course_id','=',vals['course_id']),('edition_id','=',vals['edition_id'])])
-								if exstudent:
-									dup = dup + 1
-								else:
-									success = success + 1
-									self.pool.get('ems.enrollment').create(cr, uid, vals)
-							else: 
-								fail = fail + 1
+								if edition_id and student_id and course_id:
+									exstudent = self.pool.get('ems.enrollment').search(cr, uid, [('student_id','=',vals['student_id']),('course_id','=',vals['course_id']),('edition_id','=',vals['edition_id'])])
+									if exstudent:
+										dup = dup + 1
+									else:
+										success = success + 1
+										self.pool.get('ems.enrollment').create(cr, uid, vals)
+								else: 
+									fail = fail + 1
 				print "Total : ", total
 				print "Success : ", success
 				print "Duplicates : ", dup

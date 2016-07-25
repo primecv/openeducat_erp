@@ -6,7 +6,8 @@
 			<field name="model">ems.enrollment.import</field>
 			<field name="arch" type="xml">
 				<form string="Enrollment Import">
-					<group colspan="2">
+					<group col="4">
+						<field name="type" required="1"/>
 						<field name="file" filename="name" required="1"/>
 						<field name="name" invisible="1"/>
 					</group>
