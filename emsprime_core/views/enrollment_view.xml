@@ -105,13 +105,13 @@
                     <group expand="0" string="Group By...">
                         <filter string="Roll Number" domain="[]"
                             context="{'group_by':'roll_number'}" />
-						<filter string="State" domain="[]" context="{'group_by':'state'}" />
-                        <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
-                        <filter string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
-                        <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
-                        <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
-                        <filter string="Year" domain="[]" context="{'group_by':'year'}" />
-                        <filter string="Type" domain="[]" context="{'group_by':'type'}" />
+						<filter name="group_by_state" string="State" domain="[]" context="{'group_by':'state'}" />
+                        <filter name="group_by_university_center" string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
+                        <filter name="group_by_course" string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter name="group_by_edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
+                        <filter name="group_by_student" string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter name="group_by_year" string="Year" domain="[]" context="{'group_by':'year'}" />
+                        <filter name="group_by_type" string="Type" domain="[]" context="{'group_by':'type'}" />
                     </group>
                 </search>
             </field>
@@ -189,7 +189,7 @@
             <field name="view_mode">tree,form,graph,pivot</field>
             <field name="search_view_id" ref="view_ems_enrollment_inscription_search" />
             <field name="domain">[('type','=','I')]</field>
-            <field name="context">{'default_type': 'I', 'group_by': ['university_center_id', 'course_id', 'year']}</field>
+            <field name="context">{'default_type': 'I', 'search_default_group_by_university_center':1, 'search_default_group_by_course': 1, 'search_default_group_by_year':1}</field>
         </record>
     </data>
 </openerp>
