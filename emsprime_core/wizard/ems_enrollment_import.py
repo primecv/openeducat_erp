@@ -71,7 +71,7 @@ class ems_enrollment_import(models.TransientModel):
 								if subject_id and student_id:
 									enrollment_ids = self.pool.get('ems.enrollment').search(cr, uid, [
 															('student_id','=',student_id),
-															('type','=','I')])
+															('type','=','I'), ('state','=','draft')])
 									subject_line_id = self.pool.get('ems.enrollment.inscription.subject').search(cr, uid, [
 															('inscription_id','in',enrollment_ids),
 															('subject_id','=',subject_id)])
