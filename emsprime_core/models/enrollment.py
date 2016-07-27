@@ -163,6 +163,24 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     _description = "Inscription Subjects"
     _order = "semester asc"
 
+    @api.onchange('subject_id', 'semester', 'ect')
+    def onchange_subject(self):
+        context = self._context
+        vals = {}
+        subject_id = self.subject_id.id
+        if context and 'edition_id' in context:
+            edition_id = context['edition_id']
+            ems_edition_subject_id = self.env['ems.edition.subject'].search([('subject_id','=',subject_id),('edition_id','=',edition_id)])
+            if ems_edition_subject_id:
+                vals['semester'] = ems_edition_subject_id.semester
+                vals['ect'] = ems_edition_subject_id.ects
+                vals['semester_copy'] = ems_edition_subject_id.semester
+                vals['ect_copy'] = ems_edition_subject_id.ects
+        else:
+            vals['semester'] = self.semester_copy
+            vals['ect'] = self.ect_copy
+        self.update(vals)
+
     inscription_id = fields.Many2one('ems.enrollment', 'Inscription')
     subject_id = fields.Many2one('ems.subject', 'Subject')
     semester = fields.Selection([('1', '1'), 
@@ -175,7 +193,18 @@ class EmsEnrollmentInscriptionSubject(models.Model):
                                 ('8', '8'),
                                 ('9', '9')
             ], 'Semester')
+    semester_copy = fields.Selection([('1', '1'), 
+                                ('2', '2'), 
+                                ('3', '3'),
+                                ('4', '4'),
+                                ('5', '5'),
+                                ('6', '6'),
+                                ('7', '7'),
+                                ('8', '8'),
+                                ('9', '9')
+            ], 'Semester')
     ect = fields.Integer('ECT')
+    ect_copy = fields.Integer('ECT')
     grade = fields.Float('Grade')
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
 
