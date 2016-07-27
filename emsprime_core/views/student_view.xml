@@ -142,7 +142,9 @@
 													<tree string="Subjects" editable="top">
 														<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
 														<field name="semester"/>
+														<field name="semester_copy" invisible="1"/>
 														<field name="ect"/>
+														<field name="ect_copy" invisible="1"/>
 														<field name="grade"/>
 														<field name="evaluation_type"/>
 													</tree>
