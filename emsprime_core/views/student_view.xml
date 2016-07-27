@@ -140,7 +140,7 @@
 											<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 												<field name="subject_line" nolabel="1" colspan="4" attrs="{'required':[('type','=','I')]}">
 													<tree string="Subjects" editable="top">
-														<field name="subject_id" required="1"/>
+														<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
 														<field name="semester"/>
 														<field name="ect"/>
 														<field name="grade"/>

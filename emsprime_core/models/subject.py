@@ -34,6 +34,17 @@ class EmsSubject(models.Model):
          ('both', 'Both'), ('other', 'Other')],
         'Type', default="theory", required=True)
 
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=80):
+        context = self._context or {}
+        if context and 'inscription' in context and 'edition_id' in context:
+            edition_id = context['edition_id']
+            edition = self.env['ems.edition'].browse(edition_id)
+            subjects = []
+            subject_list = [subjects.append(x.subject_id.id) for x in edition.subject_line]
+            args = [['id', 'in', subjects]]
+        return super(EmsSubject, self).name_search(name, args, operator, limit)
+
     @api.multi
     @api.constrains('name')
     def _check_name(self):
