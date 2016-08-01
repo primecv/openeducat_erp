@@ -153,6 +153,7 @@ class EmsStudent(models.Model):
     final_average = fields.Float('Final Average')
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
     type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True)
+    temp_edition_courses = fields.Many2many('ems.course', string='Course(s)')
 	
     @api.one
     @api.constrains('birth_date')
@@ -166,6 +167,18 @@ class EmsStudent(models.Model):
         self.island_id = False
         self.county_id = False
         self.parish_id = False
+
+    @api.onchange('university_center_id')
+    def onchange_university_center(self):
+        university_center_id = self.university_center_id.id
+        editions = self.env['ems.edition'].search([('university_center_id','=',university_center_id)])
+        courses = []
+        for edition in editions:
+            courses.append(edition.course_id.id)
+        self.temp_edition_courses = [[6, 0, courses]]
+        self.course_option_1 = False
+        self.course_option_2 = False
+        self.course_option_3 = False
 
     @api.multi
     @api.depends('name', 'roll_number')
@@ -183,7 +196,10 @@ class EmsStudent(models.Model):
         """
         res = super(EmsStudent, self).fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
-        if view_type == 'form':
+        '''if view_type == 'form':
+            """Filter Course Options list to show courses from Editions where edition Start Date 
+            is greater than Todays Date.
+            """
             today = fields.Date.today()
             editions = self.env['ems.edition'].search([('start_date','>',today)])
             courses = []
@@ -201,7 +217,7 @@ class EmsStudent(models.Model):
                 for node in doc.xpath("//field[@name='course_option_3']"):
                     node.set('domain', "[('id','in',%s)]"%(courses))
                     node.set('widget', 'selection')
-                    res['arch'] = etree.tostring(doc)
+                    res['arch'] = etree.tostring(doc)'''
         if view_type == 'search':
             center_ids = self.env['ems.university.center'].search([('id','>',0)])
             centers, center_ref = [], []
