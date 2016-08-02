@@ -48,6 +48,7 @@ class EmsStudent(models.Model):
         self.course_id = False
         self.edition_id = False
         self.type_current_enroll = ''
+        university_center_id = False
         #check current date with the latest enrollment edition:
         count = 0
         for enrollment in self.roll_number_line:
@@ -57,6 +58,7 @@ class EmsStudent(models.Model):
                     course_id = enrollment.course_id.id
                     roll_number = enrollment.roll_number
                     type_current_enroll = enrollment.type
+                    university_center_id = enrollment.university_center_id.id
 
                     start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
                     count = count + 1
@@ -67,6 +69,7 @@ class EmsStudent(models.Model):
                         course_id = enrollment.course_id.id
                         roll_number = enrollment.roll_number
                         type_current_enroll = enrollment.type
+                        university_center_id = enrollment.university_center_id.id
                 if type_current_enroll=='C':
                     type_current_enroll='Candidatura'
                 else:
@@ -78,6 +81,7 @@ class EmsStudent(models.Model):
             self.edition_id = edition_id
             self.course_id = course_id
             self.type_current_enroll = type_current_enroll
+            self.university_center_id = university_center_id
 
     middle_name = fields.Char('Middle Name', size=128)
     last_name = fields.Char('Last Name', size=128, required=True)
