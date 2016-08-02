@@ -274,10 +274,16 @@ class EmsStudent(models.Model):
             if not student.course_option_1:
                 raise ValidationError('Missing Course Option 1.')
             course_id = student.course_option_1.id
-            editions = self.env['ems.edition'].search([('course_id','=',course_id)], limit=1)
+            year = datetime.now().date().year
+            university_center_id = student.university_center_id and student.university_center_id.id or False
+            editions = self.env['ems.edition'].search([('course_id','=',course_id), 
+                                                       ('university_center_id','=',university_center_id),
+                                                       ])
             edition_id = False
             for edition in editions:
-               edition_id = edition.id
+               edition_start_year = datetime.strptime(edition.start_date, "%Y-%m-%d").year
+               if edition_start_year == year:
+                   edition_id = edition.id
             if course_id and edition_id:
                 enrollment_id = self.env['ems.enrollment'].create({'course_id': course_id, 
                                                                    'edition_id': edition_id,
