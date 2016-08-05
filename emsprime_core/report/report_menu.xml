@@ -38,5 +38,15 @@
 			header="False"
         />
 
+        <report 
+            id="report_inscription_enrollment"
+            string="Enrollment Report"
+            model="ems.enrollment" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_boletiminscription" 
+            name="emsprime_core.report_boletiminscription" 
+			header="False"
+        />
+
     </data>
 </openerp>
