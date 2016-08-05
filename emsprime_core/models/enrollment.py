@@ -50,6 +50,11 @@ class EmsEnrollment(models.Model):
     course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',
                      track_visibility='onchange')
 
+    def get_to_year(self, year):
+        if year:
+           return int(year) + 1
+        return None
+
     @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
     def onchange_enrollment_data(self):
         if self.type == 'I':
@@ -210,6 +215,6 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     ect_copy = fields.Integer('ECT')
     grade = fields.Float('Grade')
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
-
+    period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -47,10 +47,11 @@
 							<field name="subject_ids" nolabel="1" attrs="{'invisible':[('type','!=','I')], 'readonly':[('course_id','=',False)]}" domain="[('id','in',(subject_ids_copy[0][2]))]"/>
 						</group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
-							<field name="subject_line" attrs="{'required':[('type','=','I')]}">
+							<field name="subject_line" attrs="{'required':[('type','=','I')]}" nolabel="1" colspan="4"  context="{'default_period': period}">
 								<tree string="Subjects" editable="top">
 									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
 									<field name="semester"/>
+									<field name="period"/>
 									<field name="semester_copy" invisible="1"/>
 									<field name="ect"/>
 									<field name="ect_copy" invisible="1"/>
