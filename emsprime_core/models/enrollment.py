@@ -89,6 +89,7 @@ class EmsEnrollment(models.Model):
         ('unique_name_roll_number_course_id',
          'unique(roll_number,course_id,edition_id)',
          'Roll Number must be unique per Edition!'),
+        ('unique_roll_number', 'unique(roll_number)', 'Student Already Exists with Roll Number.')
     ]
 
     @api.model
