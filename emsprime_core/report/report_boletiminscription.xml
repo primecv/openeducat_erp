@@ -64,12 +64,29 @@
 
 				<strong>Course</strong>: <span t-field="o.course_id.name"/> ***<br/>
 				<strong>Enrollment Number</strong>: <span t-field="o.roll_number"/> ***<br/>
-				<strong>Inscription</strong>: <span /> ***<br/>
+				<strong>Inscription</strong>: <span t-if="o.academic_year"><span t-field="o.academic_year"/>/<span t-esc="o.get_to_year(o.academic_year)"/></span> <span t-if="o.course_year">(<span t-field="o.course_year"/>º ano)</span> ***<br/>
 				<strong>Period</strong>: <span t-if="o.period == 'morning'">Morning</span><span t-if="o.period == 'afternoon'">Afternoon</span><span t-if="o.period == 'evening'">Evening</span> ***<br/>
-				<strong>Sponsorship</strong>: <span /> ***<br/>
-				<strong>Inscribed Disciplines</strong>: <span /> ***<br/>
+				<strong>Sponsorship</strong>: <span t-if="o.student_id.sponsorship == 'own_expenses' ">Own Expenses</span>
+				<span t-if="o.student_id.sponsorship == 'scholarship' ">Scholarship</span>
+				<span t-if="o.student_id.sponsorship == 'company' ">Company</span> ***<br/>
+				<strong>Inscribed Disciplines</strong>: <span /> <br/>
+				<table style="border: 1px solid grey;width: 100%;">
+					<thead style="border: 1px solid grey;">
+						<th>Semestre</th>
+						<th>Subject</th>
+						<th>Period</th>
+						<th>Evaluation Type</th>
+					</thead>
+					<tbody>
+						<tr t-foreach="o.subject_line" t-as="subject" style="border: 1px solid black;">
+							<td class="text-center"><span t-field="subject.semester"/></td>
+							<td><span t-field="subject.subject_id.name"/></td>
+							<td><span t-if="subject.period == 'morning'">Morning</span><span t-if="subject.period == 'afternoon'">Afternoon</span><span t-if="subject.period == 'evening'">Evening</span></td>
+							<td><span t-if="subject.evaluation_type == 'exam'">Exam</span><span t-if="subject.period == 'continuous'">Continuous</span></td>
+						</tr>
+					</tbody>
+				</table>
 				<br/>
-				<br/><br/>
 				<div class="text-center">
 				*** Check the accuracy of the data in this application form.
 				</div>
