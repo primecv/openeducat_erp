@@ -131,6 +131,7 @@
 										        <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
 										        <field name="roll_number" />
 												<field name="academic_year" required="0" />
+												<field name="course_year" attrs="{'invisible':[('type','not in',('I'))]}"/>
 												<field name="period" attrs="{'invisible':[('type','not in',('C','I'))]}"/>
 											</group>
 											<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}" invisible="1">

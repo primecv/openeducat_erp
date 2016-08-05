@@ -34,6 +34,7 @@
                             <field name="roll_number" />
 							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
 							<field name="academic_year" required="0"/>
+							<field name="course_year"/>
                         </group>
 						<!--group>
 							<group>
