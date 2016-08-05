@@ -38,7 +38,7 @@ class EmsEnrollment(models.Model):
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
-    academic_year = fields.Char('Academic Year', size=4)
+    academic_year = fields.Char('Academic Year', size=4, track_visibility='onchange')
     subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_line = fields.One2many('ems.enrollment.inscription.subject', 'inscription_id', 'Subjects')
