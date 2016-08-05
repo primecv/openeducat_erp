@@ -133,7 +133,8 @@ class EmsEdition(models.Model):
                                 'type': 'I',
                                 'course_id': enrollment.course_id.id,
                                 'edition_id': enrollment.edition_id.id,
-                                'subject_ids': [[6,0,subjects]]
+                                'subject_ids': [[6,0,subjects]],
+                                'academic_year': str(start_year + academic_year),
                         }
                         ctx = dict(self._context)
                         ctx['no_rollno'] = True
