@@ -58,7 +58,7 @@ class ems_enrollment_import(models.TransientModel):
 							cell_value = worksheet.cell_value(curr_row, curr_cell)
 							result.append(cell_value)
 						if rec.type == 'g':#Inscription Subjects Grade Update
-							if result and result[3] and result[5] and result[6]:
+							if result and result[3] and result[5] and result[6] and isinstance(result[6], (int, long, float)):
 								total = total + 1
 								try:
 									student_code = str(result[3]).strip()
@@ -87,6 +87,8 @@ class ems_enrollment_import(models.TransientModel):
 															{'grade': grade})
 									else:
 										fail = fail + 1
+							else:
+								fail = fail + 1
 						if rec.type == 'e':#Matricula Enrollment Import
 							if result:
 								vals = {
