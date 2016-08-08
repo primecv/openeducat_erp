@@ -51,7 +51,6 @@ class ems_enrollment_import(models.TransientModel):
 					num_rows = worksheet.nrows - 1
 					num_cells = worksheet.ncols - 1
 					for curr_row in range(1, num_rows + 1):
-						total = total + 1
 						curr_cell = -1
 						result = []
 						while curr_cell < num_cells:
@@ -59,10 +58,17 @@ class ems_enrollment_import(models.TransientModel):
 							cell_value = worksheet.cell_value(curr_row, curr_cell)
 							result.append(cell_value)
 						if rec.type == 'g':#Inscription Subjects Grade Update
-							if result and result[2] and result[4] and result[5]:
-								student_code = str(result[2]).strip()
-								subject_code = str(result[4]).strip()
-								grade = result[5]
+							if result and result[3] and result[5] and result[6]:
+								total = total + 1
+								try:
+									student_code = str(result[3]).strip()
+								except Exception:
+									student_code = str(result[3].encode('utf-8')).strip()
+								try:
+									subject_code = str(result[5]).strip()
+								except Exception:
+									subject_code = str(result[5].encode('utf-8')).strip()
+								grade = result[6]
 
 								student_id = self.pool.get('ems.student').search(cr, uid, [('roll_number','=',student_code)])
 								if student_id: student_id = student_id[0]
@@ -103,6 +109,7 @@ class ems_enrollment_import(models.TransientModel):
 									vals['course_id'] = course_id
 	
 								if edition_id and student_id and course_id:
+									total = total + 1
 									exstudent = self.pool.get('ems.enrollment').search(cr, uid, [('student_id','=',vals['student_id']),('course_id','=',vals['course_id']),('edition_id','=',vals['edition_id'])])
 									if exstudent:
 										dup = dup + 1
