@@ -168,7 +168,7 @@ class EmsEnrollment(models.Model):
 
 class EmsEnrollmentInscriptionSubject(models.Model):
     _name = "ems.enrollment.inscription.subject"
-    _description = "Inscription Subjects"
+    _description = "Grades"
     _order = "semester asc"
 
     @api.onchange('subject_id', 'semester', 'ect')
@@ -190,6 +190,9 @@ class EmsEnrollmentInscriptionSubject(models.Model):
         self.update(vals)
 
     inscription_id = fields.Many2one('ems.enrollment', 'Inscription')
+    course_id = fields.Many2one('ems.course', related='inscription_id.course_id', string='Course', store=True)
+    edition_id = fields.Many2one('ems.edition', related='inscription_id.edition_id', string='Edition', store=True)
+    student_id = fields.Many2one('ems.student', related='inscription_id.student_id', string='Student', store=True)
     subject_id = fields.Many2one('ems.subject', 'Subject')
     semester = fields.Selection([('1', '1'), 
                                 ('2', '2'), 
@@ -213,7 +216,7 @@ class EmsEnrollmentInscriptionSubject(models.Model):
             ], 'Semester')
     ect = fields.Integer('ECT')
     ect_copy = fields.Integer('ECT')
-    grade = fields.Float('Grade')
+    grade = fields.Float('Grade', group_operator="avg")
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
 

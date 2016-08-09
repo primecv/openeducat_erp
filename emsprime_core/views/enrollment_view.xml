@@ -195,5 +195,67 @@
             <field name="domain">[('type','=','I')]</field>
             <field name="context">{'default_type': 'I', 'search_default_group_by_university_center':1, 'search_default_group_by_course': 1, 'search_default_group_by_year':1}</field>
         </record>
+		<!-- Grades -->
+		<record id="ems_enrollment_inscription_grades_tree" model="ir.ui.view">
+			<field name="name">ems.enrollment.inscription.grades.tree</field>
+			<field name="model">ems.enrollment.inscription.subject</field>
+			<field name="arch" type="xml">
+				<tree string="Grades" create="0" nocreate="1">
+					<field name="student_id"/>
+					<field name="course_id"/>
+					<field name="edition_id"/>
+					<field name="subject_id"/>
+					<field name="semester"/>
+					<field name="grade"/>
+				</tree>
+			</field>
+		</record>
+		<record id="ems_enrollment_inscription_grades_search" model="ir.ui.view">
+			<field name="name">ems.enrollment.inscription.grades.search</field>
+			<field name="model">ems.enrollment.inscription.subject</field>
+			<field name="arch" type="xml">
+				<search string="Grades">
+					<field name="student_id"/>
+					<field name="course_id"/>
+					<field name="edition_id"/>
+					<field name="subject_id"/>
+					<field name="semester"/>
+					<field name="grade"/>
+					<field name="ect"/>
+					<field name="period"/>
+					<field name="evaluation_type"/>
+					<newline/>
+					<group expand="0" string="Group By">
+						<filter name="group_by_student" string="Student" domain="[]" context="{'group_by': 'student_id'}"/>
+						<filter name="group_by_course" string="Course" domain="[]" context="{'group_by': 'course_id'}"/>
+						<filter name="group_by_edition" string="Edition" domain="[]" context="{'group_by': 'edition_id'}"/>
+						<filter name="group_by_subject" string="Subject" domain="[]" context="{'group_by': 'subject_id'}"/>
+						<filter name="group_by_semester" string="Semester" domain="[]" context="{'group_by': 'semester'}"/>
+						<filter name="group_by_grade" string="Grade" domain="[]" context="{'group_by': 'grade'}"/>
+						<filter name="group_by_period" string="Period" domain="[]" context="{'group_by': 'period'}"/>
+						<filter name="group_by_evaluation_type" string="Evaluation Type" domain="[]" context="{'group_by': 'evaluation_type'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+		<record id="ems_enrollment_inscription_grades_pivot" model="ir.ui.view">
+			<field name="name">ems.enrollment.inscription.grades.pivot</field>
+			<field name="model">ems.enrollment.inscription.subject</field>
+			<field name="arch" type="xml">
+				<pivot string="Grades">
+					<field name="course_id" type="row"/>
+					<field name="grade" type="measure"/>
+				</pivot>
+			</field>
+		</record>
+
+		<record id="ems_enrollment_inscription_grades_action" model="ir.actions.act_window">
+			<field name="name">Grades</field>
+			<field name="res_model">ems.enrollment.inscription.subject</field>
+			<field name="view_type">tree</field>
+			<field name="view_mode">list,pivot</field>
+			<field name="view_id" ref="ems_enrollment_inscription_grades_tree"/>
+		</record>
+
     </data>
 </openerp>
