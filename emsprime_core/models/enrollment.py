@@ -216,7 +216,7 @@ class EmsEnrollmentInscriptionSubject(models.Model):
             ], 'Semester')
     ect = fields.Integer('ECT')
     ect_copy = fields.Integer('ECT')
-    grade = fields.Float('Grade', group_operator="avg")
+    grade = fields.Integer('Grade', group_operator="avg")
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
 
