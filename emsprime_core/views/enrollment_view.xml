@@ -124,7 +124,7 @@
 						<field name="state" widget="statusbar"/>
 					</header>
                     <sheet>
-	                    <field name="photo" widget="image" class="oe_left oe_avatar" />
+	                    <field name="photo" widget="image" class="oe_left oe_avatar" readonly="1"/>
 	                    <div name="title_name" class="oe_title">
 							<h3><field name="student_roll_number" required="0" readonly="1" class="oe_inline"/></h3>
                             <h1><table>
