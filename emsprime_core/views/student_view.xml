@@ -114,6 +114,12 @@
                                     <field name="edition_id" context="{'get_parent_edition':1}" readonly="1" attrs="{'invisible':[('edition_id','=',False)]}"/>
                                     <field name="course_ids" widget="many2many_tags" placeholder="Select Student Courses...." invisible="1"/> <!-- not required for now -->
                                     <field name="gr_no" invisible="1"/> <!-- not required for now -->
+								</group>
+								<group colspan="4">
+									<div name="button_box" class="oe_button_box">
+										<button name="open_inscriptions" type="object" string="Inscriptions" 
+											class="oe_stat_button" id="inscription_button" icon="fa-pencil-square-o"/>
+									</div>
                                     <separator colspan="4" string="Assigned Roll Numbers" />
                                     <field name="roll_number_line" colspan="4" nolabel="1"
                                         context="{'default_edition_id':edition_id}" >

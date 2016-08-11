@@ -299,5 +299,28 @@ class EmsStudent(models.Model):
     def action_reject(self):
         return self.write({'state': 'rejected'})
 
+    @api.multi
+    def open_inscriptions(self):
+        for student in self:
+            inscription_ids = self.env['ems.enrollment'].search([('student_id','=',student.id), ('type','=','I')])
+            action = self.env.ref('emsprime_core.act_open_ems_inscription_enrollment_view')
+            result = {
+                'name': action.name,
+                'help': action.help,
+                'type': action.type,
+                'view_type': action.view_type,
+                'view_mode': action.view_mode,
+                'target': action.target,
+                'context': action.context,
+                'res_model': action.res_model,
+            }
+            tree = self.env.ref('emsprime_core.view_ems_enrollment_tree', False)
+            tree_id = tree.id if tree else False
+            form = self.env.ref('emsprime_core.view_ems_enrollment_inscription_form', False)
+            form_id = form.id if form else False
+            result['views'] = [(tree_id, 'tree'), (form_id, 'form')]
+            result['domain'] = "[('id','in',["+','.join(map(str, inscription_ids))+"])]"
+            result['context'] = {'default_type': 'I', 'default_student_id': student.id}
+        return result
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
