@@ -113,6 +113,59 @@
                 </form>
             </field>
         </record>
+        <record id="view_ems_enrollment_inscription_student_form" model="ir.ui.view">
+            <field name="name">ems.enrollment.inscription.form</field>
+            <field name="model">ems.enrollment</field>
+            <field name="priority" eval="24" />
+            <field name="arch" type="xml">
+                <form string="Inscription">
+					<header>
+						<button name="action_validate" type="object" string="Validate" attrs="{'invisible':['|',('state','!=','draft'),('type','!=','M')]}" class="oe_highlight"/>
+						<field name="state" widget="statusbar"/>
+					</header>
+                    <sheet>
+	                    <field name="photo" widget="image" class="oe_left oe_avatar" />
+	                    <div name="title_name" class="oe_title">
+							<h3><field name="student_roll_number" required="0" readonly="1" class="oe_inline"/></h3>
+                            <h1><table>
+                                <tr>
+                                <td><field name="first_name" readonly="1" style="padding-right:10px"/></td>
+                                <td><field name="middle_name" readonly="1" style="padding-right:10px"/></td>
+                                <td><field name="last_name" readonly="1" style="padding-right:10px"/></td>
+                                </tr>
+                                </table>
+                            </h1>
+						</div>
+                        <group col="4">
+                            <field name="type" readonly="1" invisible="1"/>
+							<field name="student_id" readonly="1" invisible="1" options="{'no_open':1}"/><newline/>
+                            <field name="course_id" readonly="1"/>
+                            <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" readonly="1"/>
+							<field name="course_year"/>
+							<field name="academic_year" required="0"/>
+							<field name="roll_number" required="0" readonly="1" string="Number"/>
+							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
+                        </group>
+						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
+							<field name="subject_line" attrs="{'required':[('type','=','I')]}" nolabel="1" colspan="4"  context="{'default_period': period, 'default_edition_id': edition_id}">
+								<tree string="Subjects" editable="top">
+									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': edition_id}"/>
+									<field name="semester"/>
+									<field name="period"/>
+									<field name="semester_copy" invisible="1"/>
+									<field name="ect"/>
+									<field name="ect_copy" invisible="1"/>
+									<field name="grade"/>
+									<field name="evaluation_type"/>
+									<field name="edition_id" invisible="1"/>
+								</tree>
+							</field>
+						</group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_ems_enrollment_search" model="ir.ui.view">
             <field name="name">ems.enrollment.search</field>
             <field name="model">ems.enrollment</field>

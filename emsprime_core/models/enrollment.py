@@ -37,6 +37,11 @@ class EmsEnrollment(models.Model):
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     edition_id = fields.Many2one('ems.edition', 'Edition', required=True)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
+    student_roll_number = fields.Char(related='student_id.roll_number', string='Roll number', store=False)
+    first_name = fields.Char(related='student_id.name', string='Name', store=False)
+    middle_name = fields.Char(related='student_id.middle_name', string='Middle Name', store=False)
+    last_name = fields.Char(related='student_id.last_name', string='Last Name', store=False)
+    photo = fields.Binary(related='student_id.photo', string='Photo', store=False)
     state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
     academic_year = fields.Char('Academic Year', size=4, track_visibility='onchange')
     subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
@@ -219,5 +224,6 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     grade = fields.Integer('Grade', group_operator="avg")
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
+    edition_id = fields.Many2one('ems.edition', 'Edition')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

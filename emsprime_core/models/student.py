@@ -318,7 +318,7 @@ class EmsStudent(models.Model):
             }
             tree = self.env.ref('emsprime_core.view_ems_enrollment_tree', False)
             tree_id = tree.id if tree else False
-            form = self.env.ref('emsprime_core.view_ems_enrollment_inscription_form', False)
+            form = self.env.ref('emsprime_core.view_ems_enrollment_inscription_student_form', False)
             form_id = form.id if form else False
             result['views'] = [(tree_id, 'tree'), (form_id, 'form')]
             result['domain'] = "[('id','in',["+','.join(map(str, inscriptions))+"])]"
