@@ -303,6 +303,8 @@ class EmsStudent(models.Model):
     def open_inscriptions(self):
         for student in self:
             inscription_ids = self.env['ems.enrollment'].search([('student_id','=',student.id), ('type','=','I')])
+            inscriptions = []
+            inscription_list = [inscriptions.append(insc.id) for insc in inscription_ids]
             action = self.env.ref('emsprime_core.act_open_ems_inscription_enrollment_view')
             result = {
                 'name': action.name,
@@ -319,7 +321,7 @@ class EmsStudent(models.Model):
             form = self.env.ref('emsprime_core.view_ems_enrollment_inscription_form', False)
             form_id = form.id if form else False
             result['views'] = [(tree_id, 'tree'), (form_id, 'form')]
-            result['domain'] = "[('id','in',["+','.join(map(str, inscription_ids))+"])]"
+            result['domain'] = "[('id','in',["+','.join(map(str, inscriptions))+"])]"
             result['context'] = {'default_type': 'I', 'default_student_id': student.id}
         return result
 
