@@ -29,6 +29,16 @@ class EmsSubject(models.Model):
     code = fields.Char('Code', size=256, required=True)
     course_id = fields.Many2one('ems.course', 'Course')
     grade_weightage = fields.Float('Grade Weightage')
+    semester = fields.Selection([('1', '1'), 
+                                ('2', '2'), 
+                                ('3', '3'),
+                                ('4', '4'),
+                                ('5', '5'),
+                                ('6', '6'),
+                                ('7', '7'),
+                                ('8', '8'),
+                                ('9', '9')
+            ], 'Semester')
     type = fields.Selection(
         [('theory', 'Theory'), ('practical', 'Practical'),
          ('both', 'Both'), ('other', 'Other')],
