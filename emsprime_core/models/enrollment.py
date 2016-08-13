@@ -140,32 +140,28 @@ class EmsEnrollment(models.Model):
 
     @api.multi
     def action_load_subjects(self):
+        """Load related Course - Semester Subjects in Inscription Enrollments
+        """
         for enrollment in self:
-            course_subjects = []
-            subject_list = [course_subjects.append(x.subject_id.id) for x in enrollment.edition_id.course_id.subject_line]
-            #subjects = []
-            #for subject in enrollment.subject_ids:
-            #    subjects.append(subject.id)
-            #for subject in subjects:
-            #    course_subjects.pop(course_subjects.index(subject))
-
-            wiz_id = self.env['ems.enrollment.inscricao.subject'].create({})
-            for subject in course_subjects:
-                self.env['ems.enrollment.inscricao.subject.line'].create({'subject_id': subject, 'form_id': wiz_id.id})
-            context = {}
-            context['active_id'] = self.id
-            context['active_model'] = self._name
-            return {
-                'name': ('Select Subjects'),
-                'view_type': 'form',
-                'view_mode': 'form',
-                'res_model': 'ems.enrollment.inscricao.subject',
-                'type': 'ir.actions.act_window',
-                'res_id': wiz_id.id,
-                'context': context,
-                'target': 'new'
-            }
-
+            if enrollment.course_year:
+                year = int(enrollment.course_year)
+                sem1, sem2 = (year*2)-1, year*2
+                subjects, invalid_subjects = [], []
+                subjects_list = [subjects.append(s.subject_id.id) for s in enrollment.subject_line]
+                sem_subject_ids = self.env['ems.course.subject'].search([('course_id','=',enrollment.course_id.id),('semester','in',(str(sem1), str(sem2)))])
+                for course_subject in sem_subject_ids:
+                    if course_subject.subject_id.id not in subjects:
+                        self.env['ems.enrollment.inscription.subject'].create({
+                                'inscription_id': enrollment.id,
+                                'subject_id': course_subject.subject_id.id,
+                                'semester': course_subject.subject_id.semester or course_subject.semester
+                        })
+                invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
+                                        ('inscription_id','=',enrollment.id),   
+                                        ('semester','not in', (str(sem1),str(sem2))) ])
+                for line in invalid_subjects:
+                    line.unlink()            
+                        
     @api.one
     def action_validate(self):
         return self.write({'state': 'validate'})
