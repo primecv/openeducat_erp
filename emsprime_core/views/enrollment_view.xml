@@ -36,19 +36,9 @@
 							<field name="academic_year" required="0"/>
 							<field name="course_year"/>
                         </group>
-						<!--group>
-							<group>
-								<button name="action_load_subjects" type="object" string="Course Subjects" attrs="{'invisible':[('type','!=','I')]}"/>
-							</group>
-							<group/>
-						</group-->
-						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}" invisible="1">
-							<field name="subject_ids_copy" invisible="1"/><newline/>
-							<field name="subject_ids" nolabel="1" attrs="{'invisible':[('type','!=','I')], 'readonly':[('course_id','=',False)]}" domain="[('id','in',(subject_ids_copy[0][2]))]"/>
-						</group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
-							<field name="subject_line" attrs="{'required':[('type','=','I')]}" nolabel="1" colspan="4"  context="{'default_period': period}">
+							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period}">
 								<tree string="Subjects" editable="top">
 									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
 									<field name="semester"/>
@@ -86,19 +76,9 @@
 							<field name="academic_year" required="0"/>
 							<field name="course_year"/>
                         </group>
-						<!--group>
-							<group>
-								<button name="action_load_subjects" type="object" string="Course Subjects" attrs="{'invisible':[('type','!=','I')]}"/>
-							</group>
-							<group/>
-						</group-->
-						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}" invisible="1">
-							<field name="subject_ids_copy" invisible="1"/><newline/>
-							<field name="subject_ids" nolabel="1" attrs="{'invisible':[('type','!=','I')], 'readonly':[('course_id','=',False)]}" domain="[('id','in',(subject_ids_copy[0][2]))]"/>
-						</group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
-							<field name="subject_line" attrs="{'required':[('type','=','I')]}" nolabel="1" colspan="4"  context="{'default_period': period}">
+							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period}">
 								<tree string="Subjects" editable="top">
 									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
 									<field name="semester"/>
@@ -116,7 +96,7 @@
             </field>
         </record>
         <record id="view_ems_enrollment_inscription_student_form" model="ir.ui.view">
-            <field name="name">ems.enrollment.inscription.form</field>
+            <field name="name">ems.enrollment.inscription.student.form</field>
             <field name="model">ems.enrollment</field>
             <field name="priority" eval="24" />
             <field name="arch" type="xml">
@@ -150,7 +130,7 @@
                         </group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
-							<field name="subject_line" attrs="{'required':[('type','=','I')]}" nolabel="1" colspan="4"  context="{'default_period': period, 'default_edition_id': edition_id}">
+							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period, 'default_edition_id': edition_id}">
 								<tree string="Subjects" editable="top">
 									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': edition_id}"/>
 									<field name="semester"/>
