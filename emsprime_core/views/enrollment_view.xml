@@ -365,6 +365,7 @@
 			<field name="res_model">ems.enrollment.inscription.subject</field>
 			<field name="view_type">tree</field>
 			<field name="view_mode">list,pivot</field>
+			<field name="domain">['|',('inscription_id','!=',False),('inscription_id','=',0)]</field>
 			<field name="view_id" ref="ems_enrollment_inscription_grades_tree"/>
 		</record>
 
