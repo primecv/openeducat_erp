@@ -148,7 +148,7 @@ class EmsEnrollment(models.Model):
                 sem1, sem2 = (year*2)-1, year*2
                 subjects, invalid_subjects = [], []
                 subjects_list = [subjects.append(s.subject_id.id) for s in enrollment.subject_line]
-                sem_subject_ids = self.env['ems.course.subject'].search([('course_id','=',enrollment.course_id.id),('semester','in',(str(sem1), str(sem2)))])
+                sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('semester','in',(str(sem1), str(sem2)))])
                 for course_subject in sem_subject_ids:
                     if course_subject.subject_id.id not in subjects:
                         self.env['ems.enrollment.inscription.subject'].create({
