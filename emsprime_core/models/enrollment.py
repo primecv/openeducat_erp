@@ -220,6 +220,5 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     grade = fields.Integer('Grade', group_operator="avg")
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
-    edition_id = fields.Many2one('ems.edition', 'Edition')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
