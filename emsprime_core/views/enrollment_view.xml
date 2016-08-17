@@ -6,6 +6,19 @@
             <field name="model">ems.enrollment</field>
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
+                <tree string="Roll Number">
+                    <field name="roll_number" />
+                    <field name="student_id" />
+                    <field name="course_id" />
+                    <field name="edition_id" />
+					<field name="type" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_ems_inscription_enrollment_tree" model="ir.ui.view">
+            <field name="name">ems.inscription.enrollment.tree</field>
+            <field name="model">ems.enrollment</field>
+            <field name="arch" type="xml">
                 <tree string="Roll Number" create="0">
                     <field name="roll_number" />
                     <field name="student_id" />
@@ -291,7 +304,7 @@
             <field name="act_window_id" ref="act_open_ems_inscription_enrollment_view" />
             <field name="sequence" eval="10" />
             <field name="view_mode">tree</field>
-            <field name="view_id" ref="view_ems_enrollment_tree" />
+            <field name="view_id" ref="view_ems_inscription_enrollment_tree" />
         </record>
         <record model="ir.actions.act_window.view" id="act_open_ems_enrollment_inscription_pivot">
             <field name="act_window_id" ref="act_open_ems_inscription_enrollment_view" />
