@@ -6,7 +6,7 @@
             <field name="model">ems.enrollment</field>
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
-                <tree string="Roll Number">
+                <tree string="Roll Number" create="0">
                     <field name="roll_number" />
                     <field name="student_id" />
                     <field name="course_id" />
