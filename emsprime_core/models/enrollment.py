@@ -186,11 +186,11 @@ class EmsEnrollment(models.Model):
                                 'subject_id': sem_subject.subject_id.id,
                                 'semester': sem_subject.subject_id.semester or sem_subject.semester
                         })
-                invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
-                                        ('inscription_id','=',enrollment.id),   
-                                        ('semester','not in', (str(sem1),str(sem2))) ])
-                for line in invalid_subjects:
-                    line.unlink()            
+                #invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
+                #                        ('inscription_id','=',enrollment.id),   
+                #                        ('semester','not in', (str(sem1),str(sem2))) ])
+                #for line in invalid_subjects:
+                #    line.unlink()            
                         
     @api.one
     def action_validate(self):
