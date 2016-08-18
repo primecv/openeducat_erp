@@ -21,7 +21,7 @@
 
 from openerp import models, fields, api, _
 from datetime import datetime
-from openerp.exceptions import ValidationError
+from openerp.exceptions import ValidationError, UserError
 
 class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
@@ -106,6 +106,42 @@ class EmsEnrollment(models.Model):
 
     @api.model
     def create(self, vals):
+        context = self._context
+        #set Type|Edition|Course from context as they are readonly on Inscription form:
+        if context and dict(context): 
+            if 'default_type' in context and 'type' not in vals:
+                vals['type'] = context['default_type']
+            if 'default_student_id' in context:
+                vals['student_id'] = context['default_student_id']
+                student = self.env['ems.student'].browse([context['default_student_id']])
+                if 'edition_id' not in vals:
+                    vals['edition_id'] = student.edition_id.id
+                if 'course_id' not in vals:
+                    vals['course_id'] = student.course_id.id
+
+                current_year = datetime.now().date().year
+                edition_start_year = datetime.strptime(student.edition_id.start_date, '%Y-%m-%d').year
+                edition_end_year = datetime.strptime(student.edition_id.end_date, '%Y-%m-%d').year
+                if edition_end_year > current_year:
+                    edition_end_year = current_year
+                edition_years = []
+                diff = edition_end_year - edition_start_year
+                for y in range(0, diff+1):
+                    edition_years.append(edition_start_year + y)
+                inscription_years = []
+                inscriptions = self.env['ems.enrollment'].search([('type','=','I'),('student_id','=',student.id)])
+                for inscription in inscriptions:
+                    inscription_years.append(inscription.academic_year)
+                valid_years = []
+                for y in edition_years:
+                    if str(y) not in inscription_years:
+                        valid_years.append(str(y))
+                if not valid_years:
+                    raise UserError(_('Inscription Enrollments are already present for all valid Academic Years.'))
+                else:
+                    if vals['academic_year'] not in valid_years:
+                        valid_years = [' | '.join(valid_years)][0]
+                        raise UserError(_('Invalid Academic Year!\nValid Academic Years: %s')%(valid_years))
         if 'type' in vals and vals['type'] == 'C':
             last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','C')], order='id desc', limit=1)
             next_seq = '00001'
@@ -122,20 +158,8 @@ class EmsEnrollment(models.Model):
             idno = str(year) + '.' + next_seq
             vals['roll_number'] = idno
         elif 'type' in vals and vals['type'] == 'I' and 'no_rollno' not in self._context:
-            last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','I'), ('roll_number','ilike', '%INS%')], order='id desc', limit=1)
-            next_seq = '001'
-            if last_rec:
-                last_seq = last_rec.roll_number
-                try:
-                    seq = last_seq.split('.')[0]
-                    next_seq = str(int(seq) + 1)
-                    while len(next_seq) < 3:
-                        next_seq = '0' + next_seq
-                except Exception:
-                    pass
-            year = datetime.now().date().year
-            idno = next_seq + '.INS.' + str(year)
-            vals['roll_number'] = idno
+            student_roll_no = self.env['ems.student'].browse([vals['student_id']]).roll_number
+            vals['roll_number'] = str(student_roll_no) + '.' + str(vals['academic_year'])
         return super(EmsEnrollment, self).create(vals)
 
     @api.multi
@@ -147,14 +171,20 @@ class EmsEnrollment(models.Model):
                 year = int(enrollment.course_year)
                 sem1, sem2 = (year*2)-1, year*2
                 subjects, invalid_subjects = [], []
-                subjects_list = [subjects.append(s.subject_id.id) for s in enrollment.subject_line]
+                #subjects_list = [subjects.append(s.subject_id.id) for s in enrollment.subject_line]
+                #get existing inscription subjects :
+                inscriptions = self.env['ems.enrollment'].search([('type','=','I'),('student_id','=',enrollment.student_id.id)])
+                for insc in inscriptions:
+                    for subj_line in insc.subject_line:
+                        if subj_line.semester in (sem1, sem2) and subj_line.grade >= 10:
+                            subjects.append(subj_line.subject_id.id)
                 sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('semester','in',(str(sem1), str(sem2)))])
-                for course_subject in sem_subject_ids:
-                    if course_subject.subject_id.id not in subjects:
+                for sem_subject in sem_subject_ids:
+                    if sem_subject.subject_id.id not in subjects:
                         self.env['ems.enrollment.inscription.subject'].create({
                                 'inscription_id': enrollment.id,
-                                'subject_id': course_subject.subject_id.id,
-                                'semester': course_subject.subject_id.semester or course_subject.semester
+                                'subject_id': sem_subject.subject_id.id,
+                                'semester': sem_subject.subject_id.semester or sem_subject.semester
                         })
                 invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
                                         ('inscription_id','=',enrollment.id),   
