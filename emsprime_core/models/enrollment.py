@@ -170,22 +170,50 @@ class EmsEnrollment(models.Model):
             if enrollment.course_year:
                 year = int(enrollment.course_year)
                 sem1, sem2 = (year*2)-1, year*2
+                sem1 = str(sem1)
+                sem2 = str(sem2)
                 subjects, invalid_subjects = [], []
-                #subjects_list = [subjects.append(s.subject_id.id) for s in enrollment.subject_line]
-                #get existing inscription subjects :
+
+                #1. get all edition (semester) subjects:
+                edition_sem_subjects = []
+                sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('semester','in',(str(sem1), str(sem2)))])
+                for sem_subject in sem_subject_ids:
+                    edition_sem_subjects.append(sem_subject.subject_id.id)
+
+                #2. get old inscription subjects :
                 inscriptions = self.env['ems.enrollment'].search([('type','=','I'),('student_id','=',enrollment.student_id.id)])
                 for insc in inscriptions:
                     for subj_line in insc.subject_line:
                         if subj_line.semester in (sem1, sem2) and subj_line.grade >= 10:
                             subjects.append(subj_line.subject_id.id)
-                sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('semester','in',(str(sem1), str(sem2)))])
-                for sem_subject in sem_subject_ids:
-                    if sem_subject.subject_id.id not in subjects:
+
+                #update semester subjects by removing student's other inscriptions same subjects:
+                subjects2 = []
+                for sb in edition_sem_subjects:
+                   if sb not in subjects:
+                       subjects2.append(sb)
+
+                #3. get current inscription subjects if present
+                current_subjects = []
+                for line in enrollment.subject_line:
+                    if line.subject_id.semester in (sem1, sem2):
+                        current_subjects.append(line.subject_id.id)
+                #update subjects list by removing already present subjects:
+                new_subjects = []
+                for sb in subjects2:
+                    if sb not in current_subjects:
+                        new_subjects.append(sb)
+
+                #4. create Grade line for Each Semester Subject:
+                if new_subjects:
+                    sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('subject_id','in',new_subjects)])
+                    for sem_subject in sem_subject_ids:
                         self.env['ems.enrollment.inscription.subject'].create({
                                 'inscription_id': enrollment.id,
                                 'subject_id': sem_subject.subject_id.id,
                                 'semester': sem_subject.subject_id.semester or sem_subject.semester
                         })
+
                 #invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
                 #                        ('inscription_id','=',enrollment.id),   
                 #                        ('semester','not in', (str(sem1),str(sem2))) ])
