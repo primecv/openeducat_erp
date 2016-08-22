@@ -65,6 +65,7 @@ class EmsCourse(models.Model):
 class EmsCourseSubject(models.Model):
     _name = "ems.course.subject"
     _description = "Course Subjects"
+    _order = "semester"
 
     course_id = fields.Many2one('ems.course', string='Course')
     subject_id = fields.Many2one('ems.subject', string='Subject')

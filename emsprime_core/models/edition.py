@@ -152,6 +152,7 @@ class EmsEditionSubject(models.Model):
     _name = "ems.edition.subject"
     _description = "Edition Subjects"
     _rec_name = "subject_id"
+    _order = "semester"
 
     edition_id = fields.Many2one('ems.edition', string='Edition')
     subject_id = fields.Many2one('ems.subject', string='Subject')
