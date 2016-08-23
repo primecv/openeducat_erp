@@ -211,7 +211,7 @@ class EmsEnrollment(models.Model):
                         self.env['ems.enrollment.inscription.subject'].create({
                                 'inscription_id': enrollment.id,
                                 'subject_id': sem_subject.subject_id.id,
-                                'semester': sem_subject.subject_id.semester or sem_subject.semester
+                                'semester': sem_subject.semester or sem_subject.subject_id.semester
                         })
 
                 #invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
