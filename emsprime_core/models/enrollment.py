@@ -196,7 +196,7 @@ class EmsEnrollment(models.Model):
                 #3. get current inscription subjects if present
                 current_subjects = []
                 for line in enrollment.subject_line:
-                    if line.subject_id.semester in (sem1, sem2):
+                    #if line.subject_id.semester in (sem1, sem2):
                         current_subjects.append(line.subject_id.id)
                 #update subjects list by removing already present subjects:
                 new_subjects = []
