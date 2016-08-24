@@ -82,6 +82,7 @@
         'report/report_frequency_declaration.xml',
         'report/report_admissionreceipt.xml',
         'report/report_boletiminscription.xml',
+        'report/enrollment_grades_report_view.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
         #admin tools:

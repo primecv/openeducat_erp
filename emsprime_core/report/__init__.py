@@ -21,6 +21,6 @@
 
 from . import report_student_bonafide
 from . import report_student_idcard
-
+from . import enrollment_grades_report
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
