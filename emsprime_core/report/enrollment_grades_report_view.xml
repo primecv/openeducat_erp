@@ -8,6 +8,7 @@
 			<field name="arch" type="xml">
 				<tree string="Grades" create="0" nocreate="1">
 					<field name="student_id"/>
+					<field name="university_center_id"/>
 					<field name="course_id"/>
 					<field name="edition_id"/>
 					<field name="subject_id"/>
@@ -27,6 +28,7 @@
 					<field name="subject_id"/>
 					<field name="semester"/>
 					<field name="grade"/>
+					<field name="university_center_id"/>
 					<newline/>
 					<group expand="0" string="Group By">
 						<filter name="group_by_student" string="Student" domain="[]" context="{'group_by': 'student_id'}"/>
@@ -35,6 +37,7 @@
 						<filter name="group_by_subject" string="Subject" domain="[]" context="{'group_by': 'subject_id'}"/>
 						<filter name="group_by_semester" string="Semester" domain="[]" context="{'group_by': 'semester'}"/>
 						<filter name="group_by_grade" string="Grade" domain="[]" context="{'group_by': 'grade'}"/>
+						<filter name="group_by_university_center_id" string="University Center" domain="[]" context="{'group_by': 'university_center_id'}"/>
 					</group>
 				</search>
 			</field>
