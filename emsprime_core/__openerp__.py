@@ -71,9 +71,6 @@
         'views/website_assets.xml',
         'dashboard/faculty_dashboard_view.xml',
         'dashboard/student_dashboard_view.xml',
-        'menu/emsprime_core_menu.xml',
-        'menu/faculty_menu.xml',
-        'menu/student_menu.xml',
         
         'data/degree.xml',
         'data/request.xml',
@@ -83,8 +80,12 @@
         'report/report_admissionreceipt.xml',
         'report/report_boletiminscription.xml',
         'report/enrollment_grades_report_view.xml',
+        'report/report_enrollment_declaration.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
+        'menu/emsprime_core_menu.xml',
+        'menu/faculty_menu.xml',
+        'menu/student_menu.xml',
         #admin tools:
         'wizard/ems_enrollment_import_view.xml',
     ],

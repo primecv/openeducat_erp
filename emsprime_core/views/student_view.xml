@@ -169,7 +169,12 @@
                                     <field name="email" />
                                     <field name="institutional_email" />
                                 </group>
-
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Professional Contacts" />
+                                    <field name="pro_phone" />
+                                    <field name="pro_mobile" />
+                                    <field name="pro_email" />
+                                </group>
 								<group>
 						            <group string="Academic Address">
 							            <label for="street" string="Address"/>

@@ -36,7 +36,7 @@
 							<field name="active"/>
 						</group>
                         <notebook colspan="4">						
-                            <page name="subjects" string="Subjects">						
+                            <!--<page name="subjects" string="Subjects">						
 								<group name="subject">
 									<separator string="Subjects" colspan="4"/> 
 									<field name="subject_line" nolabel="1">
@@ -50,7 +50,7 @@
 										</tree>
 									</field>
 								</group>
-							</page>
+							</page>-->
                             <page name="attachments" string="Attachments">													
 								<group col="4" colspan="4">
 									<separator colspan="4" string="Attachments" />

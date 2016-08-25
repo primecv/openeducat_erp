@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_enrollment_declaration_document">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.student_id.lang})" />
+		<t t-foreach="p" t-as="o">
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-1" style="margin-top:15px;">
+		            <img t-if="o.student_id.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
+		        </div>
+		        <div class="col-xs-11 text-center" style="margin-top:25px;">
+					INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS<br/>
+					POLO UNIVERSITÁRIO ­<span t-if="o.student_id.university_center_id">- <span t-field="o.student_id.university_center_id.name"/></span><br/>
+					SERVIÇOS ACADÉMICOS
+				</div>
+		    </div>
+		</div>
+
+		<div class="footer">
+		    <div class="text-center" style="margin-bottom:5px;">
+				Recebido em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> por <span t-field="o.student_id.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
+		    </div>
+		</div>
+
+        <div class="page">
+			<div align="center" style="color:#333333;"><strong>ENROLLMENT DECLARATION<span t-if="o.roll_number">​Nº <span t-field="o.roll_number"/></span></strong></div><br/>
+            
+			<div class="row" style="color:333333;">
+				For all intents and purposes at the request of the person concerned declares that 
+				<span t-field="o.student_id.complete_name" style="text-transform:uppercase;"/>, 
+				Degree Student in <span t-field="o.course_id.name"/>
+				, daughter of <span t-field="o.student_id.father"/> 
+				and <span t-field="o.student_id.mother" />, 
+				bearer of Identity Card No. <span t-field="o.student_id.id_number"/>
+				, issued on <span t-field="o.student_id.issue_date"/> 
+				by the National Archives of Civil and Criminal identification of <span t-field="o.student_id.island_id.name"/>, 
+				born on <span t-field="o.student_id.birth_date"/> 
+				a native of <span t-field="o.student_id.island_id.name"/>
+				, attended the <span t-field="o.year"/> year 
+				of that course in the academic year <span t-field="o.academic_year"/>.				
+
+            </div>
+
+        </div>
+
+    </t>
+</template>
+
+<template id="report_enrollment_declaration">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_enrollment_declaration_document" t-lang="doc.student_id.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

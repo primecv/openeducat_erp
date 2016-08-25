@@ -29,7 +29,7 @@
 							<field name="year" />
 							<field name="semester"/>
                             <field name="faculty_id" />
-							<field name="semester_id" invisible="1"/>
+							<!--<field name="semester_id" invisible="1"/>-->
                         </group>
                         <group string="Students" name="subject">
                             <field name="enrollment_ids" nolabel="1">
@@ -62,7 +62,7 @@
                     <field name="name" />
                     <field name="faculty_id" />
                     <field name="subject_id" />
-					<field name="semester_id"/>
+					<!--<field name="semester_id"/>-->
 					<field name="year"/>
                     <group expand="0" string="Group By">
                         <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}"/>

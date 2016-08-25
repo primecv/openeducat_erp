@@ -128,7 +128,7 @@ class EmsStudent(models.Model):
     app_course_year = fields.Char("Course/Year", size=255)
     app_course_academic_year = fields.Char("Academic Year", size=64)
     app_course_area = fields.Char("Area", size=255)
-    math_final_average = fields.Float('Math Final Average')
+    math_final_average = fields.Integer('Math Final Average')
     course_option_1 = fields.Many2one('ems.course', 'Course - Option 1')
     course_option_2 = fields.Many2one('ems.course', 'Course - Option 2')
     course_option_3 = fields.Many2one('ems.course', 'Course - Option 3')
@@ -153,11 +153,16 @@ class EmsStudent(models.Model):
     pzip = fields.Char('PostCode')
     acountry_id = fields.Many2one('ems.location', 'Country')
     pcountry_id = fields.Many2one('ems.location', 'Country')
-    portuguese_final_average = fields.Float('Average Portuguese')
+    portuguese_final_average = fields.Integer('Average Portuguese')
     final_average = fields.Float('Final Average')
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
     type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True)
     temp_edition_courses = fields.Many2many('ems.course', string='Course(s)')
+
+    #JCF - Professional Contacts:
+    pro_phone = fields.Char('Phone')
+    pro_mobile = fields.Char('Mobile')
+    pro_email = fields.Char('Email')
 	
     @api.one
     @api.constrains('birth_date')
