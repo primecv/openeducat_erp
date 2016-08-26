@@ -163,6 +163,8 @@ class EmsStudent(models.Model):
     pro_phone = fields.Char('Phone')
     pro_mobile = fields.Char('Mobile')
     pro_email = fields.Char('Email')
+
+    scholarship_ids = fields.One2many('ems.scholarship', 'student_id', 'Scholarships')
 	
     @api.one
     @api.constrains('birth_date')

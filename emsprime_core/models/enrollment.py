@@ -54,6 +54,7 @@ class EmsEnrollment(models.Model):
     year = fields.Char(string='Year', compute='_get_year', store=True)
     course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',
                      track_visibility='onchange')
+    student_status_id = fields.Many2one('ems.student.status', 'Student Status')
 
     def get_to_year(self, year):
         if year:

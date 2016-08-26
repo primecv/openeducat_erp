@@ -246,6 +246,12 @@
 									</field>
                                 </group>
                             </page>
+                            <page name="scholarship" string="Scholarships">
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Scholarships" />
+									<field name="scholarship_ids" nolabel="1"/>
+                                </group>
+                            </page>								
                             <page name="system" string="System">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="System" />
