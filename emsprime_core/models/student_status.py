@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+###############################################################################
 #
 #    Tech-Receptives Solutions Pvt. Ltd.
-#    Copyright (C) 2009-TODAY Tech Receptives(<http://www.techreceptives.com>).
+#    Copyright (C) 2009-TODAY Tech-Receptives(<http://www.techreceptives.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Lesser General Public License as
@@ -17,28 +17,17 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-##############################################################################
+###############################################################################
 
-from . import location
-from . import attachment_type
-from . import attachment
-from . import training_area
-from . import university_center
-from . import course
-from . import edition
-from . import semester
-from . import faculty
-from . import hr
-from . import res_company
-from . import res_country
-from . import enrollment
-from . import student_status
-from . import scholarship
-from . import student
-from . import subject
-from . import ems_class
-from . import ems_request
-from . import degree
-from . import mail_message
+from openerp import models, fields, api
+from openerp.exceptions import ValidationError
+
+
+class EmsStudentStatus(models.Model):
+    _name = 'ems.student.status'
+
+    name = fields.Char('Name')
+    code = fields.Char('Code')
+    roll_number_id = fields.Many2one('ems.enrollment', 'Enrollment', required=True)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

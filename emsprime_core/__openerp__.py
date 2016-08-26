@@ -60,6 +60,8 @@
         'views/semester_view.xml',
         'views/subject_view.xml',
         'views/enrollment_view.xml',
+        'views/student_status_view.xml',
+        'views/scholarship_view.xml',
         'views/faculty_view.xml',
         'views/ems_class_view.xml',
         'views/ems_request_view.xml',
