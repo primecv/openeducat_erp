@@ -48,7 +48,6 @@
 							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
 							<field name="academic_year" required="1"/>
 							<field name="course_year"/>
-							<field name="student_status_id"/>
                         </group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
