@@ -20,7 +20,7 @@
 ###############################################################################
 
 from openerp import models, fields, api
-
+from datetime import datetime
 
 class ems_request_type(models.Model):
     _name = 'ems.request.type'
@@ -44,6 +44,7 @@ class ems_request(models.Model):
         [('draft', 'New Request'), ('validate', 'Validated'),
          ('pending', 'Pending'), ('done', 'Done')],
         'State', default="draft", required=True, track_visibility='onchange', select=True)
+    sequence = fields.Char('Sequence')
 
     def get_to_year(self, year):
         if year:
@@ -60,7 +61,22 @@ class ems_request(models.Model):
 
     @api.multi
     def action_print(self):
-        self.write({'state':'done'})
+        """Generate sequence in "YYYY/0001" format by Request Type
+        """
+        year = datetime.now().date().year
+        next_seq = str(year) + '/0001'
+        self._cr.execute("""select sequence from ems_request where request_type_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.request_type_id.id, str(year) + '/'))
+        result = self._cr.fetchone()
+        if result:
+            result = result[0]
+            result = str(result).split('/')
+        if result and len(result) == 2:
+            result = int(result[1])
+            next_seq = str(result + 1)
+            while len(next_seq) < 4:
+               next_seq = '0' + next_seq
+            next_seq = str(year) + '/' + next_seq
+        self.write({'state':'done', 'sequence':next_seq})
         return self.env['report'].get_action(self, self.request_type_id.report_id.report_name)
 
     @api.onchange('enrollment_id')
