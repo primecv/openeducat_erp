@@ -139,6 +139,7 @@
 												<field name="academic_year" required="0" />
 												<field name="course_year" attrs="{'invisible':[('type','not in',('I'))]}"/>
 												<field name="period" attrs="{'invisible':[('type','not in',('C','I'))]}"/>
+												<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
 											</group>
 											<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}" invisible="1">
 												<field name="subject_ids_copy" invisible="1"/><newline/>
@@ -249,9 +250,22 @@
                             <page name="scholarship" string="Scholarships">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Scholarships" />
-									<field name="scholarship_ids" nolabel="1"/>
+									<field name="scholarship_ids" colspan="4" nolabel="1">
+										<tree string="Scholarships">
+											<field name="name" />
+											<field name="start_date" />
+											<field name="end_date" />
+										</tree>
+										<form string="Scholarship">
+											<group col="4">
+												<field name="name" />
+												<field name="start_date" />
+												<field name="end_date" />
+											</group>
+										</form>									
+									</field>
                                 </group>
-                            </page>								
+                            </page>							
                             <page name="system" string="System">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="System" />

@@ -125,7 +125,11 @@ class EmsStudent(models.Model):
     island_id = fields.Many2one('ems.location', 'Island')
     county_id = fields.Many2one('ems.location', 'County')
     parish_id = fields.Many2one('ems.location', 'Parish')
-    app_course_year = fields.Char("Course/Year", size=255)
+    #app_course_year = fields.Char("Course/Year", size=255)
+    app_course_year = fields.Selection(
+        [('8º ano', '8º ano'), ('9º ano', '9º ano'),('10º ano', '10º ano'),('11º ano', '11º ano'),('12º ano', '12º ano'),
+         ('Bacharelato', 'Bacharelato'),('Licenciatura', 'Licenciatura'),('Pós-graduação', 'Pós-graduação'),('Mestrado', 'Mestrado'),('Doutoramento', 'Doutoramento')],
+        'Course/Year')		
     app_course_academic_year = fields.Char("Academic Year", size=64)
     app_course_area = fields.Char("Area", size=255)
     math_final_average = fields.Float('Math Final Average', digits=(8,0))
