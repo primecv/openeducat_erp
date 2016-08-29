@@ -30,30 +30,46 @@
 			<div class="row" style="color:333333;">
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/>
 				
-				<strong>Personal Data </strong> <br/>
+					<strong>Personal Data </strong> <br/>
 
-				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
-				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
-				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
-				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
-				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
-				<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
-				<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
-				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
-				<span t-if="o.enrollment_id.student_id.mother"> e <span t-field="o.enrollment_id.student_id.mother"/></span> ***<br/>
+					<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+					<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
+					<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
+					<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
+					<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
+					<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
+					<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
+					<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
+					<span t-if="o.enrollment_id.student_id.mother"> e <span t-field="o.enrollment_id.student_id.mother"/></span> ***<br/>
 
-				<strong>Identification</strong>: <span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - </span> 
-				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - </span>
-				<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
+					<strong>Identification</strong>: <span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - </span> 
+					<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - </span>
+					<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
 
-				<br/><div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
+					<br/><div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
 
-				<strong>Enrollment Data  </strong> <br/>
-				
-				<strong>Enrollment Number</strong>: <span t-field="o.enrollment_id.roll_number"/> ***<br/>
-				<strong>Course</strong>: <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
-				<strong>Education Year</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/>/<span t-esc="o.get_to_year(o.enrollment_id.academic_year)"/></span> <span t-if="o.enrollment_id.course_year">(<span t-field="o.enrollment_id.course_year"/>º year)</span> ***<br/>
-				<br/>
+					<strong>Enrollment Data  </strong> <br/>
+					
+					<strong>Enrollment Number</strong>: <span t-field="o.enrollment_id.roll_number"/> ***<br/>
+					<strong>Course</strong>: <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
+					<strong>Education Year</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/>/<span t-esc="o.get_to_year(o.enrollment_id.academic_year)"/></span> <span t-if="o.enrollment_id.course_year">(<span t-field="o.enrollment_id.course_year"/>º year)</span> ***<br/>
+					<br/>
+					<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
+
+					<strong>Inscription Data  </strong> <br/>
+					
+					<strong>Academic Year</strong>: <span t-esc="o.get_academic_year(o.enrollment_id.student_id.id)"/> ***<br/>
+					<strong>Course Year</strong>: <span t-esc="o.get_course_year(o.enrollment_id.student_id.id)"/>º year ***<br/>
+					<br/>
+					<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
+
+					<strong>Declaration Data  </strong> <br/>
+					
+					<strong>Applicant</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+					<strong>Request Date</strong>: <span t-esc="o.date"/>º year ***<br/>
+					<strong>Issue Date</strong>: <span t-esc="time.strftime('%Y/%m/%d')"/> ***
+					<br/><div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
+					
 				<div>
 				At the request of <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> and for appropriate action, we emit the present notarized statement with the stamp in use in this institution ***
 				</div>

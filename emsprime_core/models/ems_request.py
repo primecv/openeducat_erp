@@ -71,3 +71,25 @@ class ems_request(models.Model):
         for enrollment in enrollments:
             student_name=enrollment.student_id.complete_name
         self.name = student_name
+
+    def get_academic_year(self, student_id):
+        if student_id:
+            academic_year = 0
+            academic_year2 = 0
+            str_academic_year=''
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',student_id),('type','=','I')], order="id desc", limit=1)
+            for enrollment in enrollments:
+                academic_year=enrollment.academic_year
+                academic_year2 = int(academic_year) + 1
+                str_academic_year = str(academic_year) + '/' + str(academic_year2)
+            return str_academic_year
+        return None
+
+    def get_course_year(self, student_id):
+        if student_id:
+            course_year = 0
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',student_id),('type','=','I')], order="id desc", limit=1)
+            for enrollment in enrollments:
+                course_year=enrollment.course_year
+            return course_year
+        return None
