@@ -25,7 +25,7 @@
 		</div>
 
         <div class="page">
-			<div align="center" style="color:#333333;"><strong>FREQUENCY DECLARATION <span t-if="o.enrollment_id.roll_number">​Nº <span t-field="o.enrollment_id.sequence"/></span></strong></div>
+			<div align="center" style="color:#333333;"><strong>FREQUENCY DECLARATION <span t-if="o.enrollment_id.roll_number">​Nº <span t-field="o.sequence"/></span></strong></div>
             
 			<div class="row" style="color:333333;">
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
