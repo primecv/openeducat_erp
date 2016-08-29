@@ -36,7 +36,7 @@ class ems_request(models.Model):
 
     name = fields.Char('Request Name', required=True, track_visibility='onchange', select=True)
     student_id = fields.Many2one('ems.student', 'Student', track_visibility='onchange')
-    enrollment_id = fields.Many2one('ems.enrollment', 'Enrollment', track_visibility='onchange', select=True)
+    enrollment_id = fields.Many2one('ems.enrollment', 'Record Number', track_visibility='onchange', select=True)
     request_type_id = fields.Many2one('ems.request.type', string='Request Type', track_visibility='onchange', select=True)
     description = fields.Text('Description')
     date = fields.Date('Request Date', track_visibility="onchange", default=fields.date.today(), readonly=True)
