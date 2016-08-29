@@ -48,13 +48,12 @@ class EmsEnrollment(models.Model):
     subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_line = fields.One2many('ems.enrollment.inscription.subject', 'inscription_id', 'Subjects')
     type = fields.Selection(
-        [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula')], 'Tipo', required=True, default='M')
+        [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula'), ('T', 'Transfer')], 'Tipo', required=True, default='M')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
     university_center_id = fields.Many2one('ems.university.center', related="edition_id.university_center_id", string='University Center', store=True)
     year = fields.Char(string='Year', compute='_get_year', store=True)
     course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',
                      track_visibility='onchange')
-    student_status_id = fields.Many2one('ems.student.status', 'Student Status')
 
     def get_to_year(self, year):
         if year:
