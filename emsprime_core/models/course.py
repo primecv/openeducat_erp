@@ -32,7 +32,7 @@ class EmsCourse(models.Model):
     evaluation_type = fields.Selection(
         [('normal', 'Normal'), ('GPA', 'GPA'), ('CWA', 'CWA'), ('CCE', 'CCE')],
         'Evaluation Type', default="normal", required=True)
-    subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
+    #subject_ids = fields.Many2many('ems.subject', string='Subject(s)')
     subject_line = fields.One2many('ems.course.subject', 'course_id', string="Subject(s)")
     degree_id = fields.Many2one('ems.course.degree', 'Degree')
     active = fields.Boolean(string="Active", default=True)

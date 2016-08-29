@@ -20,7 +20,7 @@
 
 		<div class="footer">
 		    <div class="text-center" style="margin-bottom:5px;">
-				Recebido em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> por <span t-field="o.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
+				Impresso em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> por <span t-field="o.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
 		    </div>
 		</div>
 
