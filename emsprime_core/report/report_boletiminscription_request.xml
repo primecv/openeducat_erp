@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_boletiminscription_request_document">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.enrollment_id.student_id.lang})" />
+		<t t-foreach="p" t-as="o">
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-1" style="margin-top:15px;">
+		            <img t-if="o.enrollment_id.student_id.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
+		        </div>
+		        <div class="col-xs-11 text-center" style="margin-top:25px;">
+					INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS<br/>
+					POLO UNIVERSITÁRIO ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span><br/>
+					SERVIÇOS ACADÉMICOS
+				</div>
+		    </div>
+		</div>
+
+		<div class="footer">
+		    <div class="text-center" style="margin-bottom:5px;">
+				Recebido em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> por <span t-field="o.enrollment_id.student_id.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
+		    </div>
+		</div>
+
+        <div class="page">
+			<div align="center" style="color:#333333;"><strong>INSCRIPTION ENROLLMENT <span t-if="o.enrollment_id.roll_number">​Nº <span t-field="o.enrollment_id.roll_number"/></span></strong></div><br/>
+            
+			<div class="row" style="color:333333;">
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/>
+				
+				<strong>Personal Data </strong> <br/>
+
+				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
+				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
+				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
+				<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
+				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
+				<span t-if="o.enrollment_id.student_id.mother"> e <span t-field="o.enrollment_id.student_id.mother"/></span> ***<br/>
+
+				<strong>Identification</strong>: <span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - </span> 
+				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - </span>
+				<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
+
+				<br/><div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
+
+				<strong>Contact Details</strong><br/>
+
+				<strong>Phone</strong>: <span t-field="o.enrollment_id.student_id.phone"/> ***<br/>
+				<strong>Mobile</strong>: <span t-field="o.enrollment_id.student_id.mobile"/> ***<br/>
+				<strong>Personal Email</strong>: <span t-field="o.enrollment_id.student_id.email"/> ***<br/>
+				<strong>Academic Residence</strong>: <span t-field="o.enrollment_id.student_id.street"/><span t-if="o.enrollment_id.student_id.street2">, <span t-field="o.enrollment_id.student_id.street2"/></span><span t-if="o.enrollment_id.student_id.city">, <span t-field="o.enrollment_id.student_id.city"/></span><span t-if="o.enrollment_id.student_id.zip">, <span t-field="o.enrollment_id.student_id.zip"/></span><span t-if="o.enrollment_id.student_id.country_id">, <span t-field="o.enrollment_id.student_id.country_id.name"/></span> ***
+				<br/>
+				<strong>Permanent Residence</strong>: <span t-field="o.enrollment_id.student_id.pstreet"/><span t-if="o.enrollment_id.student_id.pstreet2">, <span t-field="o.enrollment_id.student_id.pstreet2"/></span><span t-if="o.enrollment_id.student_id.pcity">, <span t-field="o.enrollment_id.student_id.pcity"/></span><span t-if="o.enrollment_id.student_id.pzip">, <span t-field="o.enrollment_id.student_id.pzip"/></span><span t-if="o.enrollment_id.student_id.pcountry_id">, <span t-field="o.enrollment_id.student_id.pcountry_id.name"/></span> ***
+				<br/>
+
+				<br/><div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden;"/> 
+
+				<strong>Enrollment Data  </strong> <br/>
+
+				<strong>Course</strong>: <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
+				<strong>Enrollment Number</strong>: <span t-field="o.enrollment_id.roll_number"/> ***<br/>
+				<strong>Inscription</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/>/<span t-esc="o.get_to_year(o.enrollment_id.academic_year)"/></span> <span t-if="o.enrollment_id.course_year">(<span t-field="o.enrollment_id.course_year"/>º year)</span> ***<br/>
+				<strong>Period</strong>: <span t-if="o.enrollment_id.period == 'morning'">Morning</span><span t-if="o.enrollment_id.period == 'afternoon'">Afternoon</span><span t-if="o.enrollment_id.period == 'evening'">Evening</span> ***<br/>
+				<strong>Sponsorship</strong>: <span t-if="o.enrollment_id.student_id.sponsorship == 'own_expenses' ">Own Expenses</span>
+				<span t-if="o.enrollment_id.student_id.sponsorship == 'scholarship' ">Scholarship</span>
+				<span t-if="o.enrollment_id.student_id.sponsorship == 'company' ">Company</span> ***<br/>
+				<strong>Inscribed Disciplines</strong>: <span /> <br/>
+				<table style="border: 1px solid grey;width: 100%;">
+					<thead style="border: 1px solid grey;">
+						<th>Semestre</th>
+						<th>Subject</th>
+						<th>Period</th>
+						<th>Evaluation Type</th>
+					</thead>
+					<tbody>
+						<tr t-foreach="o.enrollment_id.subject_line" t-as="subject" style="border: 1px solid black;">
+							<td class="text-center"><span t-field="subject.semester"/></td>
+							<td><span t-field="subject.subject_id.name"/></td>
+							<td><span t-if="subject.period == 'morning'">Morning</span><span t-if="subject.period == 'afternoon'">Afternoon</span><span t-if="subject.period == 'evening'">Evening</span></td>
+							<td><span t-if="subject.evaluation_type == 'exam'">Exam</span><span t-if="subject.period == 'continuous'">Continuous</span></td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<div class="text-center">
+				*** Check the accuracy of the data in this application form.
+				</div>
+
+            </div>
+
+        </div>
+
+    </t>
+</template>
+
+<template id="report_boletiminscription_request">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_boletiminscription_request_document" t-lang="doc.enrollment_id.student_id.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

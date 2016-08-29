@@ -45,6 +45,11 @@ class ems_request(models.Model):
          ('pending', 'Pending'), ('done', 'Done')],
         'State', default="draft", required=True, track_visibility='onchange', select=True)
 
+    def get_to_year(self, year):
+        if year:
+           return int(year) + 1
+        return None
+
     @api.multi
     def action_validate(self):
         return self.write({'state':'validate'})
@@ -58,3 +63,11 @@ class ems_request(models.Model):
         self.write({'state':'done'})
         return self.env['report'].get_action(self, self.request_type_id.report_id.report_name)
 
+    @api.onchange('enrollment_id')
+    def onchange_enrollment(self):
+        student_name = ''
+        enrollment_id = self.enrollment_id.id
+        enrollments = self.env['ems.enrollment'].search([('id','=',enrollment_id)])
+        for enrollment in enrollments:
+            student_name=enrollment.student_id.complete_name
+        self.name = student_name
