@@ -29,6 +29,16 @@
         />
 
         <report 
+            id="report_ems_boletiminscription_request"
+            string="Inscription Bulletin"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_boletiminscription_request" 
+            name="emsprime_core.report_boletiminscription_request" 
+			menu="False"
+        />
+		
+        <report 
             id="action_report_admission_receipt"
             string="Admission Receipt"
             model="ems.student" 
