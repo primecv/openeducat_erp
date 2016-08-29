@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <report
+        <!--<report
             id="action_report_student_idcard" 
             model="ems.student" 
             string="Student IdCard"
@@ -16,7 +16,7 @@
             report_type="qweb-pdf"
             name="emsprime_core.report_student_bonafide" 
             file="emsprime_core.report_student_bonafide"
-        />
+        />-->
 
         <report 
             id="report_ems_frequency_declaration"
@@ -35,6 +35,16 @@
             report_type="qweb-pdf"
             file="emsprime_core.report_boletiminscription_request" 
             name="emsprime_core.report_boletiminscription_request" 
+			menu="False"
+        />
+
+        <report 
+            id="report_ems_admissionreceipt_request"
+            string="Admission Receipt - Request"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_admissionreceipt_request" 
+            name="emsprime_core.report_admissionreceipt_request" 
 			menu="False"
         />
 		
