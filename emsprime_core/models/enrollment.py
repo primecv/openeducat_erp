@@ -205,7 +205,22 @@ class EmsEnrollment(models.Model):
                     if sb not in current_subjects:
                         new_subjects.append(sb)
 
-                #4. create Grade line for Each Semester Subject:
+                #4. get subjects from previous semesters with grade < 10:
+                semesters = []
+                oldsem_subjects = []
+                for sm in range(1, int(sem1)):
+                    semesters.append(str(sm))
+                if semesters:
+                    inscriptions = self.env['ems.enrollment'].search([('type','=','I'), ('id','!=',enrollment.id),
+                                                                      ('student_id','=',enrollment.student_id.id)])
+                    for insc in inscriptions:
+                        for subj_line in insc.subject_line:
+                            if subj_line.semester in semesters and subj_line.grade < 10:
+                                oldsem_subjects.append(subj_line.subject_id.id)
+                    new_subjects.extend(oldsem_subjects)
+                    new_subjects = list(set(new_subjects))
+
+                #5. create Grade line for Each Semester Subject:
                 if new_subjects:
                     sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('subject_id','in',new_subjects)])
                     for sem_subject in sem_subject_ids:
