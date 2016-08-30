@@ -19,7 +19,7 @@
 #
 ###############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 from openerp.exceptions import ValidationError
 from datetime import datetime
 
@@ -33,7 +33,12 @@ class EmsEdition(models.Model):
     end_date = fields.Date('End Date', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
-    subject_line = fields.One2many('ems.edition.subject', 'edition_id', string="Subject(s)")
+    subject_line = fields.One2many('ems.edition.subject', 'edition_id', string="Subject(s)", copy=True)
+
+    @api.one
+    def copy(self, default=None):
+        default = dict(default or {}, name=_("%s - copy") % self.name)
+        return super(EmsEdition, self).copy(default=default)
 
     @api.one
     @api.constrains('start_date', 'end_date')
