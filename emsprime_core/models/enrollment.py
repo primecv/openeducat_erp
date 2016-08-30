@@ -43,7 +43,14 @@ class EmsEnrollment(models.Model):
     last_name = fields.Char(related='student_id.last_name', string='Last Name', store=False)
     photo = fields.Binary(related='student_id.photo', string='Photo', store=False)
     state = fields.Selection([('draft','New'),('validate','Validated')], string='State', default='draft')
-    academic_year = fields.Char('Academic Year', size=4, track_visibility='onchange')
+    #academic_year = fields.Char('Academic Year', size=4, track_visibility='onchange')
+    academic_year = fields.Selection([('1991', '1991/1992'),('1992', '1992/1993'), ('1993', '1993/1994'), ('1994', '1994/1995'), ('1995', '1995/1996'), 
+                                ('1996', '1996/1997'), ('1997', '1997/1998'), ('1998', '1998/1999'), ('1999', '1999/2000'), ('2000', '2000/2001'), 
+                                ('2001', '2001/2002'), ('2002', '2002/2003'), ('2003', '2003/2004'), ('2004', '2004/2005'), ('2005', '2005/2006'), 
+                                ('2006', '2006/2007'), ('2007', '2007/2008'), ('2008', '2008/2009'), ('2009', '2009/2010'), ('2010', '2010/2011'), 
+                                ('2011', '2011/2012'), ('2012', '2012/2013'), ('2013', '2013/2014'), ('2014', '2014/2015'), ('2015', '2015/2016'), 
+                                ('2016', '2016/2017')
+            ], 'Academic Year', track_visibility='onchange')
     subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_line = fields.One2many('ems.enrollment.inscription.subject', 'inscription_id', 'Subjects')
