@@ -127,7 +127,7 @@ class EmsStudent(models.Model):
     parish_id = fields.Many2one('ems.location', 'Parish')
     #app_course_year = fields.Char("Course/Year", size=255)
     app_course_year = fields.Selection(
-        [('8º ano', '8º ano'), ('9º ano', '9º ano'),('10º ano', '10º ano'),('11º ano', '11º ano'),('12º ano', '12º ano'),
+        [('8 ano', '8º ano'), ('9 ano', '9º ano'),('10 ano', '10º ano'),('11 ano', '11º ano'),('12 ano', '12º ano'),
          ('Bacharelato', 'Bacharelato'),('Licenciatura', 'Licenciatura'),('Pós-graduação', 'Pós-graduação'),('Mestrado', 'Mestrado'),('Doutoramento', 'Doutoramento')],
         'Course/Year')		
     app_course_academic_year = fields.Char("Academic Year", size=64)
