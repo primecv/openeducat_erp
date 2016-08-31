@@ -222,8 +222,11 @@ class EmsEnrollment(models.Model):
                                                                       ('student_id','=',enrollment.student_id.id)])
                     for insc in inscriptions:
                         for subj_line in insc.subject_line:
-                            if subj_line.semester in semesters and subj_line.grade < 10:
-                                oldsem_subjects.append(subj_line.subject_id.id)
+                            if subj_line.semester in semesters:
+                                if subj_line.grade < 10 and subj_line.subject_id.id not in oldsem_subjects:
+                                    oldsem_subjects.append(subj_line.subject_id.id)
+                                elif subj_line.grade >= 10 and subj_line.subject_id.id in oldsem_subjects:
+                                    oldsem_subjects.pop(oldsem_subjects.index(subj_line.subject_id.id))
                     new_subjects.extend(oldsem_subjects)
                     new_subjects = list(set(new_subjects))
 
