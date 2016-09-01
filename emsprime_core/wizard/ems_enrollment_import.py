@@ -4,6 +4,9 @@ from openerp import fields, models, api
 from openerp.exceptions import ValidationError
 import xlrd
 import base64
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class ems_enrollment_import(models.TransientModel):
 	_name = "ems.enrollment.import"
@@ -50,7 +53,9 @@ class ems_enrollment_import(models.TransientModel):
 					worksheet = book.sheet_by_name(worksheet_name)
 					num_rows = worksheet.nrows - 1
 					num_cells = worksheet.ncols - 1
+					total_rows, invalid_row, no_student_exists, no_subject_exists, grade_import, grade_update = 0,0,0,0,0,0
 					for curr_row in range(1, num_rows + 1):
+						total_rows = total_rows + 1
 						curr_cell = -1
 						result = []
 						while curr_cell < num_cells:
@@ -68,27 +73,69 @@ class ems_enrollment_import(models.TransientModel):
 									subject_code = str(result[6]).strip()
 								except Exception:
 									subject_code = str(result[6].encode('utf-8')).strip()
+								try:
+									year = str(result[1]).strip()
+								except Exception:
+									year = str(result[1].encode('utf-8')).strip()
+								year = year.split('/')[0]
 								grade = result[7]
 
 								student_id = self.pool.get('ems.student').search(cr, uid, [('roll_number','=',student_code)])
-								if student_id: student_id = student_id[0]
-								subject_id = self.pool.get('ems.subject').search(cr, uid, [('code','=',subject_code)])
-								if subject_id: subject_id = subject_id[0]
-								if subject_id and student_id:
-									enrollment_ids = self.pool.get('ems.enrollment').search(cr, uid, [
+								if student_id: 
+									student_id = student_id[0]
+									subject_id = self.pool.get('ems.subject').search(cr, uid, [('code','=',subject_code)])
+									if subject_id: 
+										subject_id = subject_id[0]
+									if subject_id:
+										enrollment_ids = self.pool.get('ems.enrollment').search(cr, uid, [
 															('student_id','=',student_id),
 															('type','=','I'), ('state','=','draft')])
-									subject_line_id = self.pool.get('ems.enrollment.inscription.subject').search(cr, uid, [
+										subject_line_id = self.pool.get('ems.enrollment.inscription.subject').search(cr, uid, [
 															('inscription_id','in',enrollment_ids),
 															('subject_id','=',subject_id)], order="id desc", limit=1)
-									if len(subject_line_id) == 1:
-										success = success + 1
-										self.pool.get('ems.enrollment.inscription.subject').write(cr, uid, subject_line_id,
+										if len(subject_line_id) == 1:
+											grade_update = grade_update + 1
+											self.pool.get('ems.enrollment.inscription.subject').write(cr, uid, subject_line_id,
 															{'grade': grade})
+										else:#create new Grades entry
+											grade_id = 0
+											edition_id = 0
+											course_id = 0
+											for student in self.pool.get('ems.student').browse(cr, uid, [student_id]):
+												for inscription in student.roll_number_line:
+													if inscription.type == 'I':
+														insc_year = inscription.roll_number and str(inscription.roll_number).split('.')
+														if insc_year:
+															insc_year = insc_year[-1]
+															if insc_year == year:
+																grade_id = inscription.id
+																course_id = inscription.course_id.id
+																edition_id = inscription.edition_id.id
+																break
+												if grade_id:
+													vals = {}
+													vals['inscription_id'] = grade_id
+													vals['course_id'] = course_id
+													vals['edition_id'] = edition_id
+													vals['subject_id'] = subject_id
+													vals['grade'] = grade
+													ems_edition_subject_id = self.pool.get('ems.edition.subject').search(cr, uid, [('subject_id','=',subject_id),('edition_id','=',edition_id)])
+													if ems_edition_subject_id:
+														for eds in self.pool.get('ems.edition.subject').browse(cr,uid,ems_edition_subject_id):
+															
+															vals['semester'] = eds.semester
+															vals['ect'] = eds.ects
+															vals['semester_copy'] = eds.semester
+															vals['ect_copy'] = eds.ects
+
+													self.pool.get('ems.enrollment.inscription.subject').create(cr,uid,vals)
+													grade_import = grade_import + 1
 									else:
-										fail = fail + 1
+											no_subject_exists = no_subject_exists + 1
+								else:
+									no_student_exists = no_student_exists + 1
 							else:
-								fail = fail + 1
+								invalid_row = invalid_row + 1
 						if rec.type == 'e':#Matricula Enrollment Import
 							if result:
 								vals = {
@@ -120,6 +167,15 @@ class ems_enrollment_import(models.TransientModel):
 										self.pool.get('ems.enrollment').create(cr, uid, vals)
 								else: 
 									fail = fail + 1
+					if rec.type == 'g':
+						_logger.info("Import Grades Script has started. File - %s"%(filename))
+						msg = "Total Rows in File : %s"%(str(total_rows))
+						msg = "Invalid Rows : %s\n"%(str(invalid_row))
+						msg = msg + "Student do not exists. Number of Rows : %s\n"%(str(no_student_exists))
+						msg = msg + "Subject do not exists. Number of Rows : %s\n"%(str(no_subject_exists))
+						msg = msg + "Grades Updated on Existing Inscription Subjects : %s\n"%(str(grade_update))
+						msg = msg + "New Grades Imported on Existing Inscriptions : %s"%(str(grade_import))
+						_logger.info(msg)
 				print "Total : ", total
 				print "Success : ", success
 				print "Duplicates : ", dup
