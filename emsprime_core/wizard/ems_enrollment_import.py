@@ -58,17 +58,17 @@ class ems_enrollment_import(models.TransientModel):
 							cell_value = worksheet.cell_value(curr_row, curr_cell)
 							result.append(cell_value)
 						if rec.type == 'g':#Inscription Subjects Grade Update
-							if result and result[3] and result[5] and result[6] and isinstance(result[6], (int, long, float)):
+							if result and result[3] and result[6] and result[7] and isinstance(result[7], (int, long, float)):
 								total = total + 1
 								try:
 									student_code = str(result[3]).strip()
 								except Exception:
 									student_code = str(result[3].encode('utf-8')).strip()
 								try:
-									subject_code = str(result[5]).strip()
+									subject_code = str(result[6]).strip()
 								except Exception:
-									subject_code = str(result[5].encode('utf-8')).strip()
-								grade = result[6]
+									subject_code = str(result[6].encode('utf-8')).strip()
+								grade = result[7]
 
 								student_id = self.pool.get('ems.student').search(cr, uid, [('roll_number','=',student_code)])
 								if student_id: student_id = student_id[0]
@@ -80,7 +80,7 @@ class ems_enrollment_import(models.TransientModel):
 															('type','=','I'), ('state','=','draft')])
 									subject_line_id = self.pool.get('ems.enrollment.inscription.subject').search(cr, uid, [
 															('inscription_id','in',enrollment_ids),
-															('subject_id','=',subject_id)])
+															('subject_id','=',subject_id)], order="id desc", limit=1)
 									if len(subject_line_id) == 1:
 										success = success + 1
 										self.pool.get('ems.enrollment.inscription.subject').write(cr, uid, subject_line_id,
