@@ -63,7 +63,18 @@ class ems_enrollment_import(models.TransientModel):
 							cell_value = worksheet.cell_value(curr_row, curr_cell)
 							result.append(cell_value)
 						if rec.type == 'g':#Inscription Subjects Grade Update
-							if result and result[3] and result[6] and result[7] and isinstance(result[7], (int, long, float)):
+							flag = False
+							if result:
+								if result[7] and isinstance(result[7], (int, long, float)):
+									flag = True
+								elif result[7]:
+									try:
+										result[7] = int(result[7])
+										flag = True
+									except Exception:
+										pass
+									
+							if result and result[3] and result[6] and flag:
 								total = total + 1
 								try:
 									student_code = str(result[3]).strip()
@@ -169,7 +180,7 @@ class ems_enrollment_import(models.TransientModel):
 									fail = fail + 1
 					if rec.type == 'g':
 						_logger.info("Import Grades Script has started. File - %s"%(filename))
-						msg = "Total Rows in File : %s"%(str(total_rows))
+						_logger.info("Total Rows in File : %s"%(str(total_rows)))
 						msg = "Invalid Rows : %s\n"%(str(invalid_row))
 						msg = msg + "Student do not exists. Number of Rows : %s\n"%(str(no_student_exists))
 						msg = msg + "Subject do not exists. Number of Rows : %s\n"%(str(no_subject_exists))
