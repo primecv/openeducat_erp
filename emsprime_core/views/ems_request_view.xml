@@ -42,7 +42,7 @@
 					<header>
 						<button name="action_validate" type="object" string="Validate" states="draft,pending" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
 						<button name="action_pending" type="object" string="Pending" states="draft" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
-						<button name="action_print" type="object" string="Print" states="validate" class="oe_highlight" groups="emsprime_core.group_ems_student"/>
+						<button name="action_print" type="object" string="Print" states="validate" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,validate,done" statusbar_colors='{"pending":"red","validate":"green"}'/>
 					</header>
 					<sheet>
