@@ -20,7 +20,7 @@
 
         <report 
             id="report_ems_frequency_declaration"
-            string="Frequency Declaration"
+            string="Enrollment Declaration - Request"
             model="ems.request" 
             report_type="qweb-pdf"
             file="emsprime_core.report_frequency_declaration" 
@@ -30,7 +30,7 @@
 
         <report 
             id="report_ems_boletiminscription_request"
-            string="Inscription Bulletin"
+            string="Inscription Bulletin - Request"
             model="ems.request" 
             report_type="qweb-pdf"
             file="emsprime_core.report_boletiminscription_request" 
