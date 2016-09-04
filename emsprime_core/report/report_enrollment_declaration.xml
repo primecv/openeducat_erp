@@ -3,16 +3,16 @@
 <data>
 <template id="report_enrollment_declaration_document">
     <!--t t-call="emsprime_core.external_layout"-->
-        <t t-set="p" t-value="doc.with_context({'lang':doc.student_id.lang})" />
+        <t t-set="p" t-value="doc.with_context({'lang':doc.enrollment_id.student_id.lang})" />
 		<t t-foreach="p" t-as="o">
 		<div class="header">
 		    <div class="row">
 		        <div class="col-xs-1" style="margin-top:15px;">
-		            <img t-if="o.student_id.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
+		            <img t-if="o.enrollment_id.student_id.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
 		        </div>
 		        <div class="col-xs-11 text-center" style="margin-top:25px;">
 					INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS<br/>
-					POLO UNIVERSITÁRIO ­<span t-if="o.student_id.university_center_id">- <span t-field="o.student_id.university_center_id.name"/></span><br/>
+					POLO UNIVERSITÁRIO ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span><br/>
 					SERVIÇOS ACADÉMICOS
 				</div>
 		    </div>
@@ -20,26 +20,60 @@
 
 		<div class="footer">
 		    <div class="text-center" style="margin-bottom:5px;">
-				Recebido em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> por <span t-field="o.student_id.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
+				Printed in <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/> by <span t-field="o.enrollment_id.student_id.create_uid.email"/> via primeEMS.iscee.edu.cv © ISCEE 2016
 		    </div>
 		</div>
 
         <div class="page">
-			<div align="center" style="color:#333333;"><strong>ENROLLMENT DECLARATION<span t-if="o.roll_number">​Nº <span t-field="o.roll_number"/></span></strong></div><br/>
+			<div align="center" style="color:#333333;"><strong>ENROLLMENT DECLARATION <span t-if="o.sequence">​Nº <span t-field="o.sequence"/></span></strong></div>
             
 			<div class="row" style="color:333333;">
-				For all intents and purposes at the request of the person concerned declares that 
-				<span t-field="o.student_id.complete_name" style="text-transform:uppercase;"/>, 
-				Degree Student in <span t-field="o.course_id.name"/>
-				, daughter of <span t-field="o.student_id.father"/> 
-				and <span t-field="o.student_id.mother" />, 
-				bearer of Identity Card No. <span t-field="o.student_id.id_number"/>
-				, issued on <span t-field="o.student_id.issue_date"/> 
-				by the National Archives of Civil and Criminal identification of <span t-field="o.student_id.island_id.name"/>, 
-				born on <span t-field="o.student_id.birth_date"/> 
-				a native of <span t-field="o.student_id.island_id.name"/>
-				, attended the <span t-field="o.year"/> year 
-				of that course in the academic year <span t-field="o.academic_year"/>.				
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
+			
+				<strong>Personal Data </strong> <br/>
+
+				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
+				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
+				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
+				<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
+				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
+				<span t-if="o.enrollment_id.student_id.mother"> e <span t-field="o.enrollment_id.student_id.mother"/></span> ***<br/>
+
+				<strong>Identification</strong>: <span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - </span> 
+				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - </span>
+				<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
+
+				<strong>Enrollment Data  </strong> <br/>
+				
+				<strong>Enrollment Number</strong>: <span t-field="o.enrollment_id.roll_number"/> ***<br/>
+				<strong>Course</strong>: <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
+				<strong>Education Year</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/>/<span t-esc="o.get_to_year(o.enrollment_id.academic_year)"/></span> <span t-if="o.enrollment_id.course_year">(<span t-field="o.enrollment_id.course_year"/>º year)</span> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
+
+				<strong>Inscription Data  </strong> <br/>
+				
+				<strong>Academic Year</strong>: <span t-esc="o.get_academic_year(o.enrollment_id.student_id.id)"/> ***<br/>
+				<strong>Course Year</strong>: <span t-esc="o.get_course_year(o.enrollment_id.student_id.id)"/>º year ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
+
+				<strong>Declaration Data  </strong> <br/>
+				
+				<strong>Applicant</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Request Date</strong>: <span t-esc="o.date"/> ***<br/>
+				<strong>Issue Date</strong>: <span t-esc="time.strftime('%Y/%m/%d')"/> ***
+
+				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
+				
+				<div>
+					At the request of <strong><span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/></strong> and for appropriate action, we emit the present notarized statement with the stamp in use in this institution ***
+				</div>
 
             </div>
 
@@ -51,7 +85,7 @@
 <template id="report_enrollment_declaration">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="emsprime_core.report_enrollment_declaration_document" t-lang="doc.student_id.lang"/>
+            <t t-call="emsprime_core.report_enrollment_declaration_document" t-lang="doc.enrollment_id.student_id.lang"/>
         </t>
     </t>
 </template>

@@ -17,10 +17,19 @@
             name="emsprime_core.report_student_bonafide" 
             file="emsprime_core.report_student_bonafide"
         />-->
+        <report 
+            id="report_enrollment_decl"
+            string="Enrollment Declaration - Request"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_enrollment_declaration" 
+            name="emsprime_core.report_enrollment_declaration" 
+			menu="False"
+        />
 
         <report 
             id="report_ems_frequency_declaration"
-            string="Enrollment Declaration - Request"
+            string="Frequency Declaration - Request"
             model="ems.request" 
             report_type="qweb-pdf"
             file="emsprime_core.report_frequency_declaration" 
@@ -68,14 +77,5 @@
 			header="False"
         />
 
-        <report 
-            id="report_enrollment_decl"
-            string="Enrollment Declaration"
-            model="ems.enrollment" 
-            report_type="qweb-pdf"
-            file="emsprime_core.report_enrollment_declaration" 
-            name="emsprime_core.report_enrollment_declaration" 
-			header="False"
-        />
     </data>
 </openerp>
