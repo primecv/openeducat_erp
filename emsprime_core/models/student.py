@@ -83,90 +83,90 @@ class EmsStudent(models.Model):
             self.type_current_enroll = type_current_enroll
             self.university_center_id = university_center_id
 
-    middle_name = fields.Char('Middle Name', size=128)
-    last_name = fields.Char('Last Name', size=128, required=True)
-    birth_date = fields.Date('Birth Date', required=False)
+    middle_name = fields.Char('Middle Name', size=128, track_visibility='onchange')
+    last_name = fields.Char('Last Name', size=128, required=True, track_visibility='onchange')
+    birth_date = fields.Date('Birth Date', required=False, track_visibility='onchange')
     blood_group = fields.Selection(
         [('A+', 'A+ve'), ('B+', 'B+ve'), ('O+', 'O+ve'), ('AB+', 'AB+ve'),
          ('A-', 'A-ve'), ('B-', 'B-ve'), ('O-', 'O-ve'), ('AB-', 'AB-ve')],
-        'Blood Group')
+        'Blood Group', track_visibility='onchange')
     gender = fields.Selection(
         [('m', 'Male'), ('f', 'Female'),
-         ('o', 'Other')], 'Gender', required=True)
-    nationality = fields.Many2one('ems.location', 'Nationality')
+         ('o', 'Other')], 'Gender', required=True, track_visibility='onchange')
+    nationality = fields.Many2one('ems.location', 'Nationality', track_visibility='onchange')
     emergency_contact = fields.Many2one(
-        'res.partner', 'Emergency Contact')
-    visa_info = fields.Char('Visa Info', size=64)
-    id_number = fields.Char('ID Card Number', size=64)
-    passport_no = fields.Char('Passport/BI', size=20)
-    photo = fields.Binary('Photo')
-    lang = fields.Selection(_lang_get, 'Language', default='pt_PT')
-    course_ids = fields.Many2many('ems.course', 'ems_student_course_rel', 'student_id', 'course_id', 'Course(s)')
+        'res.partner', 'Emergency Contact', track_visibility='onchange')
+    visa_info = fields.Char('Visa Info', size=64, track_visibility='onchange')
+    id_number = fields.Char('ID Card Number', size=64, track_visibility='onchange')
+    passport_no = fields.Char('Passport/BI', size=20, track_visibility='onchange')
+    photo = fields.Binary('Photo', track_visibility='onchange')
+    lang = fields.Selection(_lang_get, 'Language', default='pt_PT', track_visibility='onchange')
+    course_ids = fields.Many2many('ems.course', 'ems_student_course_rel', 'student_id', 'course_id', 'Course(s)', track_visibility='onchange')
     #edition_id = fields.Many2one('ems.edition', 'Edition', required=False)
     roll_number_line = fields.One2many(
-        'ems.enrollment', 'student_id', 'Roll Number')
+        'ems.enrollment', 'student_id', 'Roll Number', track_visibility='onchange')
     partner_id = fields.Many2one(
-        'res.partner', 'Partner', required=True, ondelete="cascade")
+        'res.partner', 'Partner', required=True, ondelete="cascade", track_visibility='onchange')
 
-    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
-    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
-    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
+    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True, track_visibility='onchange', track_visibility='onchange')
+    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True, track_visibility='onchange', track_visibility='onchange')
+    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True, track_visibility='onchange', track_visibility='onchange')
 
-    gr_no = fields.Char("GR Number", size=20)
-    location_id = fields.Many2one('ems.location', 'Place of birth')
-    mother = fields.Char('Mother', size=255)
-    father = fields.Char('Father', size=255)
-    issuer = fields.Char('Issuer')
-    issue_date = fields.Date('Issue Date')
-    institutional_email = fields.Char('Institutional email', size=128)
+    gr_no = fields.Char("GR Number", size=20, track_visibility='onchange')
+    location_id = fields.Many2one('ems.location', 'Place of birth', track_visibility='onchange')
+    mother = fields.Char('Mother', size=255, track_visibility='onchange')
+    father = fields.Char('Father', size=255, track_visibility='onchange')
+    issuer = fields.Char('Issuer', track_visibility='onchange')
+    issue_date = fields.Date('Issue Date', track_visibility='onchange')
+    institutional_email = fields.Char('Institutional email', size=128, track_visibility='onchange')
     complete_name = fields.Char('Name', compute='_get_complete_name', store=True, track_visibility='onchange')
     attachment_line = fields.One2many('ems.attachment', 'student_id', 'Attachments')
-    country_id = fields.Many2one('ems.location', 'Country')
-    island_id = fields.Many2one('ems.location', 'Island')
-    county_id = fields.Many2one('ems.location', 'County')
-    parish_id = fields.Many2one('ems.location', 'Parish')
+    country_id = fields.Many2one('ems.location', 'Country', track_visibility='onchange')
+    island_id = fields.Many2one('ems.location', 'Island', track_visibility='onchange')
+    county_id = fields.Many2one('ems.location', 'County', track_visibility='onchange')
+    parish_id = fields.Many2one('ems.location', 'Parish', track_visibility='onchange')
     #app_course_year = fields.Char("Course/Year", size=255)
     app_course_year = fields.Selection(
         [('8 ano', '8º ano'), ('9 ano', '9º ano'),('10 ano', '10º ano'),('11 ano', '11º ano'),('12 ano', '12º ano'),
          ('Bacharelato', 'Bacharelato'),('Licenciatura', 'Licenciatura'),('Pós-graduação', 'Pós-graduação'),('Mestrado', 'Mestrado'),('Doutoramento', 'Doutoramento')],
-        'Course/Year')		
-    app_course_academic_year = fields.Char("Academic Year", size=64)
-    app_course_area = fields.Char("Area", size=255)
-    math_final_average = fields.Float('Math Final Average', digits=(8,0))
-    course_option_1 = fields.Many2one('ems.course', 'Course - Option 1')
-    course_option_2 = fields.Many2one('ems.course', 'Course - Option 2')
-    course_option_3 = fields.Many2one('ems.course', 'Course - Option 3')
-    high_school_score = fields.Char('High School')
+        'Course/Year', track_visibility='onchange')		
+    app_course_academic_year = fields.Char("Academic Year", size=64, track_visibility='onchange')
+    app_course_area = fields.Char("Area", size=255, track_visibility='onchange')
+    math_final_average = fields.Float('Math Final Average', digits=(8,0), track_visibility='onchange')
+    course_option_1 = fields.Many2one('ems.course', 'Course - Option 1', track_visibility='onchange')
+    course_option_2 = fields.Many2one('ems.course', 'Course - Option 2', track_visibility='onchange')
+    course_option_3 = fields.Many2one('ems.course', 'Course - Option 3', track_visibility='onchange')
+    high_school_score = fields.Char('High School', track_visibility='onchange')
     schedule_choice = fields.Selection(
         [('morning', 'Morning'), ('afternoon', 'Afternoon'),
          ('evening', 'Evening')],
-        'Schedule Choice', default="morning")
+        'Schedule Choice', default="morning", track_visibility='onchange')
     sponsorship = fields.Selection(
         [('own_expenses', 'Own Expenses'), ('scholarship', 'Scholarship'),
          ('company', 'Company')],
-        'Sponsorship', default="own_expenses")		
+        'Sponsorship', default="own_expenses", track_visibility='onchange')		
     state = fields.Selection([('draft', 'New'),
                               ('submit', 'Submitted'),
                               ('received', 'Received'),
                               ('confirmed', 'Accepted'),
-                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange',translate=False)
+                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange',translate=False, track_visibility='onchange')
     #Permanant Address fields:
-    pstreet = fields.Char('Street')
-    pstreet2 = fields.Char('Street2')
-    pcity = fields.Char('City')
-    pzip = fields.Char('PostCode')
-    acountry_id = fields.Many2one('ems.location', 'Country')
-    pcountry_id = fields.Many2one('ems.location', 'Country')
-    portuguese_final_average = fields.Float('Average Portuguese', digits=(8,0))
-    final_average = fields.Float('Final Average')
-    university_center_id = fields.Many2one('ems.university.center', 'University Center')
-    type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True)
+    pstreet = fields.Char('Street', track_visibility='onchange')
+    pstreet2 = fields.Char('Street2', track_visibility='onchange')
+    pcity = fields.Char('City', track_visibility='onchange')
+    pzip = fields.Char('PostCode', track_visibility='onchange')
+    acountry_id = fields.Many2one('ems.location', 'Country', track_visibility='onchange')
+    pcountry_id = fields.Many2one('ems.location', 'Country', track_visibility='onchange')
+    portuguese_final_average = fields.Float('Average Portuguese', digits=(8,0), track_visibility='onchange')
+    final_average = fields.Float('Final Average', track_visibility='onchange')
+    university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
+    type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
     temp_edition_courses = fields.Many2many('ems.course', string='Course(s)')
 
     #JCF - Professional Contacts:
-    pro_phone = fields.Char('Phone')
-    pro_mobile = fields.Char('Mobile')
-    pro_email = fields.Char('Email')
+    pro_phone = fields.Char('Phone', track_visibility='onchange')
+    pro_mobile = fields.Char('Mobile', track_visibility='onchange')
+    pro_email = fields.Char('Email', track_visibility='onchange')
 
     scholarship_ids = fields.One2many('ems.scholarship', 'student_id', 'Scholarships')
 	
