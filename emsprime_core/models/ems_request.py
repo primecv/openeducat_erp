@@ -34,6 +34,32 @@ class ems_request(models.Model):
     _description = "Request"
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
+    #JCF - 05-09-2016
+    @api.one
+    @api.depends('enrollment_id')
+    def _get_curr_inscription(self):
+        current_inscription_id = False
+        enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')])
+        print "Student:: "
+        print self.enrollment_id.student_id.id
+        #check current date with the latest enrollment edition:
+        count = 0
+        for enrollment in enrollments:
+            try:
+                if count == 0:
+                    current_inscription_id = enrollment.id
+
+                    start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                    count = count + 1
+                else:
+                    if start_date <= datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date() and enrollment.type=='I':
+                        start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                        current_inscription_id = enrollment.id
+            except Exception:
+                pass
+
+            self.current_inscription_id = current_inscription_id
+
     name = fields.Char('Request Name', required=True, track_visibility='onchange', select=True)
     student_id = fields.Many2one('ems.student', 'Student', track_visibility='onchange')
     enrollment_id = fields.Many2one('ems.enrollment', 'Record Number', track_visibility='onchange', select=True)
@@ -45,7 +71,9 @@ class ems_request(models.Model):
          ('pending', 'Pending'), ('done', 'Done')],
         'State', default="draft", required=True, track_visibility='onchange', select=True)
     sequence = fields.Char('Sequence')
+    current_inscription_id = fields.Many2one('ems.enrollment', string='Current Inscription', compute='_get_curr_inscription', store=True, track_visibility='onchange')
 
+	
     def get_to_year(self, year):
         if year:
            return int(year) + 1
@@ -65,7 +93,7 @@ class ems_request(models.Model):
         """
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
-        self._cr.execute("""select sequence from ems_request where request_type_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.request_type_id.id, str(year) + '/'))
+        self._cr.execute("""select sequence from ems_request where  sequence ilike '%s%%' order by id desc limit 1"""%(str(year) + '/'))
         result = self._cr.fetchone()
         if result:
             result = result[0]
@@ -109,3 +137,4 @@ class ems_request(models.Model):
                 course_year=enrollment.course_year
             return course_year
         return None
+

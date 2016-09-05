@@ -8,7 +8,7 @@
 		<div class="header">
 		    <div class="row">
 		        <div class="col-xs-1" style="margin-top:15px;">
-		            <img t-if="o.enrollment_id.student_id.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
+		            <img t-if="o.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
 		        </div>
 		        <div class="col-xs-11 text-center" style="margin-top:25px;">
 					INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS<br/>
@@ -27,7 +27,7 @@
         <div class="page">
 			<div align="center" style="color:#333333;"><strong>ENROLLMENT DECLARATION <span t-if="o.sequence">​Nº <span t-field="o.sequence"/></span></strong></div>
             
-			<div class="row" style="color:333333;">
+			<div class="row" style="color:333333;font-family:Myriad Pro Light;">
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
 			
 				<strong>Personal Data </strong> <br/>
