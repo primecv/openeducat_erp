@@ -108,9 +108,9 @@ class EmsStudent(models.Model):
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade", track_visibility='onchange')
 
-    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True, track_visibility='onchange', track_visibility='onchange')
-    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True, track_visibility='onchange', track_visibility='onchange')
-    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True, track_visibility='onchange', track_visibility='onchange')
+    roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
+    course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
+    edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
 
     gr_no = fields.Char("GR Number", size=20, track_visibility='onchange')
     location_id = fields.Many2one('ems.location', 'Place of birth', track_visibility='onchange')
@@ -149,7 +149,7 @@ class EmsStudent(models.Model):
                               ('submit', 'Submitted'),
                               ('received', 'Received'),
                               ('confirmed', 'Accepted'),
-                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange',translate=False, track_visibility='onchange')
+                              ('rejected', 'Rejected')], 'State', default='draft', track_visibility='onchange',translate=False)
     #Permanant Address fields:
     pstreet = fields.Char('Street', track_visibility='onchange')
     pstreet2 = fields.Char('Street2', track_visibility='onchange')
