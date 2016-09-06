@@ -21,6 +21,7 @@
 
 from openerp import models, fields, api
 from datetime import datetime
+import base64, re
 
 class ems_request_type(models.Model):
     _name = 'ems.request.type'
@@ -105,6 +106,18 @@ class ems_request(models.Model):
                next_seq = '0' + next_seq
             next_seq = str(year) + '/' + next_seq
         self.write({'state':'done', 'sequence':next_seq})
+        #attach report in Students Attachments:
+        report = self.env['report'].get_pdf(self, self.request_type_id.report_id.report_name)
+        result = base64.b64encode(report)
+        file_name = str(self.request_type_id.name.encode('utf-8')) + '.pdf'
+        self.env['ir.attachment'].create({
+									'name': file_name, 
+									'datas': result, 
+									'datas_fname': file_name, 
+									'res_model': 'ems.student',
+									'res_id': self.enrollment_id.student_id.id,
+									'type': 'binary'
+								})
         return self.env['report'].get_action(self, self.request_type_id.report_id.report_name)
 
     @api.onchange('enrollment_id')
