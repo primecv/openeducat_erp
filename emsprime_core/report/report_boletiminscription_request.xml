@@ -3,7 +3,7 @@
 <data>
 <template id="report_boletiminscription_request_document">
     <!--t t-call="emsprime_core.external_layout"-->
-        <t t-set="p" t-value="doc.with_context({'lang':doc.enrollment_id.student_id.lang})" />
+        <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
 		<t t-foreach="p" t-as="o">
 		<div class="header">
 		    <div class="row">
@@ -95,7 +95,7 @@
 <template id="report_boletiminscription_request">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="emsprime_core.report_boletiminscription_request_document" t-lang="doc.enrollment_id.student_id.lang"/>
+            <t t-call="emsprime_core.report_boletiminscription_request_document" t-lang="doc.create_uid.lang"/>
         </t>
     </t>
 </template>

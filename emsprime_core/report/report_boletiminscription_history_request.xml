@@ -21,6 +21,17 @@
 		</div>
 
         <div class="page">
+			<style type="text/css">
+			<![CDATA[
+			@font-face {
+			  font-family: 'Calibri';
+			  font-style: normal;
+			  font-weight: 400;
+			  src: local('Calibri'), url(https://github.com/jondot/dotfiles/blob/master/.fonts/calibri.ttf?raw=true) format('truetype');
+			}
+			]]>
+			</style>
+		
 			<div align="center" style="color:#333333;font-family:Calibri;font-size:18px;"><strong>INSCRIPTION ENROLLMENT <span t-if="o.sequence">​Nº <span t-field="o.sequence"/></span></strong></div><br/>
             
 			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
