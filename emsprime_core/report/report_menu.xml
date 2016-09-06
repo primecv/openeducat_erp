@@ -39,7 +39,7 @@
 
         <report 
             id="report_ems_boletiminscription_request"
-            string="Inscription Bulletin - Request"
+            string="Declaração de Inscrição"
             model="ems.request" 
             report_type="qweb-pdf"
             file="emsprime_core.report_boletiminscription_request" 
@@ -49,7 +49,7 @@
 
         <report 
             id="report_ems_boletiminscription_history_request"
-            string="Inscription Bulletin History - Request"
+            string="Declaração de Inscrição - Histórico"
             model="ems.request" 
             report_type="qweb-pdf"
             file="emsprime_core.report_boletiminscription_history_request" 
