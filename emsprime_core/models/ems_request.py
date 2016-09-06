@@ -85,6 +85,8 @@ class ems_request(models.Model):
     sequence = fields.Char('Sequence')
     current_inscription_id = fields.Many2one('ems.enrollment', string='Current Inscription', compute='_get_curr_inscription', store=True, track_visibility='onchange')
     university_center_id = fields.Many2one('ems.university.center', string='University Center', compute='_get_university_center', store=True, track_visibility='onchange')
+    year = fields.Char('Year of Declaration')
+    number = fields.Char('Number of Declaration')
 	
     def get_to_year(self, year):
         if year:
@@ -97,6 +99,7 @@ class ems_request(models.Model):
         """
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
+        str_number = ''
         self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
         result = self._cr.fetchone()
         if result:
@@ -107,7 +110,8 @@ class ems_request(models.Model):
             next_seq = str(result + 1)
             while len(next_seq) < 4:
                next_seq = '0' + next_seq
-            next_seq = next_seq + '/' + 'ISCEE' + ' - ' + self.university_center_id.code + '/' + str(year)
+            str_number = next_seq
+            next_seq = str(year) + '/' + next_seq
         self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
         result = self._cr.fetchone()
         if result:
@@ -115,7 +119,7 @@ class ems_request(models.Model):
             if result < 1:
                 raise UserError(_('The student does not have any inscription enrollments yet.'))
 
-        self.write({'state':'validate', 'sequence':next_seq})
+        self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number})
 
     @api.multi
     def action_pending(self):
