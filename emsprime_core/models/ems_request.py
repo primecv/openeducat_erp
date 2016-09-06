@@ -107,7 +107,7 @@ class ems_request(models.Model):
             next_seq = str(result + 1)
             while len(next_seq) < 4:
                next_seq = '0' + next_seq
-            next_seq = str(year) + '/' + next_seq
+            next_seq = next_seq + '/' + 'ISCEE' + ' - ' + self.university_center_id.code + '/' + str(year)
         self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
         result = self._cr.fetchone()
         if result:
