@@ -76,7 +76,7 @@ class ems_request(models.Model):
     student_id = fields.Many2one('ems.student', 'Student', track_visibility='onchange')
     enrollment_id = fields.Many2one('ems.enrollment', 'Record Number', track_visibility='onchange', select=True)
     request_type_id = fields.Many2one('ems.request.type', string='Request Type', track_visibility='onchange', select=True)
-    description = fields.Text('Description')
+    description = fields.Text('Special Mentions')
     date = fields.Date('Request Date', track_visibility="onchange", default=fields.date.today(), readonly=True)
     state = fields.Selection(
         [('draft', 'New Request'), ('validate', 'Validated'),
