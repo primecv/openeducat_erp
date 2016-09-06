@@ -7,7 +7,7 @@
 		<t t-foreach="p" t-as="o">
 
 		<div class="footer">
-		    <div style="margin-bottom:60px;font-family:Calibri;font-size:10px;margin-left:5px;">
+		    <div style="margin-bottom:80px;font-family:Calibri;font-size:10px;margin-left:5px;">
 				Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span><br/>
 				Processed by computer via primeEMS by <br/><span t-field="o.create_uid.email"/> in <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/>
 		    </div>
