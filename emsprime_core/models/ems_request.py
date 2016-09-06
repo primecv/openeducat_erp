@@ -19,9 +19,10 @@
 #
 ###############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 from datetime import datetime
 import base64, re
+from openerp.exceptions import ValidationError, UserError
 
 class ems_request_type(models.Model):
     _name = 'ems.request.type'
@@ -35,14 +36,24 @@ class ems_request(models.Model):
     _description = "Request"
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
+    #JCF - 06-09-2016
+    @api.one
+    @api.depends('enrollment_id')
+    def _get_university_center(self):
+        university_center_id = False
+        #print "Student UNIVERSITY:: "
+        #print self.enrollment_id.student_id.id
+        enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="id desc", limit=1)
+        for enrollment in enrollments:
+            university_center_id=enrollment.university_center_id.id			
+        self.university_center_id = university_center_id
+			
     #JCF - 05-09-2016
     @api.one
     @api.depends('enrollment_id')
     def _get_curr_inscription(self):
         current_inscription_id = False
         enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')])
-        print "Student:: "
-        print self.enrollment_id.student_id.id
         #check current date with the latest enrollment edition:
         count = 0
         for enrollment in enrollments:
@@ -73,7 +84,7 @@ class ems_request(models.Model):
         'State', default="draft", required=True, track_visibility='onchange', select=True)
     sequence = fields.Char('Sequence')
     current_inscription_id = fields.Many2one('ems.enrollment', string='Current Inscription', compute='_get_curr_inscription', store=True, track_visibility='onchange')
-
+    university_center_id = fields.Many2one('ems.university.center', string='University Center', compute='_get_university_center', store=True, track_visibility='onchange')
 	
     def get_to_year(self, year):
         if year:
@@ -82,19 +93,11 @@ class ems_request(models.Model):
 
     @api.multi
     def action_validate(self):
-        return self.write({'state':'validate'})
-
-    @api.multi
-    def action_pending(self):
-        return self.write({'state':'pending'})
-
-    @api.multi
-    def action_print(self):
-        """Generate sequence in "YYYY/0001" format by Request Type
+        """Generate sequence in "YYYY/0001" format by University center
         """
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
-        self._cr.execute("""select sequence from ems_request where  sequence ilike '%s%%' order by id desc limit 1"""%(str(year) + '/'))
+        self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
         result = self._cr.fetchone()
         if result:
             result = result[0]
@@ -105,7 +108,23 @@ class ems_request(models.Model):
             while len(next_seq) < 4:
                next_seq = '0' + next_seq
             next_seq = str(year) + '/' + next_seq
-        self.write({'state':'done', 'sequence':next_seq})
+        self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
+        result = self._cr.fetchone()
+        if result:
+            result = result[0]
+            if result < 1:
+                raise UserError(_('The student does not have any inscription enrollments yet.'))
+
+        self.write({'state':'validate', 'sequence':next_seq})
+
+    @api.multi
+    def action_pending(self):
+        return self.write({'state':'pending'})
+
+    @api.multi
+    def action_print(self):
+
+        self.write({'state':'done'})
         #attach report in Students Attachments:
         report = self.env['report'].get_pdf(self, self.request_type_id.report_id.report_name)
         result = base64.b64encode(report)
