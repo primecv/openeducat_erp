@@ -85,6 +85,7 @@
         'report/report_enrollment_declaration.xml',
         'report/report_boletiminscription_request.xml',
         'report/report_admissionreceipt_request.xml',
+        'report/report_boletiminscription_history_request.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
         'menu/emsprime_core_menu.xml',

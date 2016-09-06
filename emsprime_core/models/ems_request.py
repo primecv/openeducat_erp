@@ -138,3 +138,60 @@ class ems_request(models.Model):
             return course_year
         return None
 
+    def get_curr_inscription_academic_year(self, student_id):
+        if student_id:
+            academic_year = ''
+            academic_year2 = 0
+            str_academic_year=''
+            count = 0
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',student_id),('type','=','I')])
+            for enrollment in enrollments:
+                try:
+                    if count == 0:
+                        academic_year = enrollment.academic_year
+                        academic_year2 = int(academic_year) + 1
+                        str_academic_year = str(academic_year) + '/' + str(academic_year2)
+
+                        start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                        count = count + 1
+                    else:
+                        if start_date <= datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date() and enrollment.type=='I':
+                            start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                            academic_year = enrollment.academic_year
+                            academic_year2 = int(academic_year) + 1
+                            str_academic_year = str(academic_year) + '/' + str(academic_year2)
+                except Exception:
+                    pass
+
+        return str_academic_year
+
+    def get_curr_inscription_course_year(self, student_id):
+        if student_id:
+            course_year = ''
+            count = 0
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',student_id),('type','=','I')])
+            for enrollment in enrollments:
+                try:
+                    if count == 0:
+                        course_year = enrollment.course_year
+
+                        start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                        count = count + 1
+                    else:
+                        if start_date <= datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date() and enrollment.type=='I':
+                            start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
+                            course_year = enrollment.course_year
+                except Exception:
+                    pass
+
+        return course_year
+		
+    def get_year(self, year):
+        academic_year=0
+        academic_year2=0
+        str_academic_year=''
+        if year:
+            academic_year = year
+            academic_year2 = int(academic_year) + 1
+            str_academic_year = str(academic_year) + '/' + str(academic_year2)
+        return str_academic_year

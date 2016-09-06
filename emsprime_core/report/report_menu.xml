@@ -48,6 +48,16 @@
         />
 
         <report 
+            id="report_ems_boletiminscription_history_request"
+            string="Inscription Bulletin History - Request"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_boletiminscription_history_request" 
+            name="emsprime_core.report_boletiminscription_history_request" 
+			menu="False"
+        />
+
+        <report 
             id="report_ems_admissionreceipt_request"
             string="Admission Receipt - Request"
             model="ems.request" 
