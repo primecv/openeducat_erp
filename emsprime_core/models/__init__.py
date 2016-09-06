@@ -25,6 +25,7 @@ from . import attachment
 from . import training_area
 from . import university_center
 from . import course
+from . import course_plan
 from . import edition
 from . import semester
 from . import faculty

@@ -56,6 +56,7 @@
         'views/training_area_view.xml',
         'views/university_center_view.xml',
         'views/course_view.xml',
+        'views/course_plan_view.xml',
         'views/edition_view.xml',
         'views/semester_view.xml',
         'views/subject_view.xml',

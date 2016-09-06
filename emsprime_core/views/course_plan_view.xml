@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_ems_course_plan_tree" model="ir.ui.view">
+            <field name="name">ems.course.plan.tree</field>
+            <field name="model">ems.course.plan</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Course Plan">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="course_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_ems_course_plan_form" model="ir.ui.view">
+            <field name="name">ems.course.plan.form</field>
+            <field name="model">ems.course.plan</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Course Plan">
+                    <sheet>
+                        <group col="4" name="main">
+                            <field name="name" />
+                            <field name="code" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="course_id" />
+                        </group>
+                        <notebook colspan="4">						
+                            <page name="subjects" string="Subjects">						
+								<group name="subject">
+									<separator string="Subjects" colspan="4"/> 
+									<field name="subject_line" nolabel="1">
+										<tree string="Subjects" editable="bottom">
+											<field name="subject_id" required="1"/>
+											<field name="semester"/>
+											<field name="week_work_load" widget="float_time"/>
+											<field name="student_contact" widget="float_time"/>
+											<field name="work"/>
+											<field name="ects"/>
+										</tree>
+									</field>
+								</group>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_ems_course_plan_search" model="ir.ui.view">
+            <field name="name">ems.course.plan.search</field>
+            <field name="model">ems.course.plan</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Course Plan">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="course_id" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Start Date" domain="[]"
+                            context="{'group_by':'start_date'}" />
+                        <filter string="End Date" domain="[]" context="{'group_by':'end_date'}" />
+                        <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_ems_course_plan_view">
+            <field name="name">Course Plans</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.course.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_course_plan_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_course_plan_view_form">
+            <field name="act_window_id" ref="act_open_ems_course_plan_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ems_course_plan_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_course_plan_view_tree">
+            <field name="act_window_id" ref="act_open_ems_course_plan_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_course_plan_tree" />
+        </record>
+    </data>
+</openerp>
