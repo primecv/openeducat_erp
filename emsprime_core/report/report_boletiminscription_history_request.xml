@@ -51,8 +51,8 @@
 				<span style="color:333333;font-size:16px;"><strong>Enrollment Data</strong></span><br />
 
 				<strong>Student Number</strong>: <span t-field="o.enrollment_id.student_id.roll_number"/> ***<br/>
-				<strong>Course</strong>: <span t-field="o.enrollment_id.course_id.degree_id.name"/> in <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
-				<strong>Year</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/></span> ***<br/>
+				<strong>Name Course</strong>: <span t-field="o.enrollment_id.course_id.degree_id.name"/> in <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
+				<strong>Year of the course</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/></span> ***<br/>
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
