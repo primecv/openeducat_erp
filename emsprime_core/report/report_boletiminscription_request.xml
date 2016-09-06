@@ -21,9 +21,9 @@
 		</div>
 
         <div class="page">
-			<div align="center" style="color:#333333;font-family:'PT Sans', sans-serif;font-size:18px;"><strong>INSCRIPTION ENROLLMENT <span t-if="o.sequence">​Nº <span t-field="o.sequence"/></span></strong></div><br/>
+			<div align="center" style="color:#333333;font-family:PT Sans;font-size:18px;"><strong>INSCRIPTION ENROLLMENT <span t-if="o.sequence">​Nº <span t-field="o.sequence"/></span></strong></div><br/>
             
-			<div class="row" style="color:333333;font-family:'PT Sans', sans-serif;font-size:16px;">
+			<div class="row" style="color:333333;font-family:PT Sans;font-size:16px;">
 				<div style="width: 100%; height: 1px; background-color:#333333; overflow: hidden; margin:10px 0;"/> 
 				
 				<span style="color:333333;font-size:18px;"><strong>Personal Data </strong></span><br />
