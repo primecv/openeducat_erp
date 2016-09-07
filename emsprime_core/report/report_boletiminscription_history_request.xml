@@ -5,15 +5,15 @@
     <!--t t-call="emsprime_core.external_layout"-->
         <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
 		<t t-foreach="p" t-as="o">
-
-		<div class="footer">
-		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
-				<span style="line-height:12px;">Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span></span><br/>
-				<span style="line-height:12px;">Processado por computador por <br/><span t-field="o.create_uid.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-12 text-center" style="margin-top:125px;">
+					<strong>DECLARAÇÃO DE INSCRIÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
+				</div>
 		    </div>
 		</div>
 
-        <div class="page" style="margin:0 25px 0 30px;">
+        <div class="page" style="margin:0 25px">
 			<style type="text/css">
 			<![CDATA[
 			@font-face {
@@ -26,9 +26,7 @@
 			.tit_declaration{color:#333333;font-family:Calibri;font-size:16px;}
 			.tit_section{color:333333;font-size:14px;}
 			</style>
-		
-			<div align="center" class="tit_declaration"><strong>DECLARAÇÃO DE INSCRIÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong></div><br/>
-            
+		            
 			<div class="row" style="color:333333;font-family:Calibri;font-size:14px;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 				
@@ -89,6 +87,12 @@
             </div>
 
         </div>
+		<div class="footer">
+		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
+				<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span></span><br/>
+				<span style="line-height:10px;">Processado por computador por <br/><span t-field="o.create_uid.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
+		    </div>
+		</div>
 
     </t>
 </template>

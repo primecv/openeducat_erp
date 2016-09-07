@@ -27,9 +27,12 @@ from openerp.exceptions import ValidationError, UserError
 class ems_request_type(models.Model):
     _name = 'ems.request.type'
     _description = "Request Type"
-
+    _order = 'name'
+	
     name = fields.Char('Request Type', required=True)
     report_id = fields.Many2one('ir.actions.report.xml', 'Report')
+    type = fields.Selection(
+        [('S', 'Student'), ('F', 'Faculty')], 'Type', required=True, track_visibility='onchange')
 
 class ems_request(models.Model):
     _name = "ems.request"
@@ -87,6 +90,10 @@ class ems_request(models.Model):
     university_center_id = fields.Many2one('ems.university.center', string='University Center', compute='_get_university_center', store=True, track_visibility='onchange')
     year = fields.Char('Year of Declaration')
     number = fields.Char('Number of Declaration')
+    #report_type = fields.Char(related='request_type_id.type', string='Roll number', store=False)
+    report_type = fields.Selection(
+        [('S', 'Student'), ('F', 'Faculty')], 'Type',related='request_type_id.type', track_visibility='onchange', store=False)
+    faculty_id = fields.Many2one('ems.faculty', 'Faculty', track_visibility='onchange')
 	
     def get_to_year(self, year):
         if year:
