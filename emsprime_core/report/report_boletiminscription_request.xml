@@ -7,9 +7,9 @@
 		<t t-foreach="p" t-as="o">
 
 		<div class="footer">
-		    <div style="margin-bottom:80px;font-family:Calibri;font-size:10px;margin-left:5px;">
-				Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span><br/>
-				Processed by computer via primeEMS by <br/><span t-field="o.create_uid.email"/> in <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/>
+		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
+				<span style="line-height:12px;">Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span></span><br/>
+				<span style="line-height:12px;">Processado por computador por <br/><span t-field="o.create_uid.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
 		    </div>
 		</div>
 
@@ -30,7 +30,7 @@
 			<div class="row" style="color:333333;font-family:Calibri;font-size:14px;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 				
-				<span style="color:333333;font-size:16px;"><strong>Personal Data </strong></span><br />
+				<span style="color:333333;font-size:14px;"><strong>Personal Data </strong></span><br />
 
 				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
@@ -48,7 +48,7 @@
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
-				<span style="color:333333;font-size:16px;"><strong>Enrollment Data</strong></span><br />
+				<span style="color:333333;font-size:14px;"><strong>Enrollment Data</strong></span><br />
 
 				<strong>Student Number</strong>: <span t-field="o.enrollment_id.student_id.roll_number"/> ***<br/>
 				<strong>Name Course</strong>: <span t-field="o.enrollment_id.course_id.degree_id.name"/> in <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
@@ -56,17 +56,17 @@
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
-				<span style="color:333333;font-size:16px;"><strong>Inscription - Academic Year / Course Year</strong></span><br />
+				<span style="color:333333;font-size:14px;"><strong>Inscription - Academic Year / Course Year</strong></span><br />
 				<strong><span t-esc="o.get_curr_inscription_academic_year(o.enrollment_id.student_id.id)"/>:</strong> <span t-esc="o.get_curr_inscription_course_year(o.enrollment_id.student_id.id)"/>º ano ***<br/>
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
-				<span style="color:333333;font-size:16px;"><strong>Special mentions</strong></span><br />
+				<span style="color:333333;font-size:14px;"><strong>Special mentions</strong></span><br />
 				<span t-field="o.description"/> ***<br/>
 				
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
-				<span style="color:333333;font-size:16px;"><strong>Declaration Data</strong></span><br />
+				<span style="color:333333;font-size:14px;"><strong>Declaration Data</strong></span><br />
 				
 				<strong>Applicant</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Request Date</strong>: <span t-esc="o.date"/> ***<br/>

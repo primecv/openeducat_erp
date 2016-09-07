@@ -100,26 +100,28 @@ class ems_request(models.Model):
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
         str_number = '0001'
-        self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
-        result = self._cr.fetchone()
-        if result:
-            result = result[0]
-            result = str(result).split('/')
-        if result and len(result) == 2:
-            result = int(result[1])
-            next_seq = str(result + 1)
-            while len(next_seq) < 4:
-               next_seq = '0' + next_seq
-            str_number = next_seq
-            next_seq = str(year) + '/' + next_seq
-        self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
-        result = self._cr.fetchone()
-        if result:
-            result = result[0]
-            if result < 1:
-                raise UserError(_('The student does not have any inscription enrollments yet.'))
-
-        self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number})
+        if self.sequence:
+            self.write({'state':'validate'})
+        else:
+            self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
+            result = self._cr.fetchone()
+            if result:
+                result = result[0]
+                result = str(result).split('/')
+            if result and len(result) == 2:
+                result = int(result[1])
+                next_seq = str(result + 1)
+                while len(next_seq) < 4:
+                    next_seq = '0' + next_seq
+                str_number = next_seq
+                next_seq = str(year) + '/' + next_seq
+            self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
+            result = self._cr.fetchone()
+            if result:
+                result = result[0]
+                if result < 1:
+                    raise UserError(_('The student does not have any inscription enrollments yet.'))
+            self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number})
 
     @api.multi
     def action_pending(self):
