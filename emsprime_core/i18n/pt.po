@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-06 17:12+0000\n"
-"PO-Revision-Date: 2016-09-06 16:20-0100\n"
+"POT-Creation-Date: 2016-09-07 19:48+0000\n"
+"PO-Revision-Date: 2016-09-07 18:54-0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -103,9 +103,7 @@ msgstr ""
 msgid ""
 "***<br/>\n"
 "\t\t\t\t<strong>Course</strong>:"
-msgstr ""
-"***<br/>\n"
-"<strong>Curso</strong>:"
+msgstr "***<br/><strong>Curso</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_enrollment_declaration_document
@@ -262,7 +260,7 @@ msgid ""
 "\t\t\t\t<strong>Period</strong>:"
 msgstr ""
 "***<br/>\n"
-"\t\t\t\t<strong>Período</strong>:"
+"\t\t\t\t<strong>Period</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_admissionreceipt_document
@@ -360,7 +358,7 @@ msgid ""
 "\t\t\t\t<strong>Year of the course</strong>:"
 msgstr ""
 "***<br/>\n"
-"\t\t\t\t<strong>Ano</strong>:"
+"<strong>Ano</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_admissionreceipt_document
@@ -377,6 +375,12 @@ msgstr ""
 "***<br/>\n"
 "\n"
 "<strong>Identificação</strong>:"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
+#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
+msgid "/ISCEE-"
+msgstr "/ISCEE-"
 
 #. module: emsprime_core
 #: selection:ems.student,app_course_year:0
@@ -524,6 +528,21 @@ msgid "2016/2017"
 msgstr "2016/2017"
 
 #. module: emsprime_core
+#: selection:ems.request,regime:0
+msgid "24 horas"
+msgstr "24 horas"
+
+#. module: emsprime_core
+#: selection:ems.request,regime:0
+msgid "48 horas"
+msgstr "48 horas"
+
+#. module: emsprime_core
+#: selection:ems.request,regime:0
+msgid "72 horas"
+msgstr "72 horas"
+
+#. module: emsprime_core
 #: selection:ems.student,app_course_year:0
 msgid "8º ano"
 msgstr "8º ano"
@@ -565,16 +584,6 @@ msgid ""
 msgstr ""
 "<br/>\n"
 "\t\t\t\t\tSERVIÇOS ACADÉMICOS"
-
-#. module: emsprime_core
-#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
-#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
-msgid ""
-"<br/>\n"
-"\t\t\t\tProcessed by computer via primeEMS by <br/>"
-msgstr ""
-"<br/>\n"
-"Processado por computador via primeEMS <br/>"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_student_idcard
@@ -647,46 +656,40 @@ msgstr ""
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
 msgid ""
-"<span style=\"color:333333;font-size:16px;\"><strong>Declaration Data</strong></span><br/>\n"
+"<span class=\"tit_section\"><strong>Declaration Data</strong></span><br/>\n"
 "\t\t\t\t\n"
 "\t\t\t\t<strong>Applicant</strong>:"
-msgstr ""
-"<span style=\"color:333333;font-size:18px;\"><strong>Dados da Declaração</strong></span><br/>\n"
-"<strong>Requerente</strong>:"
+msgstr "<span class=\"tit_section\"><strong>Dados da Declaração</strong></span><br/><strong>Requerente</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
 msgid ""
-"<span style=\"color:333333;font-size:16px;\"><strong>Enrollment Data</strong></span><br/>\n"
+"<span class=\"tit_section\"><strong>Enrollment Data</strong></span><br/>\n"
 "\n"
 "\t\t\t\t<strong>Student Number</strong>:"
-msgstr ""
-"<span style=\"color:333333;font-size:18px;\"><strong>Dados da Matrícula</strong></span><br/>\n"
-"<strong>Nº do Aluno</strong>:"
+msgstr "<span class=\"tit_section\"><strong>Dados de Matrícula</strong></span><br/><strong>Nº do Aluno</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
-msgid "<span style=\"color:333333;font-size:16px;\"><strong>Inscription - Academic Year / Course Year</strong></span><br/>"
-msgstr "<span style=\"color:333333;font-size:18px;\"><strong>Inscrição - Ano Académico / Ano do Curso</strong></span><br/>"
+msgid "<span class=\"tit_section\"><strong>Inscription - Academic Year / Course Year</strong></span><br/>"
+msgstr "<span class=\"tit_section\"><strong>Inscrição - Ano Académico e Ano do Curso</strong></span><br/>"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
 msgid ""
-"<span style=\"color:333333;font-size:16px;\"><strong>Personal Data </strong></span><br/>\n"
+"<span class=\"tit_section\"><strong>Personal Data </strong></span><br/>\n"
 "\n"
 "\t\t\t\t<strong>Name</strong>:"
-msgstr ""
-"<span style=\"color:333333;font-size:18px;\"><strong>Dados Pessoais </strong></span><br/>\n"
-"<strong>Nome</strong>:"
+msgstr "<span class=\"tit_section\"><strong>Dados Pessoais </strong></span><br/><strong>Nome</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
-msgid "<span style=\"color:333333;font-size:16px;\"><strong>Special mentions</strong></span><br/>"
-msgstr "<span style=\"color:333333;font-size:18px;\"><strong>Menções Especiais</strong></span><br/>"
+msgid "<span class=\"tit_section\"><strong>Special mentions</strong></span><br/>"
+msgstr "<span class=\"tit_section\"><strong>Menções Especiais</strong></span><br/>"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_admissionreceipt_document
@@ -728,10 +731,7 @@ msgid ""
 "<strong>Declaration Data  </strong> <br/>\n"
 "\t\t\t\t\n"
 "\t\t\t\t<strong>Applicant</strong>:"
-msgstr ""
-"<strong>Dados da declaração  </strong> <br/>\n"
-"\t\t\t\t\n"
-"\t\t\t\t<strong>Requerente</strong>:"
+msgstr "<strong>Dados da Declaração  </strong> <br/><strong>Requerente</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_admissionreceipt_document
@@ -1560,6 +1560,26 @@ msgid "Date of the last message posted on the record."
 msgstr "Data da Ultmia Mensagem Inserida no Registo"
 
 #. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_sequence
+msgid "Declaration Number"
+msgstr "Nº Declaração"
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.report_ems_blank
+msgid "Declaração Vazia"
+msgstr "Declaração Vazia"
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.report_ems_boletiminscription_request
+msgid "Declaração de Inscrição"
+msgstr "Declaração de Inscrição"
+
+#. module: emsprime_core
+#: model:ir.actions.report.xml,name:emsprime_core.report_ems_boletiminscription_history_request
+msgid "Declaração de Inscrição - Histórico"
+msgstr "Declaração de Inscrição - Histórico"
+
+#. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_course_degree_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_degree_id
 #: model:ir.ui.view,arch_db:emsprime_core.ems_course_degree_form
@@ -1582,9 +1602,9 @@ msgid "Degrees"
 msgstr "Graus Académicos"
 
 #. module: emsprime_core
-#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_description
-msgid "Description"
-msgstr "Descrição"
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Deliver"
+msgstr "Entregar"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.ems_enrollment_inscricao_subject_form
@@ -1636,7 +1656,7 @@ msgstr "Exibir e gerir a lista de todos os países que podem ser atribuídos aos
 #. module: emsprime_core
 #: selection:ems.request,state:0
 msgid "Done"
-msgstr "Confirmado"
+msgstr "Entregue"
 
 #. module: emsprime_core
 #: selection:ems.student,app_course_year:0
@@ -1841,8 +1861,10 @@ msgid "Faculties"
 msgstr "Docentes"
 
 #. module: emsprime_core
+#: selection:ems.request.type,type:0
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_attachment_faculty_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_class_faculty_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_faculty_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_training_area_faculty_id
 #: model:ir.ui.view,arch_db:emsprime_core.ems_faculty_user_create_view
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_class_search
@@ -1993,6 +2015,7 @@ msgstr "Agrupar por"
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_faculty_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_request_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_scholarship_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_semester_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
@@ -2177,16 +2200,6 @@ msgstr "Disciplinas da Inscrição"
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_student_form
 msgid "Inscription"
 msgstr "Inscrição"
-
-#. module: emsprime_core
-#: model:ir.actions.report.xml,name:emsprime_core.report_ems_boletiminscription_request
-msgid "Inscription Bulletin - Request"
-msgstr "Boletim de Inscrição - Pedido"
-
-#. module: emsprime_core
-#: model:ir.actions.report.xml,name:emsprime_core.report_ems_boletiminscription_history_request
-msgid "Inscription Bulletin History - Request"
-msgstr "Declaração de Inscrição Histórico - Pedido"
 
 #. module: emsprime_core
 #: code:addons/emsprime_core/models/enrollment.py:145
@@ -2678,7 +2691,7 @@ msgid "New Request"
 msgstr "Novo Pedido"
 
 #. module: emsprime_core
-#: selection:ems.course,evaluation_type:0
+#: selection:ems.course,evaluation_type:0 selection:ems.request,regime:0
 msgid "Normal"
 msgstr "Normal"
 
@@ -2700,6 +2713,11 @@ msgstr "Número"
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_student_message_needaction_counter
 msgid "Number of Actions"
 msgstr "Número de Ações"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_number
+msgid "Number of Declaration"
+msgstr "Nº da Declaração"
 
 #. module: emsprime_core
 #: model:ir.model.fields,help:emsprime_core.field_ems_faculty_message_needaction_counter
@@ -2892,6 +2910,22 @@ msgid "Printed in"
 msgstr "Impresso em"
 
 #. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Process"
+msgstr "Processar"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
+#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
+msgid "Processado por computador por <br/>"
+msgstr "Processado por computador por <br/>"
+
+#. module: emsprime_core
+#: selection:ems.request,state:0
+msgid "Processed"
+msgstr "Processado"
+
+#. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
 msgid "Professional Contacts"
 msgstr "Contatos Profissionais"
@@ -2936,6 +2970,11 @@ msgid "Record Number"
 msgstr "Nº do Registo"
 
 #. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_regime
+msgid "Regime"
+msgstr "Regime"
+
+#. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_form
 msgid "Reject"
 msgstr "Rejeitar"
@@ -2971,6 +3010,7 @@ msgstr "Relatório"
 #: model:ir.model,name:emsprime_core.model_ems_request
 #: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
 #: model:ir.ui.view,arch_db:emsprime_core.ems_request_tree
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_request_search
 msgid "Request"
 msgstr "Requisitar"
 
@@ -2982,7 +3022,7 @@ msgstr "Data do Pedido"
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_request_name
 msgid "Request Name"
-msgstr "Nome do Pedido"
+msgstr "Requerente"
 
 #. module: emsprime_core
 #: model:ir.actions.act_window,name:emsprime_core.ems_request_type_action
@@ -2992,6 +3032,11 @@ msgstr "Nome do Pedido"
 #: model:ir.ui.view,arch_db:emsprime_core.ems_request_type_form
 #: model:ir.ui.view,arch_db:emsprime_core.ems_request_type_tree
 msgid "Request Type"
+msgstr "Tipo de Pedido"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_request_search
+msgid "Request type"
 msgstr "Tipo de Pedido"
 
 #. module: emsprime_core
@@ -3145,9 +3190,9 @@ msgid "Semestre"
 msgstr "Semestre"
 
 #. module: emsprime_core
-#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_sequence
-msgid "Sequence"
-msgstr "Sequência"
+#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
+msgid "Set to Draft"
+msgstr "Rascunho"
 
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_res_company_signature
@@ -3195,6 +3240,11 @@ msgstr "Imagem pequena"
 #: model:ir.model.fields,help:emsprime_core.field_ems_student_image_small
 msgid "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
 msgstr "Imagem em pequeno formato para este contacto. É automaticamente redimensionada para 64x64px com o racio do aspect preservado. Utilize este campo onde quer que uma imagem pequena seja necessária."
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_description
+msgid "Special Mentions"
+msgstr "Menções Especiais"
 
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_student_sponsorship
@@ -3252,6 +3302,7 @@ msgid "Street2"
 msgstr "Rua2"
 
 #. module: emsprime_core
+#: selection:ems.request.type,type:0
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_attachment_student_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_inscription_subject_student_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_student_id
@@ -3299,6 +3350,11 @@ msgstr "O Estudante não tem uma matrícula activa ainda!"
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_class_student_ids
 msgid "Student(s)"
 msgstr "Discente(s)"
+
+#. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_student_faculty
+msgid "Student/Faculty"
+msgstr "Aluno/Docente"
 
 #. module: emsprime_core
 #: model:ir.actions.act_window,name:emsprime_core.act_open_ems_student_view
@@ -3448,7 +3504,7 @@ msgid "The partner's timezone, used to output proper date and time values inside
 msgstr "O fuso horário do cliente, utilizado para data de saída adequada e valores de tempo dentro de relatórios impressos. É importante definir um valor para este campo. Deve utilizar o mesmo fuso horário que é de outra forma utilizado para escolher e processar os valores de data e hora: o fuso horário do seu computador."
 
 #. module: emsprime_core
-#: code:addons/emsprime_core/models/ems_request.py:116
+#: code:addons/emsprime_core/models/ems_request.py:150
 #, python-format
 msgid "The student does not have any inscription enrollments yet."
 msgstr "O aluno ainda não possui nenhuma inscrição."
@@ -3566,6 +3622,8 @@ msgstr "Transferência"
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_attachment_attachment_type_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_import_type
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_report_type
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_type_type
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_subject_type
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
@@ -3588,6 +3646,7 @@ msgstr "Não foi possível enviar o e-mail, por favor configure o endereço de e
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_university_center_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_university_center_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_faculty_university_center_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_request_university_center_id
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_student_university_center_id
 #: model:ir.model.fields,field_description:emsprime_core.field_enrollment_grades_report_university_center_id
@@ -3595,6 +3654,7 @@ msgstr "Não foi possível enviar o e-mail, por favor configure o endereço de e
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_request_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_university_center_form
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_university_center_search
@@ -3661,7 +3721,6 @@ msgid "Users"
 msgstr "Utilizadores"
 
 #. module: emsprime_core
-#: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_form
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_form
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_student_form
@@ -3669,7 +3728,7 @@ msgid "Validate"
 msgstr "Validar"
 
 #. module: emsprime_core
-#: selection:ems.enrollment,state:0 selection:ems.request,state:0
+#: selection:ems.enrollment,state:0
 msgid "Validated"
 msgstr "Validado"
 
@@ -3735,6 +3794,11 @@ msgid "Year"
 msgstr "Ano de Escolaridade"
 
 #. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_request_year
+msgid "Year of Declaration"
+msgstr "Year of Declaration"
+
+#. module: emsprime_core
 #: model:ir.actions.act_window,help:emsprime_core.open_board_faculty
 #: model:ir.actions.act_window,help:emsprime_core.open_board_student
 msgid ""
@@ -3767,6 +3831,12 @@ msgstr "e para os devidos efeitos emite-se a presente declaração autenticada c
 #: model:ir.ui.view,arch_db:emsprime_core.report_frequency_declaration_document
 msgid "by"
 msgstr "por"
+
+#. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
+#: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
+msgid "em"
+msgstr "em"
 
 #. module: emsprime_core
 #: model:ir.model,name:emsprime_core.model_ems_attachment
