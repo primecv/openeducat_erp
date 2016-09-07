@@ -143,6 +143,10 @@ class ems_request(models.Model):
 								})
         return self.env['report'].get_action(self, self.request_type_id.report_id.report_name)
 
+    @api.multi
+    def action_draft(self):
+        return self.write({'state':'draft'})
+
     @api.onchange('enrollment_id')
     def onchange_enrollment(self):
         student_name = ''
