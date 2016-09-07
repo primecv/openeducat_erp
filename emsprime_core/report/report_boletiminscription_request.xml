@@ -7,7 +7,7 @@
 		<t t-foreach="p" t-as="o">
 		<div class="header">
 		    <div class="row">
-		        <div class="col-xs-12 text-center" style="margin-top:125px;">
+		        <div class="col-xs-12 text-center" style="margin-top:115px;">
 					<strong>DECLARAÇÃO DE INSCRIÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
 				</div>
 		    </div>
