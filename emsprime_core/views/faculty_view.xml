@@ -97,6 +97,7 @@
                             <field name="mobile" />
                             <field name="email" />
                             <field name="institutional_email" />
+                            <field name="university_center_id" />
                         </group>
                         <notebook colspan="4">
                             <page name="personal_information" string="Personal Information">

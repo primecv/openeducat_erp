@@ -42,9 +42,10 @@
 			<field name="arch" type="xml">
 				<form string="Request">
 					<header>
-						<button name="action_validate" type="object" string="Validate" states="draft,pending" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
+						<button name="action_validate" type="object" string="Process" states="draft,pending" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
 						<button name="action_pending" type="object" string="Pending" states="draft" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
 						<button name="action_print" type="object" string="Print" states="validate" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
+						<button name="action_deliver" type="object" string="Deliver" states="validate" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
 						<button name="action_draft" type="object" string="Set to Draft" states="done" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,validate,done" statusbar_colors='{"pending":"red","validate":"green"}'/>
 					</header>
@@ -54,7 +55,9 @@
 		                    <h1><field name="name" placeholder="Describe the Request..."/></h1>
 		                </div>-->
 						<group colspan="4">
+							<field name="sequence" attrs="{'invisible':[('state','not in',('validate','done'))]}"/>
 							<field name="request_type_id" options="{'no_create':1, 'no_open':1}" required="1"/>
+							<field name="regime"/>
 							<field name="enrollment_id" domain="[('type','=','M')]" attrs="{'invisible':[('report_type','not in',('S'))]}"/>
 							<field name="faculty_id" attrs="{'invisible':[('report_type','not in',('F'))]}"/>
 							<field name="name" placeholder="Applicant..."/>
@@ -79,19 +82,51 @@
 				<tree string="Request">
 					<field name="name"/>
 					<field name="request_type_id"/>
-					<field name="enrollment_id"/>
+					<field name="regime"/>
+					<field name="student_faculty"/>
 					<field name="date"/>
 					<field name="state"/>
 				</tree>
 			</field>
 		</record>
 
+        <record id="view_ems_request_search" model="ir.ui.view">
+            <field name="name">ems.request.search</field>
+            <field name="model">ems.request</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Request">
+                    <field name="student_faculty" />
+                    <field name="request_type_id" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
+                        <filter string="Request type" domain="[]" context="{'group_by':'request_type_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+		
 		<record id="ems_request_action" model="ir.actions.act_window">
 			<field name="name">Request</field>
 			<field name="res_model">ems.request</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_request_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
 		</record>
-
+        <record model="ir.actions.act_window.view" id="act_open_ems_request_view_form">
+            <field name="act_window_id" ref="ems_request_action" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="ems_request_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_request_view_tree">
+            <field name="act_window_id" ref="ems_request_action" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="ems_request_tree" />
+        </record>
 	</data>
 </openerp>

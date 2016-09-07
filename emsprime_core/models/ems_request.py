@@ -39,6 +39,17 @@ class ems_request(models.Model):
     _description = "Request"
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
+    #JCF - 07-09-2016
+    @api.one
+    @api.depends('enrollment_id','faculty_id')
+    def _get_student_faculty(self):
+        str_name = ''
+        if self.enrollment_id:
+		    str_name=self.enrollment_id.student_id.roll_number
+        else:
+		    str_name=self.faculty_id.complete_name
+        self.student_faculty = str_name
+		
     #JCF - 06-09-2016
     @api.one
     @api.depends('enrollment_id')
@@ -46,9 +57,12 @@ class ems_request(models.Model):
         university_center_id = False
         #print "Student UNIVERSITY:: "
         #print self.enrollment_id.student_id.id
-        enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="id desc", limit=1)
-        for enrollment in enrollments:
-            university_center_id=enrollment.university_center_id.id			
+        if self.enrollment_id:
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="id desc", limit=1)
+            for enrollment in enrollments:
+                university_center_id=enrollment.university_center_id.id
+        else:
+            university_center_id=self.faculty_id.university_center_id.id
         self.university_center_id = university_center_id
 			
     #JCF - 05-09-2016
@@ -82,10 +96,10 @@ class ems_request(models.Model):
     description = fields.Text('Special Mentions')
     date = fields.Date('Request Date', track_visibility="onchange", default=fields.date.today(), readonly=True)
     state = fields.Selection(
-        [('draft', 'New Request'), ('validate', 'Validated'),
+        [('draft', 'New Request'), ('validate', 'Processed'),
          ('pending', 'Pending'), ('done', 'Done')],
         'State', default="draft", required=True, track_visibility='onchange', select=True)
-    sequence = fields.Char('Sequence')
+    sequence = fields.Char('Declaration Number')
     current_inscription_id = fields.Many2one('ems.enrollment', string='Current Inscription', compute='_get_curr_inscription', store=True, track_visibility='onchange')
     university_center_id = fields.Many2one('ems.university.center', string='University Center', compute='_get_university_center', store=True, track_visibility='onchange')
     year = fields.Char('Year of Declaration')
@@ -94,6 +108,9 @@ class ems_request(models.Model):
     report_type = fields.Selection(
         [('S', 'Student'), ('F', 'Faculty')], 'Type',related='request_type_id.type', track_visibility='onchange', store=False)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', track_visibility='onchange')
+    regime = fields.Selection(
+        [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal')], 'Regime', required=True, track_visibility='onchange')
+    student_faculty = fields.Char(string='Student/Faculty', compute='_get_student_faculty', store=True)
 	
     def get_to_year(self, year):
         if year:
@@ -122,12 +139,15 @@ class ems_request(models.Model):
                     next_seq = '0' + next_seq
                 str_number = next_seq
                 next_seq = str(year) + '/' + next_seq
-            self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
-            result = self._cr.fetchone()
-            if result:
-                result = result[0]
-                if result < 1:
-                    raise UserError(_('The student does not have any inscription enrollments yet.'))
+            if self.faculty_id:
+                pass
+            else:
+                self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
+                result = self._cr.fetchone()
+                if result:
+                    result = result[0]
+                    if result < 1:
+                        raise UserError(_('The student does not have any inscription enrollments yet.'))
             self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number})
 
     @api.multi
@@ -135,9 +155,13 @@ class ems_request(models.Model):
         return self.write({'state':'pending'})
 
     @api.multi
+    def action_deliver(self):
+        return self.write({'state':'done'})
+
+    @api.multi
     def action_print(self):
 
-        self.write({'state':'done'})
+        #self.write({'state':'done'})
         #attach report in Students Attachments:
         report = self.env['report'].get_pdf(self, self.request_type_id.report_id.report_name)
         result = base64.b64encode(report)
@@ -165,6 +189,15 @@ class ems_request(models.Model):
             student_name=enrollment.student_id.complete_name
         self.name = student_name
 
+    @api.onchange('faculty_id')
+    def onchange_faculty(self):
+        faculty_name = ''
+        faculty_id = self.faculty_id.id
+        faculties = self.env['ems.faculty'].search([('id','=',faculty_id)])
+        for faculty in faculties:
+            faculty_name=faculty.complete_name
+        self.name = faculty_name
+		
     def get_academic_year(self, student_id):
         if student_id:
             academic_year = 0

@@ -66,6 +66,7 @@ class EmsFaculty(models.Model):
     county_id = fields.Many2one('ems.location', 'County')
     parish_id = fields.Many2one('ems.location', 'Parish')
     training_area_line = fields.One2many('ems.training.area', 'faculty_id', 'Training Areas')
+    university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
 
     @api.one
     @api.constrains('birth_date')
