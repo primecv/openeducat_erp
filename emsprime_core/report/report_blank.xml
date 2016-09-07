@@ -5,7 +5,13 @@
     <!--t t-call="emsprime_core.external_layout"-->
         <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
 		<t t-foreach="p" t-as="o">
-
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-12 text-center" style="margin-top:125px;">
+					<strong>DECLARAÇÃO DE INSCRIÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
+				</div>
+		    </div>
+		</div>
         <div class="page" style="margin:0 25px;">
 			<style type="text/css">
 			<![CDATA[
