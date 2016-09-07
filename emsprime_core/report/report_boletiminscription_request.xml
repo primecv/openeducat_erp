@@ -27,7 +27,7 @@
 			.tit_section{color:333333;font-size:14px;}
 			</style>
 
-			<div align="center" class="tit_declaration"><strong>DECLARAÇÃO DE INSCRIÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE - <span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong></div><br/>
+			<div align="center" class="tit_declaration"><strong>DECLARAÇÃO DE INSCRIÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong></div><br/>
             
 			<div class="row" style="color:333333;font-family:Calibri;font-size:14px;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
