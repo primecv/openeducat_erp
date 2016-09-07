@@ -58,6 +58,16 @@
         />
 
         <report 
+            id="report_ems_blank"
+            string="Declaração Vazia"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_blank" 
+            name="emsprime_core.report_blank" 
+			menu="False"
+        />
+
+        <report 
             id="report_ems_admissionreceipt_request"
             string="Admission Receipt - Request"
             model="ems.request" 

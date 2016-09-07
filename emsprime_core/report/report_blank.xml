@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_blank_document">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
+		<t t-foreach="p" t-as="o">
+
+        <div class="page" style="margin:0 25px;">
+			<style type="text/css">
+			<![CDATA[
+			@font-face {
+			  font-family: 'Calibri';
+			  font-style: normal;
+			  font-weight: 400;
+			  src: local('Calibri'), url(https://github.com/jondot/dotfiles/blob/master/.fonts/calibri.ttf?raw=true) format('truetype');
+			}
+			]]>
+			</style>
+
+        </div>
+
+    </t>
+</template>
+
+<template id="report_blank">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_blank_document" t-lang="doc.create_uid.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
