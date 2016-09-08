@@ -60,11 +60,24 @@
 											<field name="code"/>
 											<field name="start_date"/>
 											<field name="end_date"/>
-											<field name="parent_id"/>
 										</tree>
 									</field>
 								</group>
 							</page>
+                            <page name="editions" string="Editions">						
+								<group name="edition">
+									<separator string="Editions" colspan="4"/> 
+									<field name="edition_line" nolabel="1">
+										<tree string="Editions" editable="bottom">
+											<field name="name" required="1"/>
+											<field name="code"/>
+											<field name="start_date"/>
+											<field name="end_date"/>
+											<field name="university_center_id"/>
+										</tree>
+									</field>
+								</group>
+							</page>							
                             <page name="attachments" string="Attachments">													
 								<group col="4" colspan="4">
 									<separator colspan="4" string="Attachments" />
