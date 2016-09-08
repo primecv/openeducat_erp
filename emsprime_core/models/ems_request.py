@@ -112,6 +112,20 @@ class ems_request(models.Model):
         [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal')], 'Regime', required=True, track_visibility='onchange')
     student_faculty = fields.Char(string='Student/Faculty', compute='_get_student_faculty', store=True)
 	
+    @api.model
+    def create(self, vals):
+        res = super(ems_request, self).create(vals)
+        #get partners related to EmsPrime / Back Office Admin group users:
+        backoffice_admin_groupid = self.env['ir.model.data'].xmlid_to_res_id('emsprime_core.group_ems_back_office_admin')
+        users = []
+        if backoffice_admin_groupid:
+            for group in self.env['res.groups'].browse([backoffice_admin_groupid]):
+                for user in group.users:
+                    users.append(user.partner_id.id)
+            if users:
+                self.write({'message_follower_ids': [[6, 0, users]]})
+        return res
+
     def get_to_year(self, year):
         if year:
            return int(year) + 1
