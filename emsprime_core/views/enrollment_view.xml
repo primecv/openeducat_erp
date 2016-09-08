@@ -86,6 +86,7 @@
                             <field name="course_id" />
                             <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
                             <field name="roll_number" />
+                            <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','not in',('I'))]}" />
 							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
 							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
 							<field name="academic_year" required="1"/>
@@ -141,6 +142,7 @@
 							<field name="course_year"/>
 							<field name="academic_year" required="1"/>
 							<field name="roll_number" required="0" readonly="1" string="Number"/>
+                            <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','not in',('I'))]}" />
 							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
 							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
                         </group>
@@ -176,6 +178,7 @@
                     <field name="student_id" />
                     <field name="course_id" />
                     <field name="edition_id" />
+					<field name="course_plan_id" />
 					<field name="university_center_id"/>
 					<field name="type" />
                     <newline />
@@ -184,6 +187,7 @@
                             context="{'group_by':'roll_number'}" />
 						<filter string="State" domain="[]" context="{'group_by':'state'}" />
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter string="Course Plan" domain="[]" context="{'group_by':'course_plan_id'}" />
                         <filter string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
                         <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
@@ -213,6 +217,7 @@
 						<filter name="group_by_state" string="State" domain="[]" context="{'group_by':'state'}" />
                         <filter name="group_by_university_center" string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
                         <filter name="group_by_course" string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter name="group_by_course_plan" string="Course Plan" domain="[]" context="{'group_by':'course_plan_id'}" />
                         <filter name="group_by_edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
                         <filter name="group_by_student" string="Student" domain="[]" context="{'group_by':'student_id'}" />
                         <filter name="group_by_year" string="Year" domain="[]" context="{'group_by':'year'}" />

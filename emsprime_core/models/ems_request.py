@@ -111,7 +111,7 @@ class ems_request(models.Model):
     regime = fields.Selection(
         [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal')], 'Regime', required=True, track_visibility='onchange')
     student_faculty = fields.Char(string='Student/Faculty', compute='_get_student_faculty', store=True)
-	
+
     @api.model
     def create(self, vals):
         res = super(ems_request, self).create(vals)

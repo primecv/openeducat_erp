@@ -12,6 +12,7 @@
                     <field name="start_date" />
                     <field name="end_date" />
                     <field name="course_id" />
+                    <field name="course_plan_id" />
 					<field name="university_center_id"/>
                 </tree>
             </field>
@@ -32,6 +33,7 @@
                             <field name="start_date" />
                             <field name="end_date" />
                             <field name="course_id" />
+							<field name="course_plan_id" />
 							<field name="university_center_id"/>
                         </group>
                         <notebook colspan="4">						
@@ -67,6 +69,7 @@
                     <field name="start_date" />
                     <field name="end_date" />
                     <field name="course_id" />
+                    <field name="course_plan_id" />
 					<field name="university_center_id"/>
                     <newline />
                     <group expand="0" string="Group By...">
@@ -74,6 +77,7 @@
                             context="{'group_by':'start_date'}" />
                         <filter string="End Date" domain="[]" context="{'group_by':'end_date'}" />
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter string="Course Plan" domain="[]" context="{'group_by':'course_plan_id'}" />
                         <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
                     </group>
                 </search>
