@@ -81,7 +81,7 @@
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 				
 				<div>
-					<span t-field="o.request_type_id.declaration_text"/></strong> ***
+					<span t-field="o.request_type_id.declaration_text"/> ***
 				</div>
 
             </div>
