@@ -51,6 +51,20 @@
 									</field>
 								</group>
 							</page>-->
+                            <page name="course_plans" string="Course Plans">						
+								<group name="course_plan">
+									<separator string="Course Plans" colspan="4"/> 
+									<field name="course_plan_line" nolabel="1">
+										<tree string="Course Plans" editable="bottom">
+											<field name="name" required="1"/>
+											<field name="code"/>
+											<field name="start_date"/>
+											<field name="end_date"/>
+											<field name="parent_id"/>
+										</tree>
+									</field>
+								</group>
+							</page>
                             <page name="attachments" string="Attachments">													
 								<group col="4" colspan="4">
 									<separator colspan="4" string="Attachments" />

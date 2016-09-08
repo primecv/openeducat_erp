@@ -30,7 +30,7 @@ class EmsCoursePlan(models.Model):
     name = fields.Char('Name', size=32, required=True)
     start_date = fields.Date(
         'Start Date', required=True, default=fields.Date.today())
-    end_date = fields.Date('End Date', required=True)
+    end_date = fields.Date('End Date')
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     subject_line = fields.One2many('ems.course.plan.subject', 'course_plan_id', string="Subject(s)", copy=True)
     parent_id = fields.Many2one('ems.course', 'Parent')
