@@ -62,6 +62,7 @@
 									<field name="ect_copy" invisible="1"/>
 									<field name="grade"/>
 									<field name="evaluation_type"/>
+									<field name="equivalence"/>
 								</tree>
 							</field>
 						</group>
@@ -104,6 +105,7 @@
 									<field name="ect_copy" invisible="1"/>
 									<field name="grade"/>
 									<field name="evaluation_type"/>
+									<field name="equivalence"/>
 								</tree>
 							</field>
 						</group>
@@ -158,6 +160,7 @@
 									<field name="ect_copy" invisible="1"/>
 									<field name="grade"/>
 									<field name="evaluation_type"/>
+									<field name="equivalence"/>
 									<field name="edition_id" invisible="1"/>
 								</tree>
 							</field>
