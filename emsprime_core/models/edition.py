@@ -34,6 +34,7 @@ class EmsEdition(models.Model):
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
     subject_line = fields.One2many('ems.edition.subject', 'edition_id', string="Subject(s)", copy=True)
+    course_plan_id = fields.Many2one('ems.course.plan', 'Course Plan')
 
     @api.one
     def copy(self, default=None):

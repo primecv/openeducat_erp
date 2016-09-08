@@ -33,6 +33,7 @@ class EmsCoursePlan(models.Model):
     end_date = fields.Date('End Date', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     subject_line = fields.One2many('ems.course.plan.subject', 'course_plan_id', string="Subject(s)", copy=True)
+    parent_id = fields.Many2one('ems.course', 'Parent')
 
     @api.one
     def copy(self, default=None):
