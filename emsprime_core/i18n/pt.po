@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 19:48+0000\n"
-"PO-Revision-Date: 2016-09-07 18:54-0100\n"
+"POT-Creation-Date: 2016-09-08 13:31+0000\n"
+"PO-Revision-Date: 2016-09-08 12:35-0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Poedit 1.8.8\n"
 
 #. module: emsprime_core
-#: code:addons/emsprime_core/models/course_plan.py:39
-#: code:addons/emsprime_core/models/edition.py:40
+#: code:addons/emsprime_core/models/course_plan.py:40
+#: code:addons/emsprime_core/models/edition.py:41
 #, python-format
 msgid "%s - copy"
 msgstr "%s - cópia"
@@ -103,7 +103,9 @@ msgstr ""
 msgid ""
 "***<br/>\n"
 "\t\t\t\t<strong>Course</strong>:"
-msgstr "***<br/><strong>Curso</strong>:"
+msgstr ""
+"***<br/>\n"
+"<strong>Curso</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_enrollment_declaration_document
@@ -216,7 +218,7 @@ msgid ""
 "\t\t\t\t<strong>Name Course</strong>:"
 msgstr ""
 "***<br/>\n"
-"<strong>Ano do Curso</strong>:"
+"<strong>Curso</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_admissionreceipt_document
@@ -258,9 +260,7 @@ msgstr ""
 msgid ""
 "***<br/>\n"
 "\t\t\t\t<strong>Period</strong>:"
-msgstr ""
-"***<br/>\n"
-"\t\t\t\t<strong>Period</strong>:"
+msgstr "***<br/><strong>Período</strong>:"
 
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.report_admissionreceipt_document
@@ -377,6 +377,7 @@ msgstr ""
 "<strong>Identificação</strong>:"
 
 #. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_blank_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
 msgid "/ISCEE-"
@@ -965,6 +966,11 @@ msgid "At the request of"
 msgstr "A pedido de"
 
 #. module: emsprime_core
+#: model:res.groups,name:emsprime_core.group_ems_attendant
+msgid "Atendimento"
+msgstr "Atendimento"
+
+#. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_attachment_attachment
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_attachment_form
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_attachment_search
@@ -1373,15 +1379,22 @@ msgstr "Nome do Curso"
 
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_course_plan_subject_course_plan_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_edition_course_plan_id
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_enrollment_course_plan_id
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_plan_form
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_plan_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_plan_tree
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_edition_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
 msgid "Course Plan"
 msgstr "Plano de Curso"
 
 #. module: emsprime_core
 #: model:ir.actions.act_window,name:emsprime_core.act_open_ems_course_plan_view
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_course_plan_line
 #: model:ir.ui.menu,name:emsprime_core.menu_ems_course_plan_sub
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_form
 msgid "Course Plans"
 msgstr "Planos de Cursos"
 
@@ -1534,6 +1547,7 @@ msgid "Current Roll Number"
 msgstr "Número de Lançamento Actual"
 
 #. module: emsprime_core
+#: model:ir.ui.view,arch_db:emsprime_core.report_blank_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_history_request_document
 #: model:ir.ui.view,arch_db:emsprime_core.report_boletiminscription_request_document
 msgid "DECLARAÇÃO DE INSCRIÇÃO"
@@ -1557,7 +1571,7 @@ msgstr "Data"
 #: model:ir.model.fields,help:emsprime_core.field_ems_request_message_last_post
 #: model:ir.model.fields,help:emsprime_core.field_ems_student_message_last_post
 msgid "Date of the last message posted on the record."
-msgstr "Data da Ultmia Mensagem Inserida no Registo"
+msgstr "Data da Ultima Mensagem Inserida no Registo"
 
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_request_sequence
@@ -1718,7 +1732,9 @@ msgstr "Disciplinas da Edição"
 
 #. module: emsprime_core
 #: model:ir.actions.act_window,name:emsprime_core.act_open_ems_edition_view
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_edition_line
 #: model:ir.ui.menu,name:emsprime_core.menu_ems_edition_sub
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_form
 msgid "Editions"
 msgstr "Edições"
 
@@ -2202,7 +2218,7 @@ msgid "Inscription"
 msgstr "Inscrição"
 
 #. module: emsprime_core
-#: code:addons/emsprime_core/models/enrollment.py:145
+#: code:addons/emsprime_core/models/enrollment.py:146
 #, python-format
 msgid "Inscription Enrollments are already present for all valid Academic Years."
 msgstr "As inscrições já estão presentes em todos os anos letivos válidos."
@@ -2228,7 +2244,7 @@ msgid "Inscrição"
 msgstr "Inscrição"
 
 #. module: emsprime_core
-#: code:addons/emsprime_core/models/enrollment.py:102
+#: code:addons/emsprime_core/models/enrollment.py:103
 #, python-format
 msgid ""
 "Inscrição enrollment cannot be created.\n"
@@ -2261,7 +2277,7 @@ msgid "Internal Reference"
 msgstr "Referência Interna"
 
 #. module: emsprime_core
-#: code:addons/emsprime_core/models/enrollment.py:149
+#: code:addons/emsprime_core/models/enrollment.py:150
 #, python-format
 msgid ""
 "Invalid Academic Year!\n"
@@ -2773,6 +2789,11 @@ msgid "Own Expenses"
 msgstr "Conta Própria"
 
 #. module: emsprime_core
+#: model:ir.model.fields,field_description:emsprime_core.field_ems_course_plan_parent_id
+msgid "Parent"
+msgstr "Ascendente"
+
+#. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_course_parent_id
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_course_search
 msgid "Parent Course"
@@ -2967,7 +2988,7 @@ msgstr "Recebido"
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_request_enrollment_id
 msgid "Record Number"
-msgstr "Nº do Registo"
+msgstr "Nº do Aluno"
 
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_request_regime
@@ -3192,7 +3213,7 @@ msgstr "Semestre"
 #. module: emsprime_core
 #: model:ir.ui.view,arch_db:emsprime_core.ems_request_form
 msgid "Set to Draft"
-msgstr "Rascunho"
+msgstr "Reiniciar"
 
 #. module: emsprime_core
 #: model:ir.model.fields,field_description:emsprime_core.field_res_company_signature
@@ -3270,6 +3291,7 @@ msgstr "Data Inicial"
 #: model:ir.model.fields,field_description:emsprime_core.field_ems_student_state_id
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_inscription_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_enrollment_search
+#: model:ir.ui.view,arch_db:emsprime_core.view_ems_request_search
 #: model:ir.ui.view,arch_db:emsprime_core.view_ems_student_search
 msgid "State"
 msgstr "Estado"
@@ -3504,7 +3526,7 @@ msgid "The partner's timezone, used to output proper date and time values inside
 msgstr "O fuso horário do cliente, utilizado para data de saída adequada e valores de tempo dentro de relatórios impressos. É importante definir um valor para este campo. Deve utilizar o mesmo fuso horário que é de outra forma utilizado para escolher e processar os valores de data e hora: o fuso horário do seu computador."
 
 #. module: emsprime_core
-#: code:addons/emsprime_core/models/ems_request.py:150
+#: code:addons/emsprime_core/models/ems_request.py:164
 #, python-format
 msgid "The student does not have any inscription enrollments yet."
 msgstr "O aluno ainda não possui nenhuma inscrição."
