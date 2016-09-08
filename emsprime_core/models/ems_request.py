@@ -33,6 +33,7 @@ class ems_request_type(models.Model):
     report_id = fields.Many2one('ir.actions.report.xml', 'Report')
     type = fields.Selection(
         [('S', 'Student'), ('F', 'Faculty')], 'Type', required=True, track_visibility='onchange')
+    declaration_text = fields.Text('Declaration text')
 
 class ems_request(models.Model):
     _name = "ems.request"

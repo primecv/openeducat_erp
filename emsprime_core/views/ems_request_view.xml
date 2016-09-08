@@ -12,6 +12,9 @@
 							<field name="report_id" required="1" options="{'no_open':1, 'no_create':1}"/>
 							<field name="type"/>
 						</group>
+						<group colspan="4">
+							<field name="declaration_text" placeholder="Declaration text...."/>
+						</group>						
 					</sheet>
 				</form>
 			</field>
