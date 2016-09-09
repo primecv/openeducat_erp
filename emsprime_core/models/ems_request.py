@@ -34,6 +34,7 @@ class ems_request_type(models.Model):
     type = fields.Selection(
         [('S', 'Student'), ('F', 'Faculty')], 'Type', required=True, track_visibility='onchange')
     declaration_text = fields.Text('Declaration text')
+    is_grade = fields.Boolean('Grades?')
 
 class ems_request(models.Model):
     _name = "ems.request"
@@ -180,20 +181,22 @@ class ems_request(models.Model):
         #attach report in Students Attachments:
         inscription_subject_id=0
         str_course=''
-        enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="course_year")
-        for enrollment in enrollments:
-            count=0
-            enrollment_id=enrollment.id
-            inscription_subjects = self.env['ems.enrollment.inscription.subject'].search([('inscription_id','=',enrollment_id)], order="course_year,semester_copy,id")
-            for subject in inscription_subjects:
-                inscription_subject_id=subject.id
-                if count==0:
-                    insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
-                    insc_subject.write({'course_report': subject.course_year})
-                else:
-                    insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
-                    insc_subject.write({'course_report': ''})
-                count = count + 1
+        if self.request_type_id.is_grade:
+            print "ENTROU::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="course_year")
+            for enrollment in enrollments:
+                count=0
+                enrollment_id=enrollment.id
+                inscription_subjects = self.env['ems.enrollment.inscription.subject'].search([('inscription_id','=',enrollment_id)], order="course_year,semester_copy,id")
+                for subject in inscription_subjects:
+                    inscription_subject_id=subject.id
+                    if count==0:
+                        insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
+                        insc_subject.write({'course_report': subject.course_year})
+                    else:
+                        insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
+                        insc_subject.write({'course_report': ''})
+                    count = count + 1
 
         report = self.env['report'].get_pdf(self, self.request_type_id.report_id.report_name)
         result = base64.b64encode(report)
