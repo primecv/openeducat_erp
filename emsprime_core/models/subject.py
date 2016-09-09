@@ -24,6 +24,7 @@ from openerp.exceptions import ValidationError
 
 class EmsSubject(models.Model):
     _name = 'ems.subject'
+    _order = "name"
 
     name = fields.Char('Name', size=128, required=True)
     code = fields.Char('Code', size=256, required=True)

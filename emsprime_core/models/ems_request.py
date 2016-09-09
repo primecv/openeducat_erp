@@ -193,7 +193,7 @@ class ems_request(models.Model):
             for enrollment in enrollments:
                 count=0
                 enrollment_id=enrollment.id
-                inscription_subjects = self.env['ems.enrollment.inscription.subject'].search([('inscription_id','=',enrollment_id)], order="course_year,semester_copy,id")
+                inscription_subjects = self.env['ems.enrollment.inscription.subject'].search([('inscription_id','=',enrollment_id)], order="course_year,semester_copy,subject_id")
                 for subject in inscription_subjects:
                     inscription_subject_id=subject.id
                     subject_id=subject.subject_id.id

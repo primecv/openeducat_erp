@@ -252,7 +252,7 @@ class EmsEnrollment(models.Model):
 class EmsEnrollmentInscriptionSubject(models.Model):
     _name = "ems.enrollment.inscription.subject"
     _description = "Grades"
-    _order = "course_year,semester_copy,id"
+    _order = "course_year,semester_copy,subject_id"
 
     #JCF - 08-09-2016
     @api.one
