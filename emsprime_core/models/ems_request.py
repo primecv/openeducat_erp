@@ -113,6 +113,7 @@ class ems_request(models.Model):
     regime = fields.Selection(
         [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal')], 'Regime', required=True, track_visibility='onchange')
     student_faculty = fields.Char(string='Student/Faculty', compute='_get_student_faculty', store=True)
+    processor_id = fields.Many2one('res.users', 'Processor', track_visibility='onchange', select=True)
 
     @api.model
     def create(self, vals):
@@ -164,7 +165,7 @@ class ems_request(models.Model):
                     result = result[0]
                     if result < 1:
                         raise UserError(_('The student does not have any inscription enrollments yet.'))
-            self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number})
+            self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number, 'processor_id':self._uid})
 
     @api.multi
     def action_pending(self):
@@ -182,7 +183,6 @@ class ems_request(models.Model):
         inscription_subject_id=0
         str_course=''
         if self.request_type_id.is_grade:
-            print "ENTROU::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
             enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="course_year")
             for enrollment in enrollments:
                 count=0
