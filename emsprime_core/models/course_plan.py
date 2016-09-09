@@ -27,7 +27,7 @@ class EmsCoursePlan(models.Model):
     _name = 'ems.course.plan'
 
     code = fields.Char('Code', size=8, required=True)
-    name = fields.Char('Name', size=32, required=True)
+    name = fields.Char('Name', size=255, required=True)
     start_date = fields.Date(
         'Start Date', required=True, default=fields.Date.today())
     end_date = fields.Date('End Date')
