@@ -43,8 +43,8 @@
 				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
 				<span t-if="o.enrollment_id.student_id.mother"> e <span t-field="o.enrollment_id.student_id.mother"/></span> ***<br/>
 
-				<strong>Identification</strong>: <span t-if="o.enrollment_id.student_id.document_type == 'idCard'">BI Nº </span><span t-if="o.enrollment_id.student_id.document_type == 'passport'">Passport Nº </span><span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - </span> 
-				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - </span>
+				<strong>Identification</strong>: <span t-if="o.enrollment_id.student_id.document_type == 'idCard'">BI Nº </span><span t-if="o.enrollment_id.student_id.document_type == 'passport'">Passport Nº </span><span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - Emission: </span> 
+				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - Archive: </span>
 				<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
