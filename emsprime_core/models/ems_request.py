@@ -200,16 +200,22 @@ class ems_request(models.Model):
                     edition_id=subject.edition_id.id
                     if count==0:
                         insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
-                        if subject.course_year:
+                        if subject.course_year !='0':
+                            print "ENTROU NO IF::::::::::::::::::::::::::::::::::"
                             insc_subject.write({'course_report': subject.course_year})
                         else:
+                            print "ENTROU NO ELSE::::::::::::::::::::::::::::::::::"
                             ems_edition_subject_id = self.env['ems.edition.subject'].search([('subject_id','=',subject_id),('edition_id','=',edition_id)])
                             if ems_edition_subject_id:
-                                semester = int(self.semester)
+                                print "ENTROU NO IF:::::::::::::::::::::::::::::::::::::::"
+                                semester = int(ems_edition_subject_id.semester)
+                                print semester
                                 if semester > 0:
                                     year = semester / (2 * 1.0)
                                     year = math.ceil(year)
-                                year_str = str(int(year))	
+                                year_str = str(int(year))
+                                print "YEAR STR:::::::::::::::::::::::::::::::::::::"
+                                print year_str
                                 insc_subject.write({'course_report': year_str})                           
                     else:
                         insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
