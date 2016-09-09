@@ -205,7 +205,7 @@ class ems_request(models.Model):
                         else:
                             ems_edition_subject_id = self.env['ems.edition.subject'].search([('subject_id','=',subject_id),('edition_id','=',edition_id)])
                             if ems_edition_subject_id:
-                                semester = int(self.semester_copy)
+                                semester = int(self.semester)
                                 if semester > 0:
                                     year = semester / (2 * 1.0)
                                     year = math.ceil(year)
