@@ -169,6 +169,10 @@ class EmsStudent(models.Model):
     pro_email = fields.Char('Email', track_visibility='onchange')
 
     scholarship_ids = fields.One2many('ems.scholarship', 'student_id', 'Scholarships')
+    #JCF - Add type of document
+    document_type = fields.Selection(
+        [('idCard', 'ID Card'), ('passport', 'Passport')],
+        'Document type', default="idCard", track_visibility='onchange')
 	
     @api.one
     @api.constrains('birth_date')
