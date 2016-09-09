@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ###############################################################################
-
+import math
 from openerp import models, fields, api, _
 from datetime import datetime
 from openerp.exceptions import ValidationError, UserError
@@ -252,7 +252,21 @@ class EmsEnrollment(models.Model):
 class EmsEnrollmentInscriptionSubject(models.Model):
     _name = "ems.enrollment.inscription.subject"
     _description = "Grades"
-    _order = "semester asc"
+    _order = "course_year,semester_copy,id"
+
+    #JCF - 08-09-2016
+    @api.one
+    @api.depends('semester_copy')
+    def _get_course_year(self):
+        semester = 0
+        year = 0.0
+        year_str = ''
+        semester = int(self.semester_copy)
+        if semester > 0:
+            year = semester / (2 * 1.0)
+            year = math.ceil(year)
+        year_str = str(int(year))	
+        self.course_year = year_str
 
     @api.onchange('subject_id', 'semester', 'ect')
     def onchange_subject(self):
@@ -303,5 +317,7 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
     equivalence = fields.Boolean(string="Equivalence", default=False)
+    course_year = fields.Char(string='Course Year', compute='_get_course_year', store=True)
+    course_report = fields.Char('Course Report')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

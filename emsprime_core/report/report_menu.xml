@@ -58,6 +58,16 @@
         />
 
         <report 
+            id="report_ems_student_grades_request"
+            string="Declaração de Notas"
+            model="ems.request" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_student_grades_request" 
+            name="emsprime_core.report_student_grades_request" 
+			menu="False"
+        />
+
+        <report 
             id="report_ems_blank"
             string="Declaração Vazia"
             model="ems.request" 

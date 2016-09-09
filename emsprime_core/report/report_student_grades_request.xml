@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_student_grades_request_document">
+    <t t-call="report.html_container">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
+		<t t-foreach="p" t-as="o">
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;margin-top:100px;">
+					<strong>DECLARAÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
+				</div>
+		    </div>
+		</div>
+
+        <div class="page" style="margin:0 25px">
+			<style type="text/css">
+			<![CDATA[
+			@font-face {
+			  font-family: 'Calibri';
+			  font-style: normal;
+			  font-weight: 400;
+			  src: local('Calibri'), url(https://github.com/jondot/dotfiles/blob/master/.fonts/calibri.ttf?raw=true) format('truetype');
+			}
+			]]>
+			.tit_declaration{color:#333333;font-family:Calibri;font-size:16px;}
+			.tit_section{color:333333;font-size:14px;}
+			</style>
+
+			<div class="row" style="color:333333;font-family:Calibri;font-size:14px;">
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+				
+				<span class="tit_section"><strong>Personal Data </strong></span><br />
+
+				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
+				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
+				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
+				<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
+				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
+				<span t-if="o.enrollment_id.student_id.mother"> e <span t-field="o.enrollment_id.student_id.mother"/></span> ***<br/>
+
+				<strong>Identification</strong>: <span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> - </span> 
+				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> - </span>
+				<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="tit_section"><strong>Enrollment Data</strong></span><br />
+
+				<strong>Student Number</strong>: <span t-field="o.enrollment_id.student_id.roll_number"/> ***<br/>
+				<strong>Name Course</strong>: <span t-field="o.enrollment_id.course_id.degree_id.name"/> in <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
+				<strong>Year of the course</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/></span> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<strong>Subjects </strong>
+				<div style="color:333333;">
+					<t t-foreach="o.enrollment_id.student_id.roll_number_line" t-as="sub1">
+						<div>
+							<t t-foreach="sub1.subject_line" t-as="sub2">
+								<div style="float:left;width:10%"><span t-field="sub2.course_report" style="color:333333;"/><span t-if="sub2.course_report">º Year</span><span style="color:#FFFFFF;">NADA</span></div>
+								<div style="float:left;width:50%"><strong><span t-field="sub2.subject_id.name" style="color:333333;text-transform:capitalize;"/></strong></div>
+								<div style="float:left;width:40%"><span t-if="sub2.grade"><span t-field="sub2.grade" style="color:333333;"/> values (<span t-if="sub2.grade == 0 ">Zero</span><span t-if="sub2.grade == 1 ">One</span><span t-if="sub2.grade == 2 ">Two</span><span t-if="sub2.grade == 3 ">Tree</span><span t-if="sub2.grade == 4 ">Four</span><span t-if="sub2.grade == 5 ">Five</span><span t-if="sub2.grade == 6 ">Six</span><span t-if="sub2.grade == 7 ">Seven</span><span t-if="sub2.grade == 8 ">Eight</span><span t-if="sub2.grade == 9 ">Nine</span><span t-if="sub2.grade == 10 ">Ten</span><span t-if="sub2.grade == 11 ">Eleven</span><span t-if="sub2.grade == 12 ">Twelve</span><span t-if="sub2.grade == 13 ">Thirteen</span><span t-if="sub2.grade == 14 ">Fourteen</span><span t-if="sub2.grade == 15 ">Fifteen</span><span t-if="sub2.grade == 16 ">Sixteen</span><span t-if="sub2.grade == 17 ">Seventeen</span><span t-if="sub2.grade == 18 ">Eighteen</span><span t-if="sub2.grade == 19 ">Nineteen</span><span t-if="sub2.grade == 20 ">Twenty</span> values)</span> ***</div>
+								<div style="clear:both;"></div>
+							</t>
+						</div>
+					</t>
+				</div>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="tit_section"><strong>Special mentions</strong></span><br />
+				<span t-field="o.description"/> ***<br/>
+				
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="tit_section"><strong>Declaration Data</strong></span><br />
+				
+				<strong>Applicant</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Request Date</strong>: <span t-esc="o.date"/> ***<br/>
+				<strong>Issue Date</strong>: <span t-esc="time.strftime('%Y-%m-%d')"/> ***
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+				
+				<div>
+					<span t-field="o.request_type_id.declaration_text"/> ***
+				</div>
+
+            </div>
+
+        </div>
+		<div class="footer">
+		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
+				<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span></span><br/>
+				<span style="line-height:10px;">Processado por computador por <br/><span t-field="o.create_uid.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
+		    </div>
+		</div>
+
+    </t>
+	</t>
+</template>
+
+<template id="report_student_grades_request">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_student_grades_request_document" t-lang="doc.create_uid.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
