@@ -135,6 +135,17 @@ class ems_request(models.Model):
            return int(year) + 1
         return None
 
+    def get_semester(self, semester):
+        semester_int=0
+        if semester:
+            semester_int=int(semester)
+            if semester_int % 2 == 0:
+                semester_int=2
+            else:
+                semester_int=1
+            return semester_int
+        return None
+
     def get_grade(self, subject_id):
         grade=''
         if subject_id:
