@@ -195,7 +195,7 @@ class ems_request(models.Model):
         if self.sequence:
             self.write({'state':'validate'})
         else:
-            self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by id desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
+            self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by sequence desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
             result = self._cr.fetchone()
             if result:
                 result = result[0]
