@@ -8,7 +8,7 @@
 		<t t-foreach="p" t-as="o">
 		<div class="header">
 		    <div class="row">
-		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:18px;margin-top:100px;">
+		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:18px;margin-top:105px;">
 					<strong>DECLARAÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
 				</div>
 		    </div>
@@ -59,15 +59,11 @@
 
 				<strong>Subjects </strong>
 				<div style="color:333333;">
-					<t t-foreach="o.enrollment_id.student_id.roll_number_line" t-as="sub1">
-						<div>
-							<t t-foreach="sub1.subject_line" t-as="sub2">
-								<div style="float:left;width:15%"><span t-field="sub2.course_report" style="color:333333;"/><span t-if="sub2.course_report">º Year</span><span style="color:#FFFFFF;">NADA</span></div>
-								<div style="float:left;width:50%"><span t-field="sub2.subject_id.name" style="color:333333;"/></div>
-								<div style="float:left;width:35%"><span t-if="sub2.grade"><span t-field="sub2.grade" style="color:333333;"/> (<span t-if="sub2.grade == 0 ">Zero</span><span t-if="sub2.grade == 1 ">One</span><span t-if="sub2.grade == 2 ">Two</span><span t-if="sub2.grade == 3 ">Three</span><span t-if="sub2.grade == 4 ">Four</span><span t-if="sub2.grade == 5 ">Five</span><span t-if="sub2.grade == 6 ">Six</span><span t-if="sub2.grade == 7 ">Seven</span><span t-if="sub2.grade == 8 ">Eight</span><span t-if="sub2.grade == 9 ">Nine</span><span t-if="sub2.grade == 10 ">Ten</span><span t-if="sub2.grade == 11 ">Eleven</span><span t-if="sub2.grade == 12 ">Twelve</span><span t-if="sub2.grade == 13 ">Thirteen</span><span t-if="sub2.grade == 14 ">Fourteen</span><span t-if="sub2.grade == 15 ">Fifteen</span><span t-if="sub2.grade == 16 ">Sixteen</span><span t-if="sub2.grade == 17 ">Seventeen</span><span t-if="sub2.grade == 18 ">Eighteen</span><span t-if="sub2.grade == 19 ">Nineteen</span><span t-if="sub2.grade == 20 ">Twenty</span>)</span> values ***</div>
-								<div style="clear:both;"></div>
-							</t>
-						</div>
+					<t t-foreach="o.enrollment_id.edition_id.subject_line" t-as="sub">
+						<div style="float:left;width:15%"><span t-field="sub.course_report" style="color:333333;"/><span t-if="sub.course_report">º Year</span><span style="color:#FFFFFF;">NADA</span></div>
+						<div style="float:left;width:50%"><span t-field="sub.subject_id.name" style="color:333333;"/></div>
+						<div style="float:left;width:35%"><span t-esc="o.get_grade(sub.subject_id.id)"/> ***</div>
+						<div style="clear:both;"></div>
 					</t>
 				</div>
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 

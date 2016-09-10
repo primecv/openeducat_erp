@@ -135,6 +135,56 @@ class ems_request(models.Model):
            return int(year) + 1
         return None
 
+    def get_grade(self, subject_id):
+        grade=''
+        if subject_id:
+            self._cr.execute("""select max(grade) as grade from ems_enrollment_inscription_subject where student_id=%s and subject_id=%s"""%(self.enrollment_id.student_id.id,subject_id))
+            result = self._cr.fetchone()
+            if result:
+                result = result[0]
+            if result==1:
+                grade = "1 (Um) valor"
+            elif result ==2:
+                grade = "2 (Dois) valores"
+            elif result ==3:
+                grade = "3 (Três) valores"
+            elif result ==4:
+                grade = "4 (Quatro) valores"
+            elif result ==5:
+                grade = "5 (Cinco) valores"
+            elif result ==6:
+                grade = "6 (Seis) valores"
+            elif result ==7:
+                grade = "7 (Sete) valores"
+            elif result ==8:
+                grade = "8 (Oito) valores"
+            elif result ==9:
+                grade = "9 (Nove) valores"
+            elif result ==10:
+                grade = "10 (Dez) valores"
+            elif result ==11:
+                grade = "11 (Onze) valores"
+            elif result ==12:
+                grade = "12 (Doze) valores"
+            elif result ==13:
+                grade = "13 (Treze) valores"
+            elif result ==14:
+                grade = "14 (Quatorze) valores"
+            elif result ==15:
+                grade = "15 (Quinze) valores"
+            elif result ==16:
+                grade = "16 (Dezasseis) valores"
+            elif result ==17:
+                grade = "17 (Dezassete) valores"
+            elif result ==18:
+                grade = "18 (Dezoito) valores"
+            elif result ==19:
+                grade = "19 (Dezanove) valores"
+            elif result ==20:
+                grade = "20 (Vinte) valores"
+            return grade
+        return None
+
     @api.multi
     def action_validate(self):
         """Generate sequence in "YYYY/0001" format by University center
@@ -181,46 +231,50 @@ class ems_request(models.Model):
 
         #self.write({'state':'done'})
         #attach report in Students Attachments:
-        inscription_subject_id=0
-        edition_id=0
-        subject_id=0
+        edition_subject_id=0
         str_course=''
         semester = 0
         year = 0.0
+        year_int=0
         year_str = ''
         if self.request_type_id.is_grade:
-            enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="course_year")
-            for enrollment in enrollments:
-                count=0
-                enrollment_id=enrollment.id
-                inscription_subjects = self.env['ems.enrollment.inscription.subject'].search([('inscription_id','=',enrollment_id)], order="course_year,semester_copy,subject_id")
-                for subject in inscription_subjects:
-                    inscription_subject_id=subject.id
-                    subject_id=subject.subject_id.id
-                    edition_id=subject.edition_id.id
-                    if count==0:
-                        insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
-                        if subject.course_year !='0':
-                            print "ENTROU NO IF::::::::::::::::::::::::::::::::::"
-                            insc_subject.write({'course_report': subject.course_year})
-                        else:
-                            print "ENTROU NO ELSE::::::::::::::::::::::::::::::::::"
-                            ems_edition_subject_id = self.env['ems.edition.subject'].search([('subject_id','=',subject_id),('edition_id','=',edition_id)])
-                            if ems_edition_subject_id:
-                                print "ENTROU NO IF:::::::::::::::::::::::::::::::::::::::"
-                                semester = int(ems_edition_subject_id.semester)
-                                print semester
-                                if semester > 0:
-                                    year = semester / (2 * 1.0)
-                                    year = math.ceil(year)
-                                year_str = str(int(year))
-                                print "YEAR STR:::::::::::::::::::::::::::::::::::::"
-                                print year_str
-                                insc_subject.write({'course_report': year_str})                           
+            edition_subjects = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id)], order="course_year,semester,subject_id")
+            count=0
+            year_count=0
+            for edition_subject in edition_subjects:
+                edition_subject_id=edition_subject.id
+                if count==0:
+                    ed_subject = self.env['ems.edition.subject'].browse(edition_subject_id)
+                    #print "ENTROU NO IF:::::::::::::::::::::::::::::::::::::::"
+                    semester = int(edition_subject.semester)
+                    #print semester
+                    if semester > 0:
+                        year = semester / (2 * 1.0)
+                        year = math.ceil(year)
+                    year_int = int(year)
+                    year_str = str(year_int)
+                    #print "YEAR STR:::::::::::::::::::::::::::::::::::::"
+                    #print year_str
+                    ed_subject.write({'course_report': year_str})
+                    year_count=year_int
+                else:
+                    ed_subject = self.env['ems.edition.subject'].browse(edition_subject_id)
+                    #print "ENTROU NO ELSE:::::::::::::::::::::::::::::::::::::::"
+                    semester = int(edition_subject.semester)
+                    #print semester
+                    if semester > 0:
+                        year = semester / (2 * 1.0)
+                        year = math.ceil(year)
+                    year_int = int(year)
+                    year_str = str(year_int)
+                    if year_count == year_int:
+                        ed_subject.write({'course_report': ''})
                     else:
-                        insc_subject = self.env['ems.enrollment.inscription.subject'].browse(inscription_subject_id)
-                        insc_subject.write({'course_report': ''})
-                    count = count + 1
+                        #print "YEAR STR:::::::::::::::::::::::::::::::::::::"
+                        #print year_str
+                        ed_subject.write({'course_report': year_str})
+                        year_count=year_int
+                count = count + 1
 
         report = self.env['report'].get_pdf(self, self.request_type_id.report_id.report_name)
         result = base64.b64encode(report)

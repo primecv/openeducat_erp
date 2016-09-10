@@ -18,6 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ###############################################################################
+import math
 
 from openerp import models, fields, api, _
 from openerp.exceptions import ValidationError
@@ -158,7 +159,21 @@ class EmsEditionSubject(models.Model):
     _name = "ems.edition.subject"
     _description = "Edition Subjects"
     _rec_name = "subject_id"
-    _order = "semester"
+    _order = "course_year,semester,subject_id"
+
+    #JCF - 09-09-2016
+    @api.one
+    @api.depends('semester')
+    def _get_course_year(self):
+        semester = 0
+        year = 0.0
+        year_str = ''
+        semester = int(self.semester)
+        if semester > 0:
+            year = semester / (2 * 1.0)
+            year = math.ceil(year)
+        year_str = str(int(year))	
+        self.course_year = year_str
 
     edition_id = fields.Many2one('ems.edition', string='Edition')
     subject_id = fields.Many2one('ems.subject', string='Subject')
@@ -176,6 +191,8 @@ class EmsEditionSubject(models.Model):
                                 ('8', '8'),
                                 ('9', '9')
             ], 'Semester')
+    course_year = fields.Char(string='Course Year', compute='_get_course_year', store=True)
+    course_report = fields.Char('Course Report')
 
     _sql_constraints = [('uniq_edition_subject','unique(edition_id, subject_id)','Subject must be Unique per Edition.')]
 
