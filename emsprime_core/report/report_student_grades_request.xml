@@ -25,10 +25,10 @@
 			}
 			]]>
 			.tit_declaration{color:#333333;font-family:Calibri;font-size:16px;}
-			.tit_section{color:333333;font-size:14px;}
+			.tit_section{color:333333;font-size:16px;}
 			</style>
 
-			<div class="row" style="color:333333;font-family:Calibri;font-size:14px;">
+			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 				
 				<span class="tit_section"><strong>Personal Data </strong></span><br />
