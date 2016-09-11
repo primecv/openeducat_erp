@@ -154,45 +154,45 @@ class ems_request(models.Model):
             if result:
                 result = result[0]
             if result==1:
-                grade = "1 (Um) valor"
+                grade = "1 (One) value"
             elif result ==2:
-                grade = "2 (Dois) valores"
+                grade = "2 (Two) values"
             elif result ==3:
-                grade = "3 (Três) valores"
+                grade = "3 (Three) values"
             elif result ==4:
-                grade = "4 (Quatro) valores"
+                grade = "4 (Four) values"
             elif result ==5:
-                grade = "5 (Cinco) valores"
+                grade = "5 (Five) values"
             elif result ==6:
-                grade = "6 (Seis) valores"
+                grade = "6 (Six) values"
             elif result ==7:
-                grade = "7 (Sete) valores"
+                grade = "7 (Seven) values"
             elif result ==8:
-                grade = "8 (Oito) valores"
+                grade = "8 (Eight) values"
             elif result ==9:
-                grade = "9 (Nove) valores"
+                grade = "9 (Nine) values"
             elif result ==10:
-                grade = "10 (Dez) valores"
+                grade = "10 (Ten) values"
             elif result ==11:
-                grade = "11 (Onze) valores"
+                grade = "11 (Eleven) values"
             elif result ==12:
-                grade = "12 (Doze) valores"
+                grade = "12 (Twelve) values"
             elif result ==13:
-                grade = "13 (Treze) valores"
+                grade = "13 (Thirteen) values"
             elif result ==14:
-                grade = "14 (Quatorze) valores"
+                grade = "14 (Fourteen) values"
             elif result ==15:
-                grade = "15 (Quinze) valores"
+                grade = "15 (Fifteen) values"
             elif result ==16:
-                grade = "16 (Dezasseis) valores"
+                grade = "16 (Sixteen) values"
             elif result ==17:
-                grade = "17 (Dezassete) valores"
+                grade = "17 (Seventeen) values"
             elif result ==18:
-                grade = "18 (Dezoito) valores"
+                grade = "18 (Eighteen) values"
             elif result ==19:
-                grade = "19 (Dezanove) valores"
+                grade = "19 (Nineteen) values"
             elif result ==20:
-                grade = "20 (Vinte) valores"
+                grade = "20 (Twenty) values"
             return grade
         return None
 
