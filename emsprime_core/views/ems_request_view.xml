@@ -11,6 +11,7 @@
 							<field name="name" required="1"/>
 							<field name="report_id" required="1" options="{'no_open':1, 'no_create':1}"/>
 							<field name="type"/>
+							<field name="attachment_type"/>
 							<field name="is_grade"/>
 						</group>
 						<group colspan="4">

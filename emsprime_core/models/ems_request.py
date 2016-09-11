@@ -36,6 +36,7 @@ class ems_request_type(models.Model):
         [('S', 'Student'), ('F', 'Faculty')], 'Type', required=True, track_visibility='onchange')
     declaration_text = fields.Text('Declaration text')
     is_grade = fields.Boolean('Grades?')
+    attachment_type = fields.Many2one('ems.attachment.type', 'Attachment type')
 
 class ems_request(models.Model):
     _name = "ems.request"
@@ -296,6 +297,15 @@ class ems_request(models.Model):
 									'datas_fname': file_name, 
 									'res_model': 'ems.student',
 									'res_id': self.enrollment_id.student_id.id,
+									'type': 'binary'
+								})
+        self.env['ems.attachment'].create({
+									'name': file_name, 
+									'attachment': result, 
+									'dates_fname': file_name, 
+									'res_model': 'ems.student',
+									'student_id': self.enrollment_id.student_id.id,
+									'attachment_type_id': self.request_type_id.attachment_type.id,
 									'type': 'binary'
 								})
         return self.env['report'].get_action(self, self.request_type_id.report_id.report_name)
