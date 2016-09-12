@@ -175,7 +175,7 @@ class EmsEditionSubject(models.Model):
                 semester=1
         semester_str = str(int(semester))
         self.semester_year = semester_str
-
+		
     #JCF - 09-09-2016
     @api.one
     @api.depends('semester')

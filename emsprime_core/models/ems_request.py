@@ -23,8 +23,8 @@ import math
 from openerp import models, fields, api, _
 from datetime import datetime
 import base64, re
-from openerp.exceptions import ValidationError, UserError
-
+from openerp.exceptions import ValidationError, UserError,QWebException
+	
 class ems_request_type(models.Model):
     _name = 'ems.request.type'
     _description = "Request Type"
@@ -37,6 +37,7 @@ class ems_request_type(models.Model):
     declaration_text = fields.Text('Declaration text')
     is_grade = fields.Boolean('Grades?')
     attachment_type = fields.Many2one('ems.attachment.type', 'Attachment type')
+    grades_with_average = fields.Boolean('Grades with average?')
 
 class ems_request(models.Model):
     _name = "ems.request"
@@ -108,7 +109,6 @@ class ems_request(models.Model):
     university_center_id = fields.Many2one('ems.university.center', string='University Center', compute='_get_university_center', store=True, track_visibility='onchange')
     year = fields.Char('Year of Declaration')
     number = fields.Char('Number of Declaration')
-    #report_type = fields.Char(related='request_type_id.type', string='Roll number', store=False)
     report_type = fields.Selection(
         [('S', 'Student'), ('F', 'Faculty')], 'Type',related='request_type_id.type', track_visibility='onchange', store=False)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', track_visibility='onchange')
@@ -116,6 +116,12 @@ class ems_request(models.Model):
         [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal')], 'Regime', required=True, track_visibility='onchange')
     student_faculty = fields.Char(string='Student/Faculty', compute='_get_student_faculty', store=True)
     processor_id = fields.Many2one('res.users', 'Processor', track_visibility='onchange', select=True)
+    report_type_grade = fields.Boolean('Report type grades?',related='request_type_id.is_grade', track_visibility='onchange', store=False)
+    course_year = fields.Selection(
+        [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'),('all','All')], 'Year', track_visibility='onchange')
+    semester_id = fields.Many2one('ems.request.semester', 'Semester', track_visibility='onchange')
+    semester_ids = fields.Many2many('ems.request.semester', 'ems_request_semester_rel', 'request_id', 'semester_id', 'Semester(s)', track_visibility='onchange')
+    report_signature = fields.Char('Signature')
 
     @api.model
     def create(self, vals):
@@ -228,6 +234,13 @@ class ems_request(models.Model):
                     result = result[0]
                     if result < 1:
                         raise UserError(_('The student does not have any inscription enrollments yet.'))
+            #if self.request_type_id.grades_with_average:
+            #    valid = self.validate_grades(self.course_year)
+            #    if valid == True:
+            #        self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number, 'processor_id':self._uid})
+            #    else:
+            #        raise UserError(_('There are missing grades. The average cannot be calculated.'))
+            #else:
             self.write({'state':'validate', 'sequence':next_seq, 'year':str(year), 'number':str_number, 'processor_id':self._uid})
 
     @api.multi
@@ -419,3 +432,111 @@ class ems_request(models.Model):
             academic_year2 = int(academic_year) + 1
             str_academic_year = str(academic_year) + '/' + str(academic_year2)
         return str_academic_year
+
+    def get_academic_year_by_year(self, course_year):
+        if course_year:
+            academic_year2 = 0
+            str_academic_year=''
+            enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('edition_id','=',self.enrollment_id.edition_id.id),('course_year','=',course_year)], order="id desc", limit=1)
+            for enrollment in enrollments:
+                academic_year=enrollment.academic_year
+                academic_year2 = int(academic_year) + 1
+                str_academic_year = str(academic_year) + '/' + str(academic_year2)
+            return str_academic_year
+        return None
+		
+    def get_average(self, course_year):
+        if course_year:
+            grades = 0
+            count=0
+            average=0.0
+            str_average=''
+            if course_year=='all':
+                subjects_edition = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id)])
+            else:
+                subjects_edition = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id),('course_year','=',course_year)])
+            for subject_edition in subjects_edition:
+                subject_id=subject_edition.subject_id.id
+                self._cr.execute("""select COALESCE( max(grade), '-1' ) as grade from ems_enrollment_inscription_subject where student_id=%s and subject_id=%s"""%(self.enrollment_id.student_id.id,subject_id))
+                result = self._cr.fetchone()
+                if result:
+                    result = int(result[0])
+                    if result > 0:
+                        grades = grades + result
+                        count = count + 1
+            if count > 0:
+                average = grades / (count * 1.0)
+                average = math.ceil(average)
+                str_average=str(int(average))
+            return str_average
+        return None
+
+    def validate_grades(self, course_year):
+        if course_year:
+            course_year = 0
+            if course_year=='all':
+                self._cr.execute("""select count(*) as count from (select subject_id,grade from ems_enrollment_inscription_subject where student_id=%s) as v where v.grade is null"""%(self.enrollment_id.student_id.id))
+            else:
+                self._cr.execute("""select count(*) as count from (select subject_id,grade from ems_enrollment_inscription_subject where student_id=%s and course_year='%s') as v where v.grade is null"""%(self.enrollment_id.student_id.id,course_year))                
+            result = self._cr.fetchone()
+            if result:
+                result = int(result[0])
+                if result > 0:
+                    return False
+                else:
+                    return True
+        return None
+
+    def check_semesters_request(self, semester):
+        count=0
+        if semester:
+            self._cr.execute("""select count(*) as count from ems_request_semester_rel rel, ems_request_semester s where s.id=rel.semester_id and rel.request_id=%s and s.semester='%s'"""%(self.id))                
+            result = self._cr.fetchone()
+            if result:
+                count = int(result[0])
+                if count>0:
+                    return True
+                else:
+                    return False
+        return None
+		
+    def check_semester(self, semester):
+        count=0
+        semester_int=0
+        semester_str=''
+        if semester:
+            semester_int=int(semester)
+            semester_str=semester
+            self._cr.execute("""select count(*) as count from ems_request_semester_rel rel, ems_request_semester s where s.id=rel.semester_id and rel.request_id=%s and s.semester='%s'"""%(self.id,semester_str))                
+            result = self._cr.fetchone()
+            if result:
+                count = int(result[0])
+                if count>0:
+                    return True
+                else:
+                    if semester_int % 2 != 0:
+                        semester_int = semester_int + 1
+                        semester_str = str(semester_int)		
+                        self._cr.execute("""select count(*) as count from ems_request_semester_rel rel, ems_request_semester s where s.id=rel.semester_id and rel.request_id=%s and s.semester='%s'"""%(self.id,semester_str))                
+                        result = self._cr.fetchone()
+                        if result:
+                            count = int(result[0])
+                            if count>0:
+                                return True
+                            else:
+                                return False
+                    else:
+                        return False
+        return None
+
+		
+class ems_request_semester(models.Model):
+    _name = 'ems.request.semester'
+    _description = "Request Semester"
+    _order = 'name'
+	
+    name = fields.Char('Semester', required=True)
+    semester = fields.Selection(
+        [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'),('6','6'),('7','7'),('8','8')], 'Semester', track_visibility='onchange')
+
+		

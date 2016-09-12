@@ -13,6 +13,7 @@
 							<field name="type"/>
 							<field name="attachment_type"/>
 							<field name="is_grade"/>
+							<field name="grades_with_average"/>
 						</group>
 						<group colspan="4">
 							<field name="declaration_text" placeholder="Declaration text...."/>
@@ -40,6 +41,41 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
+		<!-- Request Semester views -->
+		<record id="ems_request_semester_form" model="ir.ui.view">
+			<field name="name">ems.request.semester.form</field>
+			<field name="model">ems.request.semester</field>
+			<field name="arch" type="xml">
+				<form string="Request Semester">
+					<sheet>				
+						<group string="Request Semester" col="4">
+							<field name="name" required="1"/>
+							<field name="semester"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="ems_request_semester_tree" model="ir.ui.view">
+			<field name="name">ems.request.semester.tree</field>
+			<field name="model">ems.request.semester</field>
+			<field name="arch" type="xml">
+				<tree string="Request Semester">
+					<field name="name"/>
+					<field name="semester"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="ems_request_semester_action" model="ir.actions.act_window">
+			<field name="name">Request Semester</field>
+			<field name="res_model">ems.request.semester</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		<!-- END -->
+		
 		<!-- EMS Request views -->
 		<record id="ems_request_form" model="ir.ui.view">
 			<field name="name">ems.request.form</field>
@@ -66,10 +102,14 @@
 							<field name="enrollment_id" domain="[('type','=','M')]" attrs="{'invisible':[('report_type','not in',('S'))]}"/>
 							<field name="faculty_id" attrs="{'invisible':[('report_type','not in',('F'))]}"/>
 							<field name="name" placeholder="Applicant..."/>
+							<field name="semester_ids" widget="many2many_tags" attrs="{'invisible':[('report_type_grade','!=',(True))]}"/>
+							<!--<field name="course_year" attrs="{'invisible':[('report_type_grade','!=',(True))]}"/>-->
 							<field name="date"/>
+							<field name="report_type_grade" invisible="1"/>
 							<field name="report_type" invisible="1"/>
 						</group>
 						<group colspan="4">
+							<field name="report_signature"/>
 							<field name="description" placeholder="Other Info...."/>
 						</group>
 					</sheet>
