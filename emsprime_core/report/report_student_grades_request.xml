@@ -35,9 +35,9 @@
 
 				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
-				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
-				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
-				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
+				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.parish_id.name"> / </span> 
+				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
 				<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
 				<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
 				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>
@@ -49,21 +49,17 @@
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
-				<span class="tit_section"><strong>Enrollment Data</strong></span><br />
-
-				<strong>Student Number</strong>: <span t-field="o.enrollment_id.student_id.roll_number"/> ***<br/>
-				<strong>Name Course</strong>: <span t-field="o.enrollment_id.course_id.degree_id.name"/> in <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
-				<strong>Year of the course</strong>: <span t-if="o.enrollment_id.academic_year"><span t-field="o.enrollment_id.academic_year"/></span> ***<br/>
-
-				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
-
+				<div style="float:left;width:13%"><strong>Course Year</strong></div>
+				<div style="float:left;width:12%"><strong>Semester</strong></div>
+				<div style="float:left;width:50%"><strong>Subjects</strong></div>
+				<div style="float:left;width:25%"><strong>Rate</strong></div>
+				<div style="clear:both;"></div>
 				<strong>Subjects </strong>
 				<div style="color:333333;">
 					<t t-foreach="o.enrollment_id.edition_id.subject_line" t-as="sub">
-						<span t-if="sub.course_report=='3'"><p style="page-break-before:always;"> </p></span>
-						<div style="float:left;width:8%"><span t-field="sub.course_report" style="color:333333;"/><span t-if="sub.course_report">º Year</span><span t-if="sub.course_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
-						<div style="float:left;width:55%"><span t-field="sub.subject_id.name" style="color:333333;"/></div>
-						<div style="float:left;width:12%"><span t-esc="o.get_semester(sub.semester)"/>º Semester</div>
+						<div style="float:left;width:13%"><span t-field="sub.course_report" style="color:333333;"/><span t-if="sub.course_report">º Year</span><span t-if="sub.course_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
+						<div style="float:left;width:12%"><span t-esc="sub.semester_report"/><span t-if="sub.semester_report">º Semester</span><span t-if="sub.semester_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
+						<div style="float:left;width:50%"><span t-field="sub.subject_id.name" style="color:333333;"/></div>
 						<div style="float:left;width:25%"><span t-esc="o.get_grade(sub.subject_id.id)"/> ***</div>
 						<div style="clear:both;"></div>
 					</t>

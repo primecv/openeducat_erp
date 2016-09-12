@@ -34,9 +34,9 @@
 
 				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
-				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span> 
-				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
-				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.country_id.name"> / </span>
+				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.parish_id.name"> / </span> 
+				<span t-field="o.enrollment_id.student_id.county_id.name"/><span t-if="o.enrollment_id.student_id.county_id.name"> / </span>
+				<span t-field="o.enrollment_id.student_id.island_id.name"/><span t-if="o.enrollment_id.student_id.island_id.name"> / </span>
 				<span t-field="o.enrollment_id.student_id.country_id.name"/> ***<br/>
 				<strong>Nationality</strong>: <span t-field="o.enrollment_id.student_id.nationality.citizenship"/> ***<br/>
 				<strong>Filiation</strong>: <span t-field="o.enrollment_id.student_id.father"/>

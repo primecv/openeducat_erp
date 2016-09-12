@@ -161,6 +161,21 @@ class EmsEditionSubject(models.Model):
     _rec_name = "subject_id"
     _order = "course_year,semester,subject_id"
 
+    #JCF - 12-09-2016
+    @api.one
+    @api.depends('semester')
+    def _get_semester_course(self):
+        semester = 0
+        semester_str = ''
+        semester = int(self.semester)
+        if semester > 0:
+            if semester % 2 == 0:
+                semester=2
+            else:
+                semester=1
+        semester_str = str(int(semester))
+        self.semester_year = semester_str
+
     #JCF - 09-09-2016
     @api.one
     @api.depends('semester')
@@ -193,6 +208,8 @@ class EmsEditionSubject(models.Model):
             ], 'Semester')
     course_year = fields.Char(string='Course Year', compute='_get_course_year', store=True)
     course_report = fields.Char('Course Report')
+    course_semester = fields.Char(string='Course Semester', compute='_get_semester_course', store=True)
+    semester_report = fields.Char('Semester Report')
 
     _sql_constraints = [('uniq_edition_subject','unique(edition_id, subject_id)','Subject must be Unique per Edition.')]
 

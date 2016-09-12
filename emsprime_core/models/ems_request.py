@@ -241,7 +241,6 @@ class ems_request(models.Model):
     @api.multi
     def action_print(self):
 
-        #self.write({'state':'done'})
         #attach report in Students Attachments:
         edition_subject_id=0
         str_course=''
@@ -249,43 +248,52 @@ class ems_request(models.Model):
         year = 0.0
         year_int=0
         year_str = ''
+        semester_str = ''
         if self.request_type_id.is_grade:
             edition_subjects = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id)], order="course_year,semester,subject_id")
             count=0
             year_count=0
+            semester_count=0
             for edition_subject in edition_subjects:
                 edition_subject_id=edition_subject.id
                 if count==0:
                     ed_subject = self.env['ems.edition.subject'].browse(edition_subject_id)
-                    #print "ENTROU NO IF:::::::::::::::::::::::::::::::::::::::"
                     semester = int(edition_subject.semester)
-                    #print semester
                     if semester > 0:
                         year = semester / (2 * 1.0)
                         year = math.ceil(year)
                     year_int = int(year)
                     year_str = str(year_int)
-                    #print "YEAR STR:::::::::::::::::::::::::::::::::::::"
-                    #print year_str
-                    ed_subject.write({'course_report': year_str})
+                    if semester % 2 == 0:
+                        semester=2
+                    else:
+                        semester=1
+                    ed_subject.write({'course_report': year_str,'semester_report':'1'})
                     year_count=year_int
+                    semester_count=semester
                 else:
                     ed_subject = self.env['ems.edition.subject'].browse(edition_subject_id)
-                    #print "ENTROU NO ELSE:::::::::::::::::::::::::::::::::::::::"
                     semester = int(edition_subject.semester)
-                    #print semester
                     if semester > 0:
                         year = semester / (2 * 1.0)
                         year = math.ceil(year)
                     year_int = int(year)
                     year_str = str(year_int)
+                    if semester % 2 == 0:
+                        semester=2
+                    else:
+                        semester=1
+                    semester_str=str(semester)
                     if year_count == year_int:
                         ed_subject.write({'course_report': ''})
                     else:
-                        #print "YEAR STR:::::::::::::::::::::::::::::::::::::"
-                        #print year_str
                         ed_subject.write({'course_report': year_str})
                         year_count=year_int
+                    if semester_count == semester:
+                        ed_subject.write({'semester_report': ''})
+                    else:
+                        ed_subject.write({'semester_report': semester_str})
+                        semester_count=semester
                 count = count + 1
 
         report = self.env['report'].get_pdf(self, self.request_type_id.report_id.report_name)
