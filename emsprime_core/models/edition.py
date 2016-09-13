@@ -210,6 +210,7 @@ class EmsEditionSubject(models.Model):
     course_report = fields.Char('Course Report')
     course_semester = fields.Char(string='Course Semester', compute='_get_semester_course', store=True)
     semester_report = fields.Char('Semester Report')
+    ordering = fields.Integer('Ordering')
 
     _sql_constraints = [('uniq_edition_subject','unique(edition_id, subject_id)','Subject must be Unique per Edition.')]
 
