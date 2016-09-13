@@ -21,6 +21,9 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <form string="Course Plan">
+					<header>
+						<button name="load_subjects" type="object" string="Load Subjects"/>					
+					</header>				
                     <sheet>
                         <group col="4" name="main">
                             <field name="name" />
@@ -42,6 +45,7 @@
 											<field name="student_contact" widget="float_time"/>
 											<field name="work"/>
 											<field name="ects"/>
+											<field name="ordering"/>
 										</tree>
 									</field>
 								</group>
