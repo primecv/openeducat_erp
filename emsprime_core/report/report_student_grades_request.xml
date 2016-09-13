@@ -31,8 +31,6 @@
 			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 				
-				<span class="tit_section"><strong>Personal Data </strong></span><br />
-
 				<strong>Name</strong>: <span t-field="o.enrollment_id.student_id.complete_name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Birth Date</strong>: <span t-field="o.enrollment_id.student_id.birth_date"/> ***<br/>
 				<strong>Place of Birth</strong>: <span t-field="o.enrollment_id.student_id.parish_id.name"/><span t-if="o.enrollment_id.student_id.parish_id.name"> / </span> 
@@ -46,6 +44,11 @@
 				<strong>Identification</strong>: <span t-if="o.enrollment_id.student_id.document_type == 'idCard'"><strong>BI Nº</strong> </span><span t-if="o.enrollment_id.student_id.document_type == 'passport'"><strong>Passport Nº</strong> </span><span t-field="o.enrollment_id.student_id.passport_no"/><span t-if="o.enrollment_id.student_id.issue_date"> / <strong>Emission</strong>: </span> 
 				<span t-field="o.enrollment_id.student_id.issue_date"/><span t-if="o.enrollment_id.student_id.issuer"> / <strong>Archive</strong>: </span>
 				<span t-field="o.enrollment_id.student_id.issuer"/> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="report_label"><strong>Name Course</strong></span>: <span t-field="o.enrollment_id.course_id.degree_id.name"/> in <span t-field="o.enrollment_id.course_id.name"/> ***<br/>
+				<span class="report_label"><strong>Enroll Number</strong></span>: <span t-field="o.enrollment_id.student_id.roll_number"/> ***<br/>
 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
 
