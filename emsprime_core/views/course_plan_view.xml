@@ -31,7 +31,7 @@
                             <field name="start_date" />
                             <field name="end_date" />
                             <field name="course_id" />
-                            <field name="parent_id" />
+                            <field name="parent_id" domain="[('course_id','=',course_id),('parent_id','=',False)]" />
                         </group>
                         <notebook colspan="4">						
                             <page name="subjects" string="Subjects">						
