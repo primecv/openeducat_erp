@@ -22,7 +22,10 @@
             <field name="arch" type="xml">
                 <form string="Course Plan">
 					<header>
-						<button name="load_subjects" type="object" string="Load Subjects"/>					
+						<button name="load_subjects" type="object" string="Load Subjects" states="draft" groups="base.group_erp_manager"/>					
+						<button name="action_validate" type="object" string="Validate" states="draft" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
+						<button name="action_draft" type="object" string="Set to Draft" states="validate" class="oe_highlight" groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_back_office"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,validate" statusbar_colors='{"draft":"red","validate":"green"}'/>
 					</header>				
                     <sheet>
                         <group col="4" name="main">

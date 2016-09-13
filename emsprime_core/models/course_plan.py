@@ -34,6 +34,17 @@ class EmsCoursePlan(models.Model):
     course_id = fields.Many2one('ems.course', 'Course', required=True)
     subject_line = fields.One2many('ems.course.plan.subject', 'course_plan_id', string="Subject(s)", copy=True)
     parent_id = fields.Many2one('ems.course.plan', 'Parent')
+    state = fields.Selection(
+        [('draft', 'New'), ('validate', 'Validated')],
+        'State', default="draft", required=True, track_visibility='onchange', select=True)    
+
+    @api.multi
+    def action_draft(self):
+        return self.write({'state':'draft'})
+
+    @api.multi
+    def action_validate(self):
+        return self.write({'state':'validate'})
 
     @api.one
     def copy(self, default=None):
@@ -66,8 +77,6 @@ class EmsCoursePlan(models.Model):
     def load_subjects(self):
         courses = self.env['ems.course'].search([])
         for course in courses:
-            print "COURSE:::::::::::::::::::::::::::::::"
-            print course.id
             for course_plan in course.course_plan_line:
                 course_plan_id=course_plan.id
                 editions = self.env['ems.edition'].search([('course_id','=',course.id)])
