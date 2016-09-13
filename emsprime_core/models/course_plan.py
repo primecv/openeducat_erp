@@ -64,27 +64,32 @@ class EmsCoursePlan(models.Model):
 
     @api.multi
     def load_subjects(self):
-        for course_plan in self:
-            editions = self.env['ems.edition'].search([('course_id','=',self.course_id.id)])
-            for edition in editions:
-                for edition_subject in edition.subject_line:
-                    edition_subject_id=edition_subject.id
-                    subject_id=edition_subject.subject_id.id
-                    self._cr.execute("""select count(*) as count from ems_course_plan_subject WHERE course_plan_id=%s and subject_id=%s"""%(self.id,subject_id))
-                    result = self._cr.fetchone()
-                    if result:
-                        result = result[0]
-                        if result == 0:
-                            self.env['ems.course.plan.subject'].create({
-                                'course_plan_id': self.id,
-                                'subject_id': subject_id,
-                                'week_work_load': edition_subject.week_work_load,
-                                'student_contact': edition_subject.student_contact,
-                                'work': edition_subject.work,
-                                'ects': edition_subject.ects,
-                                'semester': edition_subject.semester,
-                                'ordering': edition_subject.ordering
-                            })
+        courses = self.env['ems.course'].search([])
+        for course in courses:
+            print "COURSE:::::::::::::::::::::::::::::::"
+            print course.id
+            for course_plan in course.course_plan_line:
+                course_plan_id=course_plan.id
+                editions = self.env['ems.edition'].search([('course_id','=',course.id)])
+                for edition in editions:
+                    for edition_subject in edition.subject_line:
+                        edition_subject_id=edition_subject.id
+                        subject_id=edition_subject.subject_id.id
+                        self._cr.execute("""select count(*) as count from ems_course_plan_subject WHERE course_plan_id=%s and subject_id=%s"""%(course_plan_id,subject_id))
+                        result = self._cr.fetchone()
+                        if result:
+                            result = result[0]
+                            if result == 0:
+                                self.env['ems.course.plan.subject'].create({
+                                    'course_plan_id': course_plan_id,
+                                    'subject_id': subject_id,
+                                    'week_work_load': edition_subject.week_work_load,
+                                    'student_contact': edition_subject.student_contact,
+                                    'work': edition_subject.work,
+                                    'ects': edition_subject.ects,
+                                    'semester': edition_subject.semester,
+                                    'ordering': edition_subject.ordering
+                                })
 
 class EmsCoursePlanSubject(models.Model):
     _name = "ems.course.plan.subject"
