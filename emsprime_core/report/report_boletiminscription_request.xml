@@ -77,6 +77,17 @@
 				<div>
 					<span t-field="o.request_type_id.declaration_text"/> ***
 				</div>
+				<br/>
+				<br/>
+				<br/>
+				<div align="center">
+					<strong>The direction of academic services</strong>
+				</div>								
+				<br/>
+				<br/>
+				<div align="center">
+					/<span t-if="o.report_signature"><span t-field="o.report_signature"/></span><span t-if="not o.report_signature">Lia Cordeiro Medina</span>/
+				</div>				
 
             </div>
 

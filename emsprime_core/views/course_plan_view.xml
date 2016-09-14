@@ -12,6 +12,7 @@
                     <field name="start_date" />
                     <field name="end_date" />
                     <field name="course_id" />
+                    <field name="state" />
                 </tree>
             </field>
         </record>
@@ -75,6 +76,7 @@
                             context="{'group_by':'start_date'}" />
                         <filter string="End Date" domain="[]" context="{'group_by':'end_date'}" />
                         <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                        <filter string="State" domain="[]" context="{'group_by':'state'}" />
                     </group>
                 </search>
             </field>
