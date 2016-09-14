@@ -54,7 +54,8 @@
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
 							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period}">
 								<tree string="Subjects" editable="top">
-									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
+									<!--<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>-->
+									<field name="subject_id" required="1" context="{'inscription': True}"/>
 									<field name="semester"/>
 									<field name="period"/>
 									<field name="semester_copy" invisible="1"/>
@@ -97,7 +98,8 @@
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
 							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period}">
 								<tree string="Subjects" editable="top">
-									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>
+									<!--<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>-->
+									<field name="subject_id" required="1" context="{'inscription': True}"/>
 									<field name="semester"/>
 									<field name="period"/>
 									<field name="semester_copy" invisible="1"/>
@@ -152,7 +154,8 @@
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
 							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period, 'default_edition_id': edition_id}">
 								<tree string="Subjects" editable="top">
-									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': edition_id}"/>
+									<!--<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>-->
+									<field name="subject_id" required="1" context="{'inscription': True}"/>
 									<field name="semester"/>
 									<field name="period"/>
 									<field name="semester_copy" invisible="1"/>
