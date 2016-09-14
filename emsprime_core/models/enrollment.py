@@ -180,9 +180,9 @@ class EmsEnrollment(models.Model):
                 sem2 = str(sem2)
                 subjects, invalid_subjects = [], []
 
-                #1. get all edition (semester) subjects:
+                #1. get all edition - course plan (semester) subjects:
                 edition_sem_subjects = []
-                sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('semester','in',(str(sem1), str(sem2)))])
+                sem_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','=',enrollment.course_plan_id.id),('semester','in',(str(sem1), str(sem2)))])
                 for sem_subject in sem_subject_ids:
                     edition_sem_subjects.append(sem_subject.subject_id.id)
 
@@ -230,7 +230,7 @@ class EmsEnrollment(models.Model):
 
                 #5. create Grade line for Each Semester Subject:
                 if new_subjects:
-                    sem_subject_ids = self.env['ems.edition.subject'].search([('edition_id','=',enrollment.edition_id.id),('subject_id','in',new_subjects)])
+                    sem_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','=',enrollment.course_plan_id.id),('subject_id','in',new_subjects)])
                     for sem_subject in sem_subject_ids:
                         self.env['ems.enrollment.inscription.subject'].create({
                                 'inscription_id': enrollment.id,
