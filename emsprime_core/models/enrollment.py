@@ -282,8 +282,8 @@ class EmsEnrollmentInscriptionSubject(models.Model):
                 vals['semester_copy'] = ems_edition_subject_id.semester
                 vals['ect_copy'] = ems_edition_subject_id.ects
         else:
-            vals['semester'] = self.semester_copy
-            vals['ect'] = self.ect_copy
+            vals['semester'] = self.semester
+            vals['ect'] = self.ect
         self.update(vals)
 
     inscription_id = fields.Many2one('ems.enrollment', 'Inscription')
