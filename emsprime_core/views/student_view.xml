@@ -65,10 +65,10 @@
             <field name="arch" type="xml">
                 <form string="Student">
 					<header>
-						<button name="action_submit" string="Submit" type="object" states="draft" class="oe_highlight" groups="emsprime_core.group_ems_applicant,emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga"/>
-						<button name="action_received" string="Received" type="object" states="submit" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga"/>
-						<button name="action_confirm" type="object" string="Enroll" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" invisible="1"/>
-						<button name="action_reject" type="object" string="Reject" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" invisible="1"/>
+						<button name="action_submit" string="Submit" type="object" states="draft" class="oe_highlight" groups="emsprime_core.group_ems_applicant,emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga"/>
+						<button name="action_received" string="Received" type="object" states="submit" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga"/>
+						<button name="action_confirm" type="object" string="Enroll" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" invisible="1"/>
+						<button name="action_reject" type="object" string="Reject" states="received" class="oe_highlight" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" invisible="1"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,submit,received" />
 					</header>
                     <sheet>
