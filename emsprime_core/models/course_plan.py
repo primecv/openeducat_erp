@@ -18,6 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ###############################################################################
+import math
 
 from openerp import models, fields, api, _
 from openerp.exceptions import ValidationError
@@ -104,7 +105,36 @@ class EmsCoursePlanSubject(models.Model):
     _name = "ems.course.plan.subject"
     _description = "Course Plans Subjects"
     _rec_name = "subject_id"
-    _order = "semester"
+    _order = "course_year,semester,ordering"
+
+    #JCF - 15-09-2016
+    @api.one
+    @api.depends('semester')
+    def _get_course_year(self):
+        semester = 0
+        year = 0.0
+        year_str = ''
+        semester = int(self.semester)
+        if semester > 0:
+            year = semester / (2 * 1.0)
+            year = math.ceil(year)
+        year_str = str(int(year))	
+        self.course_year = year_str
+
+    #JCF - 15-09-2016
+    @api.one
+    @api.depends('semester')
+    def _get_semester_course(self):
+        semester = 0
+        semester_str = ''
+        semester = int(self.semester)
+        if semester > 0:
+            if semester % 2 == 0:
+                semester=2
+            else:
+                semester=1
+        semester_str = str(int(semester))
+        self.semester_year = semester_str
 
     course_plan_id = fields.Many2one('ems.course.plan', string='Course Plan')
     subject_id = fields.Many2one('ems.subject', string='Subject')
@@ -123,6 +153,10 @@ class EmsCoursePlanSubject(models.Model):
                                 ('9', '9')
             ], 'Semester')
     ordering = fields.Integer('Ordering')
+    course_year = fields.Char(string='Course Year', compute='_get_course_year', store=True)
+    course_report = fields.Char('Course Report')
+    course_semester = fields.Char(string='Course Semester', compute='_get_semester_course', store=True)
+    semester_report = fields.Char('Semester Report')
 
     _sql_constraints = [('uniq_course_plan_subject','unique(course_plan_id, subject_id)','Subject must be Unique per Course Plan.')]
 

@@ -263,15 +263,15 @@ class ems_request(models.Model):
         year_str = ''
         semester_str = ''
         if self.request_type_id.is_grade:
-            edition_subjects = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id)], order="course_year,semester,subject_id")
+            course_plan_subjects = self.env['ems.course.plan.subject'].search([('course_plan_id','=',self.enrollment_id.edition_id.course_plan_id.id)], order="course_year,semester,ordering")
             count=0
             year_count=0
             semester_count=0
-            for edition_subject in edition_subjects:
-                edition_subject_id=edition_subject.id
+            for course_plan_subject in course_plan_subjects:
+                course_plan_subject_id=course_plan_subject.id
                 if count==0:
-                    ed_subject = self.env['ems.edition.subject'].browse(edition_subject_id)
-                    semester = int(edition_subject.semester)
+                    cp_subject = self.env['ems.course.plan.subject'].browse(course_plan_subject_id)
+                    semester = int(course_plan_subject.semester)
                     if semester > 0:
                         year = semester / (2 * 1.0)
                         year = math.ceil(year)
@@ -281,12 +281,12 @@ class ems_request(models.Model):
                         semester=2
                     else:
                         semester=1
-                    ed_subject.write({'course_report': year_str,'semester_report':'1'})
+                    cp_subject.write({'course_report': year_str,'semester_report':'1'})
                     year_count=year_int
                     semester_count=semester
                 else:
-                    ed_subject = self.env['ems.edition.subject'].browse(edition_subject_id)
-                    semester = int(edition_subject.semester)
+                    cp_subject = self.env['ems.course.plan.subject'].browse(course_plan_subject_id)
+                    semester = int(course_plan_subject.semester)
                     if semester > 0:
                         year = semester / (2 * 1.0)
                         year = math.ceil(year)
@@ -298,14 +298,14 @@ class ems_request(models.Model):
                         semester=1
                     semester_str=str(semester)
                     if year_count == year_int:
-                        ed_subject.write({'course_report': ''})
+                        cp_subject.write({'course_report': ''})
                     else:
-                        ed_subject.write({'course_report': year_str})
+                        cp_subject.write({'course_report': year_str})
                         year_count=year_int
                     if semester_count == semester:
-                        ed_subject.write({'semester_report': ''})
+                        cp_subject.write({'semester_report': ''})
                     else:
-                        ed_subject.write({'semester_report': semester_str})
+                        cp_subject.write({'semester_report': semester_str})
                         semester_count=semester
                 count = count + 1
 
@@ -452,11 +452,11 @@ class ems_request(models.Model):
             average=0.0
             str_average=''
             if course_year=='all':
-                subjects_edition = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id)])
+                subjects_course_plan = self.env['ems.course.plan.subject'].search([('course_plan_id','=',self.enrollment_id.edition_id.course_plan_id.id)])
             else:
-                subjects_edition = self.env['ems.edition.subject'].search([('edition_id','=',self.enrollment_id.edition_id.id),('course_year','=',course_year)])
-            for subject_edition in subjects_edition:
-                subject_id=subject_edition.subject_id.id
+                subjects_course_plan = self.env['ems.course.plan.subject'].search([('course_plan_id','=',self.enrollment_id.edition_id.course_plan_id.id),('course_year','=',course_year)])
+            for subject_course_plan in subjects_course_plan:
+                subject_id=subject_course_plan.subject_id.id
                 self._cr.execute("""select COALESCE( max(grade), '-1' ) as grade from ems_enrollment_inscription_subject where student_id=%s and subject_id=%s"""%(self.enrollment_id.student_id.id,subject_id))
                 result = self._cr.fetchone()
                 if result:

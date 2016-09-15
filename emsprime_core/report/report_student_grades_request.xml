@@ -95,7 +95,7 @@
 				<br/>
 				<br/>
 				<div align="center">
-					/<span t-field="o.report_signature"/>/
+					/<span t-if="o.report_signature"><span t-field="o.report_signature"/></span><span t-if="not o.report_signature and o.university_center_id.code=='PUSV'">Lia Cordeiro Medina</span><span t-if="not o.report_signature and o.university_center_id.code=='PUP'">Sílvia Rocco</span>/
 				</div>				
             </div>
 
