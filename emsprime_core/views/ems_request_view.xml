@@ -151,6 +151,7 @@
                         <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
                         <filter string="Request type" domain="[]" context="{'group_by':'request_type_id'}" />
                         <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                        <filter string="Regime" domain="[]" context="{'group_by':'regime'}" />
                     </group>
                 </search>
             </field>
