@@ -99,7 +99,7 @@
 							<field name="subject_line" nolabel="1" colspan="4"  context="{'default_period': period}">
 								<tree string="Subjects" editable="top">
 									<!--<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id}"/>-->
-									<field name="subject_id" required="1" context="{'inscription': True}"/>
+									<field name="subject_id" required="1" context="{'inscription': True, 'edition_id': parent.edition_id, 'course_plan_id': parent.course_plan_id}"/>
 									<field name="semester"/>
 									<field name="period"/>
 									<field name="semester_copy" invisible="1"/>

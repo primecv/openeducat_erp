@@ -275,7 +275,11 @@ class EmsEnrollmentInscriptionSubject(models.Model):
         subject_id = self.subject_id.id
         if context and 'edition_id' in context:
             edition_id = context['edition_id']
-            ems_edition_subject_id = self.env['ems.edition.subject'].search([('subject_id','=',subject_id),('edition_id','=',edition_id)])
+            course_plan_id = context.get('course_plan_id', False)
+            if not course_plan_id:
+                course_plan_id = self.env['ems.edition'].browse([edition_id])[0].course_plan_id
+                course_plan_id = course_plan_id and course_plan_id.id or False
+            ems_edition_subject_id = self.env['ems.course.plan.subject'].search([('subject_id','=',subject_id),('course_plan_id','=',course_plan_id)])
             if ems_edition_subject_id:
                 vals['semester'] = ems_edition_subject_id.semester
                 vals['ect'] = ems_edition_subject_id.ects
