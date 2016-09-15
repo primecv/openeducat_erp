@@ -3,51 +3,51 @@
     <data>
         <!-- Openeducat Menu -->
         <menuitem id="menu_ems_school_root" name="EmsPrime"
-            sequence="10" groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin" />
+            sequence="10" groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 
         <menuitem id="menu_ems_school_main" name="Students" parent="menu_ems_school_root"
-            sequence="10" groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin" />
+            sequence="10" groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
         <menuitem id="menu_ems_student_sub" name="Students" parent="menu_ems_school_main"
             sequence="10" action="act_open_ems_student_view"
-            groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_applicant,group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<!-- Classes Menu -->
 		<menuitem id="menu_ems_student_sub_classes" 
 			parent="menu_ems_school_main" sequence="15"
-			action="act_open_ems_class_view" groups="group_ems_student,group_ems_back_office_admin,group_ems_back_office" />
+			action="act_open_ems_class_view" groups="group_ems_student,group_ems_back_office_admin,group_ems_back_office,group_ems_admin_sga" />
 
 		<menuitem id="menu_ems_request" name="Requests" parent="menu_ems_school_main"
             sequence="15" action="ems_request_action"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<!-- Enrollments Menu -->
 
 		<menuitem id="menu_ems_candidate_enrollment" name="Candidates" parent="menu_ems_school_main"
             sequence="23" action="act_open_ems_candidate_enrollment_view"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<menuitem id="menu_ems_inscription_enrollment" parent="menu_ems_school_main"
             sequence="26" action="act_open_ems_inscription_enrollment_view"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<menuitem id="menu_ems_enrollment" name="Enrollments" parent="menu_ems_school_main"
             sequence="25" action="act_open_ems_enrollment_view"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
         <menuitem id="menu_reporting_grades" 
 			parent="menu_ems_school_main" 
 			action="ems_enrollment_inscription_grades_action" 
 			sequence="30"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
         <menuitem id="menu_ems_faculty_main" name="Faculties"
             parent="menu_ems_school_root" sequence="20"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
         <menuitem id="menu_ems_faculty_sub" name="Faculties"
             parent="menu_ems_faculty_main" sequence="10" action="act_open_ems_faculty_view"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 
         <menuitem id="menu_ems_general_main" name="General" parent="menu_ems_school_root" sequence="30"/>
@@ -59,48 +59,48 @@
         <menuitem id="menu_ems_school_config_course" name="Course Management" parent="menu_ems_school_config" sequence="10"/>
 
         <menuitem id="menu_ems_course_sub" name="Courses" parent="menu_ems_school_config_course" sequence="10"
-            action="act_open_ems_course_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_course_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
         <menuitem id="menu_ems_course_plan_sub" name="Course Plans" parent="menu_ems_school_config_course" sequence="12"
-            action="act_open_ems_course_plan_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_course_plan_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 			
         <menuitem id="menu_ems_edition_sub" name="Editions" parent="menu_ems_school_config_course" sequence="15"
-            action="act_open_ems_edition_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_edition_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
         <!--<menuitem id="menu_ems_semester_sub" name="Semesters" parent="menu_ems_school_config_course" sequence="20"
-            action="act_open_ems_semester_view" groups="group_ems_back_office,group_ems_back_office_admin" />-->
+            action="act_open_ems_semester_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />-->
         <menuitem id="menu_ems_course_degrees_sub" name="Degrees" parent="menu_ems_school_config_course" sequence="25"
-            action="act_ems_course_degree_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_ems_course_degree_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 
         <menuitem id="menu_ems_school_config_subject" name="Subject Management" parent="menu_ems_school_config" sequence="20"/>
 
         <menuitem id="menu_ems_subject_sub" name="Subjects" sequence="10" parent="menu_ems_school_config_subject"
-            action="act_open_ems_subject_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_subject_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 
         <menuitem id="menu_ems_school_config_general" name="General Management" parent="menu_ems_school_config" sequence="80"/>
 
         <menuitem id="menu_ems_roll_number_sub" name="Roll Numbers"
             parent="menu_ems_school_config_general" sequence="10"
-            action="act_open_ems_enrollment_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_enrollment_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
         <menuitem id="menu_ems_request_type" name="Requests Type"
             parent="menu_ems_school_config_general" sequence="15"
-            action="ems_request_type_action" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="ems_request_type_action" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<!-- Request Semester Menu -->
         <menuitem id="menu_ems_config_request_semester" name="Request Semester"
             parent="menu_ems_school_config_general" sequence="16"
-            action="ems_request_semester_action" groups="group_ems_back_office,group_ems_back_office_admin" />
-			
+            action="ems_request_semester_action" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
+
 		<!-- Locations Menu -->
         <menuitem id="menu_ems_config_locations" name="Locations"
             parent="menu_ems_school_config_general" sequence="20"
-            action="hr_location_action" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="hr_location_action" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 		<delete id="menu_ems_config_locations" model="ir.ui.menu"/>
 
         <menuitem id="menu_ems_config_location" name="Locations"
             parent="menu_ems_school_config_general" sequence="20"
-            groups="group_ems_back_office,group_ems_back_office_admin" />
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 		
 		<menuitem id="menu_ems_location_country" 
 			parent="menu_ems_config_location"
@@ -122,22 +122,22 @@
 		<!-- Attachments Type Menu -->
         <menuitem id="menu_ems_config_attachments_types" name="Attachments Types"
             parent="menu_ems_school_config_general" sequence="25"
-            action="act_open_ems_attachment_type_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_attachment_type_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<!-- University center Type Menu -->
         <menuitem id="menu_ems_config_university_center" name="University center"
             parent="menu_ems_school_config_general" sequence="30"
-            action="act_open_ems_university_center_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_university_center_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<!-- Countries Type Menu -->
         <menuitem id="menu_ems_config_country" name="Countries"
             parent="menu_ems_school_config_general" sequence="40"
-            action="action_ems_country" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="action_ems_country" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
 		<!-- Student Status Type Menu -->
         <menuitem id="menu_ems_config_student_status" name="Student Status"
             parent="menu_ems_school_config_general" sequence="50"
-            action="act_open_ems_student_status_view" groups="group_ems_back_office,group_ems_back_office_admin" />
+            action="act_open_ems_student_status_view" groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 			
         <!-- Activity Root -->
         <menuitem id="menu_ems_school_config_activity" name="Activity Management" parent="menu_ems_school_config" sequence="40" />

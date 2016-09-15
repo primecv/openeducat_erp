@@ -261,7 +261,7 @@ class EmsStudent(models.Model):
         imd = self.env['ir.model.data']
         student_access_groups = ['emsprime_core.group_ems_faculty', 
                                  'emsprime_core.group_ems_back_office', 
-                                 'emsprime_core.group_ems_back_office_admin' ]
+                                 'emsprime_core.group_ems_back_office_admin','emsprime_core.group_ems_admin_sga' ]
         allowed_group_ids = []
         for group in student_access_groups:
             group_id = imd.xmlid_to_res_id(group)
