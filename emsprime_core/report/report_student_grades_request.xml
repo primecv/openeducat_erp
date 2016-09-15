@@ -58,7 +58,7 @@
 				<div style="float:left;width:25%"><strong>Rate</strong></div>
 				<div style="clear:both;"></div>
 				<div style="color:333333;">
-					<t t-foreach="o.enrollment_id.edition_id.subject_line" t-as="sub">
+					<t t-foreach="o.enrollment_id.edition_id.course_plan_id.subject_line" t-as="sub">
 						<t t-if="o.check_semester(sub.semester)==True">
 							<div style="float:left;width:13%"><span t-field="sub.course_report" style="color:333333;"/><span t-if="sub.course_report">º Year</span><span t-if="sub.course_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
 							<div style="float:left;width:12%"><span t-esc="sub.semester_report"/><span t-if="sub.semester_report">º Semester</span><span t-if="sub.semester_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
