@@ -98,7 +98,7 @@
         </div>
 		<div class="footer">
 		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
-				<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.enrollment_id.student_id.university_center_id">- <span t-field="o.enrollment_id.student_id.university_center_id.name"/></span></span><br/>
+				<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.university_center_id">- <span t-field="o.university_center_id.name"/></span></span><br/>
 				<span style="line-height:10px;">Processado por computador por <br/><span t-field="o.processor_id.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
 		    </div>
 		</div>
