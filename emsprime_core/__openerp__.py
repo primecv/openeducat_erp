@@ -72,6 +72,7 @@
         'views/emsprime_template.xml',
         'views/homepage_template.xml',
         'views/website_assets.xml',
+        #'views/res_users_view.xml',
         'dashboard/faculty_dashboard_view.xml',
         'dashboard/student_dashboard_view.xml',
         
