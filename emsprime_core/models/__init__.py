@@ -32,7 +32,7 @@ from . import faculty
 from . import hr
 from . import res_company
 from . import res_country
-#from . import res_users
+from . import res_users
 from . import enrollment
 from . import student_status
 from . import scholarship
