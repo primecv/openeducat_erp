@@ -57,17 +57,15 @@ class ems_request(models.Model):
 		
     #JCF - 06-09-2016
     @api.one
-    @api.depends('enrollment_id')
+    @api.depends('processor_id')
     def _get_university_center(self):
         university_center_id = False
         #print "Student UNIVERSITY:: "
         #print self.enrollment_id.student_id.id
-        if self.enrollment_id:
-            enrollments = self.env['ems.enrollment'].search([('student_id','=',self.enrollment_id.student_id.id),('type','=','I')], order="id desc", limit=1)
-            for enrollment in enrollments:
-                university_center_id=enrollment.university_center_id.id
-        else:
-            university_center_id=self.faculty_id.university_center_id.id
+        if self.processor_id:
+            users = self.env['res.users'].search([('id','=',self.processor_id.id)], order="id desc", limit=1)
+            for user in users:
+                university_center_id=user.university_center_id.id
         self.university_center_id = university_center_id
 			
     #JCF - 05-09-2016
@@ -210,10 +208,14 @@ class ems_request(models.Model):
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
         str_number = '0001'
+        university_center_id = False
+        users = self.env['res.users'].search([('id','=',self._uid)], order="id desc", limit=1)
+        for user in users:
+            university_center_id=user.university_center_id.id
         if self.sequence:
             self.write({'state':'validate'})
         else:
-            self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by sequence desc limit 1"""%(self.university_center_id.id,str(year) + '/'))
+            self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by sequence desc limit 1"""%(university_center_id,str(year) + '/'))
             result = self._cr.fetchone()
             if result:
                 result = result[0]
