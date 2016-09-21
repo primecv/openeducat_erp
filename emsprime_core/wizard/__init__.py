@@ -24,5 +24,6 @@ from . import faculty_create_user_wizard
 from . import students_create_user_wizard
 from . import ems_enrollment_import
 from . import ems_enrollment_inscricao_subject
+from . import student_course_user_create
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

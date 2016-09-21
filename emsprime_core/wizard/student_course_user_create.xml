@@ -1,0 +1,36 @@
+<openerp>
+	<data>
+
+		<record id="student_course_create_user_form" model="ir.ui.view">
+			<field name="name">student.course.create.user.form</field>
+			<field name="model">wizard.student.user</field>
+			<field name="arch" type="xml">
+				<form string="Create Users for Enrolled Students">
+					<group col="4">
+						<label string="Select Course below. Related User will be created for to selected Course's Students." colspan="4"/>
+						<field name="course_id" required="1"/>
+					</group>
+					<footer>
+						<button name="action_generate" type="object" string="Create Users" class="oe_highlight"/>or
+						<button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="student_course_create_user_action" model="ir.actions.act_window">
+			<field name="name">Create Users for Enrollments</field>
+			<field name="res_model">wizard.student.user</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem id="menu_student_course_user_create"
+			parent="menu_ems_school_admin_tools"
+			sequence="3"
+			action="student_course_create_user_action"
+			groups="base.group_system"/>
+
+	</data>
+</openerp>

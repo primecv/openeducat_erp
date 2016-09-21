@@ -97,6 +97,7 @@
         'menu/student_menu.xml',
         #admin tools:
         'wizard/ems_enrollment_import_view.xml',
+        'wizard/student_course_user_create.xml',
     ],
     'demo': [
         'demo/res.users.csv',
