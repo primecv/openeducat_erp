@@ -60,12 +60,9 @@ class ems_request(models.Model):
     @api.depends('processor_id')
     def _get_university_center(self):
         university_center_id = False
-        #print "Student UNIVERSITY:: "
-        #print self.enrollment_id.student_id.id
-        if self.processor_id:
-            users = self.env['res.users'].search([('id','=',self.processor_id.id)], order="id desc", limit=1)
-            for user in users:
-                university_center_id=user.university_center_id.id
+        users = self.env['res.users'].search([('id','=',self._uid)], order="id desc", limit=1)
+        for user in users:
+            university_center_id=user.university_center_id.id
         self.university_center_id = university_center_id
 			
     #JCF - 05-09-2016
