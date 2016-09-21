@@ -111,6 +111,7 @@ class EmsStudent(models.Model):
     roll_number = fields.Char(string='Current Roll Number', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
     course_id = fields.Many2one('ems.course', string='Course', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
     edition_id = fields.Many2one('ems.edition', string='Edition', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
+    user_id = fields.Many2one('res.users', 'Related User')
 
     gr_no = fields.Char("GR Number", size=20, track_visibility='onchange')
     location_id = fields.Many2one('ems.location', 'Place of birth', track_visibility='onchange')
