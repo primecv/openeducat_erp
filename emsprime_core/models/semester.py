@@ -21,7 +21,7 @@
 
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
-
+from datetime import datetime
 
 class EmsSemester(models.Model):
     _name = 'ems.semester'
@@ -33,7 +33,7 @@ class EmsSemester(models.Model):
 
     name = fields.Char('Name', compute='_get_name', store=True,translate=True)
     start_date = fields.Date(
-        'Start Date', required=False, default=fields.Date.today())
+        'Start Date', required=False, default=datetime.today().date())
     end_date = fields.Date('End Date', required=False)
     number= fields.Integer('Number')
     code = fields.Char('Code')

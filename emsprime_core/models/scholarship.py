@@ -21,14 +21,14 @@
 
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
-
+from datetime import datetime
 
 class EmsScholarship(models.Model):
     _name = 'ems.scholarship'
 
     name = fields.Char('Name')
     start_date = fields.Date(
-        'Start Date', required=False, default=fields.Date.today())
+        'Start Date', required=False, default=datetime.today().date())
     end_date = fields.Date('End Date', required=False)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
 
