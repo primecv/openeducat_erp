@@ -117,6 +117,7 @@ class ems_request(models.Model):
     semester_id = fields.Many2one('ems.request.semester', 'Semester', track_visibility='onchange')
     semester_ids = fields.Many2many('ems.request.semester', 'ems_request_semester_rel', 'request_id', 'semester_id', 'Semester(s)', track_visibility='onchange')
     report_signature = fields.Char('Signature')
+    issue_date = fields.Date('Issue Date', track_visibility='onchange')
 
     @api.model
     def create(self, vals):
@@ -202,6 +203,8 @@ class ems_request(models.Model):
     def action_validate(self):
         """Generate sequence in "YYYY/0001" format by University center
         """
+        if not self.issue_date:
+            self.write({'issue_date': datetime.now().date()})
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
         str_number = '0001'

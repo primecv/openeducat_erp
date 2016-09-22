@@ -105,6 +105,7 @@
 							<field name="semester_ids" widget="many2many_tags" attrs="{'invisible':[('report_type_grade','!=',(True))]}"/>
 							<!--<field name="course_year" attrs="{'invisible':[('report_type_grade','!=',(True))]}"/>-->
 							<field name="date"/>
+							<field name="issue_date" attrs="{'invisible': [('issue_date','=',False)]}" readonly="1"/>
 							<field name="report_type_grade" invisible="1"/>
 							<field name="report_type" invisible="1"/>
 						</group>
@@ -146,6 +147,8 @@
                     <field name="student_faculty" />
                     <field name="request_type_id" />
                     <field name="state" />
+					<field name="date"/>
+					<field name="issue_date"/>
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
