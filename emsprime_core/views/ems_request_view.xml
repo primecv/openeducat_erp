@@ -105,7 +105,7 @@
 							<field name="semester_ids" widget="many2many_tags" attrs="{'invisible':[('report_type_grade','!=',(True))]}"/>
 							<!--<field name="course_year" attrs="{'invisible':[('report_type_grade','!=',(True))]}"/>-->
 							<field name="date"/>
-							<field name="issue_date" attrs="{'invisible': [('issue_date','=',False)]}" readonly="1"/>
+							<field name="issue_date" readonly="0"/>
 							<field name="report_type_grade" invisible="1"/>
 							<field name="report_type" invisible="1"/>
 						</group>
