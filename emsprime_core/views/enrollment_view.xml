@@ -24,6 +24,8 @@
                     <field name="student_id" />
                     <field name="course_id" />
                     <field name="edition_id" />
+					<field name="academic_year" />
+					<field name="course_year" />
 					<field name="type" />
                 </tree>
             </field>
