@@ -344,6 +344,10 @@ class ems_request(models.Model):
         if enrollment_id:
             for sem in semester_ids:
                 semesters.append(sem.semester)
+            #select all semesters if Semester(s) not selected:
+            if not semester_ids:
+                semester_ids = self.env['ems.request.semester'].search([('id', '>', 0)])
+                temp = [semesters.append(s.semester) for s in semester_ids]
 
             matricula_subjects = []
             #get Matricula Enrollment course plan subjects:
