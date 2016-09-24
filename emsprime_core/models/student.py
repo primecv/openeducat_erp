@@ -341,4 +341,20 @@ class EmsStudent(models.Model):
             result['context'] = {'default_type': 'I', 'default_student_id': student.id}
         return result
 
+    @api.multi
+    def update_inscription_course_year(self):
+        """ Temporary function to Update Student Inscription's Course Year
+        """
+        inscriptions = self.env['ems.enrollment'].search([('type', '=', 'I')], order="student_id, roll_number")
+        student_course_list = []
+        for inscription in inscriptions:
+            student_course = [inscription.student_id.id, inscription.course_id.id]
+            if student_course not in student_course_list:
+                student_course_list.append(student_course)
+                course_year = 1
+            else:
+                course_year += 1
+            if not inscription.course_year:
+                inscription.write({'course_year': str(course_year)})
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

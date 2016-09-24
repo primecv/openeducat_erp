@@ -274,6 +274,7 @@
                                     <field name="lang" />
                                     <field name="user_id" string="User"/>
                                 </group>
+								<button name="update_inscription_course_year" type="object" string="Update Student Inscription Course Year" groups="base.group_system"/>
 							</page>
                         </notebook>
                     </sheet>
