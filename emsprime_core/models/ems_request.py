@@ -338,7 +338,7 @@ class ems_request(models.Model):
         return self.write({'state':'draft'})
 
     @api.multi
-    def get_subjects(self, enrollment_id=False, semester_ids=False):
+    def get_subject_grades(self, enrollment_id=False, semester_ids=False):
         semesters, subjects = [], []
         course_plan = []
         if enrollment_id:
