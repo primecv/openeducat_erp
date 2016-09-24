@@ -208,15 +208,16 @@ class ems_request(models.Model):
         year = datetime.now().date().year
         next_seq = str(year) + '/0001'
         str_number = '0001'
-        university_center_id = False
+        university_center_id, result = False, False
         users = self.env['res.users'].search([('id','=',self._uid)], order="id desc", limit=1)
         for user in users:
             university_center_id=user.university_center_id.id
         if self.sequence:
             self.write({'state':'validate'})
         else:
-            self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by sequence desc limit 1"""%(university_center_id,str(year) + '/'))
-            result = self._cr.fetchone()
+            if university_center_id:
+                self._cr.execute("""select sequence from ems_request where university_center_id in (%s) and sequence ilike '%s%%' order by sequence desc limit 1"""%(university_center_id,str(year) + '/'))
+                result = self._cr.fetchone()
             if result:
                 result = result[0]
                 result = str(result).split('/')
