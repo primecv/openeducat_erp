@@ -337,6 +337,54 @@ class ems_request(models.Model):
     def action_draft(self):
         return self.write({'state':'draft'})
 
+    @api.multi
+    def get_subjects(self, enrollment_id=False, semester_ids=False):
+        semesters, subjects = [], []
+        course_plan = []
+        if enrollment_id:
+            for sem in semester_ids:
+                semesters.append(sem.semester)
+
+            matricula_subjects = []
+            #get Matricula Enrollment course plan subjects:
+            if enrollment_id.edition_id and enrollment_id.edition_id.course_plan_id and enrollment_id.edition_id.course_plan_id.subject_line:
+                course_plan.append(enrollment_id.edition_id.course_plan_id.id)
+                temp = [matricula_subjects.append(subject.subject_id.id) for subject in enrollment_id.edition_id.course_plan_id.subject_line 
+                                                                                if subject.semester in semesters]
+            #get inscription enrollment's course plan subjects:
+            inscription_subjects = []
+            for enrollment in enrollment_id.student_id.roll_number_line:
+                if enrollment.type == 'I':
+                    if enrollment.course_plan_id and enrollment.course_plan_id.subject_line:
+                        course_plan.append(enrollment.course_plan_id.id)
+                        temp = [inscription_subjects.append(subject.subject_id.id) for subject in enrollment.course_plan_id.subject_line
+                                                                                      if subject.semester in semesters]
+            #create final Subjects list:
+            for subject in matricula_subjects:
+                inscription_subjects.append(subject)
+            temp = [subjects.append(subject) for subject in inscription_subjects if subject not in subjects]
+
+            #ordering subjects list:
+            subjects_list = self.env['ems.course.plan.subject'].search([('course_plan_id', 'in', course_plan), ('subject_id', 'in', subjects)], order="semester, ordering") 
+            subjects = []
+            temp = [subjects.append(subject.subject_id.id) for subject in subjects_list if subject.subject_id.id not in subjects]
+
+            #get grades from student inscription based on subjects ordering:
+            result = []
+            for subj in subjects:
+                for inscription in enrollment_id.student_id.roll_number_line:
+                    flag = False
+                    if inscription.type == 'I':
+                        for line in inscription.subject_line:
+                            if line.subject_id.id == subj:
+                                result.append(line)
+                                flag = True
+                                break
+                    if flag:
+                        break
+        return result
+            
+
     @api.onchange('enrollment_id')
     def onchange_enrollment(self):
         student_name = ''

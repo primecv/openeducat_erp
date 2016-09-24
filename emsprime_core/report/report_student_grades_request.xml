@@ -58,12 +58,12 @@
 				<div style="float:left;width:25%"><strong>Rate</strong></div>
 				<div style="clear:both;"></div>
 				<div style="color:333333;">
-					<t t-foreach="o.enrollment_id.edition_id.course_plan_id.subject_line" t-as="sub">
-						<t t-if="o.check_semester(sub.semester)==True">
-							<div style="float:left;width:13%"><span t-field="sub.course_report" style="color:333333;"/><span t-if="sub.course_report">º Year</span><span t-if="sub.course_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
-							<div style="float:left;width:12%"><span t-esc="sub.semester_report"/><span t-if="sub.semester_report">º Semester</span><span t-if="sub.semester_report==''"><span style="color:#FFFFFF;">NADA</span></span></div>
+					<t t-foreach="o.get_subjects(o.enrollment_id, o.semester_ids)" t-as="sub">
+						<t t-if="o.enrollment_id">
+							<div style="float:left;width:13%"><span t-field="sub.inscription_id.academic_year" style="color:333333;"/></div>
+							<div style="float:left;width:12%"><span t-field="sub.semester"/></div>
 							<div style="float:left;width:50%"><span t-field="sub.subject_id.name" style="color:333333;"/></div>
-							<div style="float:left;width:25%"><span t-esc="o.get_grade(sub.subject_id.id)"/> ***</div>
+							<div style="float:left;width:25%"><span t-field="sub.grade"/> ***</div>
 							<div style="clear:both;"></div>
 						</t>
 					</t>
