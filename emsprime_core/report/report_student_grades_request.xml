@@ -60,10 +60,16 @@
 				<div style="color:333333;">
 					<t t-foreach="o.get_subject_grades(o.enrollment_id, o.semester_ids)" t-as="sub">
 						<t t-if="o.enrollment_id">
-							<div style="float:left;width:13%"><span t-field="sub.inscription_id.academic_year" style="color:333333;"/></div>
-							<div style="float:left;width:12%"><span t-field="sub.semester"/></div>
-							<div style="float:left;width:50%"><span t-field="sub.subject_id.name" style="color:333333;"/></div>
-							<div style="float:left;width:25%"><span t-field="sub.grade"/> ***</div>
+							<div style="float:left;width:13%">
+								<span t-if="sub['course_year']" t-esc="sub['course_year']" style="color:333333;"/>
+								<span t-if="not sub['course_year']" style="color:#ffffff;">-</span>
+							</div>
+							<div style="float:left;width:12%">
+								<span t-if="sub['grade_semester']" t-esc="sub['grade_semester']"/>
+								<span t-if="not sub['grade_semester']" style="color:#ffffff">-</span>
+							</div>
+							<div style="float:left;width:50%"><span t-esc="sub['subject_name']" style="color:333333;"/></div>
+							<div style="float:left;width:25%"><span t-esc="sub['grade']"/> ***</div>
 							<div style="clear:both;"></div>
 						</t>
 					</t>

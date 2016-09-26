@@ -376,13 +376,46 @@ class ems_request(models.Model):
 
             #get grades from student inscription based on subjects ordering:
             result = []
+            course_year = ''
+            grade_semester = ''
             for subj in subjects:
                 for inscription in enrollment_id.student_id.roll_number_line:
                     flag = False
                     if inscription.type == 'I':
                         for line in inscription.subject_line:
+                            lines = {}
                             if line.subject_id.id == subj:
-                                result.append(line)
+                                if not course_year:
+                                    course_year = line.inscription_id.course_year
+                                    lines['course_year'] = course_year
+                            	
+                                if (line.inscription_id.course_year == course_year) and 'course_year' not in lines:
+                                    lines['course_year'] = ''
+                                else:
+                                    course_year = line.inscription_id.course_year
+                                    lines['course_year'] = course_year
+
+                                if not grade_semester:
+                                    if line.semester in ('1', '3', '5', '7'):
+                                        semester = '1st Semester'
+                                    elif line.semester in ('2', '4', '6', '8'):
+                                        semester = '2nd Semester'
+                                    grade_semester = line.semester
+                                    lines['grade_semester'] = semester
+                            	
+                                if (line.semester == grade_semester) and 'grade_semester' not in lines:
+                                    lines['grade_semester'] = ''
+                                else:
+                                    if line.semester in ('1', '3', '5', '7'):
+                                        semester = '1st Semester'
+                                    elif line.semester in ('2', '4', '6', '8'):
+                                        semester = '2nd Semester'
+                                    grade_semester = line.semester
+                                    lines['grade_semester'] = semester
+
+                                lines['subject_name'] = line.subject_id.name
+                                lines['grade'] = line.grade
+                                result.append(lines)
                                 flag = True
                                 break
                     if flag:
