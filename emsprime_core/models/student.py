@@ -178,7 +178,7 @@ class EmsStudent(models.Model):
     @api.one
     @api.constrains('birth_date')
     def _check_birthdate(self):
-        if datetime.strptime(self.birth_date, '%Y-%m-%d').date() > datetime.today().date():
+        if self.birth_date and datetime.strptime(self.birth_date, '%Y-%m-%d').date() > datetime.today().date():
             raise ValidationError(
                 "Birth Date can't be greater than current date!")
 
