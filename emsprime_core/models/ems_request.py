@@ -420,6 +420,8 @@ class ems_request(models.Model):
 
                                 lines['subject_name'] = line.subject_id.name
                                 lines['grade'] = line.grade
+                                if not line.grade:
+                                	lines['grade'] = False
                                 result.append(lines)
                                 flag = True
                                 break
