@@ -340,11 +340,16 @@ class ems_request(models.Model):
 
     @api.multi
     def get_subject_grades(self, enrollment_id=False, semester_ids=False):
-        semesters, subjects = [], []
+        sem_ids, semesters, subjects = [], [], []
         course_plan = []
         if enrollment_id:
             for sem in semester_ids:
-                semesters.append(sem.semester)
+                sem_ids.append(sem.semester)
+            for sem in sem_ids:
+            	semesters.append(sem)
+            	if sem in ('2', '4', '6', '8'):
+            		sem1 = str(int(sem) -1)
+            		semesters.append(sem1)
             #select all semesters if Semester(s) not selected:
             if not semester_ids:
                 semester_ids = self.env['ems.request.semester'].search([('id', '>', 0)])
