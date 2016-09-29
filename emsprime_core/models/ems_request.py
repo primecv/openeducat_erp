@@ -209,7 +209,7 @@ class ems_request(models.Model):
         next_seq = str(year) + '/0001'
         str_number = '0001'
         university_center_id, result = False, False
-        users = self.env['res.users'].search([('id','=',self._uid)], order="id desc", limit=1)
+        users = self.env['res.users'].search([('id','=',self.create_uid.id)], order="id desc", limit=1)
         for user in users:
             university_center_id=user.university_center_id.id
         if self.sequence:
