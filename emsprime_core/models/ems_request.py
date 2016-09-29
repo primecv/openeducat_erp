@@ -392,19 +392,19 @@ class ems_request(models.Model):
                             if line.subject_id.id == subj:
                                 if not course_year:
                                     course_year = line.inscription_id.course_year
-                                    lines['course_year'] = course_year
+                                    lines['course_year'] = str(course_year) + 'º Ano'
                             	
                                 if (line.inscription_id.course_year == course_year) and 'course_year' not in lines:
                                     lines['course_year'] = ''
                                 else:
                                     course_year = line.inscription_id.course_year
-                                    lines['course_year'] = course_year
+                                    lines['course_year'] = str(course_year) + 'º Ano'
 
                                 if not grade_semester:
                                     if line.semester in ('1', '3', '5', '7'):
-                                        semester = '1st Semester'
+                                        semester = '1º Semestre'
                                     elif line.semester in ('2', '4', '6', '8'):
-                                        semester = '2nd Semester'
+                                        semester = '2º Semestre'
                                     grade_semester = line.semester
                                     lines['grade_semester'] = semester
                             	
@@ -412,9 +412,9 @@ class ems_request(models.Model):
                                     lines['grade_semester'] = ''
                                 else:
                                     if line.semester in ('1', '3', '5', '7'):
-                                        semester = '1st Semester'
+                                        semester = '1º Semestre'
                                     elif line.semester in ('2', '4', '6', '8'):
-                                        semester = '2nd Semester'
+                                        semester = '2º Semestre'
                                     grade_semester = line.semester
                                     lines['grade_semester'] = semester
 
