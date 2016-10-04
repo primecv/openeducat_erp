@@ -39,7 +39,7 @@
 							<td style="width:15%">
 								<img t-if="student.photo" t-att-src="'data:image/png;base64,%s' % student.photo" style="max-height: 40px;"/>
 								<t t-if="not student.photo">
-									<img t-att-src="'/emsprime_core/static/src/img/student.png'" style="max-height: 40px;"/>
+									<img t-att-src="'/emsprime_core/static/img/student.png'" style="max-height: 40px;"/>
 								</t>
 							</td>
 							
