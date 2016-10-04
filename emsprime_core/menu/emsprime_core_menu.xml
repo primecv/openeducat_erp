@@ -52,6 +52,7 @@
 
         <menuitem id="menu_ems_general_main" name="General" parent="menu_ems_school_root" sequence="30"/>
 
+        <menuitem id="menu_ems_school_reporting" name="Reporting" parent="menu_ems_school_root" sequence="35" groups="group_ems_back_office,group_ems_back_office_admin"/>
 
         <!-- Configuration Menu -->
         <menuitem id="menu_ems_school_config" name="Configuration" parent="menu_ems_school_root" sequence="40"/>
