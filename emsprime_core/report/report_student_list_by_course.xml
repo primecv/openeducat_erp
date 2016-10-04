@@ -12,8 +12,6 @@
 		        </div>
 		        <br/>
 		        <div class="col-xs-11 text-center" style="margin-top:25px; text-transform: uppercase; font-size:14px">
-						<strong>POLO UNIVERSITÁRIO DE <span t-field="o.university_center_id.name"/></strong>
-						<br/>
 						<strong><span t-field="o.course_id.degree_id.name"/> EM <span t-field="o.course_id.name"/></strong>
 						<br/>
 						<span t-if="o.academic_year"><strong>Ano Lectivo <span t-field="o.academic_year"/></strong></span>
