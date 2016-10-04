@@ -15,8 +15,7 @@ class ems_report_university_center_course_student(models.TransientModel):
 									  ('1996', '1996/1997'), ('1995', '1995/1996'),('1994', '1994/1995'),('1993', '1993/1994'),('1992', '1992/1993'),
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange')
-    course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',
-                     track_visibility='onchange')
+	course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',track_visibility='onchange')
 
 	@api.multi
 	def get_student_list(self, university_center_id, course_id, academic_year=False, course_year=False):
