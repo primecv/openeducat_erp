@@ -38,6 +38,9 @@
 						<tr t-foreach="o.get_student_list(o.university_center_id.id, o.course_id.id, o.academic_year,o.course_year)" t-as="student">
 							<td style="width:15%">
 								<img t-if="student.photo" t-att-src="'data:image/png;base64,%s' % student.photo" style="max-height: 40px;"/>
+								<t t-if="not student.photo">
+									<img class="img img-responsive" src="/emsprime_core/static/img/student.png" style="max-height: 40px;"/>
+								</t>
 							</td>
 							
 							<td style="width:85%">
