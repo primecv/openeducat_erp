@@ -28,7 +28,7 @@ class EmsScholarship(models.Model):
 
     name = fields.Char('Name')
     start_date = fields.Date(
-        'Start Date', required=False, default=datetime.today().date())
+        'Start Date', required=False, default=datetime.now().date())
     end_date = fields.Date('End Date', required=False)
     student_id = fields.Many2one('ems.student', 'Student', required=True)
 

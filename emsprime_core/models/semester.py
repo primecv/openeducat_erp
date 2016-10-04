@@ -33,7 +33,7 @@ class EmsSemester(models.Model):
 
     name = fields.Char('Name', compute='_get_name', store=True,translate=True)
     start_date = fields.Date(
-        'Start Date', required=False, default=datetime.today().date())
+        'Start Date', required=False, default=datetime.now().date())
     end_date = fields.Date('End Date', required=False)
     number= fields.Integer('Number')
     code = fields.Char('Code')
