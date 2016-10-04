@@ -107,5 +107,15 @@
 			header="False"
         />
 
+        <report 
+            id="action_report_student_by_course"
+            string="Students List by Course"
+            model="ems.report.university.center.course.student" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_student_list_by_course" 
+            name="emsprime_core.report_student_list_by_course" 
+            header="False"
+        />
+
     </data>
 </openerp>

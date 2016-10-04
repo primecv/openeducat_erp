@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_student_list_by_course_document">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':'pt_PT'})" />
+		<t t-foreach="p" t-as="o">
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-1" style="margin-top:15px;">
+		            <img t-if="o.create_uid.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo" style="max-height: 70px;"/>
+		        </div>
+		        <br/>
+		        <div class="col-xs-11 text-center" style="margin-top:25px; text-transform: uppercase; font-size:14px">
+						<strong>POLO UNIVERSITÁRIO DE <span t-field="o.university_center_id.name"/></strong>
+						<br/>
+						<strong><span t-field="o.course_id.degree_id.name"/> EM <span t-field="o.course_id.name"/></strong>
+						<br/>
+						<span t-if="o.academic_year"><strong>Ano Lectivo <span t-field="o.academic_year"/></strong></span>
+						<br/><br/>
+						<strong>LISTA DE ALUNOS DO </strong> 
+				</div>
+		    </div>
+		</div>
+
+		<div class="footer">
+		    <div style="margin-bottom:5px;">
+		    	Polo Universitário - <span t-field="o.university_center_id.name"/><br/>
+		    	Processado por computador via primeEMS por<br/>
+				<span t-if="o.create_uid.email"><span t-field="o.create_uid.email"/> em </span><span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/>
+		    </div>
+		</div>
+
+        <div class="page">
+        	<div style="color:333333;">
+        		<table class="table table-condensed">
+        			<tbody>
+						<tr t-foreach="o.get_student_list(o.university_center_id.id, o.course_id.id, o.academic_year)" t-as="student">
+							<td style="width:20%">
+								<img t-if="student.photo" t-att-src="'data:image/png;base64,%s' % student.photo" style="max-height: 50px;"/>
+							</td>
+							
+							<td style="width:80%">
+								<span t-esc="student.roll_number"/>
+								<span style="color:#ffffff;">---</span>
+								<span style="text-transform: uppercase;" t-esc="student.complete_name"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<span style="color:#ffffff;">-</span>
+		</div>
+
+    </t>
+</template>
+
+<template id="report_student_list_by_course">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_student_list_by_course_document" t-lang="pt_PT"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

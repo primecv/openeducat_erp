@@ -90,6 +90,7 @@
         'report/report_boletiminscription_history_request.xml',
         'report/report_blank.xml',
         'report/report_student_grades_request.xml',
+        'report/report_student_list_by_course.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
         'menu/emsprime_core_menu.xml',
@@ -98,6 +99,9 @@
         #admin tools:
         'wizard/ems_enrollment_import_view.xml',
         'wizard/student_course_user_create.xml',
+
+        #Reporting:
+        'wizard/ems_report_university_center_course_student.xml',
     ],
     'demo': [
         'demo/res.users.csv',
