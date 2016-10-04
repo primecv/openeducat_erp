@@ -12,6 +12,7 @@
 						<field name="university_center_id" required="1" options="{'no_open':1, 'no_create': 1}"/>
 						<field name="course_id" required="1" options="{'no_open':1, 'no_create': 1}"/>
 						<field name="academic_year"/>
+						<field name="course_year"/>
 					</group>
 					<footer>
 						<button name="print_report" type="object" string="Print" class="oe_highlight"/>or

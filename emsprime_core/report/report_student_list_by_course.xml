@@ -18,7 +18,7 @@
 						<br/>
 						<span t-if="o.academic_year"><strong>Ano Lectivo <span t-field="o.academic_year"/></strong></span>
 						<br/><br/>
-						<strong>LISTA DE ALUNOS DO </strong> 
+						<strong>LISTA DE ALUNOS <span t-if="o.course_year"> DO <span t-field="o.course_year"/>º ANO</span></strong> 
 				</div>
 		    </div>
 		</div>
@@ -36,11 +36,11 @@
         		<table class="table table-condensed">
         			<tbody>
 						<tr t-foreach="o.get_student_list(o.university_center_id.id, o.course_id.id, o.academic_year)" t-as="student">
-							<td style="width:20%">
-								<img t-if="student.photo" t-att-src="'data:image/png;base64,%s' % student.photo" style="max-height: 50px;"/>
+							<td style="width:15%">
+								<img t-if="student.photo" t-att-src="'data:image/png;base64,%s' % student.photo" style="max-height: 40px;"/>
 							</td>
 							
-							<td style="width:80%">
+							<td style="width:85%">
 								<span t-esc="student.roll_number"/>
 								<span style="color:#ffffff;">---</span>
 								<span style="text-transform: uppercase;" t-esc="student.complete_name"/>
