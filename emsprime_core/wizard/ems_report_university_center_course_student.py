@@ -35,11 +35,10 @@ class ems_report_university_center_course_student(models.TransientModel):
 		students = []
 		for res in result:
 			res = list(res)
-			students.append(res.pop())
+			students.append(res[0])
 		result = []
 		for student in students:
 			result.append(self.env['ems.student'].browse(student))
-		print"###############",result
 		return result
 
 
