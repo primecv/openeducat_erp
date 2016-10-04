@@ -9,7 +9,7 @@
 		<div class="header">
 		    <div class="row">
 		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:18px;margin-top:105px;">
-					<strong>DECLARAÇÃO <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
+					<strong>DECLARAÇÃO DE NOTAS <span t-if="o.sequence">​Nº <span t-field="o.number"/>/ISCEE-<span t-field="o.university_center_id.code"/>/<span t-field="o.year"/></span></strong>
 				</div>
 		    </div>
 		</div>
