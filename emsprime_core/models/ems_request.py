@@ -24,6 +24,8 @@ from openerp import models, fields, api, _
 from datetime import datetime
 import base64, re
 from openerp.exceptions import ValidationError, UserError,QWebException
+from lxml import etree
+from openerp.osv.orm import setup_modifiers
 	
 class ems_request_type(models.Model):
     _name = 'ems.request.type'
@@ -131,6 +133,28 @@ class ems_request(models.Model):
                     users.append(user.partner_id.id)
             if users:
                 self.write({'message_follower_ids': [[6, 0, users]]})
+        return res
+
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        """ This function makes Issue Date editable only to Back Office Admin group users.
+        """
+        res = super(ems_request, self).fields_view_get(
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        doc = etree.XML(res['arch'])
+        backoffice_admin_groupid = self.env['ir.model.data'].xmlid_to_res_id('emsprime_core.group_ems_back_office_admin')
+        if view_type == 'form' and backoffice_admin_groupid:
+            self._cr.execute("select uid from res_groups_users_rel where gid=%s and uid=%s"%(backoffice_admin_groupid, self._uid))
+            result = False
+            try:
+                result = self._cr.fetchone()[0]
+            except Exception:
+                pass
+            if result and result == self._uid:
+                for node in doc.xpath("//field[@name='date']"):
+                    node.set('readonly', '0')
+                    setup_modifiers(node, res['fields']['date'])
+                    res['arch'] = etree.tostring(doc)
         return res
 
     def get_to_year(self, year):
