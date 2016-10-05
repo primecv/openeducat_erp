@@ -44,8 +44,8 @@ class ems_report_university_center_course_student(models.TransientModel):
 			res = list(res)
 			students.append(res[0])
 		result = []
-		for student in students:
-			result.append(self.env['ems.student'].browse(student))
+		if students:
+			result = self.env['ems.student'].search([('id','in',students)], order="complete_name")
 		return result
 
 
