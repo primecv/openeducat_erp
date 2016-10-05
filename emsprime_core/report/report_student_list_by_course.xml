@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="footer">
-		    <div style="margin-bottom:5px;">
+		    <div style="margin-bottom:5px; font-size:10px;">
 		    	Polo Universitário - <span t-field="o.university_center_id.name"/><br/>
 		    	Processado por computador via primeEMS por<br/>
 				<span t-if="o.create_uid.email"><span t-field="o.create_uid.email"/> em </span><span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/>
