@@ -20,7 +20,7 @@ class ems_report_university_center_course_student(models.TransientModel):
 
 	@api.multi
 	def get_student_list(self, university_center_id, course_id, academic_year=False, course_year=False, subject_id=False):
-		query = """select distinct s.id,s.roll_number from ems_student s, ems_enrollment e, ems_enrollment_inscription_subject ie 
+		query = """select s.id,s.roll_number from ems_student s, ems_enrollment e, ems_enrollment_inscription_subject ie 
 						where s.id=e.student_id and ie.inscription_id = e.id and
 						e.type='I' and 
 						s.university_center_id=%s and 
