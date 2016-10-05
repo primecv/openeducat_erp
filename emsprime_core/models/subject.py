@@ -45,16 +45,26 @@ class EmsSubject(models.Model):
          ('both', 'Both'), ('other', 'Other')],
         'Type', default="theory", required=True)
 
-    '''@api.model
+    @api.model
     def name_search(self, name, args=None, operator='ilike', limit=80):
+        """ This function filters subjects list on Student List - by course wizard 
+        to show subjects from Inscriptions related to selected Course. (works on drop down option)
+        """
         context = self._context or {}
-        if context and 'inscription' in context and 'edition_id' in context:
-            edition_id = context['edition_id']
-            edition = self.env['ems.edition'].browse(edition_id)
+        user = context.get('uid', False)
+        if context and 'course_subject' in context and context['course_subject'] is True:
+            course_id = context['course_id']
+            inscriptions = self.env['ems.enrollment'].search([('course_id', '=', course_id), ('type' ,'=', 'I')])
+            inscription_ids = []
+            for inscription in inscriptions:
+                inscription_ids.append(inscription.id)
+            inscription_subject_lines = self.env['ems.enrollment.inscription.subject'].search([('inscription_id', 'in', inscription_ids)])
             subjects = []
-            subject_list = [subjects.append(x.subject_id.id) for x in edition.subject_line]
-            args = [['id', 'in', subjects]]
-        return super(EmsSubject, self).name_search(name, args, operator, limit)'''
+            for line in inscription_subject_lines:
+                if line.subject_id:
+                    subjects.append(line.subject_id.id)
+            args += [('id', 'in', subjects)]
+        return super(EmsSubject, self).name_search(name, args, operator, limit)
 
     @api.multi
     @api.constrains('name')
@@ -66,5 +76,26 @@ class EmsSubject(models.Model):
                 subject_list.append(all_subject.name.strip().lower())
             if subject.name.strip().lower() in subject_list:
                 raise ValidationError(_('Subject "%s" already Exists.')%(subject.name.lower()))
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        """ This function filters subjects list on Student List - by course wizard 
+        to show subjects from Inscriptions related to selected Course. (works on "Search More..." wizard)
+        """
+        context = self._context or {}
+        user = context.get('uid', False)
+        if context and 'course_subject' in context and context['course_subject'] is True:
+            course_id = context['course_id']
+            inscriptions = self.env['ems.enrollment'].search([('course_id', '=', course_id), ('type' ,'=', 'I')])
+            inscription_ids = []
+            for inscription in inscriptions:
+                inscription_ids.append(inscription.id)
+            inscription_subject_lines = self.env['ems.enrollment.inscription.subject'].search([('inscription_id', 'in', inscription_ids)])
+            subjects = []
+            for line in inscription_subject_lines:
+                if line.subject_id:
+                    subjects.append(line.subject_id.id)
+            args += [('id', 'in', subjects)]
+        return super(EmsSubject, self).search(args, offset, limit, order, count=count)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
