@@ -18,6 +18,10 @@ class ems_report_university_center_course_student(models.TransientModel):
 	course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',track_visibility='onchange')
 	subject_id = fields.Many2one('ems.subject', 'Subject')
 
+	@api.onchange('course_id')
+	def onchange_course(self):
+		self.subject_id = False
+
 	@api.multi
 	def get_student_list(self, university_center_id, course_id, academic_year=False, course_year=False, subject_id=False):
 		query = """select s.id,s.roll_number from ems_student s, ems_enrollment e, ems_enrollment_inscription_subject ie 
