@@ -16,20 +16,23 @@ class ems_report_university_center_course_student(models.TransientModel):
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange')
 	course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',track_visibility='onchange')
+	subject_id = fields.Many2one('ems.subject', 'Subject')
 
 	@api.multi
-	def get_student_list(self, university_center_id, course_id, academic_year=False, course_year=False):
-		query = """select distinct s.id,s.complete_name from ems_student s, ems_enrollment e 
-						where s.id=e.student_id and 
+	def get_student_list(self, university_center_id, course_id, academic_year=False, course_year=False, subject_id=False):
+		query = """select distinct s.id,s.roll_number from ems_student s, ems_enrollment e, ems_enrollment_inscription_subject ie 
+						where s.id=e.student_id and ie.inscription_id = e.id and
 						e.type='I' and 
 						s.university_center_id=%s and 
 						e.course_id=%s
 					"""%(university_center_id, course_id)
 		if academic_year:
-			query = query + "and academic_year='%s'"%(academic_year)
+			query = query + "and e.academic_year='%s'"%(academic_year)
 		if course_year:
-			query = query + "and course_year='%s'"%(course_year)
-		query = query + 'order by s.complete_name'
+			query = query + "and e.course_year='%s'"%(course_year)
+		if subject_id:
+			query = query + "and ie.subject_id='%s'"%(subject_id)
+		query = query + 'order by s.roll_number'
 		self._cr.execute(query)
 		result = self._cr.fetchall()
 		students = []

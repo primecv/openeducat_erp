@@ -7,10 +7,9 @@
 			<field name="arch" type="xml">
 				<form string="Students By Course">
 					<group col="4">
-						<label string="Seleccione o Pólo Universitário, o Curso e/ou Ano Académico e Ano do Curso e clique no botão Imprimir para gerar o relatório." colspan="4"/>
-						<newline/>
 						<field name="university_center_id" required="1" options="{'no_open':1, 'no_create': 1}"/>
 						<field name="course_id" required="1" options="{'no_open':1, 'no_create': 1}"/>
+						<field name="subject_id"/>
 						<field name="academic_year"/>
 						<field name="course_year"/>
 					</group>

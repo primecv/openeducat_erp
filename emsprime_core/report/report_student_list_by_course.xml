@@ -14,6 +14,8 @@
 		        <div class="col-xs-11 text-center" style="margin-top:25px; text-transform: uppercase; font-size:14px">
 						<strong><span t-field="o.course_id.degree_id.name"/> EM <span t-field="o.course_id.name"/></strong>
 						<br/>
+						<span t-if="o.subject_id"><strong><span t-field="o.subject_id.name"/></strong></span>
+						<br/>
 						<span t-if="o.academic_year"><strong>Ano Lectivo <span t-field="o.academic_year"/></strong></span>
 						<br/><br/>
 						<strong>LISTA DE ALUNOS <span t-if="o.course_year"> DO <span t-field="o.course_year"/>º ANO</span></strong> 
@@ -33,7 +35,7 @@
         	<div style="color:333333;">
         		<table class="table table-condensed">
         			<tbody>
-						<tr t-foreach="o.get_student_list(o.university_center_id.id, o.course_id.id, o.academic_year,o.course_year)" t-as="student">
+						<tr t-foreach="o.get_student_list(o.university_center_id.id, o.course_id.id, o.academic_year,o.course_year,o.subject_id.id)" t-as="student">
 							<td style="width:15%">
 								<img t-if="student.photo" t-att-src="'data:image/png;base64,%s' % student.photo" style="max-height: 38px;"/>
 								<t t-if="not student.photo">
