@@ -48,21 +48,38 @@ class EmsSubject(models.Model):
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=80):
         """ This function filters subjects list on Student List - by course wizard 
-        to show subjects from Inscriptions related to selected Course. (works on drop down option)
+        to show subjects from Inscriptions related to selected Course and/or Academic Year 
+        and/or Course Year. (works on drop down option)
         """
         context = self._context or {}
         user = context.get('uid', False)
         if context and 'course_subject' in context and context['course_subject'] is True:
             course_id = context['course_id']
-            inscriptions = self.env['ems.enrollment'].search([('course_id', '=', course_id), ('type' ,'=', 'I')])
-            inscription_ids = []
-            for inscription in inscriptions:
-                inscription_ids.append(inscription.id)
-            inscription_subject_lines = self.env['ems.enrollment.inscription.subject'].search([('inscription_id', 'in', inscription_ids)])
+            query = """select id from ems_enrollment where course_id=%s and type='I'"""%(course_id)
+            if context['academic_year']:
+                query += "and academic_year='%s'"%(context['academic_year'])
+            if context['course_year']:
+                query += "and course_year='%s'"%(context['course_year'])
+            self._cr.execute(query)
+            result = self._cr.fetchall()
+            inscriptions = []
+            for res in result:
+                res = list(res)
+                inscriptions.append(res[0])
+
             subjects = []
-            for line in inscription_subject_lines:
-                if line.subject_id:
-                    subjects.append(line.subject_id.id)
+            if inscriptions:
+                query2 = """select i.subject_id from ems_subject s, ems_enrollment e, ems_enrollment_inscription_subject i 
+                                where e.id=i.inscription_id and 
+                                    s.id=i.subject_id and 
+                                    e.id in {0}""".format(tuple(inscriptions))
+                self._cr.execute(query2)
+                result2 = self._cr.fetchall()
+                
+                for subject in result2:
+                    subject = list(subject)
+                    subjects.append(subject[0])
+
             args += [('id', 'in', subjects)]
         return super(EmsSubject, self).name_search(name, args, operator, limit)
 
@@ -86,15 +103,31 @@ class EmsSubject(models.Model):
         user = context.get('uid', False)
         if context and 'course_subject' in context and context['course_subject'] is True:
             course_id = context['course_id']
-            inscriptions = self.env['ems.enrollment'].search([('course_id', '=', course_id), ('type' ,'=', 'I')])
-            inscription_ids = []
-            for inscription in inscriptions:
-                inscription_ids.append(inscription.id)
-            inscription_subject_lines = self.env['ems.enrollment.inscription.subject'].search([('inscription_id', 'in', inscription_ids)])
+            query = """select id from ems_enrollment where course_id=%s and type='I'"""%(course_id)
+            if context['academic_year']:
+                query += "and academic_year='%s'"%(context['academic_year'])
+            if context['course_year']:
+                query += "and course_year='%s'"%(context['course_year'])
+            self._cr.execute(query)
+            result = self._cr.fetchall()
+            inscriptions = []
+            for res in result:
+                res = list(res)
+                inscriptions.append(res[0])
+
             subjects = []
-            for line in inscription_subject_lines:
-                if line.subject_id:
-                    subjects.append(line.subject_id.id)
+            if inscriptions:
+                query2 = """select i.subject_id from ems_subject s, ems_enrollment e, ems_enrollment_inscription_subject i 
+                                where e.id=i.inscription_id and 
+                                    s.id=i.subject_id and 
+                                    e.id in {0}""".format(tuple(inscriptions))
+                self._cr.execute(query2)
+                result2 = self._cr.fetchall()
+                
+                for subject in result2:
+                    subject = list(subject)
+                    subjects.append(subject[0])
+
             args += [('id', 'in', subjects)]
         return super(EmsSubject, self).search(args, offset, limit, order, count=count)
 
