@@ -110,7 +110,7 @@ class ems_request(models.Model):
         [('S', 'Student'), ('F', 'Faculty')], 'Type',related='request_type_id.type', track_visibility='onchange', store=False)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', track_visibility='onchange')
     regime = fields.Selection(
-        [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal'), ('GAS', 'Gabinete de Apoio Social')], 'Regime', required=True, track_visibility='onchange')
+        [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal'), ('GAS', 'Gabinete de Acção Social')], 'Regime', required=True, track_visibility='onchange')
     student_faculty = fields.Char(string='Student/Faculty', compute='_get_student_faculty', store=True)
     processor_id = fields.Many2one('res.users', 'Processor', track_visibility='onchange', select=True)
     report_type_grade = fields.Boolean('Report type grades?',related='request_type_id.is_grade', track_visibility='onchange', store=False)

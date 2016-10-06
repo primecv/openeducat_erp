@@ -9,9 +9,9 @@
 					<group col="4">
 						<field name="university_center_id" required="1" options="{'no_open':1, 'no_create': 1}"/>
 						<field name="course_id" required="1" options="{'no_open':1, 'no_create': 1}"/>
-						<field name="subject_id" attrs="{'readonly':[('course_id','=',False)]}" context="{'course_subject': True, 'course_id': course_id}"/>
 						<field name="academic_year"/>
 						<field name="course_year"/>
+						<field name="subject_id" attrs="{'readonly':[('course_id','=',False)]}" context="{'course_subject': True, 'course_id': course_id}"/>
 					</group>
 					<footer>
 						<button name="print_report" type="object" string="Print" class="oe_highlight"/>or
