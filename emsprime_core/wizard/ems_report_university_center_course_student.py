@@ -21,6 +21,13 @@ class ems_report_university_center_course_student(models.TransientModel):
 	@api.onchange('course_id')
 	def onchange_course(self):
 		self.subject_id = False
+		if not self.course_id:
+			self.course_year = False
+			self.academic_year = False
+
+	@api.onchange('academic_year', 'course_year')
+	def onchange_academic_or_course_year(self):
+		self.subject_id = False
 
 	@api.multi
 	def get_student_list(self, university_center_id, course_id, academic_year=False, course_year=False, subject_id=False):
