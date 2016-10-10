@@ -8,9 +8,10 @@
             <field name="arch" type="xml">
                 <tree string="Class">
                     <field name="name" />
-					<field name="semester" />
-					<field name="year" />
+                    <field name="course_id" />
+					<field name="academic_year" />
                     <field name="faculty_id" />
+					<field name="semester" />
                     <field name="subject_id" />
                     <field name="student_ids" invisible="1"/>
                 </tree>
@@ -64,10 +65,10 @@
                     <field name="faculty_id" />
                     <field name="subject_id" />
 					<!--<field name="semester_id"/>-->
-					<field name="year"/>
+					<field name="academic_year"/>
                     <group expand="0" string="Group By">
                         <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}"/>
-                        <filter string="Year" domain="[]" context="{'group_by':'year'}"/>
+                        <filter string="Academic Year" domain="[]" context="{'group_by':'academic_year'}"/>
 					</group>
                 </search>
             </field>

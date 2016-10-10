@@ -39,11 +39,11 @@ class EmsClass(models.Model):
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
-    #student_ids = fields.Many2many('ems.student', string='Student(s)')
+    student_ids = fields.Many2many('ems.student', string='Student(s)')
     enrollment_ids = fields.Many2many('ems.enrollment', string='Enrollment(s)')
     #semester_id = fields.Many2one('ems.semester', string='Semester')
     semester = fields.Selection([('I', 'I'), ('II', 'II')], 'Semester')
-    #year = fields.Char('Year', size=4)
+    year = fields.Char('Year', size=4)
     academic_year = fields.Selection([('2016', '2016/2017'),('2015', '2015/2016'), ('2014', '2014/2015'),('2013', '2013/2014'),('2012', '2012/2013'), 
                                       ('2011', '2011/2012'), ('2010', '2010/2011'), ('2009', '2009/2010'), ('2008', '2008/2009'), ('2007', '2007/2008'),
 									  ('2006', '2006/2007'), ('2005', '2005/2006'), ('2004', '2004/2005'), ('2003', '2003/2004'),('2002', '2002/2003'),
