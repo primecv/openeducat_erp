@@ -25,8 +25,9 @@
                     <sheet>
                         <group colspan="4" col="4" name="main">
                             <field name="name" />
+							<field name="academic_year" />
+							<field name="course_id" />
                             <field name="subject_id" />
-							<field name="year" />
 							<field name="semester"/>
                             <field name="faculty_id" />
 							<!--<field name="semester_id" invisible="1"/>-->
