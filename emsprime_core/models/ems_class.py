@@ -35,6 +35,10 @@ class EmsClass(models.Model):
         if int(self.year) > 3000 or int(self.year) < 2000:
            raise ValidationError(_("Invalid Date!"))
 
+    @api.onchange('academic_year', 'subject_id')
+    def onchange_subject_academic_year(self):
+        self.enrollment_ids = False
+
     name = fields.Char('Class Name', size=64, required=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
