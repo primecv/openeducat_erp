@@ -168,6 +168,30 @@ class EmsEnrollment(models.Model):
             vals['roll_number'] = str(student_roll_no) + '.' + str(vals['academic_year'])
         return super(EmsEnrollment, self).create(vals)
 
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        """ This function filters subjects list on Classes based on Subject & Academic Year selected.
+        * returns : list of Inscription Enrollments
+        """
+        context = self._context or {}
+        user = context.get('uid', False)
+        if context and 'subject_academic_year_filter' in context and context['subject_academic_year_filter'] is True:
+            subject_id = context['subject_id']
+            academic_year = context['academic_year']
+            query = """ select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject i
+            		where e.id=i.id and
+            			  i.subject_id = s.id and
+            			  i.subject_id = %s and
+            			  e.academic_year = '%s' """%(subject_id, academic_year)
+            self._cr.execute(query)
+            result = self._cr.fetchall()
+            enrollments = []
+            for res in result:
+                res = list(res)
+                enrollments.append(res[0])
+            args += [('id','in', enrollments)]
+        return super(EmsEnrollment, self).search(args, offset, limit, order, count=count)
+
     @api.multi
     def action_load_subjects(self):
         """Load related Course - Semester Subjects in Inscription Enrollments
