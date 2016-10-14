@@ -301,7 +301,6 @@
                     <field name="state" />
                     <field name="type_current_enroll" />
 					<field name="institutional_email" />
-					<filter name="active" string="Active" domain="[('active','=',True)]" context="{}"/>
 					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
                     <newline />
                     <group expand="0" string="Group By...">
@@ -323,7 +322,7 @@
             <field name="view_mode">kanban,tree,pivot,form</field>
             <field name="search_view_id" ref="view_ems_student_search" />
             <field name="domain">[]</field>
-            <field name="context">{'search_default_active': True}</field>
+            <field name="context">{}</field>
 			<field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 Click to add new Students.
