@@ -43,6 +43,7 @@ class EmsClass(models.Model):
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=True)
+    edition_id = fields.Many2one('ems.edition', 'Edition')
     student_ids = fields.Many2many('ems.student', string='Student(s)')
     enrollment_ids = fields.Many2many('ems.enrollment', string='Enrollment(s)')
     #semester_id = fields.Many2one('ems.semester', string='Semester')

@@ -9,6 +9,7 @@
                 <tree string="Class">
                     <field name="name" />
                     <field name="course_id" />
+                    <field name="edition_id"/>
 					<field name="academic_year" />
                     <field name="faculty_id" />
 					<field name="semester" />
@@ -28,6 +29,7 @@
                             <field name="name" />
 							<field name="academic_year" />
 							<field name="course_id" />
+                            <field name="edition_id" required="1"/>
                             <field name="subject_id" />
 							<field name="semester"/>
                             <field name="faculty_id" />
