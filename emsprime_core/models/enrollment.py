@@ -71,13 +71,24 @@ class EmsEnrollment(models.Model):
 
     @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
     def onchange_enrollment_data(self):
+        """ This function loads Course, Edition, & Course subjects of Selected Student in Inscription enrollment.
+        """
         if self.type == 'I':
             if self.student_id and self.student_id.course_id:
                 subjects = []
+                edition_id = self.student_id.edition_id.id or False
+                course_id = self.student_id.course_id.id or False
+                transfer_enrollment_ids = self.env['ems.enrollment'].search([('type','=','T'), ('student_id','=',self.student_id.id)], order="create_date desc")
+                if transfer_enrollment_ids:
+                    transfer_enrollment_id = transfer_enrollment_ids[0]
+                    edition_id = transfer_enrollment_id.edition_id.id or False
+                    course_id = transfer_enrollment_id.course_id.id or False
+                self.update({
+                    'edition_id': edition_id,
+                    'course_id': course_id,
+                })
                 subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
                 self.update({
-                    'edition_id': self.student_id.edition_id.id,
-                    'course_id': self.student_id.course_id.id,
                     'subject_ids_copy': [[6,0,subjects]]
                 })
             else:
