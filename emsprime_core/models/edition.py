@@ -48,7 +48,31 @@ class EmsEdition(models.Model):
         start_date = fields.Date.from_string(self.start_date)
         end_date = fields.Date.from_string(self.end_date)
         if start_date > end_date:
+
             raise ValidationError("End Date cannot be set before Start Date.")
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        """ This function filters editions list 
+        """
+        """ Below section is to filter Editions on Ems Class:
+        """
+        context = self._context or {}
+        user = context.get('uid', False)
+        if context and 'ems_class_filter_by_course' in context and context['ems_class_filter_by_course'] is True:
+            course_id = context['course_id']
+            if course_id:
+                query = """select id from ems_edition where course_id=%s"""%(course_id)
+                self._cr.execute(query)
+                result = self._cr.fetchall()
+                editions = []
+                for res in result:
+                    res = list(res)
+                    editions.append(res[0])
+                if editions:
+                    args += [('id', 'in', editions)]
+        return super(EmsEdition, self).search(args, offset, limit, order, count=count)
+
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):
@@ -61,6 +85,23 @@ class EmsEdition(models.Model):
                 courses = courses.parent_id
             editions = self.env['ems.edition'].search([('course_id', 'in', lst)])
             return editions.name_get()
+
+        """ Below section is to filter Editions on Ems Class:
+        """
+        context = self._context or {}
+        user = context.get('uid', False)
+        if context and 'ems_class_filter_by_course' in context and context['ems_class_filter_by_course'] is True:
+            course_id = context['course_id']
+            if course_id:
+                query = """select id from ems_edition where course_id=%s"""%(course_id)
+                self._cr.execute(query)
+                result = self._cr.fetchall()
+                editions = []
+                for res in result:
+                    res = list(res)
+                    editions.append(res[0])
+                if editions:
+                    args += [('id', 'in', editions)]
         return super(EmsEdition, self).name_search(
             name, args, operator=operator, limit=limit)
 

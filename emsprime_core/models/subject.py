@@ -81,6 +81,24 @@ class EmsSubject(models.Model):
                     subjects.append(subject[0])
 
             args += [('id', 'in', subjects)]
+
+        """ Below section is to filter Subjects on Ems Class based on Edition selected:
+        """
+        if context and 'ems_class_filter_by_edition' in context and context['ems_class_filter_by_edition'] is True:
+            edition_id = context['edition_id']
+            if edition_id:
+                edition = self.env['ems.edition'].browse(edition_id)
+                course_plan_id = edition.course_plan_id and edition.course_plan_id.id or False
+                subjects = []
+                if course_plan_id:
+                    query = """select subject_id from ems_course_plan_subject where course_plan_id=%s"""%(course_plan_id)
+                    self._cr.execute(query)
+                    result = self._cr.fetchall()
+                    
+                    for res in result:
+                        res = list(res)
+                        subjects.append(res[0])
+                args += [('id', 'in', subjects)]
         return super(EmsSubject, self).name_search(name, args, operator, limit)
 
     @api.multi
@@ -129,6 +147,24 @@ class EmsSubject(models.Model):
                     subjects.append(subject[0])
 
             args += [('id', 'in', subjects)]
+        
+        """ Below section is to filter Subjects on Ems Class based on Edition selected:
+        """
+        if context and 'ems_class_filter_by_edition' in context and context['ems_class_filter_by_edition'] is True:
+            edition_id = context['edition_id']
+            if edition_id:
+                edition = self.env['ems.edition'].browse(edition_id)
+                course_plan_id = edition.course_plan_id and edition.course_plan_id.id or False
+                subjects = []
+                if course_plan_id:
+                    query = """select subject_id from ems_course_plan_subject where course_plan_id=%s"""%(course_plan_id)
+                    self._cr.execute(query)
+                    result = self._cr.fetchall()
+                    
+                    for res in result:
+                        res = list(res)
+                        subjects.append(res[0])
+                args += [('id', 'in', subjects)]
         return super(EmsSubject, self).search(args, offset, limit, order, count=count)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
