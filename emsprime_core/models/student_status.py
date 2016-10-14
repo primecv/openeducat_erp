@@ -28,6 +28,5 @@ class EmsStudentStatus(models.Model):
 
     name = fields.Char('Name')
     code = fields.Char('Code')
-    roll_number_id = fields.Many2one('ems.enrollment', 'Enrollment', required=True)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

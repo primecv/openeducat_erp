@@ -9,7 +9,6 @@
                 <tree string="Student Status">
                     <field name="name" />
                     <field name="code" />
-                    <field name="roll_number_id" />
                 </tree>
             </field>
         </record>
@@ -23,7 +22,6 @@
                         <group col="4">
 							<field name="name" />
 							<field name="code" />
-							<field name="roll_number_id" />
                         </group>
                     </sheet>
                 </form>
@@ -38,12 +36,10 @@
                 <search string="Student Status">
 					<field name="name" />
 					<field name="code" />
-					<field name="roll_number_id" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="Status" domain="[]"
                             context="{'group_by':'name'}" />
-						<filter string="Roll Number" domain="[]" context="{'group_by':'roll_number_id'}" />
                     </group>
                 </search>
             </field>
