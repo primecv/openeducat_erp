@@ -83,6 +83,7 @@ class EmsStudent(models.Model):
             self.type_current_enroll = type_current_enroll
             self.university_center_id = university_center_id
 
+    active = fields.Boolean('Is Active?', default=True)
     middle_name = fields.Char('Middle Name', size=128, track_visibility='onchange')
     last_name = fields.Char('Last Name', size=128, required=True, track_visibility='onchange')
     birth_date = fields.Date('Birth Date', required=False, track_visibility='onchange')
