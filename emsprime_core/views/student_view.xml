@@ -302,6 +302,8 @@
                     <field name="type_current_enroll" />
 					<field name="institutional_email" />
 					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
+					<field name="age" />
+					<field name="birth_year" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="course" string="Course" domain="[]"
@@ -310,6 +312,8 @@
 						<filter name="university_center_id" string="University Center" domain="[]" context="{'group_by':'university_center_id'}"/>
                         <filter name="state" string="State" domain="[]" context="{'group_by':'state'}" />
                         <filter name="type_current_enroll" string="Type of current enrollment" domain="[]" context="{'group_by':'type_current_enroll'}" />
+                        <filter name="age" string="Age" domain="[]" context="{'group_by':'age'}" />
+                        <filter name="birth_year" string="Birth Year" domain="[]" context="{'group_by':'birth_year'}" />
                     </group>
                 </search>
             </field>
