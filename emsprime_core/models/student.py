@@ -42,6 +42,19 @@ class EmsStudent(models.Model):
         self.complete_name = ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
 
     @api.one
+    @api.depends('birth_date')
+    def _get_age(self):
+        today = date.today()
+        birth_date = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
+        self.age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+
+    @api.one
+    @api.depends('birth_date')
+    def _get_birth_year(self):
+        birth_date = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
+        self.birth_year = birth_date.year
+
+    @api.one
     @api.depends('roll_number_line')
     def _get_curr_enrollment(self):
         self.roll_number = ''
@@ -175,7 +188,10 @@ class EmsStudent(models.Model):
     document_type = fields.Selection(
         [('idCard', 'ID Card'), ('passport', 'Passport')],
         'Document type', default="idCard", track_visibility='onchange')
-	
+
+    birth_year = fields.Integer(string='Birth Year', compute='_get_birth_year', store=True, track_visibility='onchange')
+    age = fields.Integer(string='Age', compute='_get_age', store=True, track_visibility='onchange')
+
     @api.one
     @api.constrains('birth_date')
     def _check_birthdate(self):
