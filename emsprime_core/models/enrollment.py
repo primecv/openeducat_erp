@@ -176,9 +176,24 @@ class EmsEnrollment(models.Model):
             year = datetime.now().date().year
             idno = str(year) + '.' + next_seq
             vals['roll_number'] = idno
-        elif 'type' in vals and vals['type'] == 'I' and 'no_rollno' not in self._context:
-            student_roll_no = self.env['ems.student'].browse([vals['student_id']]).roll_number
-            vals['roll_number'] = str(student_roll_no) + '.' + str(vals['academic_year'])
+        elif 'type' in vals and vals['type'] == 'I':
+            if 'no_rollno' not in self._context:
+                student_roll_no = self.env['ems.student'].browse([vals['student_id']]).roll_number
+                vals['roll_number'] = str(student_roll_no) + '.' + str(vals['academic_year'])
+            if vals['student_id']:
+                student = self.env['ems.student'].browse(vals['student_id'])
+                subjects = []
+                edition_id = student.edition_id.id or False
+                course_id = student.course_id.id or False
+                transfer_enrollment_ids = self.env['ems.enrollment'].search([('type','=','T'), ('student_id','=',student.id)], order="create_date desc")
+                if transfer_enrollment_ids:
+                    transfer_enrollment_id = transfer_enrollment_ids[0]
+                    edition_id = transfer_enrollment_id.edition_id.id or False
+                    course_id = transfer_enrollment_id.course_id.id or False
+                    vals['edition_id'] = edition_id
+                    vals['course_id'] = course_id
+            else:
+               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})
         return super(EmsEnrollment, self).create(vals)
 
     @api.model
