@@ -292,7 +292,7 @@ class EmsEnrollment(models.Model):
 class EmsEnrollmentInscriptionSubject(models.Model):
     _name = "ems.enrollment.inscription.subject"
     _description = "Grades"
-    _order = "course_year,semester_copy,subject_id"
+    _order = "course_year,semester_copy,ordering"
 
     #JCF - 08-09-2016
     @api.one
@@ -307,6 +307,15 @@ class EmsEnrollmentInscriptionSubject(models.Model):
             year = math.ceil(year)
         year_str = str(int(year))	
         self.course_year = year_str
+    @api.one
+    @api.depends('subject_id')
+    def _get_course_plan_ordering(self):
+        for ins_line in self:
+            subject = ins_line.subject_id.id
+            if ins_line.inscription_id.course_plan_id:
+                for sub in ins_line.inscription_id.course_plan_id.subject_line:
+                    if sub.subject_id.id == subject:
+                        self.ordering = sub.ordering
 
     @api.onchange('subject_id', 'semester', 'ect')
     def onchange_subject(self):
@@ -362,6 +371,7 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
     equivalence = fields.Boolean(string="Equivalence", default=False)
     course_year = fields.Char(string='Course Year', compute='_get_course_year', store=True)
+    ordering = fields.Integer(compute="_get_course_plan_ordering", string="Ordering", store=True)
     course_report = fields.Char('Course Report')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
