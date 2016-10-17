@@ -36,6 +36,10 @@
             sequence="25" action="act_open_ems_enrollment_view"
             groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
 
+        <menuitem id="menu_ems_transfer_enrollment" parent="menu_ems_school_main"
+            sequence="27" action="act_open_ems_transfer_enrollment_view"
+            groups="group_ems_back_office,group_ems_back_office_admin,group_ems_admin_sga" />
+
         <menuitem id="menu_reporting_grades" 
 			parent="menu_ems_school_main" 
 			action="ems_enrollment_inscription_grades_action" 

@@ -63,6 +63,8 @@ class EmsEnrollment(models.Model):
                      track_visibility='onchange')
     student_status_id = fields.Many2one('ems.student.status', 'Student Status')
     course_plan_id = fields.Many2one('ems.course.plan', 'Course Plan')
+    annulment = fields.Boolean('Annulment')
+    annulment_date = fields.Date('Annulment Date')
 
     def get_to_year(self, year):
         if year:
