@@ -45,8 +45,9 @@ class EmsStudent(models.Model):
     @api.depends('birth_date')
     def _get_age(self):
         today = date.today()
-        birth_date = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
-        self.age = str(today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day)))
+        if self.birth_date:
+            birth_date = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
+            self.age = str(today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day)))
 
     @api.one
     @api.depends('birth_date')
