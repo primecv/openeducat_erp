@@ -58,10 +58,11 @@ class EmsStudent(models.Model):
     @api.one
     @api.depends('roll_number_line')
     def _get_curr_enrollment(self):
-        self.roll_number = ''
-        self.course_id = False
-        self.edition_id = False
-        self.type_current_enroll = ''
+        roll_number = ''
+        course_id = False
+        edition_id = False
+        type_current_enroll = ''
+        transferred = False
         university_center_id = False
         #check current date with the latest enrollment edition:
         count = 0
@@ -91,11 +92,15 @@ class EmsStudent(models.Model):
             except Exception:
                 pass
 
-            self.roll_number = roll_number
-            self.edition_id = edition_id
-            self.course_id = course_id
-            self.type_current_enroll = type_current_enroll
-            self.university_center_id = university_center_id
+            if enrollment.type == 'T':
+                transferred = True
+
+        self.roll_number = roll_number
+        self.edition_id = edition_id
+        self.course_id = course_id
+        self.type_current_enroll = type_current_enroll
+        self.university_center_id = university_center_id
+        self.transferred = transferred
 
     active = fields.Boolean('Is Active?', default=True)
     middle_name = fields.Char('Middle Name', size=128, track_visibility='onchange')
@@ -192,6 +197,7 @@ class EmsStudent(models.Model):
 
     birth_year = fields.Char(string='Birth Year', compute='_get_birth_year', store=True, track_visibility='onchange')
     age = fields.Char(string='Age', compute='_get_age', store=True, track_visibility='onchange')
+    transferred = fields.Boolean(compute="_get_curr_enrollment", string="Transferrred", store=True)
 
     @api.one
     @api.constrains('birth_date')

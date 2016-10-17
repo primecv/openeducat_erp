@@ -301,9 +301,11 @@
                     <field name="state" />
                     <field name="type_current_enroll" />
 					<field name="institutional_email" />
+                    <filter name="is_transferred" string="Transferred" domain="[('transferred', '=', True)]" context="{}" />
 					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
 					<field name="age" />
 					<field name="birth_year" />
+                    <field name="transferred" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="course" string="Course" domain="[]"
