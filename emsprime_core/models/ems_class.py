@@ -66,4 +66,24 @@ class EmsClass(models.Model):
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange', required=True)
 
+    @api.multi
+    def load_inscriptions(self):        
+        for eclass in self:
+            query = """select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis
+                        where e.id=eis.inscription_id and
+                            eis.subject_id=s.id and
+                            e.academic_year is not null and
+                            e.academic_year='%s'"""%(self.academic_year)
+            self._cr.execute(query)
+            result = self._cr.fetchall()
+            res = []
+            for r in result:
+                r = list(r)
+                res.append(r[0])
+            for enrollment in self.enrollment_ids:
+                 res.append(enrollment.id)
+            if res:
+                self.write({'enrollment_ids': [[6,0, res]]})
+
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
