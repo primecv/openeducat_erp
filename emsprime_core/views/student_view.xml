@@ -128,10 +128,11 @@
                                         context="{'default_edition_id':edition_id}" >
 										<tree string="Enrollment">
 								            <field name="roll_number" />
+											<field name="type" />
 								            <field name="course_id" />
 								            <field name="edition_id" />
-											<field name="type" />
-											<field name="create_date" string="Date"/>
+											<field name="enrollment_date" />
+										<!--<field name="create_date" string="Date"/>-->
 										</tree>
 										<form string="Enrollment">
 											<group col="4">
@@ -140,10 +141,18 @@
 										        <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
 										        <field name="roll_number" />
 												<field name="academic_year" required="0" />
+												<field name="enrollment_date" />
+												<newline/>
 										        <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','!=','I')]}" />
 												<field name="course_year" attrs="{'invisible':[('type','not in',('I'))]}"/>
 												<field name="period" attrs="{'invisible':[('type','not in',('C','I'))]}"/>
 												<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
+												<newline/>
+												<field name="annulment" attrs="{'invisible':[('type','not in', ('M', 'I'))]}"/>
+												<field name="annulment_date" attrs="{'invisible':[('annulment','=',False)], 'required':[('annulment','=',True)]}"/>
+												<newline/>
+												<field name="course_conclusion_date" attrs="{'invisible':[('type','not in', ('CC'))]}"/>
+												<field name="matricula_id" domain="[('type','=','M')]" attrs="{'invisible':[('type','not in', ('CC'))], 'required':[('type','=','CC')]}"/>
 											</group>
 											<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}" invisible="1">
 												<field name="subject_ids_copy" invisible="1"/><newline/>
@@ -302,10 +311,12 @@
                     <field name="type_current_enroll" />
 					<field name="institutional_email" />
                     <filter name="is_transferred" string="Transferred" domain="[('transferred', '=', True)]" context="{}" />
+                    <filter name="is_course_completed" string="Course Completed?" domain="[('course_completed', '=', True)]" context="{}" />
 					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
 					<field name="age" />
 					<field name="birth_year" />
                     <field name="transferred" />
+                    <field name="course_completed" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="course" string="Course" domain="[]"

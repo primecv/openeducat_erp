@@ -9,9 +9,10 @@
                 <tree string="Roll Number">
                     <field name="roll_number" />
                     <field name="student_id" />
+					<field name="type" />
                     <field name="course_id" />
                     <field name="edition_id" />
-					<field name="type" />
+					<field name="enrollment_date" />
                 </tree>
             </field>
         </record>
@@ -22,11 +23,12 @@
                 <tree string="Roll Number" create="0">
                     <field name="roll_number" />
                     <field name="student_id" />
+					<field name="type" />
                     <field name="course_id" />
                     <field name="edition_id" />
 					<field name="academic_year" />
 					<field name="course_year" />
-					<field name="type" />
+					<field name="enrollment_date" />
                 </tree>
             </field>
         </record>
@@ -47,13 +49,18 @@
                             <field name="course_id" />
                             <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
                             <field name="roll_number" />
-							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
-							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
+                            <field name="enrollment_date" />
 							<field name="academic_year" required="1"/>
 							<field name="course_year"/>
                             <newline/>
+							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
+							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
+                            <newline/>
                             <field name="annulment" attrs="{'invisible':[('type','not in', ('M', 'I'))]}"/>
                             <field name="annulment_date" attrs="{'invisible':[('annulment','=',False)], 'required':[('annulment','=',True)]}"/>
+							<newline/>
+							<field name="course_conclusion_date" attrs="{'invisible':[('type','not in', ('CC'))]}"/>
+							<field name="matricula_id" domain="[('type','=','M')]" attrs="{'invisible':[('type','not in', ('CC'))], 'required':[('type','=','CC')]}"/>
                         </group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
@@ -93,14 +100,19 @@
                             <field name="course_id" />
                             <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
                             <field name="roll_number" />
-                            <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','not in',('I'))]}" />
-							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
-							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
+                            <field name="enrollment_date" />
 							<field name="academic_year" required="1"/>
 							<field name="course_year"/>
                             <newline/>
+                            <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','not in',('I'))]}" />
+							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
+							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
+                            <newline/>
                             <field name="annulment" attrs="{'invisible':[('type','not in', ('M', 'I'))]}"/>
                             <field name="annulment_date" attrs="{'invisible':[('annulment','=',False)], 'required':[('annulment','=',True)]}"/>
+                            <newline/>
+							<field name="course_conclusion_date" attrs="{'invisible':[('type','not in', ('CC'))]}"/>
+							<field name="matricula_id" domain="[('type','=','M')]" attrs="{'invisible':[('type','not in', ('CC'))], 'required':[('type','=','CC')]}"/>
                         </group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
@@ -154,9 +166,17 @@
 							<field name="course_year"/>
 							<field name="academic_year" required="1"/>
 							<field name="roll_number" required="0" readonly="1" string="Number"/>
+                            <field name="enrollment_date" />
+                            <newline/>
                             <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','not in',('I'))]}" />
 							<field name="student_status_id" attrs="{'invisible':[('type','not in',('I'))]}"/>
 							<field name="period" attrs="{'invisible':[('type','not in',('I','C'))]}"/>
+                            <newline/>
+                            <field name="annulment" attrs="{'invisible':[('type','not in', ('M', 'I'))]}"/>
+                            <field name="annulment_date" attrs="{'invisible':[('annulment','=',False)], 'required':[('annulment','=',True)]}"/>
+                            <newline/>
+							<field name="course_conclusion_date" attrs="{'invisible':[('type','not in', ('CC'))]}"/>
+							<field name="matricula_id" domain="[('type','=','M')]" attrs="{'invisible':[('type','not in', ('CC'))], 'required':[('type','=','CC')]}"/>
                         </group>
 						<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}">
 							<button name="action_load_subjects" type="object" string="Load Subjects" colspan="1"/><newline/>
