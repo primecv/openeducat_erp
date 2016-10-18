@@ -297,6 +297,7 @@ class EmsEnrollment(models.Model):
                                 'subject_id': sem_subject.subject_id.id,
                                 'semester': sem_subject.semester or sem_subject.subject_id.semester,
                                 'semester_copy': sem_subject.semester or sem_subject.subject_id.semester,
+                                'course_year': sem_subject.course_year or False,
                         })
 
                 #invalid_subjects = self.env['ems.enrollment.inscription.subject'].search([
@@ -315,19 +316,6 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     _description = "Grades"
     _order = "course_year,semester,ordering"
 
-    #JCF - 08-09-2016
-    @api.one
-    @api.depends('semester_copy')
-    def _get_course_year(self):
-        semester = 0
-        year = 0.0
-        year_str = ''
-        semester = int(self.semester_copy)
-        if semester > 0:
-            year = semester / (2 * 1.0)
-            year = math.ceil(year)
-        year_str = str(int(year))	
-        self.course_year = year_str
     @api.one
     @api.depends('subject_id')
     def _get_course_plan_ordering(self):
@@ -391,7 +379,7 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     evaluation_type = fields.Selection([('exam', 'Exam'),('continuous', 'Continuous')], 'ET')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
     equivalence = fields.Boolean(string="Equivalence", default=False)
-    course_year = fields.Char(string='Course Year', compute='_get_course_year', store=True)
+    course_year = fields.Char(string='Course Year')
     ordering = fields.Integer(compute="_get_course_plan_ordering", string="Ordering", store=True)
     course_report = fields.Char('Course Report')
 
