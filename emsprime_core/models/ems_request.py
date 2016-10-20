@@ -255,7 +255,7 @@ class ems_request(models.Model):
             if self.faculty_id:
                 pass
             else:
-                if self.request_type_id.kind == 'S':
+                if self.request_type_id.type == 'S':
                     if self.enrollment_id:
                         self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
                         result = self._cr.fetchone()
