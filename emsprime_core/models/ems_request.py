@@ -255,12 +255,16 @@ class ems_request(models.Model):
             if self.faculty_id:
                 pass
             else:
-                self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
-                result = self._cr.fetchone()
-                if result:
-                    result = result[0]
-                    if result < 1:
-                        raise UserError(_('The student does not have any inscription enrollments yet.'))
+                if self.request_type_id.kind == 'S':
+                    if self.enrollment_id:
+                        self._cr.execute("""select count(*) as counter from ems_enrollment where student_id = %s and type='I'"""%(self.enrollment_id.student_id.id))
+                        result = self._cr.fetchone()
+                        if result:
+                            result = result[0]
+                            if result < 1:
+                                raise UserError(_('The student does not have any inscription enrollments yet.'))
+                    else:
+                        raise ValidationError(_('Please Select Valid Enrollment.'))
             #if self.request_type_id.grades_with_average:
             #    valid = self.validate_grades(self.course_year)
             #    if valid == True:
