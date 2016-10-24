@@ -197,7 +197,27 @@ class EmsEnrollment(models.Model):
                     vals['course_id'] = course_id
             else:
                self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})
+        #check Roll number for duplicates :
+        rollno = vals['roll_number']
+        matriculas = self.search([('roll_number','=',rollno)])
+        if matriculas and vals['type'] != 'CC':
+            raise ValidationError(_('Student Already exists with Roll Number %s')%(rollno))
         return super(EmsEnrollment, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        #check Roll number for duplicates :
+        if 'roll_number' in vals or 'type' in vals:
+            rollno = self.roll_number
+            if 'roll_no' in vals:
+                rollno = vals['roll_number']
+            ttype = self.type
+            if 'type' in vals: 
+                ttype = vals['type']
+            matriculas = self.search([('roll_number','=',rollno), ('id','!=',self.id)])
+            if matriculas and ttype != 'CC':
+                raise ValidationError(_('Student Already exists with Roll Number %s')%(rollno))
+        return super(EmsEnrollment, self).write(vals)
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
