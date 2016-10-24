@@ -120,9 +120,9 @@ class EmsEnrollment(models.Model):
         return True
 
     _sql_constraints = [
-        ('unique_name_roll_number_id',
-         'unique(roll_number,course_id,edition_id,student_id)',
-         'Roll Number & Student must be unique per Edition!'),
+        #('unique_name_roll_number_id',
+        # 'unique(roll_number,course_id,edition_id,student_id)',
+        # 'Roll Number & Student must be unique per Edition!'),
         ('unique_name_roll_number_course_id',
          'unique(roll_number,course_id,edition_id)',
          'Roll Number must be unique per Edition!'),
