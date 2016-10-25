@@ -64,6 +64,14 @@ class EmsCourse(models.Model):
                     res['arch'] = etree.tostring(doc)
         return res
 
+    @api.multi
+    def name_get(self):
+        result = []
+        for course in self:
+            name = ' - '.join(filter(bool, [course.code, course.name]))
+            result.append((course.id, name))
+        return result
+
 class EmsCourseSubject(models.Model):
     _name = "ems.course.subject"
     _description = "Course Subjects"
