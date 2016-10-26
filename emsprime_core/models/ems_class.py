@@ -70,11 +70,20 @@ class EmsClass(models.Model):
     @api.multi
     def load_inscriptions(self):        
         for eclass in self:
-            query = """select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis
-                        where e.id=eis.inscription_id and
+            select_clause = "select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ "
+            where_clause = """ where e.id=eis.inscription_id and
                             eis.subject_id=s.id and
+                            e.edition_id = ed.id and
+                            ed.university_center_id = univ.id and
+                            univ.id = %s and
                             e.academic_year is not null and
-                            e.academic_year='%s'"""%(self.academic_year)
+                            e.academic_year='%s'"""%(eclass.university_center_id.id, eclass.academic_year)
+            if eclass.course_id:
+                where_clause += ' and e.course_id=%s'%(eclass.course_id.id)
+            if eclass.edition_id:
+                where_clause += ' and e.edition_id=%s'%(eclass.edition_id.id)
+
+            query = select_clause + where_clause
             self._cr.execute(query)
             result = self._cr.fetchall()
             res = []
