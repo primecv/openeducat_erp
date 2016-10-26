@@ -51,7 +51,7 @@ class EmsClass(models.Model):
     name = fields.Char('Class Name', size=64, required=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
-    course_id = fields.Many2one('ems.course', 'Course', required=True)
+    course_id = fields.Many2one('ems.course', 'Course', required=False)
     edition_id = fields.Many2one('ems.edition', 'Edition')
     student_ids = fields.Many2many('ems.student', string='Student(s)')
     enrollment_ids = fields.Many2many('ems.enrollment', string='Enrollment(s)')

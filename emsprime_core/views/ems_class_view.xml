@@ -30,11 +30,11 @@
                             <field name="name" />
 							<field name="academic_year" />
 							<field name="course_id" />
-                            <field name="edition_id" required="1" context="{'ems_class_filter_by_course': True, 'course_id': course_id}"/>
+                            <field name="edition_id" required="0" context="{'ems_class_filter_by_course': True, 'course_id': course_id}"/>
                             <field name="subject_id" context="{'ems_class_filter_by_edition': True, 'course_id': course_id, 'edition_id': edition_id}"/>
-							<field name="semester"/>
                             <field name="faculty_id" />
                             <field name="university_center_id" required="1"/>
+							<field name="semester"/>
 							<!--<field name="semester_id" invisible="1"/>-->
                         </group>
                         <div name="button_box" class="oe_button_box">
