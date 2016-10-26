@@ -41,7 +41,7 @@
 							<button name="load_inscriptions" type="object" string="Load Enrollments" class="oe_stat_button" id="inscription_button" icon="fa-pencil-square-o"/>
 						</div>
                         <group string="Students" name="subject">
-                            <field name="enrollment_ids" nolabel="1" context="{'subject_academic_year_filter': True, 'subject_id': subject_id, 'academic_year': academic_year}">
+                            <field name="enrollment_ids" nolabel="1" context="{'subject_academic_year_filter': True, 'subject_id': subject_id, 'academic_year': academic_year, 'university_center_id':university_center_id}">
 								<tree string="Enrollment(s)">
 								    <field name="roll_number" />
 								    <field name="student_id" />

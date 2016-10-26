@@ -229,11 +229,30 @@ class EmsEnrollment(models.Model):
         if context and 'subject_academic_year_filter' in context and context['subject_academic_year_filter'] is True:
             subject_id = context['subject_id']
             academic_year = context['academic_year']
-            query = """ select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject i
+            university_center_id = context['university_center_id']
+
+            check = False
+            message = []
+            if not academic_year or not subject_id or not university_center_id:
+                check = True
+            if not academic_year:
+                message.append('Academic Year')
+            if not subject_id:
+                message.append('Subject')
+            if not university_center_id:
+                message.append('University Center')
+            if check is True:
+                msg = ', '.join(message)
+                raise UserError(_('Please Select %s.')%(msg))
+
+            query = """ select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject i, ems_edition ed, ems_university_center univ
             		where e.id=i.id and
             			  i.subject_id = s.id and
             			  i.subject_id = %s and
-            			  e.academic_year = '%s' """%(subject_id, academic_year)
+                          e.edition_id = ed.id and
+                          ed.university_center_id = univ.id and
+                          univ.id = %s and
+            			  e.academic_year = '%s' """%(subject_id, university_center_id, academic_year)
             self._cr.execute(query)
             result = self._cr.fetchall()
             enrollments = []
