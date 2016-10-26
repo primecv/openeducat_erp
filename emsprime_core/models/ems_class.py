@@ -65,6 +65,7 @@ class EmsClass(models.Model):
 									  ('1996', '1996/1997'), ('1995', '1995/1996'),('1994', '1994/1995'),('1993', '1993/1994'),('1992', '1992/1993'),
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange', required=True)
+    university_center_id = fields.Many2one('ems.university.center', 'University Center')
 
     @api.multi
     def load_inscriptions(self):        

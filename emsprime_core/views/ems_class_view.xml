@@ -14,6 +14,7 @@
                     <field name="faculty_id" />
 					<field name="semester" />
                     <field name="subject_id" />
+                    <field name="university_center_id"/>
                     <field name="student_ids" invisible="1"/>
                 </tree>
             </field>
@@ -33,6 +34,7 @@
                             <field name="subject_id" context="{'ems_class_filter_by_edition': True, 'course_id': course_id, 'edition_id': edition_id}"/>
 							<field name="semester"/>
                             <field name="faculty_id" />
+                            <field name="university_center_id" required="1"/>
 							<!--<field name="semester_id" invisible="1"/>-->
                         </group>
                         <div name="button_box" class="oe_button_box">
@@ -71,9 +73,11 @@
                     <field name="subject_id" />
 					<!--<field name="semester_id"/>-->
 					<field name="academic_year"/>
+                    <field name="university_center_id"/>
                     <group expand="0" string="Group By">
                         <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}"/>
                         <filter string="Academic Year" domain="[]" context="{'group_by':'academic_year'}"/>
+                        <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}"/>
 					</group>
                 </search>
             </field>
