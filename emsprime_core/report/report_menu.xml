@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <!--<report
+        <report
             id="action_report_student_idcard" 
             model="ems.student" 
             string="Student IdCard"
             report_type="qweb-pdf"
             name="emsprime_core.report_student_idcard" 
-            file="emsprime_core.report_student_idcard"
+	    file="emsprime_core.report_student_idcard"
+	    menu="False"
         />
         <report
             id="action_report_student_bonafide" 
@@ -16,7 +17,8 @@
             report_type="qweb-pdf"
             name="emsprime_core.report_student_bonafide" 
             file="emsprime_core.report_student_bonafide"
-        />-->
+	    menu="False"
+	    />
         <report 
             id="report_enrollment_decl"
             string="Enrollment Declaration - Request"
