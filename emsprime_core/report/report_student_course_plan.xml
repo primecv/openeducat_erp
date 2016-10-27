@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_student_course_plan_document">
+    <t t-call="report.html_container">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.lang})" />
+		<t t-foreach="p" t-as="o">
+		<div class="header">
+		    <div class="row">
+		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:18px;margin-top:105px;">
+					<strong>PLANO DE ESTUDOS</strong>
+				</div>
+		    </div>
+		</div>
+
+        <div class="page" style="margin:0 25px">
+			<style type="text/css">
+			<![CDATA[
+			@font-face {
+			  font-family: 'Calibri';
+			  font-style: normal;
+			  font-weight: 400;
+			  src: local('Calibri'), url(https://github.com/jondot/dotfiles/blob/master/.fonts/calibri.ttf?raw=true) format('truetype');
+			}
+			]]>
+			.tit_declaration{color:#333333;font-family:Calibri;font-size:16px;}
+			.tit_section{color:333333;font-size:16px;}
+			</style>
+
+			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+				
+				<strong>Name</strong>: <span t-field="o.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Birth Date</strong>: <span t-field="o.birth_date"/> ***<br/>
+				<strong>Place of Birth</strong>: <span t-field="o.parish_id.name"/><span t-if="o.parish_id.name"> / </span> 
+				<span t-field="o.county_id.name"/><span t-if="o.county_id.name"> / </span>
+				<span t-field="o.island_id.name"/><span t-if="o.island_id.name"> / </span>
+				<span t-field="o.country_id.name"/> ***<br/>
+				<strong>Nationality</strong>: <span t-field="o.nationality.citizenship"/> ***<br/>
+				<strong>Filiation</strong>: <span t-field="o.father"/>
+				<span t-if="o.mother"> e <span t-field="o.mother"/></span> ***<br/>
+
+				<strong>Identification</strong>: <span t-if="o.document_type == 'idCard'"><strong>BI Nº</strong> </span><span t-if="o.document_type == 'passport'"><strong>Passport Nº</strong> </span><span t-field="o.passport_no"/><span t-if="o.issue_date"> / <strong>Emission</strong>: </span> 
+				<span t-field="o.issue_date"/><span t-if="o.issuer"> / <strong>Archive</strong>: </span>
+				<span t-field="o.issuer"/> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="tit_section"><strong>Enrollment Data</strong></span><br />
+
+				<strong>Student Number</strong>: <span t-field="o.roll_number"/> ***<br/>
+				<strong>Name Course</strong>: <span t-esc="o.report_student_course_plan_data('degree')"/> in <span t-esc="o.report_student_course_plan_data('course')"/> ***<br/>
+				<strong>University Center</strong>: <span t-esc="o.report_student_course_plan_data('university_center_id')"/> ***<br/>
+				<strong>Year of the course</strong>: <span t-esc="o.report_student_course_plan_data('academic_year')"/> ***<br/>
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<div style="float:left;width:13%"><strong>Course Year</strong></div>
+				<div style="float:left;width:12%"><strong>Semester</strong></div>
+				<div style="float:left;width:50%"><strong>Subjects</strong></div>
+				<div style="float:left;width:25%"><strong>Rate</strong></div>
+				<div style="clear:both;"></div>
+				<div style="color:333333;">
+					<t t-foreach="o.report_student_course_plan_subjects()" t-as="sub">
+						<t>
+							<div style="float:left;width:13%">
+								<span t-if="sub['course_year']" t-esc="sub['course_year']" style="color:333333;"/>
+								<span t-if="not sub['course_year']" style="color:#ffffff;">-</span>
+							</div>
+							<div style="float:left;width:12%">
+								<span t-if="sub['grade_semester']" t-esc="sub['grade_semester']"/>
+								<span t-if="not sub['grade_semester']" style="color:#ffffff">-</span>
+							</div>
+							<div style="float:left;width:50%"><span t-esc="sub['subject_name']" style="color:333333;"/></div>
+							<div style="float:left;width:25%"><span t-if="sub['grade']"><span t-esc="sub['grade']"/> </span>
+								<span t-if="not sub['grade']" style="color:#ffffff">-</span>
+							***</div>
+							<div style="clear:both;"></div>
+						</t>
+					</t>
+				</div>
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="tit_section"><strong>Special mentions</strong></span><br />
+				<span /> ***<br/>
+				
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+
+				<span class="tit_section"><strong>Declaration Data</strong></span><br />
+				
+				<strong>Applicant</strong>: <span t-field="o.complete_name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Issue Date</strong>: <span t-esc="time.strftime('%Y-%m-%d')"/> ***
+
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+				
+				<br/>
+				<br/>
+				<br/>
+				<div align="center">
+					<strong>The direction of academic services</strong>
+				</div>								
+				<br/>
+				<br/>
+				<div align="center">
+					/<span t-if="o.university_center_id.code=='PUSV'">Lia Cordeiro Medina</span><span t-if="o.university_center_id.code=='PUP'">Sílvia Rocco</span>/
+				</div>
+            </div>
+
+        </div>
+		<div class="footer">
+		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
+				<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.university_center_id">- <span t-field="o.university_center_id.name"/></span></span><br/>
+				<!--span style="line-height:10px;">Processado por computador por <br/><span t-field="o.processor_id.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/-->
+		    </div>
+		</div>
+
+    </t>
+	</t>
+</template>
+
+<template id="report_student_course_plan">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_student_course_plan_document" t-lang="doc.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
