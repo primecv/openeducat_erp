@@ -388,7 +388,7 @@ class EmsStudent(models.Model):
                 inscription.write({'course_year': str(course_year)})
 
     @api.multi
-    def report_student_grades_data(self, var=False):
+    def report_student_course_plan_data(self, var=False):
         for student in self:
             matricula_id = self.env['ems.enrollment'].search([('student_id','=',student.id), ('type','=','M')], limit=1)
             course = student.course_id
@@ -402,7 +402,7 @@ class EmsStudent(models.Model):
                 return matricula_id.academic_year
 
     @api.multi
-    def report_student_grades_subjects(self, semester_ids=False):
+    def report_student_course_plan_subjects(self, semester_ids=False):
         enrollment_id = self.env['ems.enrollment'].search([('student_id','=',self.id), ('type','=','M')], limit=1)
         sem_ids, semesters, subjects = [], [], []
         course_plan = []
