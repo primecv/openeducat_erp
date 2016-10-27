@@ -514,7 +514,6 @@ class EmsStudent(models.Model):
                 else:
                     course_plan_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','in',course_plan), ('subject_id','=',subj)], limit=1)
                     lines = {}
-                    lines['course_year'] = ''
                     if not course_year:
                         course_year = course_plan_subject_ids.course_year
                         lines['course_year'] = str(course_year) + 'º Ano'
