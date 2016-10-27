@@ -454,7 +454,7 @@ class EmsStudent(models.Model):
             grade_semester = ''
             for subj in subjects:
                 #check if this subject exists in student inscription subjects list :
-                student_inscriptions = self.env['ems.enrollment'].search([('student_id', '=', self.id)])
+                student_inscriptions = self.env['ems.enrollment'].search([('student_id', '=', self.id), ('type','=','I')])
                 student_inscriptions2 = []
                 for stdi in student_inscriptions:
                     student_inscriptions2.append(stdi.id)
@@ -512,15 +512,37 @@ class EmsStudent(models.Model):
                         if flag:
                             break
                 else:
-                    course_plan_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','in',student_course_plans), ('subject_id','=',subj)], limit=1)
+                    course_plan_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','in',course_plan), ('subject_id','=',subj)], limit=1)
                     lines = {}
                     lines['course_year'] = ''
-                    csemester = ''
-                    if course_plan_subject_ids.semester in ('1', '3', '5', '7'):
-                        csemester = '1º Semestre'
-                    elif course_plan_subject_ids.semester in ('2', '4', '6', '8'):
-                        csemester = '2º Semestre'
-                    lines['grade_semester'] = csemester
+                    if not course_year:
+                        course_year = course_plan_subject_ids.course_year
+                        lines['course_year'] = str(course_year) + 'º Ano'
+                                   
+                    if (course_plan_subject_ids.course_year == course_year) and 'course_year' not in lines:
+                        lines['course_year'] = ''
+                    else:
+                        course_year = course_plan_subject_ids.course_year
+                        lines['course_year'] = str(course_year) + 'º Ano'
+
+                    if not grade_semester:
+                        if course_plan_subject_ids.semester in ('1', '3', '5', '7'):
+                            semester = '1º Semestre'
+                        elif course_plan_subject_ids.semester in ('2', '4', '6', '8'):
+                            semester = '2º Semestre'
+                            grade_semester = course_plan_subject_ids.semester
+                            lines['grade_semester'] = semester
+                                  
+                    if (course_plan_subject_ids.semester == grade_semester) and 'grade_semester' not in lines:
+                        lines['grade_semester'] = ''
+                    else:
+                        if course_plan_subject_ids.semester in ('1', '3', '5', '7'):
+                            semester = '1º Semestre'
+                        elif course_plan_subject_ids.semester in ('2', '4', '6', '8'):
+                            semester = '2º Semestre'
+                        grade_semester = course_plan_subject_ids.semester
+                        lines['grade_semester'] = semester
+
                     lines['grade'] = ''
                     lines['subject_name'] = course_plan_subject_ids.subject_id.name
                     lines['result'] = False
