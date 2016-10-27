@@ -404,6 +404,10 @@ class EmsStudent(models.Model):
     @api.multi
     def report_student_course_plan_subjects(self, semester_ids=False):
         enrollment_id = self.env['ems.enrollment'].search([('student_id','=',self.id), ('type','=','M')], limit=1)
+        temp_course_plans = self.env['ems.course.plan'].search([('course_id','=',self.course_id.id)])
+        student_course_plans = []
+        for cpl in temp_course_plans:
+            student_course_plans.append(cpl.id)
         sem_ids, semesters, subjects = [], [], []
         course_plan = []
         if enrollment_id:
@@ -449,56 +453,78 @@ class EmsStudent(models.Model):
             course_year = ''
             grade_semester = ''
             for subj in subjects:
-                for inscription in enrollment_id.student_id.roll_number_line:
-                    flag = False
-                    if inscription.type == 'I':
-                        for line in inscription.subject_line:
-                            lines = {}
-                            if line.subject_id.id == subj:
-                                if not course_year:
-                                    course_year = line.inscription_id.course_year
-                                    lines['course_year'] = str(course_year) + 'º Ano'
-                                
-                                if (line.inscription_id.course_year == course_year) and 'course_year' not in lines:
-                                    lines['course_year'] = ''
-                                else:
-                                    course_year = line.inscription_id.course_year
-                                    lines['course_year'] = str(course_year) + 'º Ano'
-
-                                if not grade_semester:
-                                    if line.semester in ('1', '3', '5', '7'):
-                                        semester = '1º Semestre'
-                                    elif line.semester in ('2', '4', '6', '8'):
-                                        semester = '2º Semestre'
-                                    grade_semester = line.semester
-                                    lines['grade_semester'] = semester
-                                
-                                if (line.semester == grade_semester) and 'grade_semester' not in lines:
-                                    lines['grade_semester'] = ''
-                                else:
-                                    if line.semester in ('1', '3', '5', '7'):
-                                        semester = '1º Semestre'
-                                    elif line.semester in ('2', '4', '6', '8'):
-                                        semester = '2º Semestre'
-                                    grade_semester = line.semester
-                                    lines['grade_semester'] = semester
-
-                                lines['subject_name'] = line.subject_id.name
-                                lines['grade'] = line.grade
-                                if line.grade:
-                                    if line.grade > 9:
-                                        lines['result'] = 'approved'
+                #check if this subject exists in student inscription subjects list :
+                student_inscriptions = self.env['ems.enrollment'].search([('student_id', '=', self.id)])
+                student_inscriptions2 = []
+                for stdi in student_inscriptions:
+                    student_inscriptions2.append(stdi.id)
+                inscription_subject_check = self.env['ems.enrollment.inscription.subject'].search([('inscription_id', 'in', student_inscriptions2), 
+                										('subject_id','=',subj)])
+                if inscription_subject_check:
+                    for inscription in enrollment_id.student_id.roll_number_line:
+                        flag = False
+                        if inscription.type == 'I':
+                            for line in inscription.subject_line:
+                                lines = {}
+                                if line.subject_id.id == subj:
+                                    if not course_year:
+                                        course_year = line.inscription_id.course_year
+                                        lines['course_year'] = str(course_year) + 'º Ano'
+                                   
+                                    if (line.inscription_id.course_year == course_year) and 'course_year' not in lines:
+                                        lines['course_year'] = ''
                                     else:
-                                        lines['result'] = 'failed'
-                                else:
-                                    lines['result'] = False
-                                if not line.grade:
-                                    lines['grade'] = False
-                                result.append(lines)
-                                flag = True
-                                break
-                    if flag:
-                        break
+                                        course_year = line.inscription_id.course_year
+                                        lines['course_year'] = str(course_year) + 'º Ano'
+  
+                                    if not grade_semester:
+                                        if line.semester in ('1', '3', '5', '7'):
+                                            semester = '1º Semestre'
+                                        elif line.semester in ('2', '4', '6', '8'):
+                                            semester = '2º Semestre'
+                                        grade_semester = line.semester
+                                        lines['grade_semester'] = semester
+                                  
+                                    if (line.semester == grade_semester) and 'grade_semester' not in lines:
+                                        lines['grade_semester'] = ''
+                                    else:
+                                        if line.semester in ('1', '3', '5', '7'):
+                                            semester = '1º Semestre'
+                                        elif line.semester in ('2', '4', '6', '8'):
+                                            semester = '2º Semestre'
+                                        grade_semester = line.semester
+                                        lines['grade_semester'] = semester
+
+                                    lines['subject_name'] = line.subject_id.name
+                                    lines['grade'] = line.grade
+                                    if line.grade:
+                                        if line.grade > 9:
+                                            lines['result'] = 'approved'
+                                        else:
+                                            lines['result'] = 'failed'
+                                    else:
+                                        lines['result'] = False
+                                    if not line.grade:
+                                        lines['grade'] = False
+                                    result.append(lines)
+                                    flag = True
+                                    break
+                        if flag:
+                            break
+                else:
+                    course_plan_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','in',student_course_plans), ('subject_id','=',subj)], limit=1)
+                    lines = {}
+                    lines['course_year'] = ''
+                    csemester = ''
+                    if course_plan_subject_ids.semester in ('1', '3', '5', '7'):
+                        csemester = '1º Semestre'
+                    elif course_plan_subject_ids.semester in ('2', '4', '6', '8'):
+                        csemester = '2º Semestre'
+                    lines['grade_semester'] = csemester
+                    lines['grade'] = ''
+                    lines['subject_name'] = course_plan_subject_ids.subject_id.name
+                    lines['result'] = False
+                    result.append(lines)
         return result
 
 
