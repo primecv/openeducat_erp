@@ -485,6 +485,13 @@ class EmsStudent(models.Model):
 
                                 lines['subject_name'] = line.subject_id.name
                                 lines['grade'] = line.grade
+                                if line.grade:
+                                    if line.grade > 9:
+                                        lines['result'] = 'approved'
+                                    else:
+                                        lines['result'] = 'failed'
+                                else:
+                                    lines['result'] = False
                                 if not line.grade:
                                     lines['grade'] = False
                                 result.append(lines)

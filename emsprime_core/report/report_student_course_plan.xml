@@ -73,8 +73,10 @@
 								<span t-if="not sub['grade_semester']" style="color:#ffffff">-</span>
 							</div>
 							<div style="float:left;width:50%"><span t-esc="sub['subject_name']" style="color:333333;"/></div>
-							<div style="float:left;width:25%"><span t-if="sub['grade']"><span t-esc="sub['grade']"/> </span>
-								<span t-if="not sub['grade']" style="color:#ffffff">-</span>
+							<div style="float:left;width:25%">
+								<span t-if="sub['result'] == 'approved'"><img t-att-src="'/emsprime_core/static/img/check.png'" style="max-height: 32px;"/> </span>
+								<span t-if="sub['result'] =='failed'"><img t-att-src="'/emsprime_core/static/img/delete.png'" style="max-height: 32px;"/> </span>
+								<span t-if="not sub['grade']" style="color:#ffffff"><img t-att-src="'/emsprime_core/static/img/delete.png'" style="max-height: 32px;"/></span>
 							***</div>
 							<div style="clear:both;"></div>
 						</t>
