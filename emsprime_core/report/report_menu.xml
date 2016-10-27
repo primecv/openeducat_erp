@@ -70,6 +70,16 @@
         />
 
         <report 
+            id="report_ems_student_grades"
+            string="Declaração de Notas"
+            model="ems.student" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_student_grades" 
+            name="emsprime_core.report_student_grades" 
+			menu="False"
+        />
+
+        <report 
             id="report_ems_student_course_plan"
             string="Plano de Estudos"
             model="ems.student" 
