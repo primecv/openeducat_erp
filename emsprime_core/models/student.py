@@ -387,4 +387,113 @@ class EmsStudent(models.Model):
             if not inscription.course_year:
                 inscription.write({'course_year': str(course_year)})
 
+    @api.multi
+    def report_student_grades_data(self, var=False):
+        for student in self:
+            matricula_id = self.env['ems.enrollment'].search([('student_id','=',student.id), ('type','=','M')], limit=1)
+            course = student.course_id
+            if var == 'degree':
+                return course.degree_id.name or ''
+            if var == 'course':
+                return course.name
+            if var == 'university_center_id':
+                return matricula_id.university_center_id.name
+            if var == 'academic_year':
+                return matricula_id.academic_year
+
+    @api.multi
+    def report_student_grades_subjects(self, semester_ids=False):
+        enrollment_id = self.env['ems.enrollment'].search([('student_id','=',self.id), ('type','=','M')], limit=1)
+        sem_ids, semesters, subjects = [], [], []
+        course_plan = []
+        if enrollment_id:
+            if semester_ids:
+                for sem in semester_ids:
+                    sem_ids.append(sem.semester)
+            for sem in sem_ids:
+                semesters.append(sem)
+                if sem in ('2', '4', '6', '8'):
+                    sem1 = str(int(sem) -1)
+                    semesters.append(sem1)
+            #select all semesters if Semester(s) not selected:
+            if not semester_ids:
+                semester_ids = self.env['ems.request.semester'].search([('id', '>', 0)])
+                temp = [semesters.append(s.semester) for s in semester_ids]
+
+            matricula_subjects = []
+            #get Matricula Enrollment course plan subjects:
+            if enrollment_id.edition_id and enrollment_id.edition_id.course_plan_id and enrollment_id.edition_id.course_plan_id.subject_line:
+                course_plan.append(enrollment_id.edition_id.course_plan_id.id)
+                temp = [matricula_subjects.append(subject.subject_id.id) for subject in enrollment_id.edition_id.course_plan_id.subject_line 
+                                                                                if subject.semester in semesters]
+            #get inscription enrollment's course plan subjects:
+            inscription_subjects = []
+            for enrollment in enrollment_id.student_id.roll_number_line:
+                if enrollment.type == 'I':
+                    if enrollment.course_plan_id and enrollment.course_plan_id.subject_line:
+                        course_plan.append(enrollment.course_plan_id.id)
+                        temp = [inscription_subjects.append(subject.subject_id.id) for subject in enrollment.course_plan_id.subject_line
+                                                                                      if subject.semester in semesters]
+            #create final Subjects list:
+            for subject in matricula_subjects:
+                inscription_subjects.append(subject)
+            temp = [subjects.append(subject) for subject in inscription_subjects if subject not in subjects]
+
+            #ordering subjects list:
+            subjects_list = self.env['ems.course.plan.subject'].search([('course_plan_id', 'in', course_plan), ('subject_id', 'in', subjects)], order="semester, ordering") 
+            subjects = []
+            temp = [subjects.append(subject.subject_id.id) for subject in subjects_list if subject.subject_id.id not in subjects]
+
+            #get grades from student inscription based on subjects ordering:
+            result = []
+            course_year = ''
+            grade_semester = ''
+            for subj in subjects:
+                for inscription in enrollment_id.student_id.roll_number_line:
+                    flag = False
+                    if inscription.type == 'I':
+                        for line in inscription.subject_line:
+                            lines = {}
+                            if line.subject_id.id == subj:
+                                if not course_year:
+                                    course_year = line.inscription_id.course_year
+                                    lines['course_year'] = str(course_year) + 'º Ano'
+                                
+                                if (line.inscription_id.course_year == course_year) and 'course_year' not in lines:
+                                    lines['course_year'] = ''
+                                else:
+                                    course_year = line.inscription_id.course_year
+                                    lines['course_year'] = str(course_year) + 'º Ano'
+
+                                if not grade_semester:
+                                    if line.semester in ('1', '3', '5', '7'):
+                                        semester = '1º Semestre'
+                                    elif line.semester in ('2', '4', '6', '8'):
+                                        semester = '2º Semestre'
+                                    grade_semester = line.semester
+                                    lines['grade_semester'] = semester
+                                
+                                if (line.semester == grade_semester) and 'grade_semester' not in lines:
+                                    lines['grade_semester'] = ''
+                                else:
+                                    if line.semester in ('1', '3', '5', '7'):
+                                        semester = '1º Semestre'
+                                    elif line.semester in ('2', '4', '6', '8'):
+                                        semester = '2º Semestre'
+                                    grade_semester = line.semester
+                                    lines['grade_semester'] = semester
+
+                                lines['subject_name'] = line.subject_id.name
+                                lines['grade'] = line.grade
+                                if not line.grade:
+                                    lines['grade'] = False
+                                result.append(lines)
+                                flag = True
+                                break
+                    if flag:
+                        break
+        return result
+
+
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

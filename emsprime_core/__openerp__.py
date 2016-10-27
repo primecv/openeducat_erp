@@ -90,6 +90,7 @@
         'report/report_boletiminscription_history_request.xml',
         'report/report_blank.xml',
         'report/report_student_grades_request.xml',
+        'report/report_student_grades.xml',
         'report/report_student_list_by_course.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
