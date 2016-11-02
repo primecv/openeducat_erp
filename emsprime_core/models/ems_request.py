@@ -40,6 +40,7 @@ class ems_request_type(models.Model):
     is_grade = fields.Boolean('Grades?')
     attachment_type = fields.Many2one('ems.attachment.type', 'Attachment type')
     grades_with_average = fields.Boolean('Grades with average?')
+    approved = fields.Boolean('Approved?')
 
 class ems_request(models.Model):
     _name = "ems.request"
