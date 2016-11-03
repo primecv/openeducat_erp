@@ -75,6 +75,14 @@ class OpEvaluation(models.Model):
         if self.start_time > self.end_time:
             raise ValidationError('End Time cannot be set before Start Time.')
 
+    @api.onchange('university_center_id')
+    def onchange_university_center_id(self):
+        self.faculty_id = False
+
+    @api.onchange('faculty_id')
+    def onchange_faculty_id(self):
+        self.subject_id = False
+
     @api.one
     def act_held(self):
         self.state = 'held'
