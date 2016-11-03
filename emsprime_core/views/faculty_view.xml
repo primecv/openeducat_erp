@@ -156,7 +156,7 @@
                             <page name="class" string="Classes">
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Classes" />
-                                    <field name="attachment_line" colspan="4" nolabel="1">
+                                    <field name="class_line" colspan="4" nolabel="1">
 										<tree string="Classes">
 											<field name="academic_year"/>
 											<field name="name" />
