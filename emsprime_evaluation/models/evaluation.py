@@ -83,6 +83,10 @@ class OpEvaluation(models.Model):
     def onchange_faculty_id(self):
         self.subject_id = False
 
+    @api.onchange('subject_id')
+    def onchange_subject_id(self):
+        self.class_id = False
+
     @api.one
     def act_held(self):
         self.state = 'held'
