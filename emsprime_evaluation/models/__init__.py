@@ -24,5 +24,6 @@ from . import evaluation_attendees
 from . import evaluation_room
 #from . import evaluation_session
 from . import evaluation_type
+from . import subject
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
