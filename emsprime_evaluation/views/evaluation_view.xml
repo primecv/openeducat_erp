@@ -38,7 +38,7 @@
                         <group col="4" colspan="4">
 							<field name="academic_year" />
 							<field name="university_center_id" />
-                            <field name="faculty_id" />
+                            <field name="faculty_id" domain="[('university_center_id','=',university_center_id)]"/>
                             <field name="subject_id" />
                             <field name="class_id" />
                             <field name="exam_code" />
