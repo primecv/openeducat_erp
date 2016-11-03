@@ -45,6 +45,18 @@ class EmsSubject(models.Model):
          ('both', 'Both'), ('other', 'Other')],
         'Type', default="theory", required=True)
 
+    @api.multi
+    def write(self, vals):
+        res = super(EmsSubject, self).write(vals)
+        #update Class names having this subject; if subject code is changed:
+        if 'code' in vals:
+            class_ids = self.env['ems.class'].search([('subject_id','=',self.id)])
+            for cclass in class_ids:
+                new_class_name = self.env['ems.class'].compute_class_name(subject_id=False, faculty_id=False, academic_year=False, class_id=cclass)
+                cclass.write({'name': new_class_name})
+        return res
+
+
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=80):
         """ This function filters subjects list on Student List - by course wizard 

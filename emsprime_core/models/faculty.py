@@ -94,6 +94,17 @@ class EmsFaculty(models.Model):
         return res
 
     @api.multi
+    def write(self, vals):
+        res = super(EmsFaculty, self).write(vals)
+        #update Class names having this faculty; if faculty code is changed:
+        if 'code' in vals:
+            class_ids = self.env['ems.class'].search([('faculty_id','=',self.id)])
+            for cclass in class_ids:
+                new_class_name = self.env['ems.class'].compute_class_name(subject_id=False, faculty_id=False, academic_year=False, class_id=cclass)
+                cclass.write({'name': new_class_name})
+        return res
+
+    @api.multi
     def name_get(self):
         result = []
         for faculty in self:

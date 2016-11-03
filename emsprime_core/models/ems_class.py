@@ -27,10 +27,16 @@ from datetime import datetime, date
 class EmsClass(models.Model):
     _name = 'ems.class'
 
-    #@api.depends('id',)
-    def compute_class_name(self, subject_id=False, faculty_id=False, academic_year=False):
+    def compute_class_name(self, subject_id=False, faculty_id=False, academic_year=False, class_id=False):
         faculty_code = 'FACULTY'
         subject_code = 'SUB'
+        if class_id:
+            if not faculty_id:
+                faculty_id = class_id.faculty_id.id
+            if not subject_id:
+                subject_id = class_id.subject_id.id
+            if not academic_year:
+                academic_year = class_id.academic_year
         if faculty_id:
             faculty = self.env['ems.faculty'].browse([faculty_id])
             if faculty.code:
