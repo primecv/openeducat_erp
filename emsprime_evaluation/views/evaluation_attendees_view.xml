@@ -10,7 +10,6 @@
                     <field name="student_id" />
                     <field name="status" />
                     <field name="marks" />
-                    <field name="note" />
                     <field name="evaluation_id" />
                 </tree>
             </field>
@@ -23,12 +22,12 @@
                 <form string="Evaluation Attendees">
                     <sheet>
                         <group col="4" colspan="4">
-                            <field name="course_id" invisible="1" />
-                            <field name="edition_id" invisible="1" />
                             <field name="evaluation_id" />
-                            <field name="student_id" domain="[('course_id','=',course_id),('edition_id','=',edition_id)]" />
+                            <field name="student_id"/>
                             <field name="status" />
                             <field name="marks" />
+                            <field name="course_id" invisible="1" />
+                            <field name="edition_id" invisible="1" />
                         </group>
                         <group string="Note">
                             <field name="note" nolabel="1"/>
