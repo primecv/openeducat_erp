@@ -64,6 +64,7 @@
             <field name="arch" type="xml">
                 <tree string="Faculty">
 					<field name="complete_name"/>
+					<field name="code"/>
 					<field name="degree_id" />
 					<field name="institutional_email" />
 					<field name="mobile" />
@@ -82,6 +83,7 @@
                     <sheet>
                         <field name="photo" widget="image" class="oe_left oe_avatar" />
                         <div class="oe_title">
+							<h3><field name="code"/></h3>						
                             <h1><table>
                                 <tr>
                                 <td><field name="name" required="1" placeholder="First Name" style="padding-right:10px" /></td>
@@ -150,6 +152,25 @@
 										</form>
 									</field>
                                 </group>
+                            </page>
+                            <page name="class" string="Classes">
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Classes" />
+                                    <field name="attachment_line" colspan="4" nolabel="1">
+										<tree string="Classes">
+											<field name="academic_year"/>
+											<field name="name" />
+											<field name="subject_id"/>
+										</tree>
+										<form string="Classes">
+											<group col="4">
+												<field name="academic_year"/>
+												<field name="name" />
+												<field name="subject_id"/>
+											</group>
+										</form>
+									</field>
+                                </group>
                             </page>								
                         </notebook>
                     </sheet>
@@ -163,6 +184,7 @@
             <field name="arch" type="xml">
                 <search string="Faculty">
                     <field name="complete_name" />
+					<field name="code"/>
                     <field name="degree_id" />
                     <newline />
                     <group expand="0" string="Group By...">
