@@ -22,9 +22,28 @@
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from openerp.tools.translate import _
+from datetime import datetime, date
 
 class EmsClass(models.Model):
     _name = 'ems.class'
+
+    #@api.depends('id',)
+    def compute_class_name(self, subject_id=False, faculty_id=False, academic_year=False):
+        faculty_code = 'FACULTY'
+        subject_code = 'SUB'
+        if faculty_id:
+            faculty = self.env['ems.faculty'].browse([faculty_id])
+            if faculty.code:
+                faculty_code = str(faculty.code)
+        if subject_id:
+            subject = self.env['ems.subject'].browse([subject_id])
+            if subject.code:
+                subject_code = str(subject.code)
+        year = str(date.today().year)
+        res = self.search([('subject_id','=',subject_id), ('faculty_id','=',faculty_id),('academic_year','=',academic_year)])
+        class_count = res and str(len(res) + 1) or '1'
+        name = '.'.join([faculty_code, subject_code, year, class_count])
+        return name
 
     @api.one
     @api.constrains('year')
@@ -34,6 +53,7 @@ class EmsClass(models.Model):
                raise ValidationError(_("Invalid Year!\n\nYear must be between 2000 - 3000"))
         if int(self.year) > 3000 or int(self.year) < 2000:
            raise ValidationError(_("Invalid Date!"))
+
 
     @api.onchange('course_id')
     def onchange_course(self):
@@ -48,7 +68,7 @@ class EmsClass(models.Model):
     def onchange_subject_academic_year(self):
         self.enrollment_ids = False
 
-    name = fields.Char('Class Name', size=64)
+    name = fields.Char('Class Name', size=64, readonly=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
     course_id = fields.Many2one('ems.course', 'Course', required=False)
@@ -66,6 +86,30 @@ class EmsClass(models.Model):
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
+
+    @api.model
+    def create(self, vals):
+    	academic_year = vals.get('academic_year', False)
+    	subject_id = vals.get('subject_id', False)
+    	faculty_id = vals.get('faculty_id', False)
+    	vals['name'] = self.compute_class_name(subject_id, faculty_id, academic_year)
+        return super(EmsClass, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        subject = self.subject_id.id
+        faculty = self.faculty_id.id
+        academic_year = self.academic_year
+        if 'subject_id' in vals:
+            subject = vals['subject_id']
+        if 'faculty_id' in vals:
+            faculty = vals['faculty_id']
+        if 'academic_year' in vals:
+            academic_year = vals['academic_year']
+        if ('subject_id' in vals) or ('faculty_id' in vals) or ('academic_year' in vals):
+            name = self.compute_class_name(subject, faculty, academic_year)
+            vals['name'] = name
+        return super(EmsClass, self).write(vals)
 
     @api.multi
     def load_inscriptions(self):        
