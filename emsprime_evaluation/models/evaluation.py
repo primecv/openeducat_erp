@@ -87,6 +87,26 @@ class OpEvaluation(models.Model):
     def onchange_subject_id(self):
         self.class_id = False
 
+    @api.onchange('class_id')
+    def onchange_class_id(self):
+        """ This function adds Students related to enrollment on selected Class 
+        """
+        line_ids = []
+        result = {}
+        for evaluation in self:
+            existing_students = []
+            for line in evaluation.attendees_line:
+                existing_students.append(line.student_id.id)
+            class_students = []
+            for enrollment in evaluation.class_id.enrollment_ids:
+                class_students.append(enrollment.student_id.id)
+            for student in class_students:
+                if student in existing_students:
+                    class_students.remove(student)
+            for student in class_students:
+                line_ids.append([0, False,{'student_id': student}])
+        self.attendees_line = line_ids
+
     @api.one
     def act_held(self):
         self.state = 'held'
