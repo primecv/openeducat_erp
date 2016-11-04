@@ -54,8 +54,14 @@ class EmsEnrollment(models.Model):
     subject_ids = fields.Many2many('ems.subject', 'ems_enrollment_subjects_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_ids_copy = fields.Many2many('ems.subject', 'ems_enrollment_subjects_copy_rel', 'enrollment_id', 'subject_id', 'Subjects')
     subject_line = fields.One2many('ems.enrollment.inscription.subject', 'inscription_id', 'Subjects')
-    type = fields.Selection(
-        [ ('C', 'Candidatura'), ('I', 'Inscrição'), ('M', 'Matricula'), ('T', 'Transferência'), ('CC', 'Conclusão')], 'Tipo', required=True, default='M')
+    type = fields.Selection([ 
+                                ('C', 'Candidatura'), 
+                                ('I', 'Inscrição'), 
+                                ('M', 'Matricula'), 
+                                ('T', 'Transferência'), 
+                                ('CC', 'Conclusão'), 
+                                ('MC', 'Mudança de Curso')
+                            ], 'Tipo', required=True, default='M')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
     university_center_id = fields.Many2one('ems.university.center', related="edition_id.university_center_id", string='University Center', store=True)
     year = fields.Char(string='Year', compute='_get_year', store=True)
