@@ -84,6 +84,9 @@ class EmsEnrollment(models.Model):
     def onchange_enrollment_data(self):
         """ This function loads Course, Edition, & Course subjects of Selected Student in Inscription enrollment.
         """
+        context = self._context
+        if not context:
+            context = {}
         if self.type == 'I':
             if self.student_id and self.student_id.course_id:
                 subjects = []
@@ -104,6 +107,11 @@ class EmsEnrollment(models.Model):
                 })
             else:
                self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})
+        if self.type == 'MC':
+            if 'student_id' in context:
+                student_id = context['student_id']
+                student = self.env['ems.student'].browse(student_id)
+                self.roll_number = student.roll_number
 
     @api.onchange('course_id')
     def onchange_course(self):
