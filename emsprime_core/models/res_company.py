@@ -49,5 +49,21 @@ class ResUsers(models.Model):
                 if user_group:
                     user_group.users = user_group.users + user_id
 
+    @api.multi
+    def create_faculty_user(self, records, user_group=None):
+        for rec in records:
+            if not rec.user_id:
+                user_vals = {
+                    'name': rec.complete_name,
+                    'login': rec.institutional_email or (rec.name.lower() + '.' + rec.last_name.lower()),
+                    'partner_id': rec.partner_id.id,
+                    'university_center_id': rec.university_center_id and rec.university_center_id.id or False
+                }
+                user_id = self.create(user_vals)
+                rec.user_id = user_id
+                if user_group:
+                    user_group.users = user_group.users + user_id
+                return user_id
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

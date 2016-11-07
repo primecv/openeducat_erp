@@ -39,7 +39,10 @@ class WizardOpFaculty(models.TransientModel):
         user_group = self.env.ref('emsprime_core.group_ems_faculty')
         active_ids = self.env.context.get('active_ids', []) or []
         records = self.env['ems.faculty'].browse(active_ids)
-        self.env['res.users'].create_user(records, user_group)
+        for faculty in records:
+            user = self.env['res.users'].create_faculty_user([faculty], user_group)
+            if user:
+                faculty.write({'user_id': user.id})
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
