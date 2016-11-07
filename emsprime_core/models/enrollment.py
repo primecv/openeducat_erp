@@ -314,15 +314,17 @@ class EmsEnrollment(models.Model):
 
                 #1. get all edition - course plan (semester) subjects:
                 edition_sem_subjects = []
+                course_plan_id = False
                 if enrollment.course_plan_id:
+                    course_plan_id = enrollment.course_plan_id.id
                     sem_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','=',enrollment.course_plan_id.id),('semester','in',(str(sem1), str(sem2)))])
                     for sem_subject in sem_subject_ids:
                         edition_sem_subjects.append(sem_subject.subject_id.id)
                 elif enrollment.edition_id and enrollment.edition_id.course_plan_id:
+                    course_plan_id = enrollment.edition_id.course_plan_id.id
                     sem_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','=',enrollment.edition_id.course_plan_id.id),('semester','in',(str(sem1), str(sem2)))])
                     for sem_subject in sem_subject_ids:
                         edition_sem_subjects.append(sem_subject.subject_id.id)
-
                 #2. get old inscription subjects :
                 inscriptions = self.env['ems.enrollment'].search([('type','=','I'),('student_id','=',enrollment.student_id.id)])
                 for insc in inscriptions:
@@ -346,7 +348,6 @@ class EmsEnrollment(models.Model):
                 for sb in subjects2:
                     if sb not in current_subjects:
                         new_subjects.append(sb)
-
                 #4. get subjects from previous semesters with grade < 10:
                 semesters = []
                 oldsem_subjects = []
@@ -364,10 +365,9 @@ class EmsEnrollment(models.Model):
                                     oldsem_subjects.pop(oldsem_subjects.index(subj_line.subject_id.id))
                     new_subjects.extend(oldsem_subjects)
                     new_subjects = list(set(new_subjects))
-
                 #5. create Grade line for Each Semester Subject:
                 if new_subjects:
-                    sem_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','=',enrollment.course_plan_id.id),('subject_id','in',new_subjects)])
+                    sem_subject_ids = self.env['ems.course.plan.subject'].search([('course_plan_id','=',course_plan_id),('subject_id','in',new_subjects)])
                     for sem_subject in sem_subject_ids:
                         self.env['ems.enrollment.inscription.subject'].create({
                                 'inscription_id': enrollment.id,
