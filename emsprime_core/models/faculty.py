@@ -70,6 +70,7 @@ class EmsFaculty(models.Model):
     university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
     code = fields.Char('Code', size=8, required=True)
     class_line = fields.One2many('ems.class', 'faculty_id', 'Classes')
+    user_id = fields.Many2one('res.users', 'Related User')
 
     @api.one
     @api.constrains('birth_date')
