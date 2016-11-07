@@ -79,7 +79,7 @@ class EmsStudent(models.Model):
                     start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
                     count = count + 1
                 else:
-                    if start_date <= datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date() and enrollment.type=='M':
+                    if start_date <= datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date() and enrollment.type in ('M', 'T', 'MC'):
                         start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
                         edition_id = enrollment.edition_id.id
                         course_id = enrollment.course_id.id
