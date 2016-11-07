@@ -68,31 +68,13 @@ class EmsStudent(models.Model):
         #check current date with the latest enrollment edition:
         count = 0
         for enrollment in self.roll_number_line:
-            try:
-                if count == 0:
-                    edition_id = enrollment.edition_id.id
-                    course_id = enrollment.course_id.id
-                    roll_number = enrollment.roll_number
-                    type_current_enroll = enrollment.type
-                    university_center_id = enrollment.university_center_id.id
-
-                    start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
-                    count = count + 1
-                else:
-                    if start_date <= datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date() and enrollment.type in ('M', 'T', 'MC'):
-                        start_date = datetime.strptime(enrollment.edition_id.start_date, '%Y-%m-%d').date()
-                        edition_id = enrollment.edition_id.id
-                        course_id = enrollment.course_id.id
-                        roll_number = enrollment.roll_number
-                        type_current_enroll = enrollment.type
-                        university_center_id = enrollment.university_center_id.id
-                if type_current_enroll=='C':
-                    type_current_enroll='Candidatura'
-                else:
-                    type_current_enroll='Matricula'
-            except Exception:
-                pass
-
+            if enrollment.type in ('M', 'T', 'MC'):
+                course_id = enrollment.course_id.id
+                edition_id = enrollment.edition_id.id
+                roll_number = enrollment.roll_number
+                type_current_enroll = enrollment.type
+                university_center_id = enrollment.university_center_id and enrollment.university_center_id.id or False
+                
             if enrollment.type == 'T':
                 transferred = True
 

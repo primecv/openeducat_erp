@@ -142,7 +142,7 @@
 										        <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1}" />
 										        <field name="roll_number" />
 												<field name="academic_year" required="0" />
-												<field name="enrollment_date" />
+												<field name="enrollment_date" attrs="{'required': [('type','in',('M', 'T', 'MC'))]}"/>
 												<newline/>
 										        <field name="course_plan_id" context="{'course_id': course_id,'get_parent_course_plan':1}" attrs="{'invisible':[('type','!=','I')]}" />
 												<field name="course_year" attrs="{'invisible':[('type','not in',('I'))]}"/>
