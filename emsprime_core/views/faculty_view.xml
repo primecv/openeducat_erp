@@ -97,8 +97,8 @@
                             <field name="gender" />
                             <field name="phone" />
                             <field name="mobile" />
-                            <field name="email" />
-                            <field name="institutional_email" />
+                            <field name="email" string="Institutional Email"/>
+                            <field name="institutional_email" string="Email"/>
                             <field name="university_center_id" />
                         </group>
                         <notebook colspan="4">
