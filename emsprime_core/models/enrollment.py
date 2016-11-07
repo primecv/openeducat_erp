@@ -180,12 +180,14 @@ class EmsEnrollment(models.Model):
                 if 'course_id' not in vals:
                     vals['course_id'] = student.course_id.id
 
-                edition_start_year = datetime.strptime(student.edition_id.start_date, '%Y-%m-%d').year
-                edition_end_year = datetime.now().date().year
+                diff = 0
                 edition_years = []
-                diff = edition_end_year - edition_start_year
-                for y in range(0, diff+1):
-                    edition_years.append(edition_start_year + y)
+                if student.edition_id.reference_date:
+                    edition_start_year = datetime.strptime(student.edition_id.reference_date, '%Y-%m-%d').year
+                    edition_end_year = datetime.now().date().year
+                    diff = edition_end_year - edition_start_year           
+                    for y in range(0, diff+1):
+                        edition_years.append(edition_start_year + y)
                 inscription_years = []
                 inscriptions = self.env['ems.enrollment'].search([('type','=','I'),('student_id','=',student.id)])
                 for inscription in inscriptions:
