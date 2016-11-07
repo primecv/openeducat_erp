@@ -26,6 +26,7 @@ from openerp.exceptions import ValidationError, UserError
 class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
     _rec_name = 'roll_number'
+    _order = 'enrollment_date'
 
     @api.one
     @api.depends('edition_id')
@@ -80,6 +81,32 @@ class EmsEnrollment(models.Model):
            return int(year) + 1
         return None
 
+    @api.model
+    def default_get(self, fields):
+        res = super(EmsEnrollment, self).default_get(fields)
+        context = self._context
+        if not context:
+            context = {}
+        if 'student_id' in context:
+            student_id = context['student_id']
+            student = self.env['ems.student'].browse(student_id)
+            is_matricula = False
+            student_course = False
+            student_edition = False
+            for std in student:
+                for line in std.roll_number_line:
+                    if line.type == 'M':
+                        is_matricula = True
+                    if line.type in ('T', 'M', 'MC'):
+                        student_course = line.course_id.id
+                        student_edition = line.edition_id.id
+            if is_matricula is False:
+                res.update(type = False)
+            res.update(roll_number = student.roll_number)
+            res.update(course_id = student_course)
+            res.update(edition_id = student_edition)
+        return res
+
     @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
     def onchange_enrollment_data(self):
         """ This function loads Course, Edition, & Course subjects of Selected Student in Inscription enrollment.
@@ -106,12 +133,7 @@ class EmsEnrollment(models.Model):
                     'subject_ids_copy': [[6,0,subjects]]
                 })
             else:
-               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})
-        if self.type == 'MC':
-            if 'student_id' in context:
-                student_id = context['student_id']
-                student = self.env['ems.student'].browse(student_id)
-                self.roll_number = student.roll_number
+               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})                
 
     @api.onchange('course_id')
     def onchange_course(self):
