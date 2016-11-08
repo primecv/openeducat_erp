@@ -309,7 +309,7 @@ class EmsStudent(models.Model):
                                                        ])
             edition_id = False
             for edition in editions:
-               edition_start_year = datetime.strptime(edition.start_date, "%Y-%m-%d").year
+               edition_start_year = datetime.strptime(edition.reference_date, "%Y-%m-%d").year
                if edition_start_year == year:
                    edition_id = edition.id
             if course_id and edition_id:
