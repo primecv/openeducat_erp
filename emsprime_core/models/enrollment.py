@@ -238,7 +238,7 @@ class EmsEnrollment(models.Model):
         #check Roll number for duplicates :
         rollno = vals['roll_number']
         matriculas = self.search([('roll_number','=',rollno)])
-        if matriculas and vals['type'] not in ('CC', 'T', 'MC'):
+        if matriculas and vals['type'] not in ('CC', 'T', 'MC', 'M'):
             raise ValidationError(_('Student Already exists with Roll Number %s')%(rollno))
         return super(EmsEnrollment, self).create(vals)
 
@@ -253,7 +253,7 @@ class EmsEnrollment(models.Model):
             if 'type' in vals: 
                 ttype = vals['type']
             matriculas = self.search([('roll_number','=',rollno), ('id','!=',self.id)])
-            if matriculas and ttype not in ('CC', 'T', 'MC'):
+            if matriculas and ttype not in ('CC', 'T', 'MC', 'M'):
                 raise ValidationError(_('Student Already exists with Roll Number %s')%(rollno))
         return super(EmsEnrollment, self).write(vals)
 
