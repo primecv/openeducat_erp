@@ -62,6 +62,19 @@ class OpEvaluation(models.Model):
             ], 'Academic Year', track_visibility='onchange', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center', required=True)
 
+    @api.model
+    def default_get(self, fields=None):
+        res = super(OpEvaluation, self).default_get(fields)
+        context = self._context
+        if context and 'get_faculty_user_id' in context:
+            user_id = self._uid
+            faculty = self.env['ems.faculty'].search([('user_id', '=', user_id)])
+            if faculty:
+                res.update(faculty_id = faculty.id)
+                if faculty.university_center_id:
+                    res.update(university_center_id = faculty.university_center_id.id)
+        return res
+
     @api.constrains('total_marks', 'min_marks')
     def _check_marks(self):
         if self.total_marks <= 0.0 or self.min_marks <= 0.0:
@@ -77,7 +90,9 @@ class OpEvaluation(models.Model):
 
     @api.onchange('university_center_id')
     def onchange_university_center_id(self):
-        self.faculty_id = False
+        context = self._context
+        if not context or 'get_faculty_user_id' not in context:
+            self.faculty_id = False
 
     @api.onchange('faculty_id')
     def onchange_faculty_id(self):
