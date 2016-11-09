@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <menuitem id="menu_ems_exam_root" name="Evaluation" sequence="15" />
+        <menuitem id="menu_ems_exam_root" name="Evaluation" sequence="15" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin"/>
 
 
         <menuitem id="menu_ems_school_exam_result" name="Evaluation"
             parent="menu_ems_exam_root" sequence="10"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_faculty" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" />
 
         <menuitem id="menu_ems_exam_main" name="Evaluation"
             parent="menu_ems_school_exam_result" sequence="20"
             action="act_open_ems_evaluation_view"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_faculty,emsprime_core.group_ems_back_office_admin" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" />
 			
         <menuitem id="menu_ems_evaluation_attendees_sub" name="Evaluation Attendees"
             parent="menu_ems_school_exam_result" sequence="30"
             action="act_open_ems_evaluation_attendees_view"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_faculty,emsprime_core.group_ems_back_office_admin" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin" />
 
         <menuitem id="menu_ems_exam_general" name="General" parent="menu_ems_exam_root" sequence="20"/>
 
