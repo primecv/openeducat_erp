@@ -52,8 +52,11 @@ class EmsStudent(models.Model):
     @api.one
     @api.depends('birth_date')
     def _get_birth_year(self):
-        birth_date = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
-        self.birth_year = str(birth_date.year)
+        birth_year = False
+        if self.birth_date:
+            birth_date = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
+            birth_year = str(birth_date.year)
+        self.birth_year = birth_year
 
     @api.one
     @api.depends('roll_number_line')
