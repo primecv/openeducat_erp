@@ -21,6 +21,8 @@
 
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
+from lxml import etree
+from openerp.osv.orm import setup_modifiers
 
 
 class OpEvaluation(models.Model):
@@ -73,6 +75,29 @@ class OpEvaluation(models.Model):
                 res.update(faculty_id = faculty.id)
                 if faculty.university_center_id:
                     res.update(university_center_id = faculty.university_center_id.id)
+        return res
+
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+        """ Make Faculty & University Center fields non-editable
+        if Evaluation is created by Faculty User.
+        """
+        res = super(OpEvaluation, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        doc = etree.XML(res['arch'])
+        context = self._context
+        if view_type == 'form' and context and 'get_faculty_user_id' in context:
+            user_id = self._uid
+            faculty = self.env['ems.faculty'].search([('user_id', '=', user_id)])
+            if faculty:
+                for node in doc.xpath("//field[@name='faculty_id']"):
+                    node.set('readonly', '1')
+                    setup_modifiers(node, res['fields']['faculty_id'])
+                    res['arch'] = etree.tostring(doc)
+                if faculty.university_center_id:
+                    for node in doc.xpath("//field[@name='university_center_id']"):
+                        node.set('readonly', '1')
+                        setup_modifiers(node, res['fields']['university_center_id'])
+                        res['arch'] = etree.tostring(doc)
         return res
 
     @api.constrains('total_marks', 'min_marks')
