@@ -178,3 +178,5 @@ access_ems_class_back_office_admin,name_ems_class_back_office_admin,model_ems_cl
 access_ems_class_back_office,name_ems_class_back_office,model_ems_class,group_ems_back_office,1,0,0,0
 access_ems_attachment_type_back_office_admin,access_ems_attachment_type_back_office_admin,model_ems_attachment_type,group_ems_back_office_admin,1,1,1,0
 access_ems_attachment_type_back_office,access_ems_attachment_type_back_office,model_ems_attachment_type,group_ems_back_office,1,1,1,0
+,,,,,,,
+access_ems_class_faculty,access_ems_class_faculty,model_ems_class,group_ems_faculty,1,0,0,0
