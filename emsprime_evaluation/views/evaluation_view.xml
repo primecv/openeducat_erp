@@ -134,5 +134,17 @@
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_ems_evaluation_tree" />
         </record>
+
+        <!-- My Evaluations -->
+        <record model="ir.actions.act_window" id="act_open_ems_my_evaluation_view">
+            <field name="name">My Evaluations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_evaluation_search" />
+            <field name="domain">[('faculty_id.user_id', '=', uid)]</field>
+            <field name="context">{'get_faculty_user_id': uid}</field>
+        </record>
     </data>
 </openerp>

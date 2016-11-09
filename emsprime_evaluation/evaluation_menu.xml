@@ -31,5 +31,10 @@
             parent="menu_exam_configuration" sequence="20"
             action="act_open_ems_evaluation_room_view"
             groups="emsprime_core.group_ems_back_office_admin" />
+
+        <!-- Faculties / My Evaluations menu -->
+        <menuitem id="menu_ems_action_my_evaluations" name="My Evaluations"
+            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="12" action="act_open_ems_my_evaluation_view"/>
+
     </data>
 </openerp>
