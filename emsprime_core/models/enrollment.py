@@ -107,7 +107,7 @@ class EmsEnrollment(models.Model):
             res.update(edition_id = student_edition)
         return res
 
-    @api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
+    '''@api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
     def onchange_enrollment_data(self):
         """ This function loads Course, Edition, & Course subjects of Selected Student in Inscription enrollment.
         """
@@ -128,11 +128,15 @@ class EmsEnrollment(models.Model):
                     'subject_ids_copy': [[6,0,subjects]]
                 })
             else:
-               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})                
+               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})                '''
 
     @api.onchange('course_id')
     def onchange_course(self):
-        self.update({'edition_id': False})
+        context = self._context
+        if not context:
+            context = {}
+        if 'create_inscription' not in context:
+            self.update({'edition_id': False})
         if not self.course_id:
             self.update({'subject_ids_copy':[[6,0,[]]]})
         else:

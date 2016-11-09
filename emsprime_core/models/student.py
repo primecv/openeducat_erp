@@ -350,7 +350,7 @@ class EmsStudent(models.Model):
             form_id = form.id if form else False
             result['views'] = [(tree_id, 'tree'), (form_id, 'form')]
             result['domain'] = "[('id','in',["+','.join(map(str, inscriptions))+"])]"
-            result['context'] = {'default_type': 'I', 'default_student_id': student.id}
+            result['context'] = {'default_type': 'I', 'default_student_id': student.id, 'student_id': student.id, 'create_inscription': True}
         return result
 
     @api.multi
