@@ -56,5 +56,19 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 		
+        <!-- Show My Faculty rule -->
+        <record id="faculty_personal_rule" model="ir.rule">
+            <field name="name">My Faculty</field>
+            <field ref="model_ems_faculty" name="model_id"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('emsprime_core.group_ems_faculty'))]"/>
+        </record>
+        <record id="faculty_partner_personal_rule" model="ir.rule">
+            <field name="name">My Faculty Partner</field>
+            <field ref="base.model_res_partner" name="model_id"/>
+            <field name="domain_force">[('id','=',user.partner_id.id)]</field>
+            <field name="groups" eval="[(4, ref('emsprime_core.group_ems_faculty'))]"/>
+        </record>
+
     </data>
 </openerp>
