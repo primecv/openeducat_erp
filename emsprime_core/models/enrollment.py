@@ -119,11 +119,6 @@ class EmsEnrollment(models.Model):
                 subjects = []
                 edition_id = self.student_id.edition_id.id or False
                 course_id = self.student_id.course_id.id or False
-                transfer_enrollment_ids = self.env['ems.enrollment'].search([('type','=','T'), ('student_id','=',self.student_id.id)], order="create_date desc")
-                if transfer_enrollment_ids:
-                    transfer_enrollment_id = transfer_enrollment_ids[0]
-                    edition_id = transfer_enrollment_id.edition_id.id or False
-                    course_id = transfer_enrollment_id.course_id.id or False
                 self.update({
                     'edition_id': edition_id,
                     'course_id': course_id,
