@@ -122,6 +122,8 @@ class EmsEnrollment(models.Model):
                         is_matricula = True
             if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
                 self.update({'type': 'M'})
+            if is_matricula is True and self.type == 'MC':
+                self.update({'course_id': False})
 
 
     @api.onchange('course_id')
@@ -131,6 +133,12 @@ class EmsEnrollment(models.Model):
             context = {}
         if 'create_inscription' not in context:
             self.update({'edition_id': False})
+            if 'student_id' in context:
+                student_id = context['student_id']
+                student = self.env['ems.student'].browse([student_id])
+                #restrict creating MC enrollment with student's current Course:
+                if self.type == 'MC' and self.course_id.id == student.course_id.id:
+                    self.update({'course_id': False})
         if not self.course_id:
             self.update({'subject_ids_copy':[[6,0,[]]]})
         else:
