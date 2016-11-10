@@ -85,6 +85,7 @@ class EmsEnrollment(models.Model):
     def default_get(self, fields):
         res = super(EmsEnrollment, self).default_get(fields)
         context = self._context
+        print"@@@@@@@@@@@@ ", context
         if not context:
             context = {}
         if 'student_id' in context:
@@ -101,7 +102,7 @@ class EmsEnrollment(models.Model):
                         student_course = line.course_id.id
                         student_edition = line.edition_id.id
             if is_matricula is False:
-                res.update(type = False)
+                res.update(type = 'M')
             res.update(roll_number = student.roll_number)
             res.update(course_id = student_course)
             res.update(edition_id = student_edition)
