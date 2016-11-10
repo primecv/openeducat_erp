@@ -119,6 +119,18 @@ class EmsClass(models.Model):
 
     @api.multi
     def load_inscriptions(self):        
+        academic_year = self.academic_year
+        university_center_id = self.university_center_id.id
+        subject_id = self.subject_id.id
+        existing_enrollments = []
+        existing_classes = self.search([('academic_year', '=', academic_year), 
+                                        ('subject_id', '=', subject_id), 
+                                        ('university_center_id', '=', university_center_id),
+                                        ('id', '!=', self.id)
+                                        ])
+        for e_class in existing_classes:
+            for enrollment in e_class.enrollment_ids:
+                existing_enrollments.append(enrollment.id)
         for eclass in self:
             select_clause = "select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ "
             where_clause = """ where e.id=eis.inscription_id and
@@ -142,8 +154,12 @@ class EmsClass(models.Model):
                 res.append(r[0])
             for enrollment in self.enrollment_ids:
                  res.append(enrollment.id)
-            if res:
-                self.write({'enrollment_ids': [[6,0, res]]})
+            new_enrollments = []
+            for enrollment in res:
+                if enrollment not in existing_enrollments:
+                    new_enrollments.append(enrollment)
+            if new_enrollments:
+                self.write({'enrollment_ids': [[6,0, new_enrollments]]})
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
