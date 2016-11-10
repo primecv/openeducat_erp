@@ -107,29 +107,6 @@ class EmsEnrollment(models.Model):
             res.update(edition_id = student_edition)
         return res
 
-    '''@api.onchange('student_id', 'course_id', 'edition_id', 'academic_year', 'type')
-    def onchange_enrollment_data(self):
-        """ This function loads Course, Edition, & Course subjects of Selected Student in Inscription enrollment.
-        """
-        context = self._context
-        if not context:
-            context = {}
-        if self.type == 'I':
-            if self.student_id and self.student_id.course_id:
-                subjects = []
-                edition_id = self.student_id.edition_id.id or False
-                course_id = self.student_id.course_id.id or False
-                self.update({
-                    'edition_id': edition_id,
-                    'course_id': course_id,
-                })
-                subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
-                self.update({
-                    'subject_ids_copy': [[6,0,subjects]]
-                })
-            else:
-               self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})                '''
-
     @api.onchange('type')
     def onchange_type(self):
         context = self._context
