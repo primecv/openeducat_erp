@@ -138,6 +138,25 @@ class EmsEnrollment(models.Model):
             subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
             self.update({'subject_ids_copy': [[6,0,subjects]]})
 
+    @api.onchange('roll_number')
+    def onchange_rollno(self):
+        """ Restrict changing Roll Number on creating T, M and MC enrollments (CC is an exception):
+        if Student has Matricula enrollment
+        """
+        context = self._context
+        if not context:
+            context = {}
+        if 'create_inscription' not in context:
+            if 'student_id' in context:
+                student_id = context['student_id']
+                student = self.env['ems.student'].browse([student_id])
+                roll_number = False
+                for line in student.roll_number_line:
+                    if line.type == 'M':
+                        roll_number = line.roll_number 
+                if roll_number and self.type != 'CC':
+                    self.update({'roll_number': roll_number})
+
     @api.constrains('type', 'student_id', 'roll_number')
     def check_inscricao_enrollment(self):
         for enrollment in self:
