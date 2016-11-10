@@ -26,7 +26,7 @@ from openerp.exceptions import ValidationError, UserError
 class EmsEnrollment(models.Model):
     _name = 'ems.enrollment'
     _rec_name = 'roll_number'
-    _order = 'enrollment_date'
+    _order = 'enrollment_date, create_date'
 
     @api.one
     @api.depends('edition_id')
