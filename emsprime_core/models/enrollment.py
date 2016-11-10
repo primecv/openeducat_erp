@@ -130,6 +130,23 @@ class EmsEnrollment(models.Model):
             else:
                self.update({'edition_id': False, 'course_id': False, 'subject_ids_copy':[[6,0,[]]]})                '''
 
+    @api.onchange('type')
+    def onchange_type(self):
+        context = self._context
+        if not context:
+            context = {}
+        if 'create_inscription' not in context:
+            is_matricula = False
+            if 'student_id' in context:
+                student_id = context['student_id']
+                student = self.env['ems.student'].browse([student_id])
+                for line in student.roll_number_line:
+                    if line.type == 'M':
+                        is_matricula = True
+            if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
+                self.update({'type': False})
+
+
     @api.onchange('course_id')
     def onchange_course(self):
         context = self._context
