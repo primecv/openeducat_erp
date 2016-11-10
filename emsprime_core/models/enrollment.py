@@ -85,7 +85,6 @@ class EmsEnrollment(models.Model):
     def default_get(self, fields):
         res = super(EmsEnrollment, self).default_get(fields)
         context = self._context
-        print"@@@@@@@@@@@@ ", context
         if not context:
             context = {}
         if 'student_id' in context:
