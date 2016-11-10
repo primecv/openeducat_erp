@@ -138,7 +138,7 @@ class EmsEnrollment(models.Model):
             subject_list = [subjects.append(subject.subject_id.id) for subject in self.course_id.subject_line]
             self.update({'subject_ids_copy': [[6,0,subjects]]})
 
-    @api.constrains('type', 'student_id')
+    @api.constrains('type', 'student_id', 'roll_number')
     def check_inscricao_enrollment(self):
         for enrollment in self:
             if enrollment.type == 'I':
@@ -146,6 +146,11 @@ class EmsEnrollment(models.Model):
                 matriculas = self.search([('student_id','=',student), ('type','=','M')])
                 if not matriculas:
                     raise ValidationError(_('Inscrição enrollment cannot be created.\nStudent must be enrolled with Matricula type.'))
+        #check for duplicate Roll number belonging to another student:
+        roll_number = self.roll_number
+        old_enrollment = self.search([('roll_number','=',roll_number), ('student_id','!=',self.student_id.id),('type','=','M')], limit=1)
+        if old_enrollment:
+            raise ValidationError(_('Matricula Enrollment already exists with roll number %s.\nStudent : %s')%(roll_number, old_enrollment.student_id.complete_name))
         return True
 
     @api.model
