@@ -80,7 +80,7 @@ class EmsClass(models.Model):
     course_id = fields.Many2one('ems.course', 'Course', required=False)
     edition_id = fields.Many2one('ems.edition', 'Edition')
     student_ids = fields.Many2many('ems.student', string='Student(s)')
-    enrollment_ids = fields.Many2many('ems.enrollment', string='Enrollment(s)')
+    enrollment_ids = fields.Many2many('ems.enrollment', string='Enrollment(s)', copy=False)
     #semester_id = fields.Many2one('ems.semester', string='Semester')
     semester = fields.Selection([('I', 'I'), ('II', 'II')], 'Semester')
     year = fields.Char('Year', size=4)
