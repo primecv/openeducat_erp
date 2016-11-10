@@ -170,6 +170,10 @@ class EmsEnrollment(models.Model):
         old_enrollment = self.search([('roll_number','=',roll_number), ('student_id','!=',self.student_id.id)], limit=1)
         if old_enrollment:
             raise ValidationError(_('Enrollment already exists with roll number %s.\nStudent : %s')%(roll_number, old_enrollment.student_id.complete_name))
+        #check for multiple Matricula enrollment with same Course for Student :
+        course_enrollment = self.search([('course_id','=',self.course_id.id), ('type','=','M'), ('student_id','=',self.student_id.id), ('id','!=',self.id)])
+        if course_enrollment:
+            raise ValidationError(_('Another Matricula Enrollment already exists for this student with selected Course.\nCourse : %s')%(self.course_id.name))
         return True
 
     @api.model
