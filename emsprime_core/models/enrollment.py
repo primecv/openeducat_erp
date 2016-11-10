@@ -148,9 +148,9 @@ class EmsEnrollment(models.Model):
                     raise ValidationError(_('Inscrição enrollment cannot be created.\nStudent must be enrolled with Matricula type.'))
         #check for duplicate Roll number belonging to another student:
         roll_number = self.roll_number
-        old_enrollment = self.search([('roll_number','=',roll_number), ('student_id','!=',self.student_id.id),('type','=','M')], limit=1)
+        old_enrollment = self.search([('roll_number','=',roll_number), ('student_id','!=',self.student_id.id)], limit=1)
         if old_enrollment:
-            raise ValidationError(_('Matricula Enrollment already exists with roll number %s.\nStudent : %s')%(roll_number, old_enrollment.student_id.complete_name))
+            raise ValidationError(_('Enrollment already exists with roll number %s.\nStudent : %s')%(roll_number, old_enrollment.student_id.complete_name))
         return True
 
     @api.model
