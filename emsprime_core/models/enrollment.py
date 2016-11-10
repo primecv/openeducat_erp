@@ -121,7 +121,7 @@ class EmsEnrollment(models.Model):
                     if line.type == 'M':
                         is_matricula = True
             if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
-                self.update({'type': False})
+                self.update({'type': 'M'})
 
 
     @api.onchange('course_id')
