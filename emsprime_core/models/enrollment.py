@@ -192,7 +192,7 @@ class EmsEnrollment(models.Model):
                         valid_years = [' | '.join(valid_years)][0]
                         raise UserError(_('Invalid Academic Year!\nValid Academic Years: %s')%(valid_years))
         if 'type' in vals and vals['type'] == 'C':
-            last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','C')], order='id desc', limit=1)
+            last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','C')], order='roll_number desc', limit=1)
             next_seq = '00001'
             if last_rec:
                 last_seq = last_rec.roll_number
