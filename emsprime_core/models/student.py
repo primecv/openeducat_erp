@@ -76,7 +76,7 @@ class EmsStudent(models.Model):
                 edition_id = enrollment.edition_id.id
                 roll_number = enrollment.roll_number
                 type_current_enroll = enrollment.type
-                university_center_id = enrollment.university_center_id and enrollment.university_center_id.id or False
+                university_center_id = enrollment.edition_id.university_center_id and enrollment.edition_id.university_center_id.id or False
                 
             if enrollment.type == 'T':
                 transferred = True
@@ -88,7 +88,7 @@ class EmsStudent(models.Model):
         self.edition_id = edition_id
         self.course_id = course_id
         self.type_current_enroll = type_current_enroll
-        self.university_center_id = university_center_id
+        self.current_university_center_id = university_center_id
         self.transferred = transferred
         self.course_completed = course_completed
 
@@ -171,6 +171,7 @@ class EmsStudent(models.Model):
     portuguese_final_average = fields.Float('Average Portuguese', digits=(8,0), track_visibility='onchange')
     final_average = fields.Float('Final Average', track_visibility='onchange')
     university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
+    current_university_center_id =  fields.Many2one('ems.university.center', 'Current University Center', track_visibility='onchange')
     type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
     temp_edition_courses = fields.Many2many('ems.course', string='Course(s)')
 

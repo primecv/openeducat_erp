@@ -115,6 +115,7 @@
                                 <group col="4" colspan="4">
 									<field name="course_id" readonly="1" attrs="{'invisible':[('course_id','=',False)]}"/>
                                     <field name="edition_id" context="{'get_parent_edition':1}" readonly="1" attrs="{'invisible':[('edition_id','=',False)]}"/>
+                                    <field name="current_university_center_id" attrs="{'invisible': [('current_university_center_id','=',False)]}" readonly="1"/>
                                     <field name="course_ids" widget="many2many_tags" placeholder="Select Student Courses...." invisible="1"/> <!-- not required for now -->
                                     <field name="gr_no" invisible="1"/> <!-- not required for now -->
                                     <field name="id" invisible="1"/>
