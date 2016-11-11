@@ -139,6 +139,8 @@ class EmsEnrollment(models.Model):
                 #restrict creating MC enrollment with student's current Course:
                 if self.type == 'MC' and self.course_id.id == student.course_id.id:
                     self.update({'course_id': False})
+            	if self.type == 'T':
+            		self.update({'course_id': self.student_id.course_id.id})
         if not self.course_id:
             self.update({'subject_ids_copy':[[6,0,[]]]})
         else:
@@ -180,7 +182,7 @@ class EmsEnrollment(models.Model):
             raise ValidationError(_('Enrollment already exists with roll number %s.\nStudent : %s')%(roll_number, old_enrollment.student_id.complete_name))
         #check for multiple Matricula enrollment with same Course for Student :
         course_enrollment = self.search([('course_id','=',self.course_id.id), ('type','=','M'), ('student_id','=',self.student_id.id), ('id','!=',self.id)])
-        if course_enrollment:
+        if course_enrollment and self.type == 'M':
             raise ValidationError(_('Another Matricula Enrollment already exists for this student with selected Course.\nCourse : %s')%(self.course_id.name))
         return True
 
