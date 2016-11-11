@@ -126,7 +126,7 @@
 									</div>
                                     <separator colspan="4" string="Assigned Roll Numbers" />
                                     <field name="roll_number_line" colspan="4" nolabel="1"
-                                        context="{'default_edition_id':edition_id, 'default_course_id':course_id, 'student_id': id}" >
+                                        context="{'default_edition_id':edition_id, 'default_course_id':course_id, 'student_id': id, 'default_student_id': id}" >
 										<tree string="Enrollment">
 								            <field name="roll_number" />
 											<field name="type" />
@@ -153,7 +153,8 @@
 												<field name="annulment_date" attrs="{'invisible':[('annulment','=',False)], 'required':[('annulment','=',True)]}"/>
 												<newline/>
 												<field name="course_conclusion_date" attrs="{'invisible':[('type','not in', ('CC'))]}"/>
-												<field name="matricula_id" domain="[('type','=','M')]" attrs="{'invisible':[('type','not in', ('CC'))], 'required':[('type','=','CC')]}"/>
+												<field name="matricula_id" domain="[('type','=','M'), ('student_id','=',student_id)]" attrs="{'invisible':[('type','not in', ('CC'))], 'required':[('type','=','CC')]}" options="{'no_create':1}"/>
+                                                <field name="student_id" required="0" invisible="1"/>
 											</group>
 											<group string="Subjects" attrs="{'invisible':[('type','!=','I')]}" invisible="1">
 												<field name="subject_ids_copy" invisible="1"/><newline/>
