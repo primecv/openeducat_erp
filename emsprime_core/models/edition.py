@@ -72,21 +72,28 @@ class EmsEdition(models.Model):
                     editions.append(res[0])
                 if editions:
                     args += [('id', 'in', editions)]
+        """ Below section is to filter Editions Transfer Enrollment:
+        """
+        if context and 'enrollment_type' in context and context['enrollment_type'] == 'T':
+            if 'student_id' in context:
+                student_id = context['student_id']
+                student = self.env['ems.student'].browse(student_id)
+                university_center_id = student.edition_id.university_center_id and student.edition_id.university_center_id.id or False
+                if university_center_id:
+                    query = """select id from ems_edition where university_center_id!=%s and university_center_id is not NULL;"""%(university_center_id)
+                    self._cr.execute(query)
+                    result = self._cr.fetchall()
+                    editions = []
+                    for res in result:
+                        res = list(res)
+                        editions.append(res[0])
+                    if editions:
+                        args += [('id', 'in', editions)]
         return super(EmsEdition, self).search(args, offset, limit, order, count=count)
 
 
     @api.model
-    def name_search(self, name, args=None, operator='ilike', limit=100):
-        if self.env.context.get('get_parent_edition', False):
-            lst = []
-            lst.append(self.env.context.get('course_id'))
-            courses = self.env['ems.course'].browse(lst)
-            while courses.parent_id:
-                lst.append(courses.parent_id.id)
-                courses = courses.parent_id
-            editions = self.env['ems.edition'].search([('course_id', 'in', lst)])
-            return editions.name_get()
-
+    def name_search(self, name, args=None, operator='ilike', limit=100):        
         """ Below section is to filter Editions on Ems Class:
         """
         context = self._context or {}
@@ -103,6 +110,41 @@ class EmsEdition(models.Model):
                     editions.append(res[0])
                 if editions:
                     args += [('id', 'in', editions)]
+        #get editions of selected Course on Enrollment
+        course_editions = []
+        if self.env.context.get('get_parent_edition', False):
+            lst = []
+            lst.append(self.env.context.get('course_id'))
+            courses = self.env['ems.course'].browse(lst)
+            while courses.parent_id:
+                lst.append(courses.parent_id.id)
+                courses = courses.parent_id
+            edition_ids = self.env['ems.edition'].search([('course_id', 'in', lst)])
+            for edn in edition_ids:
+                course_editions.append(edn.id)
+        """ Below section is to filter Editions on Transfer Enrollment:
+        """
+        transfer_editions = []
+        if context and 'enrollment_type' in context and context['enrollment_type'] == 'T':
+            if 'student_id' in context:
+                student_id = context['student_id']
+                student = self.env['ems.student'].browse(student_id)
+                university_center_id = student.edition_id.university_center_id and student.edition_id.university_center_id.id or False
+                if university_center_id:
+                    query = """select id from ems_edition where university_center_id!=%s and university_center_id is not NULL"""%(university_center_id)
+                    self._cr.execute(query)
+                    result = self._cr.fetchall()
+                    temp = []
+                    for res in result:
+                        res = list(res)
+                        temp.append(res[0])
+                    for edition in temp:
+                        if edition in course_editions:
+                            transfer_editions.append(edition)        
+        if course_editions and not transfer_editions:
+            args += [('id', 'in', course_editions)]
+        elif transfer_editions:
+            args += [('id', 'in', transfer_editions)]
         return super(EmsEdition, self).name_search(
             name, args, operator=operator, limit=limit)
 
