@@ -171,7 +171,7 @@ class EmsStudent(models.Model):
     portuguese_final_average = fields.Float('Average Portuguese', digits=(8,0), track_visibility='onchange')
     final_average = fields.Float('Final Average', track_visibility='onchange')
     university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
-    current_university_center_id =  fields.Many2one('ems.university.center', 'Current University Center', track_visibility='onchange')
+    current_university_center_id =  fields.Many2one('ems.university.center', related="edition_id.university_center_id", string='Current University Center', track_visibility='onchange', store=True)
     type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
     temp_edition_courses = fields.Many2many('ems.course', string='Course(s)')
 
