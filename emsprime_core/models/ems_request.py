@@ -96,7 +96,6 @@ class ems_request(models.Model):
     student_id = fields.Many2one('ems.student', 'Student', track_visibility='onchange')
     enrollment_id = fields.Many2one('ems.enrollment', 'Record Number', track_visibility='onchange', select=True)
     request_type_id = fields.Many2one('ems.request.type', string='Request Type', track_visibility='onchange', select=True)
-    request_type_type = fields.Selection(related="request_type_id.type", string='Request Type Code', store=True)
     description = fields.Text('Special Mentions')
     date = fields.Date('Request Date', track_visibility="onchange", default=datetime.now().date(), readonly=True)
     state = fields.Selection(
@@ -109,7 +108,7 @@ class ems_request(models.Model):
     year = fields.Char('Year of Declaration')
     number = fields.Char('Number of Declaration')
     report_type = fields.Selection(
-        [('S', 'Student'), ('F', 'Faculty')], 'Type',related='request_type_id.type', track_visibility='onchange', store=False)
+        [('S', 'Student'), ('F', 'Faculty')], 'Type',related='request_type_id.type', track_visibility='onchange', store=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', track_visibility='onchange')
     regime = fields.Selection(
         [('24h', '24 horas'), ('48h', '48 horas'), ('72h', '72 horas'), ('normal', 'Normal'), ('GAS', 'Gabinete de Acção Social')], 'Regime', required=True, track_visibility='onchange')
