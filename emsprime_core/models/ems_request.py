@@ -156,13 +156,13 @@ class ems_request(models.Model):
                     if self.report_type == 'S':
                         student_univ_center = self.enrollment_id.student_id.university_center_id and self.enrollment_id.student_id.university_center_id.id or False
                         if university_center_id != student_univ_center:
-                            raise UserError(_('User does not have access to modify this document.\n\nPlease contact your Administrator.'))
+                            raise UserError(_('User do not have permission to modify this document.\n\nPlease contact your Administrator.'))
                     elif self.report_type == 'F':
                         faculty_univ_center = self.faculty_id.university_center_id and self.faculty_id.university_center_id.id or False
                         if faculty_univ_center != university_center_id:
-                            raise UserError(_('User does not have access to modify this document.\n\nPlease contact your Administrator.'))
+                            raise UserError(_('User do not have permission to modify this document.\n\nPlease contact your Administrator.'))
                 else:
-                    raise UserError(_('User does not have access to modify this document.\n\nPlease contact your Administrator.'))
+                    raise UserError(_('User do not have permission to modify this document.\n\nPlease contact your Administrator.'))
         return super(ems_request, self).write(vals)
 
     @api.model
