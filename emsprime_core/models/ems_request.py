@@ -136,6 +136,35 @@ class ems_request(models.Model):
                 self.write({'message_follower_ids': [[6, 0, users]]})
         return res
 
+    @api.multi
+    def write(self, vals):
+        """ Restrict user other than Back office admins to modify Requests not belonging to their related University Center.
+        """
+        uid = self._uid
+        backoffice_admin_groupid = self.env['ir.model.data'].xmlid_to_res_id('emsprime_core.group_ems_back_office_admin')
+        if backoffice_admin_groupid and uid:
+            self._cr.execute("select uid from res_groups_users_rel where gid=%s and uid=%s"%(backoffice_admin_groupid, uid))
+            result = False
+            try:
+                result = self._cr.fetchone()[0]
+            except Exception:
+                pass
+            if not result: #user do not have back office admin access
+                user = self.env['res.users'].browse([uid])
+                university_center_id = user.university_center_id and user.university_center_id.id or False
+                if university_center_id:
+                    if self.report_type == 'S':
+                        student_univ_center = self.enrollment_id.student_id.university_center_id and self.enrollment_id.student_id.university_center_id.id or False
+                        if university_center_id != student_univ_center:
+                            raise UserError(_('User does not have access to modify this document.\n\nPlease contact your Administrator.'))
+                    elif self.report_type == 'F':
+                        faculty_univ_center = self.faculty_id.university_center_id and self.faculty_id.university_center_id.id or False
+                        if faculty_univ_center != university_center_id:
+                            raise UserError(_('User does not have access to modify this document.\n\nPlease contact your Administrator.'))
+                else:
+                    raise UserError(_('User does not have access to modify this document.\n\nPlease contact your Administrator.'))
+        return super(ems_request, self).write(vals)
+
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         """ This function makes Issue Date editable only to Back Office Admin group users.
