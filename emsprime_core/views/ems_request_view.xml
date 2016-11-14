@@ -101,6 +101,7 @@
 							<field name="sequence" attrs="{'invisible':[('state','not in',('validate','done'))]}"/>
 							<field name="request_type_id" options="{'no_create':1, 'no_open':1}" required="1"/>
 							<field name="regime"/>
+							<field name="request_type_type" invisible="1"/>
 							<field name="enrollment_id" domain="[('type','=','M')]" attrs="{'invisible':[('report_type','not in',('S'))]}"/>
 							<field name="faculty_id" attrs="{'invisible':[('report_type','not in',('F'))]}"/>
 							<field name="name" placeholder="Applicant..."/>
