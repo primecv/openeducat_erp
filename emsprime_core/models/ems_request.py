@@ -185,6 +185,18 @@ class ems_request(models.Model):
                     node.set('readonly', '0')
                     setup_modifiers(node, res['fields']['date'])
                     res['arch'] = etree.tostring(doc)
+            if not result:
+                user = self.env['res.users'].browse([self._uid])
+                university_center_id = user.university_center_id and user.university_center_id.id or False
+                if university_center_id:
+                    for node in doc.xpath("//field[@name='enrollment_id']"):
+                        node.set('domain', "[('student_id.current_university_center_id', '=', %s), ('type', '=', 'M')]"%(university_center_id))
+                        setup_modifiers(node, res['fields']['enrollment_id'])
+                        res['arch'] = etree.tostring(doc)
+                    for node in doc.xpath("//field[@name='faculty_id']"):
+                        node.set('domain', "[('university_center_id', '=', %s)]"%(university_center_id))
+                        setup_modifiers(node, res['fields']['faculty_id'])
+                        res['arch'] = etree.tostring(doc)
         return res
 
     def get_to_year(self, year):
