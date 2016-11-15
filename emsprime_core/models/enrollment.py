@@ -114,16 +114,42 @@ class EmsEnrollment(models.Model):
             context = {}
         if 'create_inscription' not in context:
             is_matricula = False
+            has_inscription = False
+            inscription_approved = True
             if 'student_id' in context:
                 student_id = context['student_id']
                 student = self.env['ems.student'].browse([student_id])
                 for line in student.roll_number_line:
                     if line.type == 'M':
                         is_matricula = True
+                    if line.type == 'I':
+                        has_inscription = True
+                        for subject in line.subject_line:
+                            if subject.grade < 10:
+                                inscription_approved = False
+                                inscription_subject = subject.subject_id.name.encode('utf-8')
+                                inscription_rollno = str(line.roll_number)
+                                inscription_grade = subject.grade
             if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
                 self.update({'type': 'M'})
             if is_matricula is True and self.type == 'MC':
                 self.update({'course_id': False})
+            if self.type == 'CC':
+                if has_inscription is False:
+                    warning = {
+                        'title': 'Invalid Operation',
+                        'message': 'Conclusão Enrollment cannot be created as Student does not have Inscription.'
+                    }
+                    self.update({'type': False})
+                    return {'warning': warning}
+                if inscription_approved is False:
+                    message = 'Conclusão Enrollment cannot be created as Student Inscription is not approved.\n\nInscription Roll Number: %s\nSubject: %s\nGrade: %s'%(inscription_rollno, inscription_subject, inscription_grade)
+                    warning = {
+                        'title': 'Invalid Operation',
+                        'message': message
+                    }
+                    self.update({'type': False})
+                    return {'warning': warning}
 
 
     @api.onchange('course_id')
