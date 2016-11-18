@@ -22,6 +22,7 @@
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from datetime import datetime
+from openerp.tools.translate import _
 
 
 class EmsFaculty(models.Model):
@@ -70,7 +71,17 @@ class EmsFaculty(models.Model):
     university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
     code = fields.Char('Code', size=8, required=True)
     class_line = fields.One2many('ems.class', 'faculty_id', 'Classes')
-    user_id = fields.Many2one('res.users', 'Related User')
+    user_id = fields.Many2one('res.users', 'Related User', track_visibility='onchange')
+
+    @api.one
+    @api.constrains('user_id')
+    def check_unique_faculty_user(self):
+    	for faculty in self:
+    		if faculty.user_id:
+    			user_id = faculty.user_id.id
+    			other_related_faculties = self.search([('user_id','=',user_id), ('id','!=',faculty.id)])
+    			if other_related_faculties and len(other_related_faculties) > 0:
+    				raise ValidationError(_('User is already related with another Faculty.\n\nFaculty : %s')%(other_related_faculties.complete_name))
 
     @api.one
     @api.constrains('birth_date')
