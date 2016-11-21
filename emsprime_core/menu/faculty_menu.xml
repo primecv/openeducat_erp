@@ -12,5 +12,10 @@
 
         <menuitem id="menu_ems_faculty_root_sub_action" name="Faculties"
             parent="menu_ems_faculty_root_sub" sequence="10" action="act_open_ems_faculty_view"/>
+
+        <menuitem id="menu_ems_faculty_classes"
+        	parent="menu_ems_faculty_root_sub"
+        	sequence="12"
+        	action="act_open_faculties_ems_class"/>
     </data>
 </openerp>

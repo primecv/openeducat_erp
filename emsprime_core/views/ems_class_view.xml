@@ -104,5 +104,18 @@
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_ems_class_tree" />
         </record>
+
+        <!-- Faculties related Classes - My Classes -->
+        <record model="ir.actions.act_window" id="act_open_faculties_ems_class">
+            <field name="name">My Classes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.class</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_class_search" />
+            <field name="domain">[('faculty_id.user_id','=',uid)]</field>
+            <field name="context">{}</field>
+        </record>
+
     </data>
 </openerp>
