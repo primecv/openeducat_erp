@@ -69,7 +69,7 @@ class EmsFaculty(models.Model):
     parish_id = fields.Many2one('ems.location', 'Parish')
     training_area_line = fields.One2many('ems.training.area', 'faculty_id', 'Training Areas')
     university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
-    code = fields.Char('Code', size=8, required=True)
+    code = fields.Char('Code', size=8, required=False)
     class_line = fields.One2many('ems.class', 'faculty_id', 'Classes')
     user_id = fields.Many2one('res.users', 'Related User', track_visibility='onchange')
 
