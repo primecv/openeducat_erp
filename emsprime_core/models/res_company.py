@@ -55,7 +55,7 @@ class ResUsers(models.Model):
             if not rec.user_id:
                 user_vals = {
                     'name': rec.complete_name,
-                    'login': rec.institutional_email or (rec.name.lower() + '.' + rec.last_name.lower()),
+                    'login': rec.email,
                     'partner_id': rec.partner_id.id,
                     'university_center_id': rec.university_center_id and rec.university_center_id.id or False
                 }
