@@ -20,7 +20,8 @@
 ###############################################################################
 
 from openerp import models, fields, api
-
+from openerp.exceptions import ValidationError
+from openerp.tools.translate import _
 
 class WizardOpFaculty(models.TransientModel):
     _name = 'wizard.ems.faculty'
@@ -40,6 +41,8 @@ class WizardOpFaculty(models.TransientModel):
         active_ids = self.env.context.get('active_ids', []) or []
         records = self.env['ems.faculty'].browse(active_ids)
         for faculty in records:
+            if not faculty.email:
+                raise ValidationError(_('Missing Institutional Email!\n\nFaculty must have Institutional email to set Related Users Login id.\n\nFaculty : %s')%(faculty.complete_name))
             user = self.env['res.users'].create_faculty_user([faculty], user_group)
             if user:
                 faculty.write({'user_id': user.id})
