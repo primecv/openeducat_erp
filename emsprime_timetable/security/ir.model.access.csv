@@ -1,7 +1,8 @@
-"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_ems_period","name_ems_period","model_ems_period","base.group_user",1,1,1,0
-
-"access_ems_timetable_faculty","name_ems_timetable_faculty","model_ems_timetable","emsprime_core.group_ems_faculty",1,0,0,0
-"access_ems_timetable_student","name_ems_timetable_student","model_ems_timetable","emsprime_core.group_ems_student",1,0,0,0
-"access_ems_timetable_back_office","name_ems_timetable_back_office","model_ems_timetable","emsprime_core.group_ems_back_office",1,1,1,1
-"access_ems_timetable_back_office_admin","name_ems_timetable_back_office_admin","model_ems_timetable","emsprime_core.group_ems_back_office_admin",1,1,1,1
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ems_period,name_ems_period,model_ems_period,base.group_user,1,1,1,0
+,,,,,,,
+access_ems_timetable_faculty,name_ems_timetable_faculty,model_ems_timetable,emsprime_core.group_ems_faculty,1,0,0,0
+access_ems_timetable_student,name_ems_timetable_student,model_ems_timetable,emsprime_core.group_ems_student,1,0,0,0
+access_ems_timetable_back_office,name_ems_timetable_back_office,model_ems_timetable,emsprime_core.group_ems_back_office,1,1,1,1
+access_ems_timetable_back_office_admin,name_ems_timetable_back_office_admin,model_ems_timetable,emsprime_core.group_ems_back_office_admin,1,1,1,1
+access_ems_timetable_sga_admin,name_ems_timetable_admin_sga,model_ems_timetable,emsprime_core.group_ems_admin_sga,1,1,1,1
