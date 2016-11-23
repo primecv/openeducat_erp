@@ -187,3 +187,6 @@ access_ems_training_area_faculty,access.ems.training.area.faculty,model_ems_trai
 access_ems_training_area_backoffice,access.ems.training.area.backoffice,model_ems_training_area,group_ems_back_office,1,1,1,0
 access_ems_training_area_backoffice_admin,access.ems.training.area.backoffice.admin,model_ems_training_area,group_ems_back_office_admin,1,1,1,0
 access_ems_training_area_sga_admin,access.ems.training.area.sga.admin,model_ems_training_area,group_ems_admin_sga,1,1,1,0
+,,,,,,,
+access_ems_scholarship_faculty,name_ems_scholarship_faculty,model_ems_scholarship,group_ems_faculty,1,0,0,0
+access_ems_scholarship_student,name_ems_scholarship_student,model_ems_scholarship,group_ems_student,1,0,0,0
