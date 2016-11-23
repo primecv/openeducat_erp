@@ -34,7 +34,7 @@
 
         <!-- Faculties / My Evaluations menu -->
         <menuitem id="menu_ems_action_my_evaluations" name="My Evaluations"
-            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="12" action="act_open_ems_my_evaluation_view"/>
+            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="12" action="act_open_ems_my_evaluation_view" groups="base.group_erp_manager"/>
 
     </data>
 </openerp>

@@ -6,7 +6,7 @@
             groups="group_ems_faculty" />
 
         <menuitem id="menu_ems_dashboard_faculty" name="Dashboard" sequence="10"
-            parent="menu_ems_faculty_root" action="open_board_faculty" />
+            parent="menu_ems_faculty_root" action="open_board_faculty" groups="base.group_erp_manager" />
 
         <menuitem id="menu_ems_faculty_root_sub" name="Faculties" sequence="15" parent="menu_ems_faculty_root"/>
 
@@ -16,11 +16,11 @@
         <menuitem id="menu_ems_faculty_classes"
         	parent="menu_ems_faculty_root_sub"
         	sequence="12"
-        	action="act_open_faculties_ems_class"/>
+        	action="act_open_faculties_ems_class" groups="base.group_erp_manager"/>
 
         <menuitem id="menu_ems_faculty_stduents"
             parent="menu_ems_faculty_root_sub"
             sequence="14"
-            action="act_open_ems_faculty_student"/>
+            action="act_open_ems_faculty_student" groups="base.group_erp_manager"/>
     </data>
 </openerp>

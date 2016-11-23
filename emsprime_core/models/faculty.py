@@ -72,6 +72,13 @@ class EmsFaculty(models.Model):
     code = fields.Char('Code', size=8, required=False)
     class_line = fields.One2many('ems.class', 'faculty_id', 'Classes')
     user_id = fields.Many2one('res.users', 'Related User', track_visibility='onchange')
+    #JCF - Add type of document
+    document_type = fields.Selection(
+        [('idCard', 'ID Card'), ('passport', 'Passport')],
+        'Document type', default="idCard", track_visibility='onchange')
+    passport_no = fields.Char('Passport/BI', size=20, track_visibility='onchange')
+    issuer = fields.Char('Issuer', track_visibility='onchange')
+    issue_date = fields.Date('Issue Date', track_visibility='onchange')
 
     @api.one
     @api.constrains('user_id')

@@ -110,6 +110,13 @@
 									<field name="island_id" domain="[('level','=','2')]" context="{'form_view_ref':'emsprime_core.hr_location_island_form_view', 'default_level':'2'}"/>
 									<field name="county_id" domain="[('level','=','3')]" context="{'form_view_ref':'emsprime_core.hr_location_county_form_view', 'default_level':'3'}"/>
 									<field name="parish_id" domain="[('level','=','4')]" context="{'form_view_ref':'emsprime_core.hr_location_parish_form_view', 'default_level':'4'}"/>
+									<newline/>
+									<separator string="Personal Id" colspan="4"/>						
+									<field name="document_type"/>
+									<field name="passport_no"/>
+									<field name="issue_date"/>
+									<field name="issuer"/>
+									<newline/>
                                     <field name="degree_id" />
                                     <field name="lang" />
                                     <field name='emp_id' />
