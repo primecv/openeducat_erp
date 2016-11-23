@@ -367,5 +367,21 @@
             <field name="view_mode">kanban</field>
             <field name="view_id" ref="kanban_view_student" />
         </record>
+
+        <!-- Faculty - My Students -->
+        <record model="ir.actions.act_window" id="act_open_ems_faculty_student">
+            <field name="name">My Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,pivot,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{'faculty_student_list': 1}</field>
+			<field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add new Students.
+              </p>
+			</field>
+        </record>
     </data>
 </openerp>

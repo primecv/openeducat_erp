@@ -17,5 +17,10 @@
         	parent="menu_ems_faculty_root_sub"
         	sequence="12"
         	action="act_open_faculties_ems_class"/>
+
+        <menuitem id="menu_ems_faculty_stduents"
+            parent="menu_ems_faculty_root_sub"
+            sequence="14"
+            action="act_open_ems_faculty_student"/>
     </data>
 </openerp>

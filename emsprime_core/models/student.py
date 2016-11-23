@@ -294,6 +294,20 @@ class EmsStudent(models.Model):
             self._cr.execute(""" select id from ems_student where create_uid=%s and state='draft' """%(user))
             student_list = [r[0] for r in self._cr.fetchall()]
             args += [('id', 'in', student_list)]
+        #Faculty User : show Students of Faculty:
+        if context and 'faculty_student_list' in context and context['faculty_student_list'] == 1:
+            faculty_id = self.env['ems.faculty'].search([('user_id','=',self._uid)])
+            self._cr.execute("select id from ems_faculty where user_id=%s"%(self._uid))
+            faculty_id = self._cr.fetchone()
+            if faculty_id:
+                faculty_id = faculty_id[0]
+                classes = self.env['ems.class'].search([('faculty_id','=',faculty_id)])
+                faculty_students = []
+                for cclass in classes:
+                    for enrollment in cclass.enrollment_ids:
+                        faculty_students.append(enrollment.student_id.id)
+                if faculty_students:
+                    args += [('id', 'in', faculty_students)]
         return super(EmsStudent, self).search(args, offset, limit, order, count=count)
 
     @api.multi
