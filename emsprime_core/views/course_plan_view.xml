@@ -49,6 +49,7 @@
 											<field name="student_contact" widget="float_time"/>
 											<field name="work"/>
 											<field name="ects"/>
+											<field name="optional"/>
 											<field name="ordering"/>
 										</tree>
 									</field>
