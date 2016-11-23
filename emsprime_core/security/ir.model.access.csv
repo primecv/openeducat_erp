@@ -180,3 +180,10 @@ access_ems_attachment_type_back_office_admin,access_ems_attachment_type_back_off
 access_ems_attachment_type_back_office,access_ems_attachment_type_back_office,model_ems_attachment_type,group_ems_back_office,1,1,1,0
 ,,,,,,,
 access_ems_class_faculty,access_ems_class_faculty,model_ems_class,group_ems_faculty,1,0,0,0
+,,,,,,,
+access_ems_training_area_student,access.ems.training.area.student,model_ems_training_area,group_ems_student,1,0,0,0
+access_ems_training_area_applicant,access.ems.training.area.applicant,model_ems_training_area,group_ems_applicant,1,0,0,0
+access_ems_training_area_faculty,access.ems.training.area.faculty,model_ems_training_area,group_ems_faculty,1,0,0,0
+access_ems_training_area_backoffice,access.ems.training.area.backoffice,model_ems_training_area,group_ems_back_office,1,1,1,0
+access_ems_training_area_backoffice_admin,access.ems.training.area.backoffice.admin,model_ems_training_area,group_ems_back_office_admin,1,1,1,0
+access_ems_training_area_sga_admin,access.ems.training.area.sga.admin,model_ems_training_area,group_ems_admin_sga,1,1,1,0
