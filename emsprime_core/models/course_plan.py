@@ -157,6 +157,7 @@ class EmsCoursePlanSubject(models.Model):
     course_report = fields.Char('Course Report')
     course_semester = fields.Char(string='Course Semester', compute='_get_semester_course', store=True)
     semester_report = fields.Char('Semester Report')
+    optional = fields.Boolean('Optional')
 
     _sql_constraints = [('uniq_course_plan_subject','unique(course_plan_id, subject_id)','Subject must be Unique per Course Plan.')]
 
