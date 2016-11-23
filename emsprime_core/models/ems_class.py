@@ -139,7 +139,8 @@ class EmsClass(models.Model):
                             ed.university_center_id = univ.id and
                             univ.id = %s and
                             e.academic_year is not null and
-                            e.academic_year='%s'"""%(eclass.university_center_id.id, eclass.academic_year)
+                            e.academic_year='%s' and 
+                            eis.subject_id=%s"""%(eclass.university_center_id.id, eclass.academic_year, eclass.subject_id.id)
             if eclass.course_id:
                 where_clause += ' and e.course_id=%s'%(eclass.course_id.id)
             if eclass.edition_id:
