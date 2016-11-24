@@ -73,7 +73,7 @@
 								<span t-if="not sub['grade_semester']" style="color:#ffffff">-</span>
 							</div>
 							<div style="float:left;width:50%"><span t-esc="sub['subject_name']" style="color:333333;"/></div>
-							<div style="float:left;width:25%"><span t-if="sub['grade']"><span t-esc="sub['grade']"/> </span>
+							<div style="float:left;width:25%"><span t-if="sub['grade']"><span t-esc="sub['grade_print']"/> </span>
 								<span t-if="not sub['grade']" style="color:#ffffff">-</span>
 							***</div>
 							<div style="clear:both;"></div>

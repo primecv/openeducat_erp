@@ -453,6 +453,7 @@ class ems_request(models.Model):
             result = []
             course_year = ''
             grade_semester = ''
+            grade = ''
             for subj in subjects:
                 for inscription in enrollment_id.student_id.roll_number_line:
                     flag = False
@@ -488,10 +489,53 @@ class ems_request(models.Model):
                                     grade_semester = line.semester
                                     lines['grade_semester'] = semester
 
+                                #if line.
                                 lines['subject_name'] = line.subject_id.name
                                 lines['grade'] = line.grade
                                 if not line.grade:
                                 	lines['grade'] = False
+                                if line.grade==1:
+                                    grade = "1 (Um) valor"
+                                elif line.grade ==2:
+                                    grade = "2 (Dois) valores"
+                                elif line.grade ==3:
+                                    grade = "3 (Três) valores"
+                                elif line.grade ==4:
+                                    grade = "4 (Quatro) valores"
+                                elif line.grade ==5:
+                                    grade = "5 (Cinco) valores"
+                                elif line.grade ==6:
+                                    grade = "6 (Seis) valores"
+                                elif line.grade ==7:
+                                    grade = "7 (Sete) valores"
+                                elif line.grade ==8:
+                                    grade = "8 (Oito) valores"
+                                elif line.grade ==9:
+                                    grade = "9 (Nove) valores"
+                                elif line.grade ==10:
+                                    grade = "10 (Dez) valores"
+                                elif line.grade ==11:
+                                    grade = "11 (Onze) valores"
+                                elif line.grade ==12:
+                                    grade = "12 (Doze) valores"
+                                elif line.grade ==13:
+                                    grade = "13 (Treze) valores"
+                                elif line.grade ==14:
+                                    grade = "14 (Quatorze) valores"
+                                elif line.grade ==15:
+                                    grade = "15 (Quinze) valores"
+                                elif line.grade ==16:
+                                    grade = "16 (Dezasseis) valores"
+                                elif line.grade ==17:
+                                    grade = "17 (Dezassete) valores"
+                                elif line.grade ==18:
+                                    grade = "18 (Dezoito) valores"
+                                elif line.grade ==19:
+                                    grade = "19 (Dezanove) valores"
+                                elif line.grade ==20:
+                                    grade = "20 (Vinte) valores"
+
+                                lines['grade_print'] = grade
                                 result.append(lines)
                                 flag = True
                                 break
