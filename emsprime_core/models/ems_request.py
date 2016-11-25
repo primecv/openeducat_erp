@@ -501,7 +501,7 @@ class ems_request(models.Model):
                                     lines['grade_semester'] = semester
 
                                 #if line.
-                                lines['subject_name'] = str(line.subject_id.name) + subject_optional
+                                lines['subject_name'] = line.subject_id.name + subject_optional
                                 lines['grade'] = line.grade
                                 if not line.grade:
                                 	lines['grade'] = False
