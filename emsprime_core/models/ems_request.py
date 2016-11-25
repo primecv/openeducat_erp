@@ -470,7 +470,7 @@ class ems_request(models.Model):
                                     optional_course_plan_subject = self.env['ems.course.plan.subject'].search([('subject_id','=',line.subject_id.id), 
                                                                                                                 ('course_plan_id','=',inscription_course_plan)])
                                     if optional_course_plan_subject and optional_course_plan_subject[0].optional is True:
-                                        subject_optional = ' (Optional)'
+                                        subject_optional = ' (Opcional)'
 
                                 if not course_year:
                                     course_year = line.inscription_id.course_year
