@@ -461,6 +461,17 @@ class ems_request(models.Model):
                         for line in inscription.subject_line:
                             lines = {}
                             if line.subject_id.id == subj:
+                                #find optional Course Plan Subject:
+                                subject_optional = ''
+                                inscription_course_plan = line.inscription_id.course_plan_id and line.inscription_id.course_plan_id.id or False
+                                if not inscription_course_plan:
+                                    inscription_course_plan = line.inscription_id.edition_id.course_plan_id and line.inscription_id.edition_id.course_plan_id.id or False
+                                if inscription_course_plan:
+                                    optional_course_plan_subject = self.env['ems.course.plan.subject'].search([('subject_id','=',line.subject_id.id), 
+                                                                                                                ('course_plan_id','=',inscription_course_plan)])
+                                    if optional_course_plan_subject and optional_course_plan_subject[0].optional is True:
+                                        subject_optional = ' (Optional)'
+
                                 if not course_year:
                                     course_year = line.inscription_id.course_year
                                     lines['course_year'] = str(course_year) + 'º Ano'
@@ -490,7 +501,7 @@ class ems_request(models.Model):
                                     lines['grade_semester'] = semester
 
                                 #if line.
-                                lines['subject_name'] = line.subject_id.name
+                                lines['subject_name'] = str(line.subject_id.name) + subject_optional
                                 lines['grade'] = line.grade
                                 if not line.grade:
                                 	lines['grade'] = False
