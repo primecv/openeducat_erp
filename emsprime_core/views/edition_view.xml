@@ -23,9 +23,9 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <form string="Edition">
-					<header>
+					<!--<header>
 						<button name="do_student_inscriptions" type="object" string="Load Student Inscriptions"/>
-					</header>
+					</header>-->
                     <sheet>
                         <group col="4" name="main">
                             <field name="name" />
@@ -37,7 +37,7 @@
 							<field name="course_plan_id" />
 							<field name="university_center_id"/>
                         </group>
-                        <notebook colspan="4">						
+                        <!--<notebook colspan="4">						
                             <page name="subjects" string="Subjects">						
 								<group name="subject">
 									<separator string="Subjects" colspan="4"/> 
@@ -55,7 +55,7 @@
 								</group>
 								<button name="reload_subjects" type="object" string="Reload Course Subjects"/>
 							</page>
-						</notebook>
+						</notebook>-->
                     </sheet>
                 </form>
             </field>

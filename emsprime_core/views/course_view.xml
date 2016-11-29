@@ -34,6 +34,7 @@
 							<field name="degree_id" widget="selection"/>
 							<field name="parent_id" />
 							<field name="active"/>
+							<field name="uci"/>
 						</group>
                         <notebook colspan="4">						
                             <!--<page name="subjects" string="Subjects">						

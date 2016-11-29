@@ -16,11 +16,11 @@
         <menuitem id="menu_ems_faculty_classes"
         	parent="menu_ems_faculty_root_sub"
         	sequence="12"
-        	action="act_open_faculties_ems_class" groups="base.group_erp_manager"/>
+        	action="act_open_faculties_ems_class" groups="group_ems_faculty"/>
 
         <menuitem id="menu_ems_faculty_stduents"
             parent="menu_ems_faculty_root_sub"
             sequence="14"
-            action="act_open_ems_faculty_student" groups="base.group_erp_manager"/>
+            action="act_open_ems_faculty_student" groups="group_ems_faculty"/>
     </data>
 </openerp>

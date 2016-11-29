@@ -174,7 +174,7 @@ class EmsEdition(models.Model):
     def reload_subjects(self):
         for edition in self:
             self.subject_line.unlink()
-            for subject in edition.course_id.subject_line:
+            for subject in edition.course_plan_id.subject_line:
                 self.env['ems.edition.subject'].create({
                     'edition_id': edition.id,
                     'subject_id': subject.subject_id.id,

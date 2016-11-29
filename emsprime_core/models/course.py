@@ -40,6 +40,7 @@ class EmsCourse(models.Model):
     is_active = fields.Boolean('Is Active for Enrollment?', default=False)
     course_plan_line = fields.One2many('ems.course.plan', 'course_id', string="Course Plans")
     edition_line = fields.One2many('ems.edition', 'course_id', string="Editions")
+    uci = fields.Boolean('UCI?', default=False)
 
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
