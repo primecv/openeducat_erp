@@ -94,22 +94,19 @@ class EmsSubject(models.Model):
 
             args += [('id', 'in', subjects)]
 
-        """ Below section is to filter Subjects on Ems Class based on Edition selected:
+        """ Below section is to filter Subjects on Ems Class based on Faculty selected:
         """
-        if context and 'ems_class_filter_by_edition' in context and context['ems_class_filter_by_edition'] is True:
-            edition_id = context['edition_id']
-            if edition_id:
-                edition = self.env['ems.edition'].browse(edition_id)
-                course_plan_id = edition.course_plan_id and edition.course_plan_id.id or False
+        if context and 'ems_class_filter_by_faculty' in context and context['ems_class_filter_by_faculty'] is True:
+            faculty_id = context['faculty_id']
+            if faculty_id:
                 subjects = []
-                if course_plan_id:
-                    query = """select subject_id from ems_course_plan_subject where course_plan_id=%s"""%(course_plan_id)
-                    self._cr.execute(query)
-                    result = self._cr.fetchall()
+                query = """select ems_subject_id from ems_faculty_ems_subject_rel where ems_faculty_id=%s"""%(faculty_id)
+                self._cr.execute(query)
+                result = self._cr.fetchall()
                     
-                    for res in result:
-                        res = list(res)
-                        subjects.append(res[0])
+                for res in result:
+                    res = list(res)
+                    subjects.append(res[0])
                 args += [('id', 'in', subjects)]
         return super(EmsSubject, self).name_search(name, args, operator, limit)
 
@@ -160,22 +157,19 @@ class EmsSubject(models.Model):
 
             args += [('id', 'in', subjects)]
         
-        """ Below section is to filter Subjects on Ems Class based on Edition selected:
+        """ Below section is to filter Subjects on Ems Class based on Faculty selected:
         """
-        if context and 'ems_class_filter_by_edition' in context and context['ems_class_filter_by_edition'] is True:
-            edition_id = context['edition_id']
-            if edition_id:
-                edition = self.env['ems.edition'].browse(edition_id)
-                course_plan_id = edition.course_plan_id and edition.course_plan_id.id or False
+        if context and 'ems_class_filter_by_faculty' in context and context['ems_class_filter_by_faculty'] is True:
+            faculty_id = context['faculty_id']
+            if faculty_id:
                 subjects = []
-                if course_plan_id:
-                    query = """select subject_id from ems_course_plan_subject where course_plan_id=%s"""%(course_plan_id)
-                    self._cr.execute(query)
-                    result = self._cr.fetchall()
+                query = """select ems_subject_id from ems_faculty_ems_subject_rel where ems_faculty_id=%s"""%(faculty_id)
+                self._cr.execute(query)
+                result = self._cr.fetchall()
                     
-                    for res in result:
-                        res = list(res)
-                        subjects.append(res[0])
+                for res in result:
+                    res = list(res)
+                    subjects.append(res[0])
                 args += [('id', 'in', subjects)]
         return super(EmsSubject, self).search(args, offset, limit, order, count=count)
 

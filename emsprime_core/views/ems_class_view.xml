@@ -29,10 +29,11 @@
                         <group colspan="4" col="4" name="main">
 							<field name="academic_year" />
                             <field name="university_center_id" required="1"/>
-                            <field name="subject_id" context="{'ems_class_filter_by_edition': True, 'course_id': course_id, 'edition_id': edition_id}"/>
                             <field name="faculty_id" />
+                            <!--<field name="subject_id" context="{'ems_class_filter_by_edition': True, 'course_id': course_id, 'edition_id': edition_id}"/>-->
+                            <field name="subject_id" context="{'ems_class_filter_by_faculty': True, 'faculty_id': faculty_id}"/>
 							<field name="course_id" />
-                            <field name="edition_id" required="0" context="{'ems_class_filter_by_course': True, 'course_id': course_id}"/>
+                            <field name="edition_id" required="0" context="{'ems_class_filter_by_course': True, 'course_id': course_id, 'university_center_id': university_center_id}"/>
                             <field name="name" />
 							<field name="semester"/>
 							<!--<field name="semester_id" invisible="1"/>-->

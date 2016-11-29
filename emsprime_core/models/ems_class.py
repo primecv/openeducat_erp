@@ -61,14 +61,14 @@ class EmsClass(models.Model):
            raise ValidationError(_("Invalid Date!"))
 
 
-    @api.onchange('course_id')
+    '''@api.onchange('course_id')
     def onchange_course(self):
         self.edition_id = False
         self.subject_id = False
 
     @api.onchange('edition_id')
     def onchange_edition(self):
-        self.subject_id = False
+        self.subject_id = False'''
 
     @api.onchange('academic_year', 'subject_id')
     def onchange_subject_academic_year(self):

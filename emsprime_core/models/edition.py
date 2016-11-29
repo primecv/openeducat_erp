@@ -62,8 +62,9 @@ class EmsEdition(models.Model):
         user = context.get('uid', False)
         if context and 'ems_class_filter_by_course' in context and context['ems_class_filter_by_course'] is True:
             course_id = context['course_id']
+            university_center_id = context['university_center_id']
             if course_id:
-                query = """select id from ems_edition where course_id=%s"""%(course_id)
+                query = """select id from ems_edition where course_id=%s and university_center_id=%s"""%(course_id,university_center_id)
                 self._cr.execute(query)
                 result = self._cr.fetchall()
                 editions = []
@@ -100,8 +101,9 @@ class EmsEdition(models.Model):
         user = context.get('uid', False)
         if context and 'ems_class_filter_by_course' in context and context['ems_class_filter_by_course'] is True:
             course_id = context['course_id']
+            university_center_id = context['university_center_id']
             if course_id:
-                query = """select id from ems_edition where course_id=%s"""%(course_id)
+                query = """select id from ems_edition where course_id=%s and university_center_id=%s"""%(course_id,university_center_id)
                 self._cr.execute(query)
                 result = self._cr.fetchall()
                 editions = []
