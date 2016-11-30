@@ -183,8 +183,8 @@
                                     <separator colspan="4" string="Contacts" />
                                     <field name="phone" />
                                     <field name="mobile" />
-                                    <field name="email" />
-                                    <field name="institutional_email" />
+                                    <field name="institutional_email" string="Email"/>
+                                    <field name="email" string="Institutional Email"/>
                                 </group>
                                 <group col="4" colspan="4">
                                     <separator colspan="4" string="Professional Contacts" />

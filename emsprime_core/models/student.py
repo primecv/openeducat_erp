@@ -129,7 +129,7 @@ class EmsStudent(models.Model):
     father = fields.Char('Father', size=255, track_visibility='onchange')
     issuer = fields.Char('Issuer', track_visibility='onchange')
     issue_date = fields.Date('Issue Date', track_visibility='onchange')
-    institutional_email = fields.Char('Institutional email', size=128, track_visibility='onchange')
+    institutional_email = fields.Char('Email', size=128, track_visibility='onchange')
     complete_name = fields.Char('Name', compute='_get_complete_name', store=True, track_visibility='onchange')
     attachment_line = fields.One2many('ems.attachment', 'student_id', 'Attachments')
     country_id = fields.Many2one('ems.location', 'Country', track_visibility='onchange')
