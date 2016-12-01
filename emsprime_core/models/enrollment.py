@@ -116,6 +116,7 @@ class EmsEnrollment(models.Model):
             is_matricula = False
             has_inscription = False
             inscription_approved = True
+            inscription_subject_grades = {}
             if 'student_id' in context:
                 student_id = context['student_id']
                 student = self.env['ems.student'].browse([student_id])
@@ -124,12 +125,12 @@ class EmsEnrollment(models.Model):
                         is_matricula = True
                     if line.type == 'I':
                         has_inscription = True
+                        #generate dictionary with Inscription Subject Id as key & subject name, Inscription roll no & inscription grade as values to validate Grade >= 10:
                         for subject in line.subject_line:
-                            if subject.grade < 10:
-                                inscription_approved = False
-                                inscription_subject = subject.subject_id.name.encode('utf-8')
-                                inscription_rollno = str(line.roll_number)
-                                inscription_grade = subject.grade
+                            inscription_subject = subject.subject_id.name.encode('utf-8')
+                            inscription_rollno = str(line.roll_number)
+                            inscription_grade = subject.grade
+                            inscription_subject_grades[subject.subject_id.id] = [inscription_subject, inscription_rollno, inscription_grade]
             if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
                 self.update({'type': 'M'})
             if is_matricula is True and self.type == 'MC':
@@ -142,14 +143,16 @@ class EmsEnrollment(models.Model):
                     }
                     self.update({'type': False})
                     return {'warning': warning}
-                if inscription_approved is False:
-                    message = 'Conclusão Enrollment cannot be created as Student Inscription is not approved.\n\nInscription Roll Number: %s\nSubject: %s\nGrade: %s'%(inscription_rollno, inscription_subject, inscription_grade)
-                    warning = {
-                        'title': 'Invalid Operation',
-                        'message': message
-                    }
-                    self.update({'type': False})
-                    return {'warning': warning}
+                for subject_line in inscription_subject_grades:
+                    if inscription_subject_grades[subject_line][2] < 10:
+                        message = 'Conclusão Enrollment cannot be created as Student Inscription is not approved.\n\nInscription Roll Number: %s\nSubject: %s\nGrade: %s'\
+                                    %(inscription_subject_grades[subject_line][1], inscription_subject_grades[subject_line][0], inscription_subject_grades[subject_line][2])
+                        warning = {
+                            'title': 'Invalid Operation',
+                            'message': message
+                        }
+                        self.update({'type': False})
+                        return {'warning': warning}                
 
 
     @api.onchange('course_id')
