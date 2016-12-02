@@ -113,6 +113,8 @@ class EmsEnrollment(models.Model):
     @api.onchange('type')
     def onchange_type(self):
         context = self._context
+        self.course_id = False
+        self.edition_id = False
         if not context:
             context = {}
         if 'create_inscription' not in context:
@@ -146,6 +148,8 @@ class EmsEnrollment(models.Model):
                 }}
             elif is_matricula is False and self.type == 'UCI':
                 self.update({'uci': True})
+            if self.type != 'UCI':
+                self.uci = False
             if self.type == 'CC':
                 if has_inscription is False:
                     warning = {
