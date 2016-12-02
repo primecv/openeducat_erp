@@ -135,7 +135,7 @@ class EmsEnrollment(models.Model):
                             inscription_grade = subject.grade
                             inscription_subject_grades[subject.subject_id.id] = [inscription_subject, inscription_rollno, inscription_grade]
             if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
-                self.update({'type': 'M'})
+                self.update({'type': 'M', 'uci': False})
             if is_matricula is True and self.type == 'MC':
                 self.update({'course_id': False})
             if is_matricula is True and self.type == 'UCI':
@@ -144,13 +144,15 @@ class EmsEnrollment(models.Model):
                                 'title': 'Alert!',
                                 'message': 'University Students with Matricula Enrollments can directly create UCI Inscriptions.\n\nClick on Inscriptions link on Student form to create UCI Inscription.'
                 }}
+            elif is_matricula is False and self.type == 'UCI':
+                self.update({'uci': True})
             if self.type == 'CC':
                 if has_inscription is False:
                     warning = {
                         'title': 'Invalid Operation',
                         'message': 'Conclusão Enrollment cannot be created as Student does not have Inscription.'
                     }
-                    self.update({'type': False})
+                    self.update({'type': False, 'uci': False})
                     return {'warning': warning}
                 for subject_line in inscription_subject_grades:
                     if inscription_subject_grades[subject_line][2] < 10:
@@ -160,7 +162,7 @@ class EmsEnrollment(models.Model):
                             'title': 'Invalid Operation',
                             'message': message
                         }
-                        self.update({'type': False})
+                        self.update({'type': False, 'uci': False})
                         return {'warning': warning}                
 
 
