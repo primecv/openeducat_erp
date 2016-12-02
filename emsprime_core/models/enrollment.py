@@ -229,7 +229,7 @@ class EmsEnrollment(models.Model):
             self.uci = False
             return {'warning': {
                                 'title': 'Invalid Operation!',
-                                'message': 'You Cannot Create UCI Inscription for a student which does not have UCI Enrollment present.'
+                                'message': 'You Cannot Create UCI Inscription for a student which does not have Matricula enrollment OR UCI Enrollment present.'
                     }}
         elif self.uci is True:
             self.course_id = False
