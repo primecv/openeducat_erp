@@ -103,7 +103,8 @@ class EmsEnrollment(models.Model):
                         student_course = line.course_id.id
                         student_edition = line.edition_id.id
             if is_matricula is False:
-                res.update(type = 'M')
+                if 'create_inscription' not in context:
+                    res.update(type = 'M')
             res.update(roll_number = student.roll_number)
             res.update(course_id = student_course)
             res.update(edition_id = student_edition)
@@ -214,17 +215,17 @@ class EmsEnrollment(models.Model):
                         is_matricula = True
                     if line.type == 'UCI':
                         has_uci = True
-            if is_matricula is False: #non-university student
-                if has_uci is False:
-                    return {'warning': {
-                                'title': 'Invalid Operation!',
-                                'message': 'You Cannot Create UCI Inscription for a student which does not have UCI Enrollment present.'
-                    }}
         if self.uci is False:
             self.roll_number = student.roll_number
             self.course_id = student.course_id.id
             self.edition_id = student.edition_id.id
-        else:
+        elif self.uci is True and is_matricula is False and has_uci is False:
+            self.uci = False
+            return {'warning': {
+                                'title': 'Invalid Operation!',
+                                'message': 'You Cannot Create UCI Inscription for a student which does not have UCI Enrollment present.'
+                    }}
+        elif self.uci is True:
             self.course_id = False
             self.edition_id = False
 
@@ -234,7 +235,7 @@ class EmsEnrollment(models.Model):
             if enrollment.type == 'I':
                 student = enrollment.student_id.id
                 matriculas = self.search([('student_id','=',student), ('type','=','M')])
-                if not matriculas:
+                if not matriculas and enrollment.uci is False:
                     raise ValidationError(_('Inscrição enrollment cannot be created.\nStudent must be enrolled with Matricula type.'))
         #check for duplicate Roll number belonging to another student:
         roll_number = self.roll_number
