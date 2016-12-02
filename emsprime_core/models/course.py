@@ -73,6 +73,35 @@ class EmsCourse(models.Model):
             result.append((course.id, name))
         return result
 
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        """ This function filters Course list 
+        """
+        """ Below section is to filter Course on Student Enrollment wizard:
+        """
+        context = self._context or {}
+        if context and 'uci_check' in context:
+            if context['uci_check'] == True:
+                args += [('uci', '=', True)]
+            else:
+                args += [('uci', '=', False)]
+        return super(EmsCourse, self).search(args, offset, limit, order, count=count)
+
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):        
+        """ This function filters Course list 
+        """
+        """ Below section is to filter Course on Student Enrollment wizard:
+        """
+        context = self._context or {}
+        if context and 'uci_check' in context:
+            if context['uci_check'] == True:
+                args += [('uci', '=', True)]
+            else:
+                args += [('uci', '=', False)]
+        return super(EmsCourse, self).name_search(name, args, operator=operator, limit=limit)
+
+
 class EmsCourseSubject(models.Model):
     _name = "ems.course.subject"
     _description = "Course Subjects"

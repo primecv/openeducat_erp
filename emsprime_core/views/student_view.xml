@@ -141,7 +141,7 @@
                                                 <field name="uci" invisible="1"/>
                                                 <newline/>
 												<field name="type" />
-										        <field name="course_id" />
+										        <field name="course_id" context="{'uci_check': uci}"/>
 										        <field name="edition_id" context="{'course_id': course_id,'get_parent_edition':1, 'enrollment_type': type, 'student_id': parent.id}" />
 										        <field name="roll_number" />
 												<field name="academic_year" required="0" />
