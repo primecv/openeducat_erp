@@ -138,6 +138,12 @@ class EmsEnrollment(models.Model):
                 self.update({'type': 'M'})
             if is_matricula is True and self.type == 'MC':
                 self.update({'course_id': False})
+            if is_matricula is True and self.type == 'UCI':
+                self.update({'type': False})
+                return {'warning': {
+                                'title': 'Alert!',
+                                'message': 'University Students with Matricula Enrollments can directly create UCI Inscriptions.\n\nClick on Inscriptions link on Student form to create UCI Inscription.'
+                }}
             if self.type == 'CC':
                 if has_inscription is False:
                     warning = {
