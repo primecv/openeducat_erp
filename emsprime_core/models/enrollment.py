@@ -61,7 +61,8 @@ class EmsEnrollment(models.Model):
                                 ('M', 'Matricula'), 
                                 ('T', 'Transferência'), 
                                 ('CC', 'Conclusão'), 
-                                ('MC', 'Mudança de Curso')
+                                ('MC', 'Mudança de Curso'),
+                                ('UCI', 'Unidades Curriculares Isoladas')
                             ], 'Tipo', required=True, default='M')
     period = fields.Selection([('morning','Morning'), ('afternoon', 'Afternoon'), ('evening', 'Evening')], 'Period')
     university_center_id = fields.Many2one('ems.university.center', related="edition_id.university_center_id", string='University Center', store=True)
@@ -75,6 +76,7 @@ class EmsEnrollment(models.Model):
     enrollment_date = fields.Date('Enrollment Date')
     course_conclusion_date = fields.Date('Conclusion Date')
     matricula_id = fields.Many2one('ems.enrollment', 'Matrícula')
+    uci = fields.Boolean('UCI?')
 
     def get_to_year(self, year):
         if year:
@@ -196,6 +198,36 @@ class EmsEnrollment(models.Model):
                 if roll_number and self.type != 'CC':
                     self.update({'roll_number': roll_number})
 
+    @api.onchange('uci')
+    def onchange_uci(self):
+        context = self._context or {}
+        if 'student_id' in context:
+            student_id = context['student_id']
+            student = self.env['ems.student'].browse(student_id)
+            is_matricula = False
+            has_uci = False
+            student_course = False
+            student_edition = False
+            for std in student:
+                for line in std.roll_number_line:
+                    if line.type == 'M':
+                        is_matricula = True
+                    if line.type == 'UCI':
+                        has_uci = True
+            if is_matricula is False: #non-university student
+                if has_uci is False:
+                    return {'warning': {
+                                'title': 'Invalid Operation!',
+                                'message': 'You Cannot Create UCI Inscription for a student which does not have UCI Enrollment present.'
+                    }}
+        if self.uci is False:
+            self.roll_number = student.roll_number
+            self.course_id = student.course_id.id
+            self.edition_id = student.edition_id.id
+        else:
+            self.course_id = False
+            self.edition_id = False
+
     @api.constrains('type', 'student_id', 'roll_number')
     def check_inscricao_enrollment(self):
         for enrollment in self:
@@ -246,12 +278,13 @@ class EmsEnrollment(models.Model):
                 for y in edition_years:
                     if str(y) not in inscription_years:
                         valid_years.append(str(y))
-                if not valid_years:
-                    raise UserError(_('Inscription Enrollments are already present for all valid Academic Years.'))
-                else:
-                    if vals['academic_year'] not in valid_years:
-                        valid_years = [' | '.join(valid_years)][0]
-                        raise UserError(_('Invalid Academic Year!\nValid Academic Years: %s')%(valid_years))
+                if vals['uci'] is False:
+                    if not valid_years:
+                        raise UserError(_('Inscription Enrollments are already present for all valid Academic Years.'))
+                    else:
+                        if vals['academic_year'] not in valid_years:
+                            valid_years = [' | '.join(valid_years)][0]
+                            raise UserError(_('Invalid Academic Year!\nValid Academic Years: %s')%(valid_years))
         if 'type' in vals and vals['type'] == 'C':
             last_rec = self.search([('id','>',0),('roll_number','!=', ''),('type','=','C')], order='roll_number desc', limit=1)
             next_seq = '00001'
@@ -270,7 +303,10 @@ class EmsEnrollment(models.Model):
         elif 'type' in vals and vals['type'] == 'I':
             if 'no_rollno' not in self._context:
                 student_roll_no = self.env['ems.student'].browse([vals['student_id']]).roll_number
-                vals['roll_number'] = str(student_roll_no) + '.' + str(vals['academic_year'])
+                if vals['uci'] is False:
+                    vals['roll_number'] = str(student_roll_no) + '.' + str(vals['academic_year'])                
+                else:
+                    vals['roll_number'] = str(student_roll_no)
             if vals['student_id']:
                 student = self.env['ems.student'].browse(vals['student_id'])
                 edition_id = student.edition_id.id or False
@@ -281,7 +317,8 @@ class EmsEnrollment(models.Model):
         rollno = vals['roll_number']
         matriculas = self.search([('roll_number','=',rollno)])
         if matriculas and vals['type'] not in ('CC', 'T', 'MC', 'M'):
-            raise ValidationError(_('Student Already exists with Roll Number %s')%(rollno))
+            if vals['uci'] is False: #check for UCI Inscription
+                raise ValidationError(_('Student Already exists with Roll Number %s')%(rollno))
         return super(EmsEnrollment, self).create(vals)
 
     @api.multi
