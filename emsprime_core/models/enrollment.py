@@ -221,17 +221,18 @@ class EmsEnrollment(models.Model):
                         is_matricula = True
                     if line.type == 'UCI':
                         has_uci = True
-        if self.uci is False:
-            self.roll_number = student.roll_number
-            self.course_id = student.course_id.id
-            self.edition_id = student.edition_id.id
-        elif self.uci is True and is_matricula is False and has_uci is False:
-            self.uci = False
-            return {'warning': {
-                                'title': 'Invalid Operation!',
-                                'message': 'You Cannot Create UCI Inscription for a student which does not have Matricula enrollment OR UCI Enrollment present.'
-                    }}
-        elif self.uci is True:
+        if 'create_inscription' in context:
+            if self.uci is False:
+                self.roll_number = student.roll_number
+                self.course_id = student.course_id.id
+                self.edition_id = student.edition_id.id
+            elif self.uci is True and is_matricula is False and has_uci is False:
+                self.uci = False
+                return {'warning': {
+                                    'title': 'Invalid Operation!',
+                                    'message': 'You Cannot Create UCI Inscription for a student which does not have Matricula enrollment OR UCI Enrollment present.'
+                        }}
+        if self.uci is True:
             self.course_id = False
             self.edition_id = False
 
