@@ -232,6 +232,14 @@ class EmsEnrollment(models.Model):
                 self.roll_number = student.roll_number
                 self.course_id = student.course_id.id
                 self.edition_id = student.edition_id.id
+                if not student.roll_number:#get UCI enrollment roll no
+                    uci_course, uci_edition, uci_rollno = False, False, False
+                    for enrl in student.roll_number_line:
+                        if enrl.type == 'UCI':
+                            uci_course, uci_edition, uci_rollno = enrl.course_id.id, enrl.edition_id.id, enrl.roll_number
+                    self.course_id = uci_course
+                    self.edition_id = uci_edition
+                    self.roll_number = uci_rollno
             elif self.uci is True and is_matricula is False and has_uci is False:
                 self.uci = False
                 return {'warning': {
