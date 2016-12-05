@@ -40,14 +40,17 @@ class ResUsers(models.Model):
         for rec in records:
             if not rec.user_id:
                 user_vals = {
-                    'name': rec.name,
-                    'login': rec.email or (rec.name + rec.last_name),
-                    'partner_id': rec.partner_id.id
+                    'name': rec.complete_name,
+                    'login': rec.email,
+                    'partner_id': rec.partner_id.id,
+                    'university_center_id': rec.university_center_id and rec.university_center_id.id or False,
+                    'lang': rec.lang or rec.partner_id.lang,
                 }
                 user_id = self.create(user_vals)
                 rec.user_id = user_id
                 if user_group:
                     user_group.users = user_group.users + user_id
+                return user_id
 
     @api.multi
     def create_faculty_user(self, records, user_group=None):
