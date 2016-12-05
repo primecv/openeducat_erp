@@ -96,7 +96,8 @@ class EmsEnrollment(models.Model):
             student_course = False
             student_edition = False
             for std in student:
-                for line in std.roll_number_line:
+                enrollments = self.env['ems.enrollment'].search([('student_id','=',std.id)], order="enrollment_date")
+                for line in enrollments:
                     if line.type == 'M':
                         is_matricula = True
                     if line.type in ('T', 'M', 'MC'):
@@ -125,7 +126,8 @@ class EmsEnrollment(models.Model):
             if 'student_id' in context:
                 student_id = context['student_id']
                 student = self.env['ems.student'].browse([student_id])
-                for line in student.roll_number_line:
+                enrollments = self.env['ems.enrollment'].search([('student_id','=',student.id)], order="enrollment_date")
+                for line in enrollments:
                     if line.type == 'M':
                         is_matricula = True
                     if line.type == 'I':
@@ -205,7 +207,8 @@ class EmsEnrollment(models.Model):
                 student_id = context['student_id']
                 student = self.env['ems.student'].browse([student_id])
                 roll_number = False
-                for line in student.roll_number_line:
+                enrollments = self.env['ems.enrollment'].search([('student_id','=',student.id)], order="enrollment_date")
+                for line in enrollments:
                     if line.type == 'M':
                         roll_number = line.roll_number 
                 if roll_number and self.type != 'CC':
@@ -214,24 +217,26 @@ class EmsEnrollment(models.Model):
     @api.onchange('uci')
     def onchange_uci(self):
         context = self._context or {}
+        student_course, student_edition = False, False
+        is_matricula, has_uci = False, False
         if 'student_id' in context:
             student_id = context['student_id']
             student = self.env['ems.student'].browse(student_id)
-            is_matricula = False
-            has_uci = False
-            student_course = False
-            student_edition = False
             for std in student:
-                for line in std.roll_number_line:
+                enrollments = self.env['ems.enrollment'].search([('student_id','=',std.id)], order="enrollment_date")
+                for line in enrollments:
                     if line.type == 'M':
                         is_matricula = True
                     if line.type == 'UCI':
                         has_uci = True
+                    if line.type in ('T', 'M', 'MC'):
+                        student_course = line.course_id.id
+                        student_edition = line.edition_id.id
         if 'create_inscription' in context:
             if self.uci is False:
                 self.roll_number = student.roll_number
-                self.course_id = student.course_id.id
-                self.edition_id = student.edition_id.id
+                self.course_id = student_course
+                self.edition_id = student_edition
                 if not student.roll_number:#get UCI enrollment roll no
                     uci_course, uci_edition, uci_rollno = False, False, False
                     for enrl in student.roll_number_line:
