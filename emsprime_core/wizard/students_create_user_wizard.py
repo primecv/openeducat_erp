@@ -39,7 +39,12 @@ class WizardOpStudent(models.TransientModel):
         user_group = self.env.ref('emsprime_core.group_ems_student')
         active_ids = self.env.context.get('active_ids', []) or []
         records = self.env['ems.student'].browse(active_ids)
-        self.env['res.users'].create_user(records, user_group)
+        for student in records:
+            if not student.email:
+                raise ValidationError(_('Missing Institutional Email!\n\Student must have Institutional email to set Related Users Login id.\n\Student : %s')%(student.complete_name))
+            user = self.env['res.users'].create_user([student], user_group)
+            if user:
+                student.write({'user_id': user.id})
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
