@@ -126,7 +126,7 @@ class EmsEnrollment(models.Model):
             if 'student_id' in context:
                 student_id = context['student_id']
                 student = self.env['ems.student'].browse([student_id])
-                enrollments = self.env['ems.enrollment'].search([('student_id','=',student.id)], order="enrollment_date")
+                enrollments = self.env['ems.enrollment'].search([('student_id','=',student.id),('course_id','=',student.course_id.id)], order="enrollment_date")
                 for line in enrollments:
                     if line.type == 'M':
                         is_matricula = True
