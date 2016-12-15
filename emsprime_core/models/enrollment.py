@@ -126,11 +126,17 @@ class EmsEnrollment(models.Model):
             if 'student_id' in context:
                 student_id = context['student_id']
                 student = self.env['ems.student'].browse([student_id])
+                conclusao_valid_inscriptions = []
+                current_course_inscriptions = self.env['ems.enrollment'].search([('type','=','I'),
+                                                                                  ('student_id','=',student.id), 
+                                                                                  ('course_id', '=', student.course_id.id)], order="enrollment_date")
+                for crs in current_course_inscriptions:
+                    conclusao_valid_inscriptions.append(crs.id)
                 enrollments = self.env['ems.enrollment'].search([('student_id','=',student.id)], order="enrollment_date")
                 for line in enrollments:
                     if line.type == 'M':
                         is_matricula = True
-                    if line.type == 'I':
+                    if line.type == 'I' and line.id in conclusao_valid_inscriptions:
                         has_inscription = True
                         #generate dictionary with Inscription Subject Id as key & subject name, Inscription roll no & inscription grade as values to validate Grade >= 10:
                         for subject in line.subject_line:
