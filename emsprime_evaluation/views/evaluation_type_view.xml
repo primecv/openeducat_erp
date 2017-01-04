@@ -9,6 +9,7 @@
                 <tree string="Exam Type">
                     <field name="name" />
                     <field name="code" />
+					<field name="parent_id" />
                 </tree>
             </field>
         </record>
@@ -22,6 +23,7 @@
                         <group colspan="4">
                             <field name="name" />
                             <field name="code" />
+                            <field name="parent_id" />
                         </group>
                     </sheet>
                 </form>
