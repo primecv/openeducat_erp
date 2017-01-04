@@ -27,6 +27,7 @@ class EmsEvaluationType(models.Model):
 
     name = fields.Char('Name', size=256, required=True)
     code = fields.Char('Code', size=4, required=True)
+    parent_id = fields.Many2one('ems.evaluation.type', string='Parent')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
