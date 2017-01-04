@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <menuitem id="menu_ems_exam_root" name="Evaluation" sequence="15" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga"/>
+        <menuitem id="menu_ems_exam_root" name="Evaluation" sequence="15" groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga"/>
 
 
         <menuitem id="menu_ems_school_exam_result" name="Evaluation"
             parent="menu_ems_exam_root" sequence="10"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 
         <menuitem id="menu_ems_exam_main" name="Evaluation"
             parent="menu_ems_school_exam_result" sequence="20"
             action="act_open_ems_evaluation_view"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 			
         <menuitem id="menu_ems_evaluation_attendees_sub" name="Evaluation Attendees"
             parent="menu_ems_school_exam_result" sequence="30"
             action="act_open_ems_evaluation_attendees_view"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 
         <menuitem id="menu_ems_exam_general" name="General" parent="menu_ems_exam_root" sequence="20"/>
 
@@ -25,12 +25,12 @@
         <menuitem id="menu_ems_evaluation_type_sub" name="Evaluation Types"
             parent="menu_exam_configuration" sequence="10"
             action="act_open_ems_evaluation_type_view"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" />
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 
         <menuitem id="menu_ems_evaluation_room_sub" name="Evaluation Rooms"
             parent="menu_exam_configuration" sequence="20"
             action="act_open_ems_evaluation_room_view"
-            groups="emsprime_core.group_ems_back_office_admin,group_ems_admin_sga" />
+            groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 
         <!-- Faculties / My Evaluations menu -->
         <menuitem id="menu_ems_action_my_evaluations" name="My Evaluations"
