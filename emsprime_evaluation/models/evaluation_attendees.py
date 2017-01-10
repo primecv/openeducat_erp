@@ -36,6 +36,7 @@ class EmsEvaluationAttendees(models.Model):
     evaluation_id = fields.Many2one('ems.evaluation', 'Exam', required=True)
     course_id = fields.Many2one('ems.course', 'Course')
     edition_id = fields.Many2one('ems.edition', 'Edition')
+    marks_string = fields.Char('Marks (String)')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -55,12 +55,14 @@
 								    <field name="student_id" />
 								    <field name="status" />
 								    <field name="marks"/>
+								    <field name="marks_string"/>
 								</tree>
 								<form string="Attendee(s)">
 									<group col="4">						
 										<field name="student_id" />
 										<field name="status" />
 										<field name="marks"/>
+										<field name="marks_string"/>
 										<field name="note"/>
 									</group>
 								</form>
