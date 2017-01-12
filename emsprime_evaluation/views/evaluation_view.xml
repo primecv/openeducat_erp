@@ -41,13 +41,14 @@
                             <field name="faculty_id" domain="[('university_center_id','=',university_center_id)]"/>
                             <field name="subject_id" context="{'filter_faculty_id': faculty_id}"/>
                             <field name="class_id" domain="[('subject_id','=',subject_id)]"/>
-                            <field name="exam_code" />
-                            <field name="exam_type" />
-                            <field name="start_time" />
-                            <field name="end_time" />
-                            <field name="total_marks" />
-                            <field name="min_marks" />
+                            <field name="exam_code" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
+                            <field name="exam_type" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
+                            <field name="start_time" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
+                            <field name="end_time" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
+                            <field name="total_marks" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
+                            <field name="min_marks" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="room_id" />
+                            <field name="continuous_evaluation" invisible="1" />
                         </group>
                         <group string="Attendees" name="subject">
                             <field name="attendees_line" nolabel="1">
@@ -121,7 +122,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="view_ems_evaluation_search" />
-            <field name="domain">[]</field>
+            <field name="domain">[('continuous_evaluation','=',False)]</field>
             <field name="context">{}</field>
         </record>
         <record model="ir.actions.act_window.view" id="act_open_ems_evaluation_view_form">
@@ -145,8 +146,154 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="view_ems_evaluation_search" />
-            <field name="domain">[('faculty_id.user_id', '=', uid)]</field>
+            <field name="domain">[('faculty_id.user_id', '=', uid),('continuous_evaluation','=',False)]</field>
             <field name="context">{'get_faculty_user_id': uid}</field>
+        </record>
+		
+		<!--  CONTINUOUS EVALUATION                -->
+
+        <record id="view_ems_continuous_evaluation_tree" model="ir.ui.view">
+            <field name="name">ems.continuous.evaluation.tree</field>
+            <field name="model">ems.evaluation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Evaluation">
+                    <field name="academic_year" />
+                    <field name="university_center_id" />
+                    <field name="faculty_id" />
+                    <field name="subject_id" />
+                    <field name="class_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_ems_continuous_evaluation_form" model="ir.ui.view">
+            <field name="name">ems.continuous.evaluation.form</field>
+            <field name="model">ems.evaluation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Evaluation">
+                    <sheet>
+                        <group col="4" colspan="4">
+							<field name="academic_year" />
+							<field name="university_center_id" />
+                            <field name="faculty_id" domain="[('university_center_id','=',university_center_id)]"/>
+                            <field name="subject_id" context="{'filter_faculty_id': faculty_id}"/>
+                            <field name="class_id" domain="[('subject_id','=',subject_id)]"/>
+                            <field name="continuous_evaluation"/>
+                        </group>
+                        <notebook colspan="4">						
+                            <page name="students" string="Students">
+								<group string="Students" name="students">
+									<field name="student_line" nolabel="1">
+										<tree string="Students">
+											<field name="student_id" />
+											<field name="grade" />
+										</tree>
+										<form string="Students">
+											<group col="4">						
+												<field name="student_id" />
+												<field name="grade" />
+												<field name="element_line" nolabel="1" colspan="4">
+													<tree string="Elements">
+														<field name="element_id" />
+														<field name="grade" />
+													</tree>
+													<form string="Elements">
+														<group col="4">						
+															<field name="element_id" />
+															<field name="grade" />
+														</group>
+													</form>
+												</field>
+											</group>
+										</form>
+									</field>
+								</group>
+							</page>
+                            <page name="elements" string="Elements">
+								<group string="Elements" name="elements">
+									<field name="element_line" nolabel="1">
+										<tree string="Elements">
+											<field name="element_id" />
+											<field name="percentage" />
+										</tree>
+										<form string="Elements">
+											<group col="4">						
+												<field name="element_id" />
+												<field name="percentage" />
+											</group>
+										</form>
+									</field>
+								</group>
+							</page>	
+                            <page name="notes" string="Note">
+								<group string="Note" name="notes">
+									<field name="note" colspan="4" />
+								</group>
+							</page>
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_ems_continuous_evaluation_search" model="ir.ui.view">
+            <field name="name">ems.continuous.evaluation.search</field>
+            <field name="model">ems.evaluation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Evaluation">
+                    <field name="academic_year" />
+                    <field name="university_center_id" />
+                    <field name="faculty_id" />
+                    <field name="subject_id" />
+                    <field name="class_id" />
+                    <field name="state" />
+                    <field name="note" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Academic Year" domain="[]" context="{'group_by':'academic_year'}" />
+                        <filter string="University Center" domain="[]" context="{'group_by':'university_center_id'}" />
+                        <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}" />
+                        <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
+                        <filter string="State" domain="[]" context="{'group_by':'state'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_ems_continuous_evaluation_view">
+            <field name="name">Continuous Evaluations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_continuous_evaluation_search" />
+            <field name="domain">[('continuous_evaluation','=',True)]</field>
+            <field name="context">{'get_continuous_evaluation': True}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_continuous_evaluation_view_form">
+            <field name="act_window_id" ref="act_open_ems_continuous_evaluation_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ems_continuous_evaluation_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_continuous_evaluation_view_tree">
+            <field name="act_window_id" ref="act_open_ems_continuous_evaluation_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_continuous_evaluation_tree" />
+        </record>
+		
+        <!-- My Continuous Evaluations -->
+        <record model="ir.actions.act_window" id="act_open_ems_my_continuous_evaluation_view">
+            <field name="name">My Continuous Evaluations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ems_continuous_evaluation_search" />
+            <field name="domain">[('faculty_id.user_id', '=', uid),('continuous_evaluation','=',True)]</field>
+            <field name="context">{'get_faculty_user_id': uid,'get_continuous_evaluation': True}</field>
         </record>
     </data>
 </openerp>

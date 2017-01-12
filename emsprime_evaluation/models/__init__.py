@@ -22,6 +22,7 @@
 from . import evaluation
 from . import evaluation_attendees
 from . import evaluation_room
+from . import evaluation_elements
 #from . import evaluation_session
 from . import evaluation_type
 from . import subject

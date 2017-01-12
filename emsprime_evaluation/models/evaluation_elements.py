@@ -19,41 +19,16 @@
 #
 ###############################################################################
 
-{
-    'name': 'EmsPrime Exam',
-    'version': '2.4.0',
-    'category': 'Openerp Education',
-    "sequence": 3,
-    'summary': 'Manage Exam',
-    'complexity': "easy",
-    'description': """
-        This module provide exam management system over OpenERP
-    """,
-    'author': 'Prime Consulting, SA',
-    'website': 'http://www.prime.cv',
-    'depends': ['emsprime_classroom'],
-    'data': [
-        'views/evaluation_attendees_view.xml',
-        'views/evaluation_room_view.xml',
-        'views/evaluation_element_view.xml',
-        #'views/evaluation_session_view.xml',
-        'views/evaluation_type_view.xml',
-        'views/evaluation_view.xml',
-        #'report/report_evaluation_student_label.xml',
-        #'report/report_menu.xml',
-        'security/ir.model.access.csv',
-        'evaluation_menu.xml',
-    ],
-    'demo': [
-        'demo/ems.evaluation.type.csv'
-    ],
-    'images': [
-        'static/description/emsprime_evaluation_banner.jpg',
-    ],
-    'installable': True,
-    'auto_install': False,
-    'application': True,
-}
+from openerp import models, fields, api
+from openerp.exceptions import ValidationError
+
+
+class EmsEvaluationElement(models.Model):
+    _name = 'ems.element'
+
+    name = fields.Char('Name', size=256, required=True)
+    code = fields.Char('Code', size=8, required=True)
+    maximum_percentage = fields.Integer('Maximum Percentage', required=True)
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

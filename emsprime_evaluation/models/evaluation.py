@@ -35,16 +35,16 @@ class OpEvaluation(models.Model):
     faculty_id = fields.Many2one('ems.faculty', string='Faculty', required=True)
     subject_id = fields.Many2one('ems.subject', 'Subject', required=True)
     class_id = fields.Many2one('ems.class', 'Class', required=True)
-    exam_code = fields.Char('Exam Code', size=8, required=True)
-    exam_type = fields.Many2one('ems.evaluation.type', 'Exam Type', required=True)
+    exam_code = fields.Char('Exam Code', size=8)
+    exam_type = fields.Many2one('ems.evaluation.type', 'Exam Type')
     #evaluation_type = fields.Selection(
     #    [('normal', 'Normal'), ('GPA', 'GPA'), ('CWA', 'CWA'), ('CCE', 'CCE')],
     #    'Evaluation Type', default="normal", required=True)
     attendees_line = fields.One2many(
         'ems.evaluation.attendee', 'evaluation_id', 'Attendees')
     #venue = fields.Many2one('res.partner', 'Venue')
-    start_time = fields.Datetime('Start Time', required=True)
-    end_time = fields.Datetime('End Time', required=True)
+    start_time = fields.Datetime('Start Time')
+    end_time = fields.Datetime('End Time')
     state = fields.Selection(
         [('new', 'New Exam'), ('schedule', 'Scheduled'), ('held', 'Held'),
          ('cancel', 'Cancelled'), ('done', 'Done')], 'State', select=True,
@@ -52,8 +52,8 @@ class OpEvaluation(models.Model):
     note = fields.Text('Note')
     responsible_id = fields.Many2many('ems.faculty', string='Responsible')
     #name = fields.Char('Exam', size=256, required=True)
-    total_marks = fields.Float('Total Marks', required=True)
-    min_marks = fields.Float('Passing Marks', required=True)
+    total_marks = fields.Float('Total Marks')
+    min_marks = fields.Float('Passing Marks')
     room_id = fields.Many2one('ems.evaluation.room', 'Room')
     academic_year = fields.Selection([('2016', '2016/2017'),('2015', '2015/2016'), ('2014', '2014/2015'),('2013', '2013/2014'),('2012', '2012/2013'), 
                                       ('2011', '2011/2012'), ('2010', '2010/2011'), ('2009', '2009/2010'), ('2008', '2008/2009'), ('2007', '2007/2008'),
@@ -63,6 +63,11 @@ class OpEvaluation(models.Model):
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center', required=True)
+    continuous_evaluation = fields.Boolean('Continuous Evaluation', default=False)
+    student_line = fields.One2many(
+        'ems.evaluation.student', 'evaluation_id', 'Students')
+    element_line = fields.One2many(
+        'ems.evaluation.element', 'evaluation_id', 'Elements')
 
     @api.model
     def default_get(self, fields=None):
@@ -75,6 +80,8 @@ class OpEvaluation(models.Model):
                 res.update(faculty_id = faculty.id)
                 if faculty.university_center_id:
                     res.update(university_center_id = faculty.university_center_id.id)
+        if context and 'get_continuous_evaluation' in context:
+            res.update(continuous_evaluation = True)
         return res
 
     @api.model
@@ -98,6 +105,8 @@ class OpEvaluation(models.Model):
                         node.set('readonly', '1')
                         setup_modifiers(node, res['fields']['university_center_id'])
                         res['arch'] = etree.tostring(doc)
+        if context and 'get_continuous_evaluation' in context:
+            res.update(continuous_evaluation = True)
         return res
 
     @api.constrains('total_marks', 'min_marks')
@@ -133,19 +142,34 @@ class OpEvaluation(models.Model):
         """
         line_ids = []
         result = {}
-        for evaluation in self:
-            existing_students = []
-            for line in evaluation.attendees_line:
-                existing_students.append(line.student_id.id)
-            class_students = []
-            for enrollment in evaluation.class_id.enrollment_ids:
-                class_students.append(enrollment.student_id.id)
-            for student in class_students:
-                if student in existing_students:
-                    class_students.remove(student)
-            for student in class_students:
-                line_ids.append([0, False,{'student_id': student, 'status': 'present'}])
-        self.attendees_line = line_ids
+        if self.continuous_evaluation is False:
+            for evaluation in self:
+                existing_students = []
+                for line in evaluation.attendees_line:
+                    existing_students.append(line.student_id.id)
+                class_students = []
+                for enrollment in evaluation.class_id.enrollment_ids:
+                    class_students.append(enrollment.student_id.id)
+                for student in class_students:
+                    if student in existing_students:
+                        class_students.remove(student)
+                for student in class_students:
+                    line_ids.append([0, False,{'student_id': student, 'status': 'present'}])
+            self.attendees_line = line_ids
+        else:
+            for evaluation in self:
+                existing_students = []
+                for line in evaluation.student_line:
+                    existing_students.append(line.student_id.id)
+                class_students = []
+                for enrollment in evaluation.class_id.enrollment_ids:
+                    class_students.append(enrollment.student_id.id)
+                for student in class_students:
+                    if student in existing_students:
+                        class_students.remove(student)
+                for student in class_students:
+                    line_ids.append([0, False,{'student_id': student}])
+            self.student_line = line_ids
 
     @api.one
     def act_held(self):
@@ -167,5 +191,84 @@ class OpEvaluation(models.Model):
     def act_new_exam(self):
         self.state = 'new'
 
+    @api.model
+    def create(self, vals):
+        res = super(OpEvaluation, self).create(vals)
+        ln_ids = []
+        elems_percentage=0
+        for ln in res.element_line:
+            ln_ids.append(ln.element_id.id)
+            elems_percentage = elems_percentage + ln.percentage
 
+        if elems_percentage > 100:
+            raise ValidationError("The percentage of the elements cannot be greater than 100.")
+
+        for line in res.student_line:
+            evaluation_student_id=line.id
+            #cont=0
+            #for line2 in res.element_line:
+            for r in range(0, len(ln_ids)):
+                vals = {
+                    'evaluation_student_id': evaluation_student_id,
+                    'element_id': ln_ids[r]
+                    #'element_id': line2.element_id.id
+                }
+                #cont = cont + 1
+                eval_student_element = self.env['ems.evaluation.student.element'].create(vals)
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(OpEvaluation, self).write(vals)
+        ln_ids = []
+        student_elem_ids = []
+        elems_percentage=0
+        for ln in self.element_line:
+            ln_ids.append(ln.element_id.id)
+            elems_percentage = elems_percentage + ln.percentage
+
+        if elems_percentage > 100:
+            raise ValidationError("The percentage of the elements cannot be greater than 100.")
+
+        for line in self.student_line:
+            evaluation_student_id=line.id
+            for elem_line in line.element_line:
+                student_elem_ids.append(elem_line.element_id.id)
+            for student in student_elem_ids:
+                if student not in ln_ids:
+                    self._cr.execute("""DELETE FROM ems_evaluation_student_element WHERE evaluation_student_id =%s AND element_id=%s"""%(evaluation_student_id,student))
+            for elem in ln_ids:
+                if elem not in student_elem_ids:
+                    self._cr.execute("""INSERT INTO ems_evaluation_student_element (evaluation_student_id,element_id) VALUES (%s,%s)"""%(evaluation_student_id,elem))
+
+        return res
+
+class EmsEvaluationStudents(models.Model):
+    _name = "ems.evaluation.student"
+    _description = "Evaluation Students"
+    _rec_name = "student_id"
+
+    evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
+    student_id = fields.Many2one('ems.student', string='Student')
+    grade = fields.Float('Grade')
+    element_line = fields.One2many(
+        'ems.evaluation.student.element', 'evaluation_student_id', 'Elements')
+
+class EmsEvaluationElements(models.Model):
+    _name = "ems.evaluation.element"
+    _description = "Evaluation Elements"
+    _rec_name = "element_id"
+
+    evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
+    element_id = fields.Many2one('ems.element', string='Element')
+    percentage = fields.Integer('Percentage')
+
+class EmsEvaluationStudentElements(models.Model):
+    _name = "ems.evaluation.student.element"
+    _description = "Evaluation Student Elements"
+    _rec_name = "element_id"
+
+    evaluation_student_id = fields.Many2one('ems.evaluation.student', string='Student Evaluation')
+    element_id = fields.Many2one('ems.element', string='Element')
+    grade = fields.Float('Grade')
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
