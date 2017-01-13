@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ###############################################################################
-
+import math
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from lxml import etree
@@ -254,6 +254,26 @@ class EmsEvaluationStudents(models.Model):
     element_line = fields.One2many(
         'ems.evaluation.student.element', 'evaluation_student_id', 'Elements')
 
+    @api.multi
+    def write(self, vals):
+        res = super(EmsEvaluationStudents, self).write(vals)
+        percentage=0.0
+        grade=0.0
+        total_grade=0.0
+        grade2=0.0
+        for ln in self.element_line:
+            element_id=ln.element_id.id
+            grade=ln.grade
+            #element = self.env['ems.evaluation.element'].browse(element_id)
+            elements = self.env['ems.evaluation.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
+            if elements:
+                for element in elements:
+                    percentage=element.percentage / float(100)
+                    grade2=percentage * grade
+            total_grade=total_grade + grade2
+        vals['grade'] = total_grade
+        return super(EmsEvaluationStudents, self).write(vals)
+		
 class EmsEvaluationElements(models.Model):
     _name = "ems.evaluation.element"
     _description = "Evaluation Elements"
@@ -263,6 +283,8 @@ class EmsEvaluationElements(models.Model):
     element_id = fields.Many2one('ems.element', string='Element')
     percentage = fields.Integer('Percentage')
 
+    _sql_constraints = [('uniq_evaluation_element','unique(evaluation_id, element_id)','Element must be Unique per Evaluation.')]
+
 class EmsEvaluationStudentElements(models.Model):
     _name = "ems.evaluation.student.element"
     _description = "Evaluation Student Elements"
@@ -271,4 +293,7 @@ class EmsEvaluationStudentElements(models.Model):
     evaluation_student_id = fields.Many2one('ems.evaluation.student', string='Student Evaluation')
     element_id = fields.Many2one('ems.element', string='Element')
     grade = fields.Float('Grade')
+
+    _sql_constraints = [('uniq_evaluation_student_element','unique(evaluation_student_id, element_id)','Element must be Unique per Student Evaluation.')]
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
