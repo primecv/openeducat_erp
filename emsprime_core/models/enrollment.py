@@ -138,12 +138,17 @@ class EmsEnrollment(models.Model):
                         is_matricula = True
                     if line.type == 'I' and line.id in conclusao_valid_inscriptions:
                         has_inscription = True
-                        #generate dictionary with Inscription Subject Id as key & subject name, Inscription roll no & inscription grade as values to validate Grade >= 10:
-                        for subject in line.subject_line:
-                            inscription_subject = subject.subject_id.name.encode('utf-8')
-                            inscription_rollno = str(line.roll_number)
-                            inscription_grade = subject.grade
-                            inscription_subject_grades[subject.subject_id.id] = [inscription_subject, inscription_rollno, inscription_grade]
+
+                current_course_inscription_ids = []
+                temp = [current_course_inscription_ids.append(x.id) for x in current_course_inscriptions]
+                inscription_subject_lines = self.env['ems.enrollment.inscription.subject'].search([('inscription_id', 'in', current_course_inscription_ids)], order="subject_id, grade asc")
+                for subject in inscription_subject_lines:
+                	#generate dictionary with Inscription Subject Id as key & subject name, Inscription roll no & inscription grade as values to validate Grade >= 10:
+                    inscription_subject = subject.subject_id.name.encode('utf-8')
+                    inscription_rollno = str(line.roll_number)
+                    inscription_grade = subject.grade
+                    inscription_subject_grades[subject.subject_id.id] = [inscription_subject, inscription_rollno, inscription_grade]
+
             if (is_matricula is False and self.type in ('T', 'CC', 'MC')) or (self.type in ('C', 'I')):
                 self.update({'type': 'M', 'uci': False})
             if is_matricula is True and self.type == 'MC':
