@@ -21,6 +21,7 @@
 import math
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
+import base64, re
 from lxml import etree
 from openerp.osv.orm import setup_modifiers
 
@@ -68,6 +69,7 @@ class OpEvaluation(models.Model):
         'ems.evaluation.student', 'evaluation_id', 'Students')
     element_line = fields.One2many(
         'ems.evaluation.element', 'evaluation_id', 'Elements')
+    #state_continuous = fields.Selection([('draft', 'Draft'), ('validate', 'Validated'),('done', 'Done')],'State Continuous', default="draft", track_visibility='onchange', select=True)
 
     @api.model
     def default_get(self, fields=None):
@@ -191,11 +193,24 @@ class OpEvaluation(models.Model):
     def act_new_exam(self):
         self.state = 'new'
 
+
+    @api.multi
+    def action_print(self):
+        report_name="emsprime_evaluation.report_continuous_evaluation"
+        report = self.env['report'].get_pdf(self, report_name)
+        result = base64.b64encode(report)
+        file_name = str(report_name.encode('utf-8')) + '.pdf'
+
+        return self.env['report'].get_action(self, report_name)
+		
     @api.model
     def create(self, vals):
         res = super(OpEvaluation, self).create(vals)
         ln_ids = []
         elems_percentage=0
+        if not res.element_line:
+            raise ValidationError("Please add the evaluation elements.")
+
         for ln in res.element_line:
             ln_ids.append(ln.element_id.id)
             elems_percentage = elems_percentage + ln.percentage
@@ -215,6 +230,7 @@ class OpEvaluation(models.Model):
                 }
                 #cont = cont + 1
                 eval_student_element = self.env['ems.evaluation.student.element'].create(vals)
+        
         return res
 
     @api.multi
@@ -223,6 +239,9 @@ class OpEvaluation(models.Model):
         ln_ids = []
         student_elem_ids = []
         elems_percentage=0
+        if not self.element_line:
+            raise ValidationError("Please add the evaluation elements.")
+
         for ln in self.element_line:
             ln_ids.append(ln.element_id.id)
             elems_percentage = elems_percentage + ln.percentage
@@ -242,6 +261,16 @@ class OpEvaluation(models.Model):
                     self._cr.execute("""INSERT INTO ems_evaluation_student_element (evaluation_student_id,element_id) VALUES (%s,%s)"""%(evaluation_student_id,elem))
 
         return res
+
+    @api.multi
+    def get_elements_names(self, element_line=False):
+        result = []
+        if element_line:
+            for element in element_line:
+                lines = {}
+                lines['element'] = element.element_id.name
+                result.append(lines)
+        return result
 
 class EmsEvaluationStudents(models.Model):
     _name = "ems.evaluation.student"
@@ -278,6 +307,7 @@ class EmsEvaluationElements(models.Model):
     _name = "ems.evaluation.element"
     _description = "Evaluation Elements"
     _rec_name = "element_id"
+    _order = "element_id"
 
     evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
     element_id = fields.Many2one('ems.element', string='Element')

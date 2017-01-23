@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <report 
+            id="report_ems_continuous_evaluation"
+            string="Pauta Avaliação Contínua"
+            model="ems.evaluation" 
+            report_type="qweb-pdf"
+            file="emsprime_evaluation.report_continuous_evaluation" 
+            name="emsprime_evaluation.report_continuous_evaluation" 
+			menu="False"
+        />
+
+    </data>
+</openerp>

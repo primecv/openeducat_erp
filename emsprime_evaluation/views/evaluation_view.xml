@@ -173,6 +173,14 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <form string="Evaluation">
+                    <header groups="base.group_user">
+                        <button name="act_held" states="new" type="object" string="Held Evaluation" class="oe_highlight"/>
+                        <button name="action_print" states="held" type="object" string="Print" class="oe_highlight"/>
+                        <button name="act_done" states="held" type="object" string="Done" class="oe_highlight"/>
+                        <button name="act_new_exam" states="cancel" type="object" string="New Exam" class="oe_highlight"/>
+                        <button name="act_cancel" states="new,held,schedule" type="object" string="Cancel" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,held,cancel,done" />
+                    </header>
                     <sheet>
                         <group col="4" colspan="4">
 							<field name="academic_year" />
@@ -195,7 +203,7 @@
 												<field name="student_id" />
 												<field name="grade" readonly="1" />
 												<field name="element_line" nolabel="1" colspan="4">
-													<tree string="Elements" editable="bottom">
+													<tree string="Elements" editable="bottom" create="false">
 														<field name="element_id" />
 														<field name="grade" />
 													</tree>
