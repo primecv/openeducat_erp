@@ -37,7 +37,7 @@
 			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
 				<div style="width: 100%; height: 10px;"/> 
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
-				<strong>UC</strong>: <span t-field="o.subject_id.name" style="text-transform:uppercase;"/> ***<br/>
+				<strong>Unidade Curricular</strong>: <span t-field="o.subject_id.name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Docente</strong>: <span t-field="o.faculty_id.complete_name"/> ***<br/><br/>
 				<table style="padding:5px;border:1px solid #666666; border-collapse: collapse;">
 					<tr style="background-color:#f0f0f0;">
@@ -46,9 +46,9 @@
 						<!--<t t-foreach="o.get_elements_names(o.element_line)" t-as="sub">
 							<td width="15%"><strong><span t-esc="sub['element']"/></strong></td>-->
 						<t t-foreach="o.element_line" t-as="el">
-							<td width="15%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong><span t-esc="el.element_id.name"/></strong></td>
+							<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong><span t-esc="el.element_id.name"/></strong></td>
 						</t>
-						<td width="10%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong>Classificação Final</strong></td>
+						<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong>Classificação Final</strong></td>
 					</tr>
 					<t t-foreach="o.student_line" t-as="att">
 						<t t-if="att_parity=='even'">
@@ -56,9 +56,9 @@
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name" style="color:333333;"/></td>
 								<t t-foreach="att.element_line" t-as="elem">
-									<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"><span t-esc="elem.grade"/></td>
+									<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"><span t-esc="o.get_grade_int(elem.grade)"/></td>
 								</t>
-								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"> <span t-field="att.grade" /> </td>
+								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"> <span t-field="att.grade_string" /> </td>
 							</tr>
 						</t>					
 						<t t-if="att_parity=='odd'">
@@ -66,13 +66,31 @@
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name" style="color:333333;"/></td>
 								<t t-foreach="att.element_line" t-as="elem">
-									<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"><span t-esc="elem.grade"/></td>
+									<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"><span t-esc="o.get_grade_int(elem.grade)"/></td>
 								</t>
-								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"> <span t-field="att.grade" /> </td>
+								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"> <span t-field="att.grade_string" /> </td>
 							</tr>
 						</t>					
 					</t>
 				</table>
+				<br/>
+				<br/>
+				<br/>
+				<div>
+					<div><strong>Fórmula de cálculo da nota final</strong></div>
+					<div><span t-field="o.elements_formula" /></div>
+				</div>								
+				<br/>
+				<br/>
+				<br/>
+				<div align="center">
+					<strong>O Docente</strong>
+				</div>								
+				<br/>
+				<br/>
+				<div align="center">
+					<span>_________________________________________</span>
+				</div>					
 			</div>
 
         </div>

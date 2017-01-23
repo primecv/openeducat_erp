@@ -197,6 +197,7 @@
 										<tree string="Students">
 											<field name="student_id" />
 											<field name="grade" />
+											<field name="grade_string" />
 										</tree>
 										<form string="Students">
 											<group col="4">						

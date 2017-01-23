@@ -28,9 +28,23 @@ from openerp.osv.orm import setup_modifiers
 
 class OpEvaluation(models.Model):
     _name = 'ems.evaluation'
-    _rec_name = 'exam_code'
+    _rec_name = 'class_id'
     _inherit = 'mail.thread'
     _description = 'Exam'
+
+    @api.one
+    @api.depends('element_line')
+    def _get_formula(self):
+        element_formula = []
+        element_formula_name = ''
+        element_percentage=0
+        for line in self.element_line:
+            element_name=line.element_id.name
+            element_percentage=line.percentage
+            element_formula_name=element_name + ' * ' + str(element_percentage) + '%'
+            element_formula.append(element_formula_name) 
+        result = ' + '.join(element_formula)
+        self.elements_formula = result
 
     #session_id = fields.Many2one('ems.evaluation.session', 'Exam Session')
     faculty_id = fields.Many2one('ems.faculty', string='Faculty', required=True)
@@ -70,6 +84,7 @@ class OpEvaluation(models.Model):
     element_line = fields.One2many(
         'ems.evaluation.element', 'evaluation_id', 'Elements')
     #state_continuous = fields.Selection([('draft', 'Draft'), ('validate', 'Validated'),('done', 'Done')],'State Continuous', default="draft", track_visibility='onchange', select=True)
+    elements_formula = fields.Char(compute="_get_formula", string="Elements Formula", store=True)
 
     @api.model
     def default_get(self, fields=None):
@@ -272,16 +287,72 @@ class OpEvaluation(models.Model):
                 result.append(lines)
         return result
 
+    @api.multi
+    def get_grade_int(self, grade=False):
+        grade_int = 0
+        if grade:
+            grade_int = int(grade)
+        return grade_int
+
 class EmsEvaluationStudents(models.Model):
     _name = "ems.evaluation.student"
     _description = "Evaluation Students"
     _rec_name = "student_id"
 
+    @api.one
+    @api.depends('grade')
+    def _get_grade_str(self):
+        grade_str=''
+        if self.grade:
+            grade_int=int(self.grade)
+            if grade_int==1:
+                grade_str = "1 (Um)"
+            elif grade_int ==2:
+                grade_str = "2 (Dois)"
+            elif grade_int ==3:
+                grade_str = "3 (Três)"
+            elif grade_int ==4:
+                grade_str = "4 (Quatro)"
+            elif grade_int ==5:
+                grade_str = "5 (Cinco)"
+            elif grade_int ==6:
+                grade_str = "6 (Seis)"
+            elif grade_int ==7:
+                grade_str = "7 (Sete)"
+            elif grade_int ==8:
+                grade_str = "8 (Oito)"
+            elif grade_int ==9:
+                grade_str = "9 (Nove)"
+            elif grade_int ==10:
+                grade_str = "10 (Dez)"
+            elif grade_int ==11:
+                grade_str = "11 (Onze)"
+            elif grade_int ==12:
+                grade_str = "12 (Doze)"
+            elif grade_int ==13:
+                grade_str = "13 (Treze)"
+            elif grade_int ==14:
+                grade_str = "14 (Quatorze)"
+            elif grade_int ==15:
+                grade_str = "15 (Quinze)"
+            elif grade_int ==16:
+                grade_str = "16 (Dezasseis)"
+            elif grade_int ==17:
+                grade_str = "17 (Dezassete)"
+            elif grade_int ==18:
+                grade_str = "18 (Dezoito)"
+            elif grade_int ==19:
+                grade_str = "19 (Dezanove)"
+            elif grade_int ==20:
+                grade_str = "20 (Vinte)"
+        self.grade_string = grade_str
+		
     evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
     student_id = fields.Many2one('ems.student', string='Student')
     grade = fields.Float('Grade')
     element_line = fields.One2many(
         'ems.evaluation.student.element', 'evaluation_student_id', 'Elements')
+    grade_string = fields.Char(string='Grade (String)', compute='_get_grade_str', store=True)
 
     @api.multi
     def write(self, vals):
@@ -300,7 +371,7 @@ class EmsEvaluationStudents(models.Model):
                     percentage=element.percentage / float(100)
                     grade2=percentage * grade
             total_grade=total_grade + grade2
-        vals['grade'] = total_grade
+        vals['grade'] = round(total_grade)
         return super(EmsEvaluationStudents, self).write(vals)
 		
 class EmsEvaluationElements(models.Model):
