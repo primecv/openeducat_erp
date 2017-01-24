@@ -92,6 +92,8 @@ class EmsClass(models.Model):
 									  ('1991', '1991/1992')
             ], 'Academic Year', track_visibility='onchange', required=True)
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
+    course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',
+                     track_visibility='onchange')
 
     @api.model
     def create(self, vals):

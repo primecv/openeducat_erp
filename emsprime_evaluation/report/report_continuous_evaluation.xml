@@ -9,7 +9,7 @@
 		<div class="header">
 		    <div class="row">
 		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;margin-top:105px;">
-					<span>Curso de </span><span t-field="o.class_id.course_id.degree_id.name"/> em <span t-field="o.class_id.course_id.name"/>
+					<span t-if="o.class_id.course_year"><span t-field="o.class_id.course_year"/>º Ano do </span><span>Curso de </span><span t-field="o.class_id.course_id.degree_id.name"/> em <span t-field="o.class_id.course_id.name"/>
 				</div>
 		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;">
 					<span>Ano Letivo de </span><span t-field="o.class_id.academic_year"/> - <span t-if="o.class_id.semester == 'I' ">1º </span><span t-if="o.class_id.semester == 'II' ">2º </span>Semestre

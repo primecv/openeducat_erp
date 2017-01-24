@@ -35,6 +35,7 @@
 							<field name="course_id" />
                             <field name="edition_id" required="0" context="{'ems_class_filter_by_course': True, 'course_id': course_id, 'university_center_id': university_center_id}"/>
                             <field name="name" />
+							<field name="course_year"/>
 							<field name="semester"/>
 							<!--<field name="semester_id" invisible="1"/>-->
                         </group>
