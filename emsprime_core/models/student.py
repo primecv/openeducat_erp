@@ -42,6 +42,19 @@ class EmsStudent(models.Model):
         self.complete_name = ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
 
     @api.one
+    @api.depends('name', 'middle_name', 'last_name')
+    def _get_complete_name_cap(self):
+        name_cap=''
+        name_cap = ' '.join(filter(bool, [self.name, self.middle_name, self.last_name]))
+        name_cap=name_cap.title()
+        name_cap = name_cap.replace(' Dos ',' dos ')
+        name_cap = name_cap.replace(' Das ',' das ')
+        name_cap = name_cap.replace(' Da ',' da ')
+        name_cap = name_cap.replace(' De ',' de ')
+        name_cap = name_cap.replace(' Do ',' do ')
+        self.complete_name_cap=name_cap
+
+    @api.one
     @api.depends('birth_date')
     def _get_age(self):
         today = date.today()
@@ -190,6 +203,8 @@ class EmsStudent(models.Model):
     age = fields.Char(string='Age', compute='_get_age', store=True, track_visibility='onchange')
     transferred = fields.Boolean(compute="_get_curr_enrollment", string="Transferred", store=True)
     course_completed = fields.Boolean(compute="_get_curr_enrollment", string="Course Completed", store=True)
+    #JCF 24-01-2017
+    complete_name_cap = fields.Char('Name Cap', compute='_get_complete_name_cap', store=True, track_visibility='onchange')
 
     @api.one
     @api.constrains('birth_date')
