@@ -299,6 +299,7 @@ class EmsEvaluationStudents(models.Model):
     _name = "ems.evaluation.student"
     _description = "Evaluation Students"
     _rec_name = "student_id"
+    _order = "student_id"
 
     @api.one
     @api.depends('grade')
@@ -306,6 +307,8 @@ class EmsEvaluationStudents(models.Model):
         grade_str=''
         if self.grade:
             grade_int=int(self.grade)
+            print "GRADE INT::::::::::::::::::::::::::::::::::::::"
+            print grade_int
             if grade_int==1:
                 grade_str = "1 (Um)"
             elif grade_int ==2:
@@ -346,6 +349,8 @@ class EmsEvaluationStudents(models.Model):
                 grade_str = "19 (Dezanove)"
             elif grade_int ==20:
                 grade_str = "20 (Vinte)"
+        else:
+            grade_str = "a)"
         self.grade_string = grade_str
 		
     evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
@@ -362,6 +367,7 @@ class EmsEvaluationStudents(models.Model):
         grade=0.0
         total_grade=0.0
         grade2=0.0
+        all_grades_delivered=False
         for ln in self.element_line:
             element_id=ln.element_id.id
             grade=ln.grade
@@ -371,7 +377,11 @@ class EmsEvaluationStudents(models.Model):
                 for element in elements:
                     percentage=element.percentage / float(100)
                     grade2=percentage * grade
+            if grade2==0:
+                all_grades_delivered=True
             total_grade=total_grade + grade2
+        if all_grades_delivered is True:
+            total_grade=0
         vals['grade'] = round(total_grade)
         return super(EmsEvaluationStudents, self).write(vals)
 		
