@@ -42,11 +42,11 @@
 				<table style="padding:5px;border:1px solid #666666; border-collapse: collapse;">
 					<tr style="background-color:#f0f0f0;">
 						<td width="8%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong>Nº Aluno</strong></td>
-						<td width="30%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong>Nome</strong></td>
+						<td width="40%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong>Nome</strong></td>
 						<!--<t t-foreach="o.get_elements_names(o.element_line)" t-as="sub">
 							<td width="15%"><strong><span t-esc="sub['element']"/></strong></td>-->
 						<t t-foreach="o.element_line" t-as="el">
-							<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong><span t-esc="el.element_id.name"/></strong></td>
+							<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong><span t-esc="el.element_id.code"/></strong></td>
 						</t>
 						<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><strong>Classificação Final</strong></td>
 					</tr>
