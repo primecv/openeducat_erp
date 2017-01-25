@@ -188,6 +188,7 @@
                             <field name="faculty_id" domain="[('university_center_id','=',university_center_id)]"/>
                             <field name="subject_id" context="{'filter_faculty_id': faculty_id}"/>
                             <field name="class_id" domain="[('subject_id','=',subject_id)]"/>
+							<field name="use_code" />
                             <field name="continuous_evaluation" invisible="1"/>
                         </group>
                         <notebook colspan="4">						

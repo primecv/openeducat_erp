@@ -85,6 +85,7 @@ class OpEvaluation(models.Model):
         'ems.evaluation.element', 'evaluation_id', 'Elements')
     #state_continuous = fields.Selection([('draft', 'Draft'), ('validate', 'Validated'),('done', 'Done')],'State Continuous', default="draft", track_visibility='onchange', select=True)
     elements_formula = fields.Char(compute="_get_formula", string="Elements Formula", store=True)
+    use_code = fields.Boolean('Use code in report', default=False)
 
     @api.model
     def default_get(self, fields=None):
