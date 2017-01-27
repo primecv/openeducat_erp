@@ -6,7 +6,7 @@
     <!--t t-call="emsprime_evaluation.external_layout"-->
         <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
 		<t t-foreach="p" t-as="o">
-		<div class="header">
+		<div class="header" style="height:150px;">
 		    <div class="row">
 		        <div class="col-xs-1" style="margin-top:10px;">
 		            <img t-if="o.create_uid.company_id.logo_web" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo_web" style="max-height: 60px;"/>
@@ -14,7 +14,7 @@
 		        <div class="col-xs-11 text-center" style="margin-top:25px;color:#333333;font-family:Calibri;font-size:18px;">
 					INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS
 				</div>			
-		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;margin-top:15px;">
+		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;margin-top:10px;">
 					<span t-if="o.class_id.course_year"><span t-field="o.class_id.course_year"/>º Ano do </span><span>Curso de </span><span t-field="o.class_id.course_id.degree_id.name"/> em <span t-field="o.class_id.course_id.name"/>
 				</div>
 		        <div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;">
@@ -26,7 +26,7 @@
 		    </div>
 		</div>
 
-        <div class="page" style="margin:0 25px">
+        <div class="page" style="margin:0 25px;">
 			<style type="text/css">
 			<![CDATA[
 			@font-face {
@@ -41,11 +41,11 @@
 			</style>
 
 			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
-				<div style="width: 100%; height: 10px;"/> 
-				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 
+				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:7px 0;"/> 
 				<strong>Unidade Curricular</strong>: <span t-field="o.subject_id.name" style="text-transform:uppercase;"/> ***<br/>
 				<strong>Docente</strong>: <span t-field="o.faculty_id.complete_name"/> ***<br/>
-				<strong>Data</strong>: <span t-esc="time.strftime('%d-%m-%Y')"/>***<br/><br/>
+				<strong>Data</strong>: <span t-esc="time.strftime('%d-%m-%Y')"/>***<br/>
+				<div style="width: 100%; height: 5px;"/> 
 				<table style="padding:5px;border:1px solid #666666; border-collapse: collapse;">
 					<tr style="background-color:#f0f0f0;">
 						<td width="8%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><strong>Nº Aluno</strong></td>
