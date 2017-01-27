@@ -48,7 +48,8 @@
 				<div style="width: 100%; height: 5px;"/> 
 				<table style="padding:5px;border:1px solid #666666; border-collapse: collapse;">
 					<tr style="background-color:#f0f0f0;">
-						<td width="8%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><strong>Nº Aluno</strong></td>
+						<td width="30" style="border:1px solid #cccccc; border-collapse: collapse;text-align:center;padding:0 5px;"><span style="color:#f0f0f0;">a</span></td>
+						<td width="8%" style="border:1px solid #cccccc; border-collapse: collapse;text-align:center;"><strong>Nº Aluno</strong></td>
 						<td width="40%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><strong>Nome</strong></td>
 						<!--<t t-foreach="o.get_elements_names(o.element_line)" t-as="sub">
 							<td width="15%"><strong><span t-esc="sub['element']"/></strong></td>-->
@@ -57,9 +58,11 @@
 						</t>
 						<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><strong>Classificação Final</strong></td>
 					</tr>
+					<t t-set="i" t-value="1"/>
 					<t t-foreach="o.student_line" t-as="att">
 						<t t-if="att_parity=='even'">
 							<tr style="background-color:#FFFFFF;">
+								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"><span t-esc="i"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
 								<t t-foreach="att.element_line" t-as="elem">
@@ -70,6 +73,7 @@
 						</t>					
 						<t t-if="att_parity=='odd'">
 							<tr style="background-color:#F0F0F0;">
+								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"><span t-esc="i"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
 								<t t-foreach="att.element_line" t-as="elem">
@@ -77,7 +81,8 @@
 								</t>
 								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;"><span t-if="att.grade"><span t-field="att.grade_string" /></span><span t-if="not att.grade">a)</span></td>
 							</tr>
-						</t>					
+						</t>
+						<t t-set="i" t-value="i+1"/>						
 					</t>
 				</table>
 				<br/>
