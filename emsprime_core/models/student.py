@@ -35,7 +35,7 @@ class EmsStudent(models.Model):
     _inherit = ['ir.needaction_mixin', 'mail.thread']
     _rec_name = "complete_name"
     _description = "Student"
-    _order = "complete_name"
+    _order = "roll_number"
 
     @api.one
     @api.depends('name', 'middle_name', 'last_name')

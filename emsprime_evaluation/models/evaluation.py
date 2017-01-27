@@ -405,7 +405,9 @@ class EmsEvaluationStudentElements(models.Model):
     evaluation_student_id = fields.Many2one('ems.evaluation.student', string='Student Evaluation')
     element_id = fields.Many2one('ems.element', string='Element')
     grade = fields.Float('Grade')
-
+    status = fields.Selection(
+        [('F', 'Missed'), ('D', 'Gave up'), ('A', 'Nullified')], 'Eval. Status', select=True, track_visibility='onchange')
+		
     _sql_constraints = [('uniq_evaluation_student_element','unique(evaluation_student_id, element_id)','Element must be Unique per Student Evaluation.')]
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
