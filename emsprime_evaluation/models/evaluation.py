@@ -224,28 +224,29 @@ class OpEvaluation(models.Model):
         res = super(OpEvaluation, self).create(vals)
         ln_ids = []
         elems_percentage=0
-        if not res.element_line:
+        if not res.element_line and self.continuous_evaluation is True:
             raise ValidationError("Please add the evaluation elements.")
 
-        for ln in res.element_line:
-            ln_ids.append(ln.element_id.id)
-            elems_percentage = elems_percentage + ln.percentage
+        if self.continuous_evaluation is True:
+            for ln in res.element_line:
+                ln_ids.append(ln.element_id.id)
+                elems_percentage = elems_percentage + ln.percentage
 
-        if elems_percentage > 100:
-            raise ValidationError("The percentage of the elements cannot be greater than 100.")
+            if elems_percentage > 100:
+                raise ValidationError("The percentage of the elements cannot be greater than 100.")
 
-        for line in res.student_line:
-            evaluation_student_id=line.id
-            #cont=0
-            #for line2 in res.element_line:
-            for r in range(0, len(ln_ids)):
-                vals = {
-                    'evaluation_student_id': evaluation_student_id,
-                    'element_id': ln_ids[r]
-                    #'element_id': line2.element_id.id
-                }
-                #cont = cont + 1
-                eval_student_element = self.env['ems.evaluation.student.element'].create(vals)
+            for line in res.student_line:
+                evaluation_student_id=line.id
+                #cont=0
+                #for line2 in res.element_line:
+                for r in range(0, len(ln_ids)):
+                    vals = {
+                        'evaluation_student_id': evaluation_student_id,
+                        'element_id': ln_ids[r]
+                        #'element_id': line2.element_id.id
+                    }
+                    #cont = cont + 1
+                    eval_student_element = self.env['ems.evaluation.student.element'].create(vals)
         
         return res
 
@@ -255,26 +256,27 @@ class OpEvaluation(models.Model):
         ln_ids = []
         student_elem_ids = []
         elems_percentage=0
-        if not self.element_line:
+        if not self.element_line and self.continuous_evaluation is True:
             raise ValidationError("Please add the evaluation elements.")
 
-        for ln in self.element_line:
-            ln_ids.append(ln.element_id.id)
-            elems_percentage = elems_percentage + ln.percentage
+        if self.continuous_evaluation is True:
+            for ln in self.element_line:
+                ln_ids.append(ln.element_id.id)
+                elems_percentage = elems_percentage + ln.percentage
 
-        if elems_percentage > 100:
-            raise ValidationError("The percentage of the elements cannot be greater than 100.")
+            if elems_percentage > 100:
+                raise ValidationError("The percentage of the elements cannot be greater than 100.")
 
-        for line in self.student_line:
-            evaluation_student_id=line.id
-            for elem_line in line.element_line:
-                student_elem_ids.append(elem_line.element_id.id)
-            for student in student_elem_ids:
-                if student not in ln_ids:
-                    self._cr.execute("""DELETE FROM ems_evaluation_student_element WHERE evaluation_student_id =%s AND element_id=%s"""%(evaluation_student_id,student))
-            for elem in ln_ids:
-                if elem not in student_elem_ids:
-                    self._cr.execute("""INSERT INTO ems_evaluation_student_element (evaluation_student_id,element_id) VALUES (%s,%s)"""%(evaluation_student_id,elem))
+            for line in self.student_line:
+                evaluation_student_id=line.id
+                for elem_line in line.element_line:
+                    student_elem_ids.append(elem_line.element_id.id)
+                for student in student_elem_ids:
+                    if student not in ln_ids:
+                        self._cr.execute("""DELETE FROM ems_evaluation_student_element WHERE evaluation_student_id =%s AND element_id=%s"""%(evaluation_student_id,student))
+                for elem in ln_ids:
+                    if elem not in student_elem_ids:
+                        self._cr.execute("""INSERT INTO ems_evaluation_student_element (evaluation_student_id,element_id) VALUES (%s,%s)"""%(evaluation_student_id,elem))
 
         return res
 
