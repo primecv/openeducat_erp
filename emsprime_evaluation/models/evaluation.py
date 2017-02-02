@@ -99,7 +99,13 @@ class OpEvaluation(models.Model):
                 if faculty.university_center_id:
                     res.update(university_center_id = faculty.university_center_id.id)
         if context and 'get_continuous_evaluation' in context:
+            print "DEFAULT GET - CONTINUOUS"
+            print context['get_continuous_evaluation']
             res.update(continuous_evaluation = True)
+        if context and 'get_regular_evaluation' in context:
+            print "DEFAULT GET - REGULAR"
+            print context['get_regular_evaluation']
+            res.update(continuous_evaluation = False)
         return res
 
     @api.model
@@ -124,7 +130,13 @@ class OpEvaluation(models.Model):
                         setup_modifiers(node, res['fields']['university_center_id'])
                         res['arch'] = etree.tostring(doc)
         if context and 'get_continuous_evaluation' in context:
+            print "FIELDS VIEW GET - CONTINUOUS"
+            print context['get_continuous_evaluation']
             res.update(continuous_evaluation = True)
+        if context and 'get_regular_evaluation' in context:
+            print "FIELDS VIEW GET - REGULAR"
+            print context['get_regular_evaluation']
+            res.update(continuous_evaluation = False)
         return res
 
     @api.constrains('total_marks', 'min_marks')
@@ -161,20 +173,20 @@ class OpEvaluation(models.Model):
         line_ids = []
         result = {}
         if self.continuous_evaluation is False:
-            #print "ENTROU EXAME::::::::::::::::::::::::::"
+            print "ENTROU EXAME::::::::::::::::::::::::::"
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.attendees_line:
-                    #print "FOR 1::::::::::::"
-                    #print line.student_id.id
+                    print "FOR 1::::::::::::"
+                    print line.student_id.id
                     existing_students.append(line.student_id.id)
                 class_students = []
                 for enrollment in evaluation.class_id.enrollment_line:
-                    #print "FOR 2::::::::::::"
-                    #print enrollment.student_id.id
+                    print "FOR 2::::::::::::"
+                    print enrollment.student_id.id
                     if enrollment.evaluation_type=='regular_exam':
-                        #print "IF 1::::::::::::"
-                        #print enrollment.evaluation_type
+                        print "IF 1::::::::::::"
+                        print enrollment.evaluation_type
                         class_students.append(enrollment.student_id.id)
                 for student in class_students:
                     if student in existing_students:
@@ -274,10 +286,10 @@ class OpEvaluation(models.Model):
         res = super(OpEvaluation, self).create(vals)
         ln_ids = []
         elems_percentage=0
-        if not res.element_line and self.continuous_evaluation is True:
+        if not res.element_line and res.continuous_evaluation is True:
             raise ValidationError("Please add the evaluation elements.")
 
-        if self.continuous_evaluation is True:
+        if res.continuous_evaluation is True:
             for ln in res.element_line:
                 ln_ids.append(ln.element_id.id)
                 elems_percentage = elems_percentage + ln.percentage
