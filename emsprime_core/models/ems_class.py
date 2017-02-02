@@ -157,22 +157,30 @@ class EmsClass(models.Model):
             for enrollment in e_class.enrollment_line:
                 existing_enrollments.append(enrollment.id)
         for eclass in self:
-            select_clause = "select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ "
+            outer_select = """select v.id from ("""
+            if eclass.course_id:
+                select_clause = """select e.id,(select last_subject_enrollment('%s',%s,%s,%s,e.student_id,e.id)) as last_enrollment from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ, ems_student st"""%(eclass.academic_year,eclass.university_center_id.id,eclass.subject_id.id,eclass.course_id.id)
+            else:
+                select_clause = """select e.id,(select last_subject_enrollment_no_course('%s',%s,%s,e.student_id,e.id)) as last_enrollment from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ, ems_student st"""%(eclass.academic_year,eclass.university_center_id.id,eclass.subject_id.id)
             where_clause = """ where e.id=eis.inscription_id and
                             eis.subject_id=s.id and
                             e.edition_id = ed.id and
                             ed.university_center_id = univ.id and
+							e.student_id=st.id and
                             univ.id = %s and
                             e.academic_year is not null and
                             e.academic_year='%s' and 
 							(eis.grade < 10 or eis.grade is null) and
+							(eis.equivalence is false or eis.equivalence is null) and
+							st.active=true and
                             eis.subject_id=%s"""%(eclass.university_center_id.id, eclass.academic_year, eclass.subject_id.id)
+            close_select = """) v where v.last_enrollment is true"""
             if eclass.course_id:
                 where_clause += ' and e.course_id=%s'%(eclass.course_id.id)
             if eclass.edition_id:
                 where_clause += ' and e.edition_id=%s'%(eclass.edition_id.id)
 
-            query = select_clause + where_clause
+            query = outer_select + select_clause + where_clause + close_select
             self._cr.execute(query)
             result = self._cr.fetchall()
             res = []
@@ -235,16 +243,91 @@ class EmsClass(models.Model):
             if new_enrollments:
                 self.write({'enrollment_ids': [[6,0, new_enrollments]]})'''
 
+    def init(self, cr):
+        cr.execute("""
+CREATE OR REPLACE FUNCTION last_subject_enrollment(character varying, integer, integer, integer, integer, integer)
+ RETURNS boolean AS
+$BODY$ declare                                                                                                                                                                                                                                                                  
+                 v_enrollment integer;                                                                                                      
+                                                                                                                                            
+  begin                                                                                                                                     
+				select e.id into v_enrollment
+				from ems_enrollment e,ems_subject s,ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ, ems_student st
+				where e.id=eis.inscription_id
+				and eis.subject_id=s.id
+				and e.edition_id = ed.id
+				and ed.university_center_id = univ.id
+				and e.student_id=st.id
+				and univ.id =$2
+				and e.academic_year is not null
+				and e.academic_year=$1
+				and (eis.grade < 10 or eis.grade is null)
+				and (eis.equivalence is false or eis.equivalence is null)
+				and st.active=true
+				and eis.subject_id=$3 
+				and e.course_id=$4
+				and e.student_id=$5
+				order by e.roll_number desc
+				limit 1;
+
+				IF v_enrollment=$6 THEN 
+					return TRUE; 
+				ELSE
+					RETURN FALSE;
+				END IF;
+				
+end;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+            """)
+
+        cr.execute("""
+CREATE OR REPLACE FUNCTION last_subject_enrollment_no_course(character varying, integer, integer, integer, integer)
+ RETURNS boolean AS
+$BODY$ declare                                                                                                                                                                                                                                                                  
+                 v_enrollment integer;                                                                                                      
+                                                                                                                                            
+  begin                                                                                                                                     
+				select e.id into v_enrollment
+				from ems_enrollment e,ems_subject s,ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ, ems_student st
+				where e.id=eis.inscription_id
+				and eis.subject_id=s.id
+				and e.edition_id = ed.id
+				and ed.university_center_id = univ.id
+				and e.student_id=st.id
+				and univ.id =$2
+				and e.academic_year is not null
+				and e.academic_year=$1
+				and (eis.grade < 10 or eis.grade is null)
+				and (eis.equivalence is false or eis.equivalence is null)
+				and st.active=true
+				and eis.subject_id=$3 
+				and e.student_id=$4
+				order by e.roll_number desc
+				limit 1;
+
+				IF v_enrollment=$5 THEN 
+					return TRUE; 
+				ELSE
+					RETURN FALSE;
+				END IF;
+				
+end;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+            """)
+
 class EmsClassEnrollments(models.Model):
     _name = "ems.class.enrollment"
     _description = "Class Students"
     _rec_name = "enrollment_id"
-    _order = "enrollment_id"
+    _order = "student_roll_number"
 
     class_id = fields.Many2one('ems.class', string='Class')
-    enrollment_id = fields.Many2one('ems.enrollment', string='Enrollment')
-    course_id = fields.Many2one('ems.course', related="enrollment_id.course_id", string='Course', store=True)
-    edition_id = fields.Many2one('ems.edition', related="enrollment_id.edition_id", string='Edition', store=True)
-    student_id = fields.Many2one('ems.student', related="enrollment_id.student_id", string='Student', store=True)
-    evaluation_type = fields.Selection([('continuous', 'Continuous'), ('regular_exam', 'Regular Exam')], 'Evaluation Type')
+    enrollment_id = fields.Many2one('ems.enrollment', string='Inscription Enrollment')
+    student_roll_number = fields.Char(related='enrollment_id.roll_number', string='Roll number', store=True)
+    course_id = fields.Many2one('ems.course', related="enrollment_id.course_id", string='Course', store=True, readonly=True)
+    edition_id = fields.Many2one('ems.edition', related="enrollment_id.edition_id", string='Edition', store=True, readonly=True)
+    student_id = fields.Many2one('ems.student', related="enrollment_id.student_id", string='Student', store=True, readonly=True)
+    evaluation_type = fields.Selection([('continuous', 'Continuous'), ('regular_exam', 'Regular Exam')], 'Evaluation Type', default='continuous')
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
