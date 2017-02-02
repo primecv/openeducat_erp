@@ -42,7 +42,7 @@
                         <div name="button_box" class="oe_button_box">
 							<button name="load_inscriptions" type="object" string="Load Enrollments" class="oe_stat_button" id="inscription_button" icon="fa-pencil-square-o"/>
 						</div>
-                        <div name="button_box2" class="oe_button_box">
+                        <!--<div name="button_box2" class="oe_button_box">
 							<button name="action_load_enrollments" type="object" string="Load Enrollments v2" class="oe_stat_button" id="enrollment_button" icon="fa-pencil-square-o"/>
 						</div>
                         <group string="Students" name="subject">
@@ -62,7 +62,7 @@
 									</group>
 								</form>
 							</field>
-                        </group>
+                        </group>-->
 						<group string="Students" name="students2">
 							<field name="enrollment_line" nolabel="1" context="{'subject_academic_year_filter': True, 'subject_id': subject_id, 'academic_year': academic_year, 'university_center_id':university_center_id}">
 								<tree string="Students" editable="bottom">
