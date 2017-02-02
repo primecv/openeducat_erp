@@ -161,6 +161,56 @@ class OpEvaluation(models.Model):
         line_ids = []
         result = {}
         if self.continuous_evaluation is False:
+            #print "ENTROU EXAME::::::::::::::::::::::::::"
+            for evaluation in self:
+                existing_students = []
+                for line in evaluation.attendees_line:
+                    #print "FOR 1::::::::::::"
+                    #print line.student_id.id
+                    existing_students.append(line.student_id.id)
+                class_students = []
+                for enrollment in evaluation.class_id.enrollment_line:
+                    #print "FOR 2::::::::::::"
+                    #print enrollment.student_id.id
+                    if enrollment.evaluation_type=='regular_exam':
+                        #print "IF 1::::::::::::"
+                        #print enrollment.evaluation_type
+                        class_students.append(enrollment.student_id.id)
+                for student in class_students:
+                    if student in existing_students:
+                        class_students.remove(student)
+                for student in class_students:
+                    line_ids.append([0, False,{'student_id': student, 'status': 'present'}])
+            self.attendees_line = line_ids
+        else:
+            #print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
+            for evaluation in self:
+                existing_students = []
+                for line in evaluation.student_line:
+                    #print "FOR 1::::::::::::"
+                    #print line.student_id.id
+                    existing_students.append(line.student_id.id)
+                class_students = []
+                for enrollment in evaluation.class_id.enrollment_line:
+                    #print "FOR 2::::::::::::"
+                    #print enrollment.student_id.id
+                    if enrollment.evaluation_type=='continuous':
+                        #print "IF 1::::::::::::"
+                        #print enrollment.evaluation_type
+                        class_students.append(enrollment.student_id.id)
+                for student in class_students:
+                    if student in existing_students:
+                        class_students.remove(student)
+                for student in class_students:
+                    line_ids.append([0, False,{'student_id': student}])
+            self.student_line = line_ids
+
+    '''def onchange_class_id(self):
+        """ This function adds Students related to enrollment on selected Class 
+        """
+        line_ids = []
+        result = {}
+        if self.continuous_evaluation is False:
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.attendees_line:
@@ -187,7 +237,7 @@ class OpEvaluation(models.Model):
                         class_students.remove(student)
                 for student in class_students:
                     line_ids.append([0, False,{'student_id': student}])
-            self.student_line = line_ids
+            self.student_line = line_ids'''
 
     @api.one
     def act_held(self):

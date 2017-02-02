@@ -27,6 +27,25 @@ from datetime import datetime, date
 class EmsClass(models.Model):
     _name = 'ems.class'
 
+    @api.multi
+    def action_load_enrollments(self):
+        """Load related enrollments
+        """
+        class_ids = self.env['ems.class'].search([('id','>',0)])
+
+        for eclass in class_ids:
+            class_id=eclass.id
+            self._cr.execute("""select ems_enrollment_id from ems_class_ems_enrollment_rel WHERE ems_class_id=%s"""%(class_id))
+            result = self._cr.fetchall()
+
+            for res in result:
+                enrollment_id=res[0]
+                self.env['ems.class.enrollment'].create({
+                    'class_id': class_id,
+                    'enrollment_id': enrollment_id,
+                    'evaluation_type': 'continuous'
+                })
+	
     def compute_class_name(self, subject_id=False, faculty_id=False, academic_year=False, class_id=False):
         faculty_code = 'FACULTY'
         subject_code = 'SUB'
@@ -72,7 +91,8 @@ class EmsClass(models.Model):
 
     @api.onchange('academic_year', 'subject_id')
     def onchange_subject_academic_year(self):
-        self.enrollment_ids = False
+        #self.enrollment_ids = False
+        self.enrollment_line = False
 
     name = fields.Char('Class Name', size=64, readonly=True)
     faculty_id = fields.Many2one('ems.faculty', 'Faculty', required=True)
@@ -94,6 +114,8 @@ class EmsClass(models.Model):
     university_center_id = fields.Many2one('ems.university.center', 'University Center')
     course_year = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5')], 'Course Year',
                      track_visibility='onchange')
+    enrollment_line = fields.One2many(
+        'ems.class.enrollment', 'class_id', 'Enrollments')
 
     @api.model
     def create(self, vals):
@@ -121,6 +143,54 @@ class EmsClass(models.Model):
 
     @api.multi
     def load_inscriptions(self):        
+        academic_year = self.academic_year
+        university_center_id = self.university_center_id.id
+        subject_id = self.subject_id.id
+        existing_enrollments = []
+        existing_classes = self.search([('academic_year', '=', academic_year), 
+                                        ('subject_id', '=', subject_id), 
+                                        ('university_center_id', '=', university_center_id),
+                                        ('id', '!=', self.id)
+                                        ])
+        line_ids = []
+        for e_class in existing_classes:
+            for enrollment in e_class.enrollment_line:
+                existing_enrollments.append(enrollment.id)
+        for eclass in self:
+            select_clause = "select e.id from ems_enrollment e, ems_subject s, ems_enrollment_inscription_subject eis, ems_edition ed, ems_university_center univ "
+            where_clause = """ where e.id=eis.inscription_id and
+                            eis.subject_id=s.id and
+                            e.edition_id = ed.id and
+                            ed.university_center_id = univ.id and
+                            univ.id = %s and
+                            e.academic_year is not null and
+                            e.academic_year='%s' and 
+							(eis.grade < 10 or eis.grade is null) and
+                            eis.subject_id=%s"""%(eclass.university_center_id.id, eclass.academic_year, eclass.subject_id.id)
+            if eclass.course_id:
+                where_clause += ' and e.course_id=%s'%(eclass.course_id.id)
+            if eclass.edition_id:
+                where_clause += ' and e.edition_id=%s'%(eclass.edition_id.id)
+
+            query = select_clause + where_clause
+            self._cr.execute(query)
+            result = self._cr.fetchall()
+            res = []
+            for r in result:
+                r = list(r)
+                res.append(r[0])
+            for enrollment in self.enrollment_line:
+                 res.append(enrollment.id)
+            new_enrollments = []
+            for enrollment in res:
+                if enrollment not in existing_enrollments:
+                    new_enrollments.append(enrollment)
+            if new_enrollments:
+                for enroll in new_enrollments:
+                    line_ids.append([0, False,{'class_id': self.id,'enrollment_id': enroll}])
+        self.enrollment_line = line_ids
+
+    '''def load_inscriptions(self):        
         academic_year = self.academic_year
         university_center_id = self.university_center_id.id
         subject_id = self.subject_id.id
@@ -163,7 +233,18 @@ class EmsClass(models.Model):
                 if enrollment not in existing_enrollments:
                     new_enrollments.append(enrollment)
             if new_enrollments:
-                self.write({'enrollment_ids': [[6,0, new_enrollments]]})
+                self.write({'enrollment_ids': [[6,0, new_enrollments]]})'''
 
+class EmsClassEnrollments(models.Model):
+    _name = "ems.class.enrollment"
+    _description = "Class Students"
+    _rec_name = "enrollment_id"
+    _order = "enrollment_id"
 
+    class_id = fields.Many2one('ems.class', string='Class')
+    enrollment_id = fields.Many2one('ems.enrollment', string='Enrollment')
+    course_id = fields.Many2one('ems.course', related="enrollment_id.course_id", string='Course', store=True)
+    edition_id = fields.Many2one('ems.edition', related="enrollment_id.edition_id", string='Edition', store=True)
+    student_id = fields.Many2one('ems.student', related="enrollment_id.student_id", string='Student', store=True)
+    evaluation_type = fields.Selection([('continuous', 'Continuous'), ('regular_exam', 'Regular Exam')], 'Evaluation Type')
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
