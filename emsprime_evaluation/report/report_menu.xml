@@ -12,5 +12,15 @@
 			menu="False"
         />
 
+        <report 
+            id="report_ems_evaluation"
+            string="Pauta Avaliação"
+            model="ems.evaluation" 
+            report_type="qweb-pdf"
+            file="emsprime_evaluation.report_evaluation" 
+            name="emsprime_evaluation.report_evaluation" 
+			menu="False"
+        />
+
     </data>
 </openerp>

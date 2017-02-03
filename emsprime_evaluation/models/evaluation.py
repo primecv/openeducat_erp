@@ -99,12 +99,12 @@ class OpEvaluation(models.Model):
                 if faculty.university_center_id:
                     res.update(university_center_id = faculty.university_center_id.id)
         if context and 'get_continuous_evaluation' in context:
-            print "DEFAULT GET - CONTINUOUS"
-            print context['get_continuous_evaluation']
+            #print "DEFAULT GET - CONTINUOUS"
+            #print context['get_continuous_evaluation']
             res.update(continuous_evaluation = True)
         if context and 'get_regular_evaluation' in context:
-            print "DEFAULT GET - REGULAR"
-            print context['get_regular_evaluation']
+            #print "DEFAULT GET - REGULAR"
+            #print context['get_regular_evaluation']
             res.update(continuous_evaluation = False)
         return res
 
@@ -130,12 +130,12 @@ class OpEvaluation(models.Model):
                         setup_modifiers(node, res['fields']['university_center_id'])
                         res['arch'] = etree.tostring(doc)
         if context and 'get_continuous_evaluation' in context:
-            print "FIELDS VIEW GET - CONTINUOUS"
-            print context['get_continuous_evaluation']
+            #print "FIELDS VIEW GET - CONTINUOUS"
+            #print context['get_continuous_evaluation']
             res.update(continuous_evaluation = True)
         if context and 'get_regular_evaluation' in context:
-            print "FIELDS VIEW GET - REGULAR"
-            print context['get_regular_evaluation']
+            #print "FIELDS VIEW GET - REGULAR"
+            #print context['get_regular_evaluation']
             res.update(continuous_evaluation = False)
         return res
 
@@ -173,7 +173,7 @@ class OpEvaluation(models.Model):
         line_ids = []
         result = {}
         if self.continuous_evaluation is False:
-            print "ENTROU EXAME::::::::::::::::::::::::::"
+            #print "ENTROU EXAME::::::::::::::::::::::::::"
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.attendees_line:
@@ -280,7 +280,16 @@ class OpEvaluation(models.Model):
         file_name = str(report_name.encode('utf-8')) + '.pdf'
 
         return self.env['report'].get_action(self, report_name)
-		
+
+    @api.multi
+    def action_print_exam(self):
+        report_name="emsprime_evaluation.report_evaluation"
+        report = self.env['report'].get_pdf(self, report_name)
+        result = base64.b64encode(report)
+        file_name = str(report_name.encode('utf-8')) + '.pdf'
+
+        return self.env['report'].get_action(self, report_name)
+
     @api.model
     def create(self, vals):
         res = super(OpEvaluation, self).create(vals)

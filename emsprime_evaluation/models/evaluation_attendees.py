@@ -81,8 +81,8 @@ class EmsEvaluationAttendees(models.Model):
 
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     status = fields.Selection(
-        [('present', 'Present'), ('absent', 'Absent')],
-        'Status', default="present", required=True)
+        [('F', 'Missed'), ('D', 'Gave up'), ('A', 'Nullified')],
+        'Status')
     marks = fields.Float('Marks')
     note = fields.Text('Note')
     evaluation_id = fields.Many2one('ems.evaluation', 'Exam', required=True)

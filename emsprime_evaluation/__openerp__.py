@@ -41,6 +41,7 @@
         'views/evaluation_view.xml',
         'report/report_menu.xml',
         'report/report_continuous_evaluation.xml',
+        'report/report_evaluation.xml',
         'security/ir.model.access.csv',
         'evaluation_menu.xml',
     ],
