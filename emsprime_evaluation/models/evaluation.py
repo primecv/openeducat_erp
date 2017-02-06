@@ -192,7 +192,7 @@ class OpEvaluation(models.Model):
                     if student in existing_students:
                         class_students.remove(student)
                 for student in class_students:
-                    line_ids.append([0, False,{'student_id': student, 'status': 'present'}])
+                    line_ids.append([0, False,{'student_id': student}])
             self.attendees_line = line_ids
         else:
             #print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
