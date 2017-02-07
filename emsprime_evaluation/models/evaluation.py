@@ -409,7 +409,7 @@ class EmsEvaluationStudents(models.Model):
             elif grade_int ==13:
                 grade_str = "13 (Treze)"
             elif grade_int ==14:
-                grade_str = "14 (Quatorze)"
+                grade_str = "14 (Catorze)"
             elif grade_int ==15:
                 grade_str = "15 (Quinze)"
             elif grade_int ==16:
