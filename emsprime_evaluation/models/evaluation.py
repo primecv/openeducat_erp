@@ -349,6 +349,15 @@ class OpEvaluation(models.Model):
                     if elem not in student_elem_ids:
                         self._cr.execute("""INSERT INTO ems_evaluation_student_element (evaluation_student_id,element_id) VALUES (%s,%s)"""%(evaluation_student_id,elem))
 
+                self._cr.execute("""select count(*) as count from ems_evaluation_student_element WHERE evaluation_student_id=%s"""%(evaluation_student_id))
+                result = self._cr.fetchone()
+                if result:
+                    result = result[0]
+                    if result == 0:
+                        for elem in ln_ids:
+                            self._cr.execute("""INSERT INTO ems_evaluation_student_element (evaluation_student_id,element_id) VALUES (%s,%s)"""%(evaluation_student_id,elem))
+
+
         return res
 
     @api.multi
@@ -444,7 +453,6 @@ class EmsEvaluationStudents(models.Model):
         for ln in self.element_line:
             element_id=ln.element_id.id
             grade=ln.grade
-            #element = self.env['ems.evaluation.element'].browse(element_id)
             elements = self.env['ems.evaluation.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
             if elements:
                 for element in elements:
@@ -480,6 +488,19 @@ class EmsEvaluationStudentElements(models.Model):
     grade = fields.Float('Grade')
     status = fields.Selection(
         [('F', 'Missed'), ('D', 'Gave up'), ('A', 'Nullified')], 'Eval. Status', select=True, track_visibility='onchange')
+
+    '''@api.multi
+    def write(self, vals):
+        res = super(EmsEvaluationStudentElements, self).write(vals)
+        percentage=0.0
+        grade=0.0
+        total_grade=0.0
+        grade2=0.0
+        all_grades_delivered=False
+        if self.evaluation_student_id:
+            print "WRITE ELEMS::::::::::::::::::::::::::::::::::::::::::::::"
+            print self.id
+        return super(EmsEvaluationStudentElements, self).write(vals)'''
 		
     _sql_constraints = [('uniq_evaluation_student_element','unique(evaluation_student_id, element_id)','Element must be Unique per Student Evaluation.')]
 
