@@ -54,7 +54,7 @@
 						<t t-foreach="o.element_line" t-as="el">
 							<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><span t-if="o.use_code"><strong><span t-esc="el.element_id.code"/></strong></span><span t-if="not o.use_code"><strong><span t-esc="el.element_id.name"/></strong></span></td>
 						</t>
-						<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><strong>Classificação Final</strong></td>
+						<td width="15%" style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;text-align:center;"><strong>Classificação Final</strong></td>
 					</tr>
 					<t t-set="i" t-value="1"/>
 					<t t-foreach="o.student_line" t-as="att">
@@ -64,9 +64,9 @@
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
 								<t t-foreach="att.element_line" t-as="elem">
-									<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;"><span t-if="not elem.status"><span t-esc="o.get_grade_int(elem.grade)"/></span><span t-if="elem.status"><span t-esc="elem.status"/></span></td>
+									<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><span t-if="not elem.status"><span t-esc="o.get_grade_int(elem.grade)"/></span><span t-if="elem.status"><span t-esc="elem.status"/></span></td>
 								</t>
-								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;"><span t-if="att.grade"><span t-field="att.grade_string" /></span><span t-if="not att.grade">a)</span> </td>
+								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding-left:5px;"><span t-if="att.grade"><span t-field="att.grade_string" /></span><span t-if="not att.grade">a)</span> </td>
 							</tr>
 						</t>					
 						<t t-if="att_parity=='odd'">
@@ -75,9 +75,9 @@
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
 								<t t-foreach="att.element_line" t-as="elem">
-									<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;"><span t-if="not elem.status"><span t-esc="o.get_grade_int(elem.grade)"/></span><span t-if="elem.status"><span t-esc="elem.status"/></span></td>
+									<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"><span t-if="not elem.status"><span t-esc="o.get_grade_int(elem.grade)"/></span><span t-if="elem.status"><span t-esc="elem.status"/></span></td>
 								</t>
-								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;"><span t-if="att.grade"><span t-field="att.grade_string" /></span><span t-if="not att.grade">a)</span></td>
+								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding-left:5px;"><span t-if="att.grade"><span t-field="att.grade_string" /></span><span t-if="not att.grade">a)</span></td>
 							</tr>
 						</t>
 						<t t-set="i" t-value="i+1"/>						
