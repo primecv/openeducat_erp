@@ -353,7 +353,7 @@
                     <!--<field name="faculty_id" />-->
                     <field name="subject_id" />
                     <field name="student_id" />
-                    <field name="element_id" />
+                    <field name="element_id" readonly="1" />
                     <field name="grade" />
                     <field name="status" />
                 </tree>
@@ -411,7 +411,7 @@
                     <field name="faculty_id" />
                     <field name="subject_id" />
                     <field name="student_id" />
-                    <field name="element_id" />
+                    <field name="element_id" readonly="1" />
                     <field name="grade" />
                     <field name="status" />
                 </tree>
