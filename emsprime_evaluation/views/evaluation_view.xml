@@ -328,13 +328,16 @@
             <field name="arch" type="xml">
                 <search string="Evaluation">
                     <!--<field name="faculty_id" />-->
+                    <field name="class_id" />
                     <field name="subject_id" />
-                    <field name="student_id" />
+                    <field name="student_name" />
+                    <field name="roll_number" />
                     <field name="element_id" />
                     <field name="academic_year" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <!--<filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}" />-->
+                        <filter string="Class" domain="[]" context="{'group_by':'class_id'}" />
                         <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
                         <filter string="Element" domain="[]" context="{'group_by':'element_id'}" />
@@ -350,7 +353,7 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <tree string="Evaluation" editable="top">
-                    <!--<field name="faculty_id" />-->
+                    <field name="class_id" />
                     <field name="subject_id" />
                     <field name="student_id" />
                     <field name="element_id" readonly="1" />
@@ -385,13 +388,16 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <search string="Evaluation">
-                    <field name="faculty_id" />
+                    <field name="class_id" />
+                    <field name="faculty_name" />
                     <field name="subject_id" />
-                    <field name="student_id" />
+                    <field name="student_name" />
+                    <field name="roll_number" />
                     <field name="element_id" />
                     <field name="academic_year" />
                     <newline />
                     <group expand="0" string="Group By...">
+                        <filter string="Class" domain="[]" context="{'group_by':'class_id'}" />
                         <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}" />
                         <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
@@ -409,6 +415,7 @@
             <field name="arch" type="xml">
                 <tree string="Evaluation" editable="top">
                     <field name="faculty_id" />
+                    <field name="class_id" />
                     <field name="subject_id" />
                     <field name="student_id" />
                     <field name="element_id" readonly="1" />
@@ -444,11 +451,14 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <search string="Evaluation">
+                    <field name="class_id" />
                     <field name="subject_id" />
-                    <field name="student_id" />
+                    <field name="student_name" />
+                    <field name="roll_number" />
                     <field name="academic_year" />
                     <newline />
                     <group expand="0" string="Group By...">
+                        <filter string="Class" domain="[]" context="{'group_by':'class_id'}" />
                         <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
                         <filter string="Academic year" domain="[]" context="{'group_by':'academic_year'}" />
@@ -463,8 +473,9 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <tree string="Evaluation" editable="top">
+                    <field name="class_id" />
                     <field name="subject_id" />
-                    <field name="student_id" />
+                    <field name="student_id" readonly="1" />
                     <field name="marks" />
                     <field name="marks_string" />
                 </tree>
@@ -497,12 +508,15 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <search string="Evaluation">
-                    <field name="faculty_id" />
+                    <field name="faculty_name" />
+                    <field name="class_id" />
                     <field name="subject_id" />
-                    <field name="student_id" />
+                    <field name="roll_number" />
+                    <field name="student_name" />
                     <field name="academic_year" />
                     <newline />
                     <group expand="0" string="Group By...">
+                        <filter string="Class" domain="[]" context="{'group_by':'class_id'}" />
                         <filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}" />
                         <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
                         <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
@@ -520,7 +534,7 @@
                 <tree string="Evaluation" editable="top">
                     <field name="faculty_id" />
                     <field name="subject_id" />
-                    <field name="student_id" />
+                    <field name="student_id" readonly="1" />
                     <field name="marks" />
                     <field name="marks_string" />
                 </tree>

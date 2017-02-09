@@ -388,10 +388,14 @@ class OpEvaluation(models.Model):
             faculty_id=student.evaluation_student_id.evaluation_id.faculty_id.id
             subject_id=student.evaluation_student_id.evaluation_id.subject_id.id
             student_id=student.evaluation_student_id.student_id.id
+            class_id=student.evaluation_student_id.evaluation_id.class_id.id
             academic_year=student.evaluation_student_id.evaluation_id.academic_year
+            roll_number=student.evaluation_student_id.student_id.roll_number
+            student_name=student.evaluation_student_id.student_id.complete_name
+            faculty_name=student.evaluation_student_id.evaluation_id.faculty_id.complete_name
             
             eval_id = self.env['ems.evaluation.student.element'].browse(evaluation_student_id)
-            eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'academic_year':academic_year})
+            eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'class_id':class_id,'academic_year':academic_year,'roll_number':roll_number,'student_name':student_name,'faculty_name':faculty_name})
 	
     @api.multi
     def action_load_exams_foreign_ids(self):
@@ -405,9 +409,13 @@ class OpEvaluation(models.Model):
             subject_id=student.evaluation_id.subject_id.id
             student_id=student.student_id.id
             academic_year=student.evaluation_id.academic_year
+            class_id=student.evaluation_id.class_id.id
+            roll_number=student.student_id.roll_number
+            student_name=student.student_id.complete_name
+            faculty_name=student.evaluation_id.faculty_id.complete_name
             
             eval_id = self.env['ems.evaluation.attendee'].browse(attendee_id)
-            eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'academic_year':academic_year})
+            eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'class_id':class_id,'academic_year':academic_year,'roll_number':roll_number,'student_name':student_name,'faculty_name':faculty_name})
 
 class EmsEvaluationStudents(models.Model):
     _name = "ems.evaluation.student"
@@ -421,8 +429,6 @@ class EmsEvaluationStudents(models.Model):
         grade_str=''
         if self.grade:
             grade_int=int(self.grade)
-            print "GRADE INT::::::::::::::::::::::::::::::::::::::"
-            print grade_int
             if grade_int==1:
                 grade_str = "1 (Um)"
             elif grade_int ==2:
@@ -514,6 +520,7 @@ class EmsEvaluationStudentElements(models.Model):
     _name = "ems.evaluation.student.element"
     _description = "Evaluation Student Elements"
     _rec_name = "element_id"
+    _order = "class_id,academic_year,faculty_name,roll_number,student_name"
 
     @api.one
     @api.depends('evaluation_student_id')
@@ -521,16 +528,28 @@ class EmsEvaluationStudentElements(models.Model):
         faculty_id = False
         subject_id = False
         student_id = False
+        class_id = False
         academic_year=''
+        student_name=''
+        faculty_name=''
+        roll_number=''
         if self.evaluation_student_id:
             faculty_id=self.evaluation_student_id.evaluation_id.faculty_id.id
             subject_id=self.evaluation_student_id.evaluation_id.subject_id.id
             student_id=self.evaluation_student_id.student_id.id
+            class_id=self.evaluation_student_id.evaluation_id.class_id.id
             academic_year=self.evaluation_student_id.evaluation_id.academic_year
+            roll_number=self.evaluation_student_id.roll_number
+            student_name=self.evaluation_student_id.complete_name
+            faculty_name=self.evaluation_student_id.evaluation_id.faculty_id.complete_name
         self.faculty_id=faculty_id
         self.subject_id=subject_id
         self.student_id=student_id
+        self.class_id=class_id
         self.academic_year=academic_year
+        self.roll_number=roll_number
+        self.student_name=student_name
+        self.faculty_name=faculty_name
 		
     @api.multi
     def write(self, vals):
@@ -556,7 +575,6 @@ class EmsEvaluationStudentElements(models.Model):
         total_grade = round(total_grade)
         eval_id = self.env['ems.evaluation.student'].browse(self.evaluation_student_id.id)
         eval_id.write({'grade': total_grade})
-
         return res
 
     evaluation_student_id = fields.Many2one('ems.evaluation.student', string='Student Evaluation')
@@ -567,7 +585,11 @@ class EmsEvaluationStudentElements(models.Model):
     faculty_id = fields.Many2one('ems.faculty', string='Faculty', compute='_get_data', store=True, track_visibility='onchange')
     subject_id = fields.Many2one('ems.subject', string='Subject', compute='_get_data', store=True, track_visibility='onchange')
     student_id = fields.Many2one('ems.student', string='Student', compute='_get_data', store=True, track_visibility='onchange')
+    class_id = fields.Many2one('ems.class', string='Class', compute='_get_data', store=True, track_visibility='onchange')
     academic_year = fields.Char('Academic Year', compute='_get_data', store=True, track_visibility='onchange')
+    roll_number = fields.Char('Roll name', compute='_get_data', store=True, track_visibility='onchange')
+    student_name = fields.Char('Student name', compute='_get_data', store=True, track_visibility='onchange')
+    faculty_name = fields.Char('Faculty name', compute='_get_data', store=True, track_visibility='onchange')
 
     _sql_constraints = [('uniq_evaluation_student_element','unique(evaluation_student_id, element_id)','Element must be Unique per Student Evaluation.')]
 

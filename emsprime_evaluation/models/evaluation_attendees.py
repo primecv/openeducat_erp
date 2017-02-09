@@ -84,17 +84,26 @@ class EmsEvaluationAttendees(models.Model):
     def _get_data(self):
         faculty_id = False
         subject_id = False
-        #student_id = False
+        class_id = False
         academic_year=''
+        student_name=''
+        faculty_name=''
+        roll_number=''
         if self.evaluation_id:
             faculty_id=self.evaluation_id.faculty_id.id
             subject_id=self.evaluation_id.subject_id.id
-            #student_id=self.student_id.id
+            class_id=self.evaluation_id.class_id.id
             academic_year=self.evaluation_id.academic_year
+            roll_number=self.student_id.roll_number
+            student_name=self.student_id.complete_name
+            faculty_name=self.evaluation_id.faculty_id.complete_name
         self.faculty_id=faculty_id
         self.subject_id=subject_id
-        #self.student_id=student_id
+        self.class_id=class_id
         self.academic_year=academic_year
+        self.roll_number=roll_number
+        self.student_name=student_name
+        self.faculty_name=faculty_name
 
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     status = fields.Selection(
@@ -111,6 +120,10 @@ class EmsEvaluationAttendees(models.Model):
     subject_id = fields.Many2one('ems.subject', string='Subject', compute='_get_data', store=True, track_visibility='onchange')
     #student_id = fields.Many2one('ems.student', string='Student', compute='_get_data', store=True, track_visibility='onchange')
     academic_year = fields.Char('Academic Year', compute='_get_data', store=True, track_visibility='onchange')
+    class_id = fields.Many2one('ems.class', string='Class', compute='_get_data', store=True, track_visibility='onchange')
+    roll_number = fields.Char('Roll name', compute='_get_data', store=True, track_visibility='onchange')
+    student_name = fields.Char('Student name', compute='_get_data', store=True, track_visibility='onchange')
+    faculty_name = fields.Char('Faculty name', compute='_get_data', store=True, track_visibility='onchange')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
