@@ -84,16 +84,16 @@ class EmsEvaluationAttendees(models.Model):
     def _get_data(self):
         faculty_id = False
         subject_id = False
-        student_id = False
+        #student_id = False
         academic_year=''
         if self.evaluation_id:
             faculty_id=self.evaluation_id.faculty_id.id
             subject_id=self.evaluation_id.subject_id.id
-            student_id=self.student_id.id
+            #student_id=self.student_id.id
             academic_year=self.evaluation_id.academic_year
         self.faculty_id=faculty_id
         self.subject_id=subject_id
-        self.student_id=student_id
+        #self.student_id=student_id
         self.academic_year=academic_year
 
     student_id = fields.Many2one('ems.student', 'Student', required=True)
@@ -109,7 +109,7 @@ class EmsEvaluationAttendees(models.Model):
     marks_string = fields.Char(string='Grade (String)', compute='_get_grade_str', store=True)
     faculty_id = fields.Many2one('ems.faculty', string='Faculty', compute='_get_data', store=True, track_visibility='onchange')
     subject_id = fields.Many2one('ems.subject', string='Subject', compute='_get_data', store=True, track_visibility='onchange')
-    student_id = fields.Many2one('ems.student', string='Student', compute='_get_data', store=True, track_visibility='onchange')
+    #student_id = fields.Many2one('ems.student', string='Student', compute='_get_data', store=True, track_visibility='onchange')
     academic_year = fields.Char('Academic Year', compute='_get_data', store=True, track_visibility='onchange')
 
 
