@@ -533,6 +533,7 @@
             <field name="arch" type="xml">
                 <tree string="Evaluation" editable="top">
                     <field name="faculty_id" />
+                    <field name="class_id" />
                     <field name="subject_id" />
                     <field name="student_id" readonly="1" />
                     <field name="marks" />

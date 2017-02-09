@@ -21,7 +21,7 @@
         <menuitem id="menu_ems_evaluation_attendees_sub" name="Evaluation Attendees"
             parent="menu_ems_school_exam_result" sequence="40"
             action="act_open_ems_evaluation_attendees_view"
-            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
+            groups="base.group_erp_manager" />
 
         <menuitem id="menu_ems_evaluation_attendees_admin_sub" name="Exams Grades"
             parent="menu_ems_school_exam_result" sequence="50"
