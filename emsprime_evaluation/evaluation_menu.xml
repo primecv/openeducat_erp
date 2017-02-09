@@ -22,7 +22,7 @@
             parent="menu_ems_school_exam_result" sequence="40"
             action="act_open_ems_evaluation_attendees_view"
             groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
-
+			
         <menuitem id="menu_ems_exam_general" name="General" parent="menu_ems_exam_root" sequence="20"/>
 
         <menuitem id="menu_exam_configuration" parent="menu_ems_exam_root" sequence="30" name="Configuration" />
@@ -42,6 +42,7 @@
             action="act_open_ems_element_view"
             groups="emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 
+			
         <!-- Faculties / My Evaluations menu -->
         <menuitem id="menu_ems_action_my_evaluations" name="My Evaluations"
             parent="emsprime_core.menu_ems_faculty_root_sub" sequence="12" action="act_open_ems_my_evaluation_view" groups="emsprime_core.group_ems_faculty"/>
@@ -50,5 +51,18 @@
         <menuitem id="menu_ems_action_my_continuous_evaluations" name="My Continuous Evaluations"
             parent="emsprime_core.menu_ems_faculty_root_sub" sequence="13" action="act_open_ems_my_continuous_evaluation_view" groups="emsprime_core.group_ems_faculty"/>
 
+        <!-- Faculties / My Continuous Evaluations Grades menu -->
+
+        <menuitem id="menu_ems_grades_sub" name="Continuous Evaluation Grades"
+            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="14"
+            action="act_open_ems_evaluation_student_element_view"
+            groups="emsprime_core.group_ems_faculty" />
+
+        <!-- Faculties / My Exams Evaluations Grades menu -->
+
+        <menuitem id="menu_ems_exams_grades_sub" name="Exams Grades"
+            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="15"
+            action="act_open_ems_evaluation_student_attendee_view"
+            groups="emsprime_core.group_ems_faculty" />
     </data>
 </openerp>

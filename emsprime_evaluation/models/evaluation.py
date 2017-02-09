@@ -377,6 +377,38 @@ class OpEvaluation(models.Model):
             grade_int = int(grade)
         return grade_int
 
+    @api.multi
+    def action_load_foreign_ids(self):
+        """Load ids
+        """
+        student_ids = self.env['ems.evaluation.student.element'].search([('id','>',0)])
+
+        for student in student_ids:
+            evaluation_student_id=student.id
+            faculty_id=student.evaluation_student_id.evaluation_id.faculty_id.id
+            subject_id=student.evaluation_student_id.evaluation_id.subject_id.id
+            student_id=student.evaluation_student_id.student_id.id
+            academic_year=student.evaluation_student_id.evaluation_id.academic_year
+            
+            eval_id = self.env['ems.evaluation.student.element'].browse(evaluation_student_id)
+            eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'academic_year':academic_year})
+	
+    @api.multi
+    def action_load_exams_foreign_ids(self):
+        """Load ids
+        """
+        student_ids = self.env['ems.evaluation.attendee'].search([('id','>',0)])
+
+        for student in student_ids:
+            attendee_id=student.id
+            faculty_id=student.evaluation_id.faculty_id.id
+            subject_id=student.evaluation_id.subject_id.id
+            student_id=student.student_id.id
+            academic_year=student.evaluation_id.academic_year
+            
+            eval_id = self.env['ems.evaluation.attendee'].browse(attendee_id)
+            eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'academic_year':academic_year})
+
 class EmsEvaluationStudents(models.Model):
     _name = "ems.evaluation.student"
     _description = "Evaluation Students"
@@ -483,13 +515,24 @@ class EmsEvaluationStudentElements(models.Model):
     _description = "Evaluation Student Elements"
     _rec_name = "element_id"
 
-    evaluation_student_id = fields.Many2one('ems.evaluation.student', string='Student Evaluation')
-    element_id = fields.Many2one('ems.element', string='Element')
-    grade = fields.Float('Grade')
-    status = fields.Selection(
-        [('F', 'Missed'), ('D', 'Gave up'), ('A', 'Nullified')], 'Eval. Status', select=True, track_visibility='onchange')
-
-    '''@api.multi
+    @api.one
+    @api.depends('evaluation_student_id')
+    def _get_data(self):
+        faculty_id = False
+        subject_id = False
+        student_id = False
+        academic_year=''
+        if self.evaluation_student_id:
+            faculty_id=self.evaluation_student_id.evaluation_id.faculty_id.id
+            subject_id=self.evaluation_student_id.evaluation_id.subject_id.id
+            student_id=self.evaluation_student_id.student_id.id
+            academic_year=self.evaluation_student_id.evaluation_id.academic_year
+        self.faculty_id=faculty_id
+        self.subject_id=subject_id
+        self.student_id=student_id
+        self.academic_year=academic_year
+		
+    @api.multi
     def write(self, vals):
         res = super(EmsEvaluationStudentElements, self).write(vals)
         percentage=0.0
@@ -497,11 +540,35 @@ class EmsEvaluationStudentElements(models.Model):
         total_grade=0.0
         grade2=0.0
         all_grades_delivered=False
-        if self.evaluation_student_id:
-            print "WRITE ELEMS::::::::::::::::::::::::::::::::::::::::::::::"
-            print self.id
-        return super(EmsEvaluationStudentElements, self).write(vals)'''
-		
+        for ln in self.evaluation_student_id.element_line:
+            element_id=ln.element_id.id
+            grade=ln.grade
+            elements = self.env['ems.evaluation.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_student_id.evaluation_id.id)])
+            if elements:
+                for element in elements:
+                    percentage=element.percentage / float(100)
+                    grade2=percentage * grade
+            if grade2==0:
+                all_grades_delivered=True
+            total_grade=total_grade + grade2
+        if all_grades_delivered is True:
+            total_grade=0
+        total_grade = round(total_grade)
+        eval_id = self.env['ems.evaluation.student'].browse(self.evaluation_student_id.id)
+        eval_id.write({'grade': total_grade})
+
+        return res
+
+    evaluation_student_id = fields.Many2one('ems.evaluation.student', string='Student Evaluation')
+    element_id = fields.Many2one('ems.element', string='Element')
+    grade = fields.Float('Grade')
+    status = fields.Selection(
+        [('F', 'Missed'), ('D', 'Gave up'), ('A', 'Nullified')], 'Eval. Status', select=True, track_visibility='onchange')
+    faculty_id = fields.Many2one('ems.faculty', string='Faculty', compute='_get_data', store=True, track_visibility='onchange')
+    subject_id = fields.Many2one('ems.subject', string='Subject', compute='_get_data', store=True, track_visibility='onchange')
+    student_id = fields.Many2one('ems.student', string='Student', compute='_get_data', store=True, track_visibility='onchange')
+    academic_year = fields.Char('Academic Year', compute='_get_data', store=True, track_visibility='onchange')
+
     _sql_constraints = [('uniq_evaluation_student_element','unique(evaluation_student_id, element_id)','Element must be Unique per Student Evaluation.')]
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

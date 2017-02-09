@@ -49,17 +49,21 @@
                             <field name="total_marks" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="min_marks" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="room_id" />
-                            <field name="continuous_evaluation" />
+							<newline/>
+							<button name="action_load_foreign_ids" type="object" string="Load Ids" colspan="1"/>							
+							<newline/>
+							<button name="action_load_exams_foreign_ids" type="object" string="Load Exam Ids" colspan="1"/>							
+                            <field name="continuous_evaluation" invisible="1" />
                         </group>
                         <group string="Attendees" name="subject">
                             <field name="attendees_line" nolabel="1">
-								<tree string="Attendee(s)">
+								<tree string="Attendee(s)" editable="bottom">
 								    <field name="student_id" />
 								    <field name="status" />
 								    <field name="marks"/>
 								    <field name="marks_string"/>
 								</tree>
-								<form string="Attendee(s)">
+								<!--<form string="Attendee(s)">
 									<group col="4">						
 										<field name="student_id" />
 										<field name="status" />
@@ -67,7 +71,7 @@
 										<field name="marks_string"/>
 										<field name="note"/>
 									</group>
-								</form>
+								</form>-->
 							</field>
                         </group>
 						
@@ -312,5 +316,116 @@
             <field name="domain">[('faculty_id.user_id', '=', uid),('continuous_evaluation','=',True)]</field>
             <field name="context">{'get_faculty_user_id': uid,'get_continuous_evaluation': True}</field>
         </record>
+
+		<!--  Continuous Evaluation Grades View  -->
+
+        <record id="view_ems_evaluation_student_element_search" model="ir.ui.view">
+            <field name="name">ems.evaluation.student.element.search</field>
+            <field name="model">ems.evaluation.student.element</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Evaluation">
+                    <!--<field name="faculty_id" />-->
+                    <field name="subject_id" />
+                    <field name="student_id" />
+                    <field name="element_id" />
+                    <field name="academic_year" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <!--<filter string="Faculty" domain="[]" context="{'group_by':'faculty_id'}" />-->
+                        <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
+                        <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter string="Element" domain="[]" context="{'group_by':'element_id'}" />
+                        <filter string="Academic year" domain="[]" context="{'group_by':'academic_year'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+		
+        <record id="view_ems_evaluation_student_element_tree" model="ir.ui.view">
+            <field name="name">ems.ems.evaluation.student.element.tree</field>
+            <field name="model">ems.evaluation.student.element</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Evaluation" editable="top">
+                    <!--<field name="faculty_id" />-->
+                    <field name="subject_id" />
+                    <field name="student_id" />
+                    <field name="element_id" />
+                    <field name="grade" />
+                    <field name="status" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_ems_evaluation_student_element_view">
+            <field name="name">Evaluations grades</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.evaluation.student.element</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_ems_evaluation_student_element_search" />
+            <field name="domain">[('faculty_id.user_id', '=', uid)]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_evaluation_student_element_view_tree">
+            <field name="act_window_id" ref="act_open_ems_evaluation_student_element_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_evaluation_student_element_tree" />
+        </record>
+	
+		<!--  Exams Evaluation Grades View  -->
+
+        <record id="view_ems_evaluation_student_attendee_search" model="ir.ui.view">
+            <field name="name">ems.evaluation.attendee.search</field>
+            <field name="model">ems.evaluation.attendee</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Evaluation">
+                    <field name="subject_id" />
+                    <field name="student_id" />
+                    <field name="academic_year" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Subject" domain="[]" context="{'group_by':'subject_id'}" />
+                        <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+                        <filter string="Academic year" domain="[]" context="{'group_by':'academic_year'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+		
+        <record id="view_ems_evaluation_student_attendee_tree" model="ir.ui.view">
+            <field name="name">ems.evaluation.attendee.tree</field>
+            <field name="model">ems.evaluation.attendee</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Evaluation" editable="top">
+                    <field name="subject_id" />
+                    <field name="student_id" />
+                    <field name="marks" />
+                    <field name="marks_string" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_ems_evaluation_student_attendee_view">
+            <field name="name">Exams grades</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.evaluation.attendee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_ems_evaluation_student_attendee_search" />
+            <field name="domain">[('faculty_id.user_id', '=', uid)]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_evaluation_student_attendee_view_tree">
+            <field name="act_window_id" ref="act_open_ems_evaluation_student_attendee_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_evaluation_student_attendee_tree" />
+        </record>
+
     </data>
 </openerp>
