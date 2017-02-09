@@ -22,6 +22,16 @@
             parent="menu_ems_school_exam_result" sequence="40"
             action="act_open_ems_evaluation_attendees_view"
             groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
+
+        <menuitem id="menu_ems_evaluation_attendees_admin_sub" name="Exams Grades"
+            parent="menu_ems_school_exam_result" sequence="50"
+            action="act_open_ems_evaluation_student_attendee_admin_view"
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
+
+        <menuitem id="menu_ems_continuous_evaluation_admin_sub" name="Continuous Evaluation Grades"
+            parent="menu_ems_school_exam_result" sequence="60"
+            action="act_open_ems_evaluation_student_element_admin_view"
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
 			
         <menuitem id="menu_ems_exam_general" name="General" parent="menu_ems_exam_root" sequence="20"/>
 
