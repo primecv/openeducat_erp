@@ -540,7 +540,7 @@ class EmsEvaluationStudentElements(models.Model):
             class_id=self.evaluation_student_id.evaluation_id.class_id.id
             academic_year=self.evaluation_student_id.evaluation_id.academic_year
             roll_number=self.evaluation_student_id.student_id.roll_number
-            student_name=self.evaluation_student_id.complete_name
+            student_name=self.evaluation_student_id.student_id.complete_name
             faculty_name=self.evaluation_student_id.evaluation_id.faculty_id.complete_name
         self.faculty_id=faculty_id
         self.subject_id=subject_id
