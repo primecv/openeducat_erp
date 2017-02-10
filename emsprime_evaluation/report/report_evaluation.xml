@@ -53,8 +53,8 @@
 					<tr style="background-color:#f0f0f0;">
 						<td width="30" style="border:1px solid #cccccc; border-collapse: collapse;text-align:center;padding:0 5px;"><span style="color:#f0f0f0;">a</span></td>
 						<td width="10%" style="border:1px solid #cccccc; border-collapse: collapse;text-align:center;"><strong>Nº Aluno</strong></td>
-						<td width="60%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"><strong>Nome</strong></td>
-						<td width="15%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"><strong>Classificação Final</strong></td>
+						<td width="58%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"><strong>Nome</strong></td>
+						<td width="17%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"><strong>Classificação Final</strong></td>
 						<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"></td>
 					</tr>
 					<t t-set="i" t-value="1"/>
@@ -62,19 +62,19 @@
 						<t t-if="att_parity=='even'">
 							<tr style="background-color:#FFFFFF;">
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"><span t-esc="i"/></td>
-								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
-								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
-								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding-left:5px;"><span t-if="att.marks"><span t-esc="o.get_grade_int(att.marks)"/></span><span t-if="att.status"><span t-esc="att.status"/></span></td>
-								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding-left:5px;"><span t-if="att.marks &gt; 9">Aprovado</span><span t-if="att.marks &lt; 10">Reprovado</span></td>
+								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
+								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
+								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.marks"><span t-esc="o.get_grade_int(att.marks)"/></span><span t-if="att.status"><span t-esc="att.status"/></span></td>
+								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.marks &gt; 9">Aprovado</span><span t-if="att.marks &lt; 10">Reprovado</span></td>
 							</tr>
 						</t>					
 						<t t-if="att_parity=='odd'">
 							<tr style="background-color:#F0F0F0;">
 								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"><span t-esc="i"/></td>
-								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
-								<td style="border:1px solid #cccccc; border-collapse: collapse;padding-left:5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
-								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding-left:5px;"><span t-if="att.marks"><span t-esc="o.get_grade_int(att.marks)"/></span><span t-if="att.status"><span t-esc="att.status"/></span></td>
-								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding-left:5px;"><span t-if="att.marks &gt; 9">Aprovado</span><span t-if="att.marks &lt; 10">Reprovado</span></td>
+								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"> <span t-field="att.student_id.roll_number" style="color:333333;"/></td>
+								<td style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"> <span t-field="att.student_id.complete_name_cap" style="color:333333;"/></td>
+								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.marks"><span t-esc="o.get_grade_int(att.marks)"/></span><span t-if="att.status"><span t-esc="att.status"/></span></td>
+								<td style="text-align:left;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.marks &gt; 9">Aprovado</span><span t-if="att.marks &lt; 10">Reprovado</span></td>
 							</tr>
 						</t>
 						<t t-set="i" t-value="i+1"/>						
