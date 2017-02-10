@@ -55,24 +55,24 @@
 			
         <!-- Faculties / My Evaluations menu -->
         <menuitem id="menu_ems_action_my_evaluations" name="My Evaluations"
-            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="12" action="act_open_ems_my_evaluation_view" groups="base.group_erp_manager"/>
+            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="12" action="act_open_ems_my_evaluation_view" groups="emsprime_core.group_ems_faculty"/>
 
         <!-- Faculties / My Continuous Evaluations menu -->
         <menuitem id="menu_ems_action_my_continuous_evaluations" name="My Continuous Evaluations"
-            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="13" action="act_open_ems_my_continuous_evaluation_view" groups="base.group_erp_manager"/>
+            parent="emsprime_core.menu_ems_faculty_root_sub" sequence="13" action="act_open_ems_my_continuous_evaluation_view" groups="emsprime_core.group_ems_faculty"/>
 
         <!-- Faculties / My Continuous Evaluations Grades menu -->
 
         <menuitem id="menu_ems_grades_sub" name="Continuous Evaluation Grades"
             parent="emsprime_core.menu_ems_faculty_root_sub" sequence="14"
             action="act_open_ems_evaluation_student_element_view"
-            groups="emsprime_core.group_ems_faculty" />
+            groups="base.group_erp_manager" />
 
         <!-- Faculties / My Exams Evaluations Grades menu -->
 
         <menuitem id="menu_ems_exams_grades_sub" name="Exams Grades"
             parent="emsprime_core.menu_ems_faculty_root_sub" sequence="15"
             action="act_open_ems_evaluation_student_attendee_view"
-            groups="emsprime_core.group_ems_faculty" />
+            groups="base.group_erp_manager" />
     </data>
 </openerp>
