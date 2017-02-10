@@ -28,13 +28,11 @@ class EmsEvaluationAttendees(models.Model):
     _rec_name = 'student_id'
 
     @api.one
-    @api.depends('marks')
+    @api.depends('marks','status')
     def _get_grade_str(self):
         grade_str=''
         if self.marks:
             grade_int=int(self.marks)
-            print "GRADE INT::::::::::::::::::::::::::::::::::::::"
-            print grade_int
             if grade_int==1:
                 grade_str = "1 (Um)"
             elif grade_int ==2:
@@ -75,6 +73,8 @@ class EmsEvaluationAttendees(models.Model):
                 grade_str = "19 (Dezanove)"
             elif grade_int ==20:
                 grade_str = "20 (Vinte)"
+        elif self.status:
+            grade_str = self.status
         else:
             grade_str = "a)"
         self.marks_string = grade_str
