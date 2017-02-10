@@ -79,6 +79,7 @@ class EmsFaculty(models.Model):
     passport_no = fields.Char('Passport/BI', size=20, track_visibility='onchange')
     issuer = fields.Char('Issuer', track_visibility='onchange')
     issue_date = fields.Date('Issue Date', track_visibility='onchange')
+    active = fields.Boolean('Is Active?', default=True)
 
     @api.one
     @api.constrains('user_id')

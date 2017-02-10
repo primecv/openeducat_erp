@@ -93,6 +93,8 @@
                                 </table>
                             </h1>
                         </div>
+                        <label for="active"/>
+                        <field name="active"/>						
                         <group col="4" colspan="4">
                             <field name="gender" />
                             <field name="phone" />
@@ -195,6 +197,7 @@
                     <field name="complete_name" />
 					<field name="code"/>
                     <field name="degree_id" />
+					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter name="degree" string="Degree" domain="[]"
