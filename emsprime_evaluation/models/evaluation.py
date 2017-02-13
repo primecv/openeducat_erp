@@ -501,9 +501,11 @@ class EmsEvaluationStudents(models.Model):
             final_grade = grade / count_elements
         if final_grade > 8:
             self.status="Aprovado"
+            self.status2="Aprovado"
         else:
             self.status="Reprovado"
-            
+            self.status2="Reprovado"
+          
         '''print "COUNT ELEMENTS:::::::::::::::::"
         print count_elements
         print "GRADE:::::::::::::::::"
@@ -519,6 +521,7 @@ class EmsEvaluationStudents(models.Model):
         'ems.evaluation.student.element', 'evaluation_student_id', 'Elements')
     grade_string = fields.Char(string='Grade (String)', compute='_get_grade_str', store=True)
     status = fields.Char(string='Status', compute='_get_status', store=True)
+    status2 = fields.Char(string='Status 2', compute='_get_status', store=True)
 
     @api.multi
     def write(self, vals):
