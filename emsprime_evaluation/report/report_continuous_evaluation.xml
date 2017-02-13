@@ -55,9 +55,10 @@
 						<td width="8%" style="border:1px solid #cccccc; border-collapse: collapse;text-align:center;vertical-align:middle;"><strong>Nº Aluno</strong></td>
 						<td width="40%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;vertical-align:middle;"><strong>Nome</strong></td>
 						<t t-foreach="o.element_line" t-as="el">
-							<td width="12%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"><span t-if="o.use_code"><strong><span t-esc="el.element_id.code"/></strong></span><span t-if="not o.use_code"><strong><span t-esc="el.element_id.name"/></strong></span></td>
+							<td width="10%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;vertical-align:middle;"><span t-if="o.use_code"><strong><span t-esc="el.element_id.code"/></strong></span><span t-if="not o.use_code"><strong><span t-esc="el.element_id.name"/></strong></span></td>
 						</t>
-						<td width="10%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;"><strong>Classificação Final</strong></td>
+						<td width="10%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;vertical-align:middle;"><strong>Classificação Final</strong></td>
+						<td width="10%" style="border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;text-align:center;vertical-align:middle;"><strong>Status</strong></td>
 					</tr>
 					<t t-set="i" t-value="1"/>
 					<t t-foreach="o.student_line" t-as="att">
@@ -70,6 +71,7 @@
 									<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"><span t-if="not elem.status"><span t-esc="o.get_grade_int(elem.grade)"/></span><span t-if="elem.status"><span t-esc="elem.status"/></span></td>
 								</t>
 								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.grade"><span t-esc="o.get_grade_int(att.grade)"/></span><span t-if="not att.grade">a)</span> </td>
+								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.status"><span t-field="att.status"/></span></td>
 							</tr>
 						</t>					
 						<t t-if="att_parity=='odd'">
@@ -81,6 +83,7 @@
 									<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;padding:0 5px;"><span t-if="not elem.status"><span t-esc="o.get_grade_int(elem.grade)"/></span><span t-if="elem.status"><span t-esc="elem.status"/></span></td>
 								</t>
 								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.grade"><span t-esc="o.get_grade_int(att.grade)"/></span><span t-if="not att.grade">a)</span></td>
+								<td style="text-align:center;border:1px solid #cccccc; border-collapse: collapse;font-weight:bold;padding:0 5px;"><span t-if="att.status"><span t-field="att.status"/></span></td>
 							</tr>
 						</t>
 						<t t-set="i" t-value="i+1"/>						
