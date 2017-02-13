@@ -30,6 +30,7 @@ class EmsEvaluationElement(models.Model):
     name = fields.Char('Name', size=256, required=True)
     code = fields.Char('Code', size=8, required=True)
     maximum_percentage = fields.Integer('Maximum Percentage', required=True)
+    is_test = fields.Boolean('Test?',default=False)
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

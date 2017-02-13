@@ -10,6 +10,7 @@
                     <field name="name" />
                     <field name="code" />
                     <field name="maximum_percentage" />
+					<field name="is_test" />
                 </tree>
             </field>
         </record>
@@ -24,6 +25,7 @@
 							<field name="name" />
 							<field name="code" />
 							<field name="maximum_percentage" />
+							<field name="is_test" />
 						</group>
                     </sheet>
                 </form>
@@ -38,6 +40,7 @@
                     <field name="name" />
                     <field name="code" />
                     <field name="maximum_percentage" />
+					<field name="is_test" />
                 </search>
             </field>
         </record>

@@ -475,13 +475,24 @@ class EmsEvaluationStudents(models.Model):
         else:
             grade_str = "a)"
         self.grade_string = grade_str
-		
+
+    @api.one
+    @api.depends('student_id','evaluation_id')
+    def _get_status(self):
+        elements = self.env['ems.evaluation.element'].search([('evaluation_id','=',self.evaluation_id.id),('is_test','=',True)])
+        count_elements=0
+        for element in elements:
+            element_id=element.element_id.id
+            count_elements
+            student_elements = self.env['ems.evaluation.student.element'].search([('element_id','=',element_id),('student_id','=',student_id)])
+
     evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
     student_id = fields.Many2one('ems.student', string='Student')
     grade = fields.Float('Grade')
     element_line = fields.One2many(
         'ems.evaluation.student.element', 'evaluation_student_id', 'Elements')
     grade_string = fields.Char(string='Grade (String)', compute='_get_grade_str', store=True)
+    #status = fields.Char(string='Status', compute='_get_status', store=True)
 
     @api.multi
     def write(self, vals):
@@ -494,7 +505,7 @@ class EmsEvaluationStudents(models.Model):
         for ln in self.element_line:
             element_id=ln.element_id.id
             grade=ln.grade
-            elements = self.env['ems.evaluation.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
+            elements = self.env['ems.evaluation.student.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
             if elements:
                 for element in elements:
                     percentage=element.percentage / float(100)
@@ -516,6 +527,7 @@ class EmsEvaluationElements(models.Model):
     evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
     element_id = fields.Many2one('ems.element', string='Element')
     percentage = fields.Integer('Percentage')
+    is_test = fields.Boolean('Is test?',related='element_id.is_test', track_visibility='onchange', store=True)
 
     _sql_constraints = [('uniq_evaluation_element','unique(evaluation_id, element_id)','Element must be Unique per Evaluation.')]
 
@@ -523,6 +535,7 @@ class EmsEvaluationStudentElements(models.Model):
     _name = "ems.evaluation.student.element"
     _description = "Evaluation Student Elements"
     _rec_name = "element_id"
+    _order = "element_id"
     #_order = "class_id,academic_year,faculty_name,roll_number,student_name"
 
     @api.one
