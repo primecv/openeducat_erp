@@ -374,7 +374,10 @@ class OpEvaluation(models.Model):
     def get_grade_int(self, grade=False):
         grade_int = 0
         if grade:
-            grade_int = int(grade)
+            if (grade).is_integer():
+                grade_int = int(grade)
+            else: 
+                grade_int = grade
         return grade_int
 
     @api.multi
@@ -495,7 +498,7 @@ class EmsEvaluationStudents(models.Model):
             if elements:
                 for element in elements:
                     percentage=element.percentage / float(100)
-                    grade2=percentage * grade
+                    grade2=percentage * (grade + 0.01)
             if grade2==0:
                 all_grades_delivered=True
             total_grade=total_grade + grade2
@@ -520,7 +523,7 @@ class EmsEvaluationStudentElements(models.Model):
     _name = "ems.evaluation.student.element"
     _description = "Evaluation Student Elements"
     _rec_name = "element_id"
-    _order = "class_id,academic_year,faculty_name,roll_number,student_name"
+    #_order = "class_id,academic_year,faculty_name,roll_number,student_name"
 
     @api.one
     @api.depends('evaluation_student_id')
@@ -566,7 +569,7 @@ class EmsEvaluationStudentElements(models.Model):
             if elements:
                 for element in elements:
                     percentage=element.percentage / float(100)
-                    grade2=percentage * grade
+                    grade2=percentage * (grade + 0.01)
             if grade2==0:
                 all_grades_delivered=True
             total_grade=total_grade + grade2
