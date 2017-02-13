@@ -505,7 +505,7 @@ class EmsEvaluationStudents(models.Model):
         for ln in self.element_line:
             element_id=ln.element_id.id
             grade=ln.grade
-            elements = self.env['ems.evaluation.student.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
+            elements = self.env['ems.evaluation.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
             if elements:
                 for element in elements:
                     percentage=element.percentage / float(100)
