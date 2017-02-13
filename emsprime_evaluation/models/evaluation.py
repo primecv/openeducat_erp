@@ -497,7 +497,8 @@ class EmsEvaluationStudents(models.Model):
             grade=grade+st.grade
             #print "Student grades"
             #print st.grade
-        final_grade = grade / count_elements
+        if count_elements > 0:
+            final_grade = grade / count_elements
         if final_grade > 8:
             self.status="Aprovado"
         else:
