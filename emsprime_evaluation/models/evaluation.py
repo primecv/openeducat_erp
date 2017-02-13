@@ -477,14 +477,39 @@ class EmsEvaluationStudents(models.Model):
         self.grade_string = grade_str
 
     @api.one
-    @api.depends('student_id','evaluation_id')
+    @api.depends('grade')
     def _get_status(self):
         elements = self.env['ems.evaluation.element'].search([('evaluation_id','=',self.evaluation_id.id),('is_test','=',True)])
+        #print "EVALUATION ID:::::::::::::::::"
+        #print self.evaluation_id.id
+  
         count_elements=0
+        grade=0.0
+        elements_list = []
+        final_grade=0.0
         for element in elements:
-            element_id=element.element_id.id
-            count_elements
-            student_elements = self.env['ems.evaluation.student.element'].search([('element_id','=',element_id),('student_id','=',student_id)])
+            elements_list.append(element.element_id.id)
+            #print "ELEMENT:::::::::::::::::"
+            #print element.element_id.id
+            count_elements=count_elements + 1
+        student_elements = self.env['ems.evaluation.student.element'].search([('element_id','in',elements_list),('evaluation_student_id','=',self.id)])
+        for st in student_elements:
+            grade=grade+st.grade
+            #print "Student grades"
+            #print st.grade
+        final_grade = grade / count_elements
+        if final_grade > 8:
+            self.status="Aprovado"
+        else:
+            self.status="Reprovado"
+            
+        '''print "COUNT ELEMENTS:::::::::::::::::"
+        print count_elements
+        print "GRADE:::::::::::::::::"
+        print grade
+        print "FINAL GRADE:::::::::::::::::"
+        print final_grade'''
+        
 
     evaluation_id = fields.Many2one('ems.evaluation', string='Evaluation')
     student_id = fields.Many2one('ems.student', string='Student')
@@ -492,7 +517,7 @@ class EmsEvaluationStudents(models.Model):
     element_line = fields.One2many(
         'ems.evaluation.student.element', 'evaluation_student_id', 'Elements')
     grade_string = fields.Char(string='Grade (String)', compute='_get_grade_str', store=True)
-    #status = fields.Char(string='Status', compute='_get_status', store=True)
+    status = fields.Char(string='Status', compute='_get_status', store=True)
 
     @api.multi
     def write(self, vals):
