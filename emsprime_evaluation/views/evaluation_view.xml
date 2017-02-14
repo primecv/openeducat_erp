@@ -185,7 +185,7 @@
                 <form string="Evaluation">
                     <header groups="base.group_user">
                         <button name="act_held" states="new" type="object" string="Held Evaluation" class="oe_highlight"/>
-                        <button name="action_print" states="held" type="object" string="Print" class="oe_highlight"/>
+                        <button name="action_print" states="held,done" type="object" string="Print" class="oe_highlight"/>
                         <button name="act_done" states="held" type="object" string="Done" class="oe_highlight"/>
                         <button name="act_new_exam" states="cancel" type="object" string="New Exam" class="oe_highlight"/>
                         <button name="act_cancel" states="new,held,schedule" type="object" string="Cancel" />
