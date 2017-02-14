@@ -488,6 +488,7 @@ class EmsEvaluationStudents(models.Model):
         grade=0.0
         elements_list = []
         final_grade=0.0
+        failed_test=False
         for element in elements:
             elements_list.append(element.element_id.id)
             #print "ELEMENT:::::::::::::::::"
@@ -496,6 +497,9 @@ class EmsEvaluationStudents(models.Model):
         student_elements = self.env['ems.evaluation.student.element'].search([('element_id','in',elements_list),('evaluation_student_id','=',self.id)])
         for st in student_elements:
             grade=grade+st.grade
+            if st.status:
+                #print "ENTROU STATUS:::::::::::::::::::::::::::::::::::"
+                failed_test=True
             #print "Student grades"
             #print st.grade
         if count_elements > 0:
@@ -508,7 +512,9 @@ class EmsEvaluationStudents(models.Model):
             self.status="Reprovado"
             self.status2="Reprovado"
             self.status3="Reprovado"
-          
+        if failed_test is True:
+            #print "ACTUALIZOU GRADE:::::::::::::::::::::::::::::::::::"
+            self.grade_string='a)'
         '''print "COUNT ELEMENTS:::::::::::::::::"
         print count_elements
         print "GRADE:::::::::::::::::"
@@ -535,9 +541,13 @@ class EmsEvaluationStudents(models.Model):
         total_grade=0.0
         grade2=0.0
         all_grades_delivered=False
+        failed_test=False
         for ln in self.element_line:
             element_id=ln.element_id.id
             grade=ln.grade
+            if ln.element_id.is_test is True and ln.status:
+                #print "ENTROU STATUS:::::::::::::::::::::::::::::::::::"
+                failed_test=True
             elements = self.env['ems.evaluation.element'].search([('element_id','=',element_id),('evaluation_id','=',self.evaluation_id.id)])
             if elements:
                 for element in elements:
@@ -546,9 +556,13 @@ class EmsEvaluationStudents(models.Model):
             if grade2==0:
                 all_grades_delivered=True
             total_grade=total_grade + grade2
+        total_grade=total_grade+0.01
         if all_grades_delivered is True:
             total_grade=0
-        vals['grade'] = round(total_grade)
+        if failed_test is True:
+            vals['grade']=0.0
+        else:
+            vals['grade'] = round(total_grade)
         return super(EmsEvaluationStudents, self).write(vals)
 		
 class EmsEvaluationElements(models.Model):
