@@ -63,6 +63,7 @@
 								    <field name="student_id" />
 								    <field name="status" />
 								    <field name="marks"/>
+								    <field name="final_grade"/>
 								    <field name="marks_string"/>
 								</tree>
 							</field>

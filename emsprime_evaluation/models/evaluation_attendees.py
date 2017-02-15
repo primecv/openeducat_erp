@@ -32,7 +32,8 @@ class EmsEvaluationAttendees(models.Model):
     def _get_grade_str(self):
         grade_str=''
         if self.marks:
-            grade_int=int(self.marks)
+            grade_round=round(self.marks)
+            grade_int=int(grade_round)
             if grade_int==1:
                 grade_str = "1 (Um)"
             elif grade_int ==2:
@@ -78,6 +79,8 @@ class EmsEvaluationAttendees(models.Model):
         else:
             grade_str = "a)"
         self.marks_string = grade_str
+        self.marks_string2 = grade_str
+        self.final_grade = grade_int
 
     @api.one
     @api.depends('evaluation_id')
@@ -105,6 +108,17 @@ class EmsEvaluationAttendees(models.Model):
         self.student_name=student_name
         self.faculty_name=faculty_name
 
+    @api.one
+    @api.depends('marks')
+    def _get_final_grade(self):
+        final_grade=0
+        round_grade=0.0
+        if self.marks:
+            round_grade=round(self.marks)
+            final_grade=int(round_grade)
+        self.final_grade=final_grade
+		
+
     student_id = fields.Many2one('ems.student', 'Student', required=True)
     status = fields.Selection(
         [('F', 'Missed'), ('D', 'Gave up'), ('A', 'Nullified')],
@@ -116,6 +130,7 @@ class EmsEvaluationAttendees(models.Model):
     edition_id = fields.Many2one('ems.edition', 'Edition')
     #marks_string = fields.Char('Marks (String)')
     marks_string = fields.Char(string='Grade (String)', compute='_get_grade_str', store=True)
+    marks_string2 = fields.Char(string='Grade (String) 2', compute='_get_grade_str', store=True)
     faculty_id = fields.Many2one('ems.faculty', string='Faculty', compute='_get_data', store=True, track_visibility='onchange')
     subject_id = fields.Many2one('ems.subject', string='Subject', compute='_get_data', store=True, track_visibility='onchange')
     #student_id = fields.Many2one('ems.student', string='Student', compute='_get_data', store=True, track_visibility='onchange')
@@ -124,6 +139,7 @@ class EmsEvaluationAttendees(models.Model):
     roll_number = fields.Char('Roll name', compute='_get_data', store=True, track_visibility='onchange')
     student_name = fields.Char('Student name', compute='_get_data', store=True, track_visibility='onchange')
     faculty_name = fields.Char('Faculty name', compute='_get_data', store=True, track_visibility='onchange')
+    final_grade = fields.Integer('Final grade', compute='_get_final_grade', store=True, track_visibility='onchange')
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
