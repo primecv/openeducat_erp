@@ -31,6 +31,8 @@ class EmsEvaluationAttendees(models.Model):
     @api.depends('marks','status')
     def _get_grade_str(self):
         grade_str=''
+        grade_int=0
+        grade_round=0.0
         if self.marks:
             grade_round=round(self.marks)
             grade_int=int(grade_round)
