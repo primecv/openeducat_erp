@@ -173,7 +173,7 @@ class OpEvaluation(models.Model):
         line_ids = []
         result = {}
         if self.continuous_evaluation is False:
-            print "ENTROU EXAME::::::::::::::::::::::::::"
+            #print "ENTROU EXAME::::::::::::::::::::::::::"
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.attendees_line:
@@ -195,7 +195,7 @@ class OpEvaluation(models.Model):
                     line_ids.append([0, False,{'student_id': student}])
             self.attendees_line = line_ids
         else:
-            print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
+            #print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.student_line:
@@ -504,14 +504,23 @@ class EmsEvaluationStudents(models.Model):
             #print st.grade
         if count_elements > 0:
             final_grade = grade / count_elements
-        if final_grade >= 8 and grade_student >=10:
-            self.status="Aprovado"
-            self.status2="Aprovado"
-            self.status3="Aprovado"
+            if final_grade >= 8 and grade_student >=10:
+                self.status="Aprovado"
+                self.status2="Aprovado"
+                self.status3="Aprovado"
+            else:
+                self.status="Reprovado"
+                self.status2="Reprovado"
+                self.status3="Reprovado"
         else:
-            self.status="Reprovado"
-            self.status2="Reprovado"
-            self.status3="Reprovado"
+            if grade_student >=10:
+                self.status="Aprovado"
+                self.status2="Aprovado"
+                self.status3="Aprovado"
+            else:
+                self.status="Reprovado"
+                self.status2="Reprovado"
+                self.status3="Reprovado"
         if failed_test is True:
             #print "ACTUALIZOU GRADE:::::::::::::::::::::::::::::::::::"
             self.grade_string='a)'
