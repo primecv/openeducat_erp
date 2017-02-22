@@ -39,11 +39,11 @@
                         <group col="4" colspan="4">
 							<field name="academic_year" />
 							<field name="university_center_id" />
+                            <field name="exam_type" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="faculty_id" domain="[('university_center_id','=',university_center_id)]"/>
                             <field name="subject_id" context="{'filter_faculty_id': faculty_id}"/>
                             <field name="class_id" domain="[('subject_id','=',subject_id)]"/>
                             <field name="exam_code" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
-                            <field name="exam_type" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="start_time" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="end_time" attrs="{'required':[('continuous_evaluation','=',False)]}"/>
                             <field name="total_marks" attrs="{'required':[('continuous_evaluation','=',False)]}"/>

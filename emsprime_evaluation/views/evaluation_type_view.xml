@@ -10,6 +10,7 @@
                     <field name="name" />
                     <field name="code" />
 					<field name="parent_id" />
+					<field name="special" />
                 </tree>
             </field>
         </record>
@@ -24,6 +25,7 @@
                             <field name="name" />
                             <field name="code" />
                             <field name="parent_id" />
+							<field name="special" />
                         </group>
                     </sheet>
                 </form>
@@ -37,10 +39,12 @@
                 <search string="Exam Type">
                     <field name="name" />
                     <field name="code" />
+					<field name="special" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="Name" domain="[]" context="{'group_by':'name'}" />
                         <filter string="Code" domain="[]" context="{'group_by':'code'}" />
+                        <filter string="Special" domain="[]" context="{'group_by':'special'}" />
                     </group>
                 </search>
             </field>

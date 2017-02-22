@@ -173,29 +173,78 @@ class OpEvaluation(models.Model):
         line_ids = []
         result = {}
         if self.continuous_evaluation is False:
-            #print "ENTROU EXAME::::::::::::::::::::::::::"
-            for evaluation in self:
-                existing_students = []
-                for line in evaluation.attendees_line:
-                    print "FOR 1::::::::::::"
-                    print line.student_id.id
-                    existing_students.append(line.student_id.id)
-                class_students = []
-                for enrollment in evaluation.class_id.enrollment_line:
-                    print "FOR 2::::::::::::"
-                    print enrollment.student_id.id
-                    if enrollment.evaluation_type=='regular_exam':
-                        print "IF 1::::::::::::"
-                        print enrollment.evaluation_type
+            print "ENTROU EXAME::::::::::::::::::::::::::"
+
+            if self.exam_type.special is False:
+                for evaluation in self:
+                    existing_students = []
+                    for line in evaluation.attendees_line:
+                        print "FOR 1::::::::::::"
+                        print line.student_id.id
+                        existing_students.append(line.student_id.id)
+                    class_students = []
+                    for enrollment in evaluation.class_id.enrollment_line:
+                        print "FOR 2::::::::::::"
+                        print enrollment.student_id.id
+                        if enrollment.evaluation_type=='regular_exam':
+                            print "IF 1::::::::::::"
+                            print enrollment.evaluation_type
+                            class_students.append(enrollment.student_id.id)
+                    for student in class_students:
+                        if student in existing_students:
+                            class_students.remove(student)
+                    for student in class_students:
+                        line_ids.append([0, False,{'student_id': student}])
+                self.attendees_line = line_ids
+            else:
+                for evaluation in self:
+                    existing_students = []
+                    for line in evaluation.attendees_line:
+                        print "FOR 3::::::::::::"
+                        print line.student_id.id
+                        existing_students.append(line.student_id.id)
+                    evaluation_students = []
+                    '''for enrollment in evaluation.class_id.enrollment_line:
+                        print "FOR 4::::::::::::"
+                        print enrollment.student_id.id
+                        #if enrollment.evaluation_type=='regular_exam':
+                        #    print "IF 1::::::::::::"
+                        #    print enrollment.evaluation_type
                         class_students.append(enrollment.student_id.id)
-                for student in class_students:
-                    if student in existing_students:
-                        class_students.remove(student)
-                for student in class_students:
-                    line_ids.append([0, False,{'student_id': student}])
-            self.attendees_line = line_ids
+                    for student in class_students:
+                        if student in existing_students:
+                            class_students.remove(student)'''
+                    student_continuous_ids = self.env['ems.evaluation.student'].search([('class_id','=',self.class_id.id),('status','=','Reprovado')])
+                    failed_students_continuous = []
+                    for st1 in student_continuous_ids:
+                        print "Failed Continuous::::::::::::::::::::::::::::::"
+                        print st1.student_id.id
+                        failed_students_continuous.append(st1.student_id.id)
+                    for st2 in failed_students_continuous:
+                        if st2 in existing_students:
+                            failed_students_continuous.remove(st2)
+                    for st3 in failed_students_continuous:
+                        evaluation_students.append(st3)
+
+                    student_exam_ids = self.env['ems.evaluation.attendee'].search([('class_id','=',self.class_id.id),('final_grade','<',10)])
+                    failed_students_exam = []
+                    for st4 in student_exam_ids:
+                        print "Failed Exam::::::::::::::::::::::::::::::"
+                        print st1.student_id.id
+                        failed_students_exam.append(st4.student_id.id)
+                    for st5 in failed_students_exam:
+                        if st5 in existing_students:
+                            failed_students_exam.remove(st5)
+                    for st6 in failed_students_exam:
+                        evaluation_students.append(st6)
+
+                    for student in evaluation_students:
+                        line_ids.append([0, False,{'student_id': student}])
+                self.attendees_line = line_ids
+
+
         else:
-            #print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
+            print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.student_line:
@@ -521,6 +570,7 @@ class EmsEvaluationStudents(models.Model):
                 self.status="Reprovado"
                 self.status2="Reprovado"
                 self.status3="Reprovado"
+
         if failed_test is True:
             #print "ACTUALIZOU GRADE:::::::::::::::::::::::::::::::::::"
             self.grade_string='a)'
@@ -541,6 +591,8 @@ class EmsEvaluationStudents(models.Model):
     status = fields.Char(string='Status', compute='_get_status', store=True)
     status2 = fields.Char(string='Status 2', compute='_get_status', store=True)
     status3 = fields.Char(string='Status 3', compute='_get_status', store=True)
+    #JCF - 22-02-2017
+    class_id = fields.Many2one('ems.class', related="evaluation_id.class_id", string='Class', store=True, readonly=True)
 
     @api.multi
     def write(self, vals):

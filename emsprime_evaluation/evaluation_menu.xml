@@ -32,7 +32,12 @@
             parent="menu_ems_school_exam_result" sequence="60"
             action="act_open_ems_evaluation_student_element_admin_view"
             groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
-			
+	
+        <menuitem id="menu_ems_student_grades_view_sub" name="Student Grades"
+            parent="menu_ems_school_exam_result" sequence="70"
+            action="act_open_student_grades_view_view"
+            groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
+
         <menuitem id="menu_ems_exam_general" name="General" parent="menu_ems_exam_root" sequence="20"/>
 
         <menuitem id="menu_exam_configuration" parent="menu_ems_exam_root" sequence="30" name="Configuration" />
