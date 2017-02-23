@@ -55,6 +55,8 @@
 							<button name="action_load_foreign_ids" type="object" string="Load Ids" colspan="1"/>							
 							<newline/>
 							<button name="action_load_exams_foreign_ids" type="object" string="Load Exam Ids" colspan="1"/>							
+							<newline/>
+							<button name="action_create_second_term_exams" type="object" string="Create Exams" colspan="1"/>							
                             <field name="continuous_evaluation" invisible="1" />						
 						</group>
                         <group string="Attendees" name="subject">

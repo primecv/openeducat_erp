@@ -204,16 +204,6 @@ class OpEvaluation(models.Model):
                         print line.student_id.id
                         existing_students.append(line.student_id.id)
                     evaluation_students = []
-                    '''for enrollment in evaluation.class_id.enrollment_line:
-                        print "FOR 4::::::::::::"
-                        print enrollment.student_id.id
-                        #if enrollment.evaluation_type=='regular_exam':
-                        #    print "IF 1::::::::::::"
-                        #    print enrollment.evaluation_type
-                        class_students.append(enrollment.student_id.id)
-                    for student in class_students:
-                        if student in existing_students:
-                            class_students.remove(student)'''
                     student_continuous_ids = self.env['ems.evaluation.student'].search([('class_id','=',self.class_id.id),('status','=','Reprovado')])
                     failed_students_continuous = []
                     for st1 in student_continuous_ids:
@@ -226,7 +216,7 @@ class OpEvaluation(models.Model):
                     for st3 in failed_students_continuous:
                         evaluation_students.append(st3)
 
-                    student_exam_ids = self.env['ems.evaluation.attendee'].search([('class_id','=',self.class_id.id),('final_grade','<',10)])
+                    student_exam_ids = self.env['ems.evaluation.attendee'].search([('class_id','=',self.class_id.id),('final_grade','<',10),('exam_type','=',3)])
                     failed_students_exam = []
                     for st4 in student_exam_ids:
                         print "Failed Exam::::::::::::::::::::::::::::::"
@@ -265,40 +255,6 @@ class OpEvaluation(models.Model):
                 for student in class_students:
                     line_ids.append([0, False,{'student_id': student}])
             self.student_line = line_ids
-
-    '''def onchange_class_id(self):
-        """ This function adds Students related to enrollment on selected Class 
-        """
-        line_ids = []
-        result = {}
-        if self.continuous_evaluation is False:
-            for evaluation in self:
-                existing_students = []
-                for line in evaluation.attendees_line:
-                    existing_students.append(line.student_id.id)
-                class_students = []
-                for enrollment in evaluation.class_id.enrollment_ids:
-                    class_students.append(enrollment.student_id.id)
-                for student in class_students:
-                    if student in existing_students:
-                        class_students.remove(student)
-                for student in class_students:
-                    line_ids.append([0, False,{'student_id': student, 'status': 'present'}])
-            self.attendees_line = line_ids
-        else:
-            for evaluation in self:
-                existing_students = []
-                for line in evaluation.student_line:
-                    existing_students.append(line.student_id.id)
-                class_students = []
-                for enrollment in evaluation.class_id.enrollment_ids:
-                    class_students.append(enrollment.student_id.id)
-                for student in class_students:
-                    if student in existing_students:
-                        class_students.remove(student)
-                for student in class_students:
-                    line_ids.append([0, False,{'student_id': student}])
-            self.student_line = line_ids'''
 
     @api.one
     def act_held(self):
@@ -468,6 +424,74 @@ class OpEvaluation(models.Model):
             
             eval_id = self.env['ems.evaluation.attendee'].browse(attendee_id)
             eval_id.write({'faculty_id': faculty_id,'subject_id':subject_id,'student_id':student_id,'class_id':class_id,'academic_year':academic_year,'roll_number':roll_number,'student_name':student_name,'faculty_name':faculty_name})
+
+    @api.multi
+    def action_create_second_term_exams(self):
+        """Create second term exams
+        """
+        #evaluation_ids = self.env['second.term.evaluation.view'].search([('evaluation_id','=',2)])
+        query = """select distinct class_id from second_term_evaluation_view"""
+        self._cr.execute(query)
+        result = self._cr.fetchall()
+
+        continuous_evaluation=False
+        min_marks=10
+        total_marks=20
+        start_time='2017-02-23 09:00:00'
+        end_time='2017-02-23 11:00:00'
+
+        #for evaluation in evaluation_ids:
+        for res in result:
+            line_ids = []
+            #print "ENTROU NA FUNCAO::::::::::::::::::::::::"
+            class_id=res[0]
+            #print class_id
+            evaluation_ids = self.env['ems.evaluation'].search([('class_id','=',class_id)],limit=1)
+            for evaluation in evaluation_ids:
+                exam_code=evaluation.exam_code
+                academic_year=evaluation.academic_year
+                university_center_id=evaluation.university_center_id.id
+                faculty_id=evaluation.faculty_id.id
+                subject_id=evaluation.subject_id.id
+            
+            evaluation_students = []
+            student_continuous_ids = self.env['ems.evaluation.student'].search([('class_id','=',class_id),('status','=','Reprovado')])
+            failed_students_continuous = []
+            for st1 in student_continuous_ids:
+                #print "Failed Continuous::::::::::::::::::::::::::::::"
+                #print st1.student_id.id
+                failed_students_continuous.append(st1.student_id.id)
+            for st2 in failed_students_continuous:
+                evaluation_students.append(st2)
+
+            student_exam_ids = self.env['ems.evaluation.attendee'].search([('class_id','=',class_id),('final_grade','<',10),('exam_type','=',3)])
+            failed_students_exam = []
+            for st3 in student_exam_ids:
+                #print "Failed Exam::::::::::::::::::::::::::::::"
+                #print st3.student_id.id
+                failed_students_exam.append(st3.student_id.id)
+            for st4 in failed_students_exam:
+                evaluation_students.append(st4)
+
+            for student in evaluation_students:
+                line_ids.append([0, False,{'student_id': student}])
+            #self.attendees_line = line_ids
+
+            self.env['ems.evaluation'].create({
+                    'min_marks': min_marks,
+                    'total_marks': total_marks,
+                    'exam_type': 4,
+                    'exam_code':exam_code,
+                    'academic_year': academic_year,
+                    'university_center_id': university_center_id,
+                    'faculty_id': faculty_id,
+                    'subject_id': subject_id,
+                    'class_id': class_id,
+                    'continuous_evaluation': continuous_evaluation,
+					'start_time':start_time,
+					'end_time':end_time,
+					'attendees_line':line_ids,
+                })
 
 class EmsEvaluationStudents(models.Model):
     _name = "ems.evaluation.student"

@@ -142,6 +142,8 @@ class EmsEvaluationAttendees(models.Model):
     student_name = fields.Char('Student name', compute='_get_data', store=True, track_visibility='onchange')
     faculty_name = fields.Char('Faculty name', compute='_get_data', store=True, track_visibility='onchange')
     final_grade = fields.Integer('Final grade', compute='_get_final_grade', store=True, track_visibility='onchange')
+    #JCF - 22-02-2017
+    exam_type = fields.Many2one('ems.evaluation.type', related="evaluation_id.exam_type", string='Exam type', store=True, readonly=True)
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

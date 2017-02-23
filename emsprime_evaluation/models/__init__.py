@@ -27,5 +27,6 @@ from . import evaluation_elements
 from . import evaluation_type
 from . import subject
 from . import student_grades_view
+from . import second_term_evaluation_view
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
