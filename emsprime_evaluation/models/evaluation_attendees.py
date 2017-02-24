@@ -26,6 +26,7 @@ from openerp.exceptions import ValidationError
 class EmsEvaluationAttendees(models.Model):
     _name = 'ems.evaluation.attendee'
     _rec_name = 'student_id'
+    _order = "student_id"
 
     @api.one
     @api.depends('marks','status')
