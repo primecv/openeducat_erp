@@ -11,6 +11,7 @@
                     <field name="code" />
 					<field name="parent_id" />
 					<field name="special" />
+					<field name="report_title" />
                 </tree>
             </field>
         </record>
@@ -26,6 +27,7 @@
                             <field name="code" />
                             <field name="parent_id" />
 							<field name="special" />
+							<field name="report_title" />
                         </group>
                     </sheet>
                 </form>
@@ -40,6 +42,7 @@
                     <field name="name" />
                     <field name="code" />
 					<field name="special" />
+					<field name="report_title" />
                     <newline />
                     <group expand="0" string="Group By...">
                         <filter string="Name" domain="[]" context="{'group_by':'name'}" />
