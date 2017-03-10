@@ -66,7 +66,7 @@
 						<group string="Students" name="students2">
 							<field name="enrollment_line" nolabel="1" context="{'subject_academic_year_filter': True, 'subject_id': subject_id, 'academic_year': academic_year, 'university_center_id':university_center_id}">
 								<tree string="Students" editable="bottom">
-									<field name="enrollment_id" />
+									<field name="enrollment_id" domain="[('student_id.active', '=', True)]"/>
 									<field name="student_id" />
 									<field name="edition_id" />
 									<field name="evaluation_type" />
