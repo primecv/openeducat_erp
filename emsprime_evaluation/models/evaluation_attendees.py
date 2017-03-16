@@ -39,6 +39,8 @@ class EmsEvaluationAttendees(models.Model):
             grade_int=int(grade_round)
             if grade_int==1:
                 grade_str = "1 (Um)"
+            elif grade_int ==0:
+                grade_str = "0 (Zero)"
             elif grade_int ==2:
                 grade_str = "2 (Dois)"
             elif grade_int ==3:
