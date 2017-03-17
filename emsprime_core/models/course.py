@@ -85,6 +85,16 @@ class EmsCourse(models.Model):
                 args += [('uci', '=', True)]
             else:
                 args += [('uci', '=', False)]
+        """ Below section is to filter Course on Student Application Course Options list:
+        """
+        if context and 'university_center_edition_courses' in context:
+            courses = []
+            if context['university_center_edition_courses']:
+                university_center_id = context['university_center_edition_courses']
+                editions = self.env['ems.edition'].search([('university_center_id','=',university_center_id)])
+                for edition in editions:
+                    courses.append(edition.course_id.id)
+            args = [('id','in', courses)]
         return super(EmsCourse, self).search(args, offset, limit, order, count=count)
 
     @api.model
@@ -99,6 +109,16 @@ class EmsCourse(models.Model):
                 args += [('uci', '=', True)]
             else:
                 args += [('uci', '=', False)]
+        """ Below section is to filter Course on Student Application Course Options list:
+        """
+        if context and 'university_center_edition_courses' in context:
+            courses = []
+            if context['university_center_edition_courses']:
+                university_center_id = context['university_center_edition_courses']
+                editions = self.env['ems.edition'].search([('university_center_id','=',university_center_id)])
+                for edition in editions:
+                    courses.append(edition.course_id.id)
+            args = [('id','in', courses)]
         return super(EmsCourse, self).name_search(name, args, operator=operator, limit=limit)
 
 
