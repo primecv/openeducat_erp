@@ -187,7 +187,6 @@ class EmsStudent(models.Model):
     university_center_id = fields.Many2one('ems.university.center', 'University Center', track_visibility='onchange')
     current_university_center_id =  fields.Many2one('ems.university.center', related="edition_id.university_center_id", string='Current University Center', track_visibility='onchange', store=True)
     type_current_enroll = fields.Char(string='Type of current enrollment', compute='_get_curr_enrollment', store=True, track_visibility='onchange')
-    temp_edition_courses = fields.Many2many('ems.course', string='Course(s)')
 
     #JCF - Professional Contacts:
     pro_phone = fields.Char('Phone', track_visibility='onchange')
@@ -222,12 +221,6 @@ class EmsStudent(models.Model):
 
     @api.onchange('university_center_id')
     def onchange_university_center(self):
-        university_center_id = self.university_center_id.id
-        editions = self.env['ems.edition'].search([('university_center_id','=',university_center_id)])
-        courses = []
-        for edition in editions:
-            courses.append(edition.course_id.id)
-        self.temp_edition_courses = [[6, 0, courses]]
         self.course_option_1 = False
         self.course_option_2 = False
         self.course_option_3 = False

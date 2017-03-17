@@ -243,7 +243,6 @@
 		                                <field name="course_option_2" attrs="{'readonly':[('university_center_id','=',False)]}" context="{'university_center_edition_courses': university_center_id}"/>
 		                                <field name="course_option_3" attrs="{'readonly':[('university_center_id','=',False)]}" context="{'university_center_edition_courses': university_center_id}"/>
 									</group>
-									<field name="temp_edition_courses" invisible="1"/>
                                 </group>
 							</page>								
                             <page name="attachment" string="Attachments">
