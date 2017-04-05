@@ -45,7 +45,6 @@
         'security/ir.model.access.csv',
         'evaluation_menu.xml',
 
-        'security/security.xml',
     ],
     'demo': [
         'demo/ems.evaluation.type.csv'
