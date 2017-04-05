@@ -42,7 +42,6 @@
         'report/layouts.xml',
         'report/report_student_bonafide.xml',
         'report/report_student_idcard.xml',
-        'report/report_menu.xml',
         'wizard/faculty_create_employee_wizard_view.xml',
         'wizard/faculty_create_user_wizard_view.xml',
         'wizard/students_create_user_wizard_view.xml',
@@ -92,6 +91,8 @@
         'report/report_student_grades_request.xml',
         'report/report_student_course_plan.xml',
         'report/report_student_list_by_course.xml',
+        'report/report_class.xml',
+        'report/report_menu.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
         'menu/emsprime_core_menu.xml',

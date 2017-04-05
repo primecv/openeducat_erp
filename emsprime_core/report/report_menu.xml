@@ -138,5 +138,13 @@
             header="False"
         />
 
+        <report 
+            id="report_ems_class_student_list"
+            string="Lista de Alunos"
+            model="ems.class" 
+            report_type="qweb-pdf"
+            file="emsprime_core.report_class" 
+            name="emsprime_core.report_class" 
+        />
     </data>
 </openerp>

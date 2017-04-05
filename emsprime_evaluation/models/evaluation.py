@@ -20,6 +20,7 @@
 ###############################################################################
 import math
 from openerp import models, fields, api
+from datetime import datetime
 from openerp.exceptions import ValidationError
 import base64, re
 from lxml import etree
@@ -62,7 +63,7 @@ class OpEvaluation(models.Model):
     end_time = fields.Datetime('End Time')
     state = fields.Selection(
         [('new', 'New Exam'), ('schedule', 'Scheduled'), ('held', 'Held'),
-         ('cancel', 'Cancelled'), ('done', 'Done')], 'State', select=True,
+         ('cancel', 'Cancelled'), ('done', 'Done'), ('published', 'Published')], 'State', select=True,
         readonly=True, default='new', track_visibility='onchange')
     note = fields.Text('Note')
     responsible_id = fields.Many2many('ems.faculty', string='Responsible')
@@ -86,6 +87,11 @@ class OpEvaluation(models.Model):
     #state_continuous = fields.Selection([('draft', 'Draft'), ('validate', 'Validated'),('done', 'Done')],'State Continuous', default="draft", track_visibility='onchange', select=True)
     elements_formula = fields.Char(compute="_get_formula", string="Elements Formula", store=True)
     use_code = fields.Boolean('Use code in report', default=False)
+    #JCF - 04-04-2017
+    confirmation_date = fields.Date('Confirmation Date')
+    processor_id = fields.Many2one('res.users', 'Processor', track_visibility='onchange', select=True)
+    publish_date = fields.Date('Publish Date')
+    publisher_id = fields.Many2one('res.users', 'Publisher', track_visibility='onchange', select=True)
 
     @api.model
     def default_get(self, fields=None):
@@ -173,22 +179,22 @@ class OpEvaluation(models.Model):
         line_ids = []
         result = {}
         if self.continuous_evaluation is False:
-            print "ENTROU EXAME::::::::::::::::::::::::::"
+            #print "ENTROU EXAME::::::::::::::::::::::::::"
 
             if self.exam_type.special is False:
                 for evaluation in self:
                     existing_students = []
                     for line in evaluation.attendees_line:
-                        print "FOR 1::::::::::::"
-                        print line.student_id.id
+                        #print "FOR 1::::::::::::"
+                        #print line.student_id.id
                         existing_students.append(line.student_id.id)
                     class_students = []
                     for enrollment in evaluation.class_id.enrollment_line:
-                        print "FOR 2::::::::::::"
-                        print enrollment.student_id.id
+                        #print "FOR 2::::::::::::"
+                        #print enrollment.student_id.id
                         if enrollment.evaluation_type=='regular_exam':
-                            print "IF 1::::::::::::"
-                            print enrollment.evaluation_type
+                            #print "IF 1::::::::::::"
+                            #print enrollment.evaluation_type
                             class_students.append(enrollment.student_id.id)
                     for student in class_students:
                         if student in existing_students:
@@ -200,15 +206,15 @@ class OpEvaluation(models.Model):
                 for evaluation in self:
                     existing_students = []
                     for line in evaluation.attendees_line:
-                        print "FOR 3::::::::::::"
-                        print line.student_id.id
+                        #print "FOR 3::::::::::::"
+                        #print line.student_id.id
                         existing_students.append(line.student_id.id)
                     evaluation_students = []
                     student_continuous_ids = self.env['ems.evaluation.student'].search([('class_id','=',self.class_id.id),('status','=','Reprovado')])
                     failed_students_continuous = []
                     for st1 in student_continuous_ids:
-                        print "Failed Continuous::::::::::::::::::::::::::::::"
-                        print st1.student_id.id
+                        #print "Failed Continuous::::::::::::::::::::::::::::::"
+                        #print st1.student_id.id
                         failed_students_continuous.append(st1.student_id.id)
                     for st2 in failed_students_continuous:
                         if st2 in existing_students:
@@ -219,8 +225,8 @@ class OpEvaluation(models.Model):
                     student_exam_ids = self.env['ems.evaluation.attendee'].search([('class_id','=',self.class_id.id),('final_grade','<',10),('exam_type','=',3)])
                     failed_students_exam = []
                     for st4 in student_exam_ids:
-                        print "Failed Exam::::::::::::::::::::::::::::::"
-                        print st1.student_id.id
+                        #print "Failed Exam::::::::::::::::::::::::::::::"
+                        #print st1.student_id.id
                         failed_students_exam.append(st4.student_id.id)
                     for st5 in failed_students_exam:
                         if st5 in existing_students:
@@ -234,7 +240,7 @@ class OpEvaluation(models.Model):
 
 
         else:
-            print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
+            #print "ENTROU CONTINUOUS::::::::::::::::::::::::::"
             for evaluation in self:
                 existing_students = []
                 for line in evaluation.student_line:
@@ -262,6 +268,8 @@ class OpEvaluation(models.Model):
 
     @api.one
     def act_done(self):
+        self.confirmation_date=datetime.now().date()
+        self.processor_id=self._uid
         self.state = 'done'
 
     @api.one
@@ -276,6 +284,41 @@ class OpEvaluation(models.Model):
     def act_new_exam(self):
         self.state = 'new'
 
+    @api.one
+    def act_publish(self):
+        subject_id=self.subject_id.id
+        academic_year=self.academic_year
+        float_grade=0.0
+        if self.continuous_evaluation is False:
+            if self.attendees_line:
+                for attendee in self.attendees_line:
+                    student_id=attendee.student_id.id
+                    final_grade=attendee.final_grade
+                    self._cr.execute("""select rel.id from ems_enrollment_inscription_subject rel, ems_enrollment e 
+where e.id=rel.inscription_id and e.student_id=%s and e.academic_year='%s' and rel.subject_id=%s"""%(student_id,academic_year,subject_id))
+                    result = self._cr.fetchone()
+                    if result:
+                        id_grade = result[0]
+                        grade = self.env['ems.enrollment.inscription.subject'].browse(id_grade)
+                        grade.write({'grade': final_grade})
+
+        else:
+            if self.student_line:
+                for student in self.student_line:
+                    student_id=student.student_id.id
+                    float_grade=student.grade
+                    int_grade=int(float_grade)
+                    self._cr.execute("""select rel.id from ems_enrollment_inscription_subject rel, ems_enrollment e 
+where e.id=rel.inscription_id and e.student_id=%s and e.academic_year='%s' and rel.subject_id=%s"""%(student_id,academic_year,subject_id))
+                    result = self._cr.fetchone()
+                    if result:
+                        id_grade = result[0]
+                        grade = self.env['ems.enrollment.inscription.subject'].browse(id_grade)
+                        grade.write({'grade': int_grade})
+
+        self.publish_date=datetime.now().date()
+        self.publisher_id=self._uid
+        self.state = 'published'
 
     @api.multi
     def action_print(self):
@@ -661,7 +704,38 @@ class EmsEvaluationElements(models.Model):
     percentage = fields.Integer('Percentage')
     is_test = fields.Boolean('Is test?',related='element_id.is_test', track_visibility='onchange', store=True)
 
+    @api.model
+    def create(self, vals):
+    	element_id = vals.get('element_id', False)
+    	elem_percentage = vals.get('percentage', False)
+        element_percentage=0
+        if element_id:
+            #print "ELEMENT ID:::::::::::"
+            #print element_id
+            elem = self.env['ems.element'].browse(element_id)
+            element_percentage=elem.maximum_percentage
+            '''print "ELEMENT PERCENTAGE:::::::::::"
+            print element_percentage
+            print "ELEM PERCENTAGE:::::::::::"
+            print elem_percentage'''
+
+        if elem_percentage > element_percentage:
+            raise ValidationError('The percentage cannot be greater than the element max percentage!')
+        return super(EmsEvaluationElements, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        element_id=self.element_id.id
+        element_percentage=self.element_id.maximum_percentage
+        elem_percentage=vals.get('percentage', False)
+
+        if elem_percentage > element_percentage:
+            raise ValidationError('The percentage cannot be greater than the element max percentage!')
+			
+        return super(EmsEvaluationElements, self).write(vals)
+
     _sql_constraints = [('uniq_evaluation_element','unique(evaluation_id, element_id)','Element must be Unique per Evaluation.')]
+
 
 class EmsEvaluationStudentElements(models.Model):
     _name = "ems.evaluation.student.element"

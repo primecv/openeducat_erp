@@ -45,9 +45,9 @@
 
 			<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
 				<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:7px 0;"/> 
-				<strong>Unidade Curricular</strong>: <span t-field="o.subject_id.name" style="text-transform:uppercase;"/> ***<br/>
-				<strong>Docente</strong>: <span t-field="o.faculty_id.complete_name"/> ***<br/>
-				<strong>Data</strong>: <span t-esc="time.strftime('%d-%m-%Y')"/>***<br/>
+				<strong>Unidade Curricular</strong>: <span t-field="o.subject_id.name" style="text-transform:uppercase;"/> //<br/>
+				<strong>Docente</strong>: <span t-field="o.faculty_id.complete_name"/> //<br/>
+				<strong>Data</strong>: <span t-esc="time.strftime('%d-%m-%Y')"/>//<br/>
 				<div style="width: 100%; height: 5px;"/> 
 				<table style="padding:5px;border:1px solid #666666; border-collapse: collapse;">
 					<tr style="background-color:#f0f0f0;">
@@ -99,24 +99,14 @@
 					<div><strong>Fórmula de cálculo da nota final</strong></div>
 					<div style="font-size:14px;"><span t-field="o.elements_formula" /></div>
 				</div>								
-				<br/>
-				<br/>
-				<br/>
-				<div align="center">
-					<strong>O Docente</strong>
-				</div>								
-				<br/>
-				<br/>
-				<div align="center">
-					<span>_________________________________________</span>
-				</div>					
+				<br/>			
 			</div>
 
         </div>
 		<div class="footer">
 		    <div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
 				<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.university_center_id">- <span t-field="o.university_center_id.name"/></span></span><br/>
-				<!--<span style="line-height:10px;">Processado por computador por <br/><span t-field="o.processor_id.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span>--><br/><br/><br/><br/><br/><br/>
+				<span style="line-height:10px;">Confirmado por <span t-field="o.processor_id.email"/><br/>Impresso por <span t-field="user.email"/><br/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
 		    </div>
 		</div>
 

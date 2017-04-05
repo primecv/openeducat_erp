@@ -29,11 +29,12 @@
                     <header groups="base.group_user">
                         <button name="act_schedule" states="new" type="object" string="Schedule Exam" class="oe_highlight"/>
                         <button name="act_held" states="schedule" type="object" string="Held Exam" class="oe_highlight"/>
-                        <button name="action_print_exam" states="held,done" type="object" string="Print" class="oe_highlight"/>
+                        <button name="action_print_exam" states="held,done,published" type="object" string="Print" class="oe_highlight"/>
                         <button name="act_done" states="held" type="object" string="Done" class="oe_highlight"/>
-                        <button name="act_new_exam" states="cancel" type="object" string="New Exam" class="oe_highlight"/>
+                        <button name="act_publish" states="done" type="object" string="Publish" class="oe_highlight"/>
+                        <button name="act_new_exam" states="cancel,done,published" type="object" string="New Exam" class="oe_highlight"/>
                         <button name="act_cancel" states="new,held,schedule" type="object" string="Cancel" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,held,scheduled,done" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,held,scheduled,done,published" />
                     </header>
                     <sheet>
                         <group col="4" colspan="4">
@@ -188,11 +189,12 @@
                 <form string="Evaluation">
                     <header groups="base.group_user">
                         <button name="act_held" states="new" type="object" string="Held Evaluation" class="oe_highlight"/>
-                        <button name="action_print" states="held,done" type="object" string="Print" class="oe_highlight"/>
+                        <button name="action_print" states="held,done,published" type="object" string="Print" class="oe_highlight"/>
                         <button name="act_done" states="held" type="object" string="Done" class="oe_highlight"/>
-                        <button name="act_new_exam" states="cancel" type="object" string="New Exam" class="oe_highlight"/>
+                        <button name="act_publish" states="done" type="object" string="Publish" class="oe_highlight"/>
+                        <button name="act_new_exam" states="cancel,done,published" type="object" string="New Exam" class="oe_highlight"/>
                         <button name="act_cancel" states="new,held,schedule" type="object" string="Cancel" />
-                        <field name="state" widget="statusbar" statusbar_visible="new,held,cancel,done" />
+                        <field name="state" widget="statusbar" statusbar_visible="new,held,cancel,done,published" />
                     </header>
                     <sheet>
                         <group col="4" colspan="4">

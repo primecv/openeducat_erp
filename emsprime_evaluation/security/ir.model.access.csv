@@ -1,5 +1,5 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_ems_evaluation_attendees_faculty","ems_exam_attendees_faculty","model_ems_evaluation_attendee","emsprime_core.group_ems_faculty",1,1,1,1
+"access_ems_evaluation_attendees_faculty","ems_exam_attendees_faculty","model_ems_evaluation_attendee","emsprime_core.group_ems_faculty",1,1,0,0
 "access_ems_evaluation_attendees_back_office","ems_exam_attendees_back_office","model_ems_evaluation_attendee","emsprime_core.group_ems_back_office",1,1,1,1
 "access_ems_evaluation_attendees_back_office_admin","ems_exam_attendees_back_office_admin","model_ems_evaluation_attendee","emsprime_core.group_ems_back_office_admin",1,1,1,1
 "access_ems_evaluation_attendees_admin_sga","ems_exam_attendees_admin_sga","model_ems_evaluation_attendee","emsprime_core.group_ems_admin_sga",1,1,1,1
@@ -26,7 +26,7 @@
 "access_ems_element_back_office_admin","ems_element_back_office_admin","model_ems_element","emsprime_core.group_ems_back_office_admin",1,1,1,1
 "access_ems_element_admin_sga","ems_element_admin_sga","model_ems_element","emsprime_core.group_ems_admin_sga",1,1,1,1
 
-"access_ems_evaluation_student_faculty","ems_evaluation_student_faculty","model_ems_evaluation_student","emsprime_core.group_ems_faculty",1,1,1,0
+"access_ems_evaluation_student_faculty","ems_evaluation_student_faculty","model_ems_evaluation_student","emsprime_core.group_ems_faculty",1,1,0,0
 "access_ems_evaluation_student_back_office","ems_evaluation_student_back_office","model_ems_evaluation_student","emsprime_core.group_ems_back_office",1,1,1,1
 "access_ems_evaluation_student_back_office_admin","ems_evaluation_student_back_office_admin","model_ems_evaluation_student","emsprime_core.group_ems_back_office_admin",1,1,1,1
 "access_ems_evaluation_student_admin_sga","ems_evaluation_student_admin_sga","model_ems_evaluation_student","emsprime_core.group_ems_admin_sga",1,1,1,1

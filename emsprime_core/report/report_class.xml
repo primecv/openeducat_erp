@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_class_document">
+    <t t-call="report.html_container">
+    <!--t t-call="emsprime_core.external_layout"-->
+        <t t-set="p" t-value="doc.with_context({'lang':doc.create_uid.lang})" />
+		<t t-foreach="p" t-as="o">
+			<div class="header" style="height:150px;">
+				<div class="row">
+					<div class="col-xs-12" style="text-align:right;">
+						<img t-if="o.create_uid.company_id.logo_web" t-att-src="'data:image/png;base64,%s' % o.create_uid.company_id.logo_web" style="max-height: 60px;"/>
+					</div>
+					<div class="col-xs-12 text-center" style="margin-top:10px;color:#333333;font-family:Calibri;font-size:18px;">
+						INSTITUTO SUPERIOR DE CIÊNCIAS ECONÓMICAS E EMPRESARIAIS
+					</div>			
+					<div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:16px;">
+						<strong>PÓLO UNIVERSITÁRIO - <span t-field="o.university_center_id.name"/></strong>
+					</div>
+					<div class="col-xs-12 text-center" style="color:#333333;font-family:Calibri;font-size:18px;margin-top:0px;">
+						<strong>TURMA: <span t-field="o.name"/> - <span t-field="o.subject_id.name"/></strong>
+					</div>
+				</div>
+			</div>
+
+			<div class="page" style="margin:0 25px">
+				<style type="text/css">
+				<![CDATA[
+				@font-face {
+				  font-family: 'Calibri';
+				  font-style: normal;
+				  font-weight: 400;
+				  src: local('Calibri'), url(https://github.com/jondot/dotfiles/blob/master/.fonts/calibri.ttf?raw=true) format('truetype');
+				}
+				]]>
+				.tit_declaration{color:#333333;font-family:Calibri;font-size:16px;}
+				.tit_section{color:333333;font-size:16px;}
+				</style>
+
+				<div class="row" style="color:333333;font-family:Calibri;font-size:16px;">
+					<div style="color:333333;">
+						<t t-set="i" t-value="1"/>
+						<t t-foreach="o.enrollment_line" t-as="att">
+							<div class="col-xs-6" style="border:1px solid #eeeeee;height:180px;padding:5px;">
+								<div class="col-xs-4" style="margin-top:5px;">
+									<img t-if="att.student_id.photo" t-att-src="'data:image/png;base64,%s' % att.student_id.photo" height="150" style="height: 150px;"/>
+								</div>
+								<div class="col-xs-8" style="margin-top:5px;">
+									<div style="font-size:14px;font-weight:bold;">
+										<span t-field="att.student_id.complete_name"/>
+									</div>
+									<div style="font-size:14px;font-weight:bold;">
+										<span t-field="att.student_id.roll_number"/>
+									</div>
+									<div style="font-size:14px;">
+										<span t-field="att.student_id.email"/>
+									</div>
+									<div style="font-size:14px;">
+										<span t-field="att.student_id.institutional_email"/>
+									</div>
+									<div style="font-size:14px;">
+										<span t-field="att.student_id.phone"/> - <span t-field="att.student_id.mobile"/>
+									</div>
+								</div>
+							</div>
+							<t t-if="i==12 or i==24 or i==36"><p style="page-break-after:always;color:#ffffff;">A</p></t>
+							<t t-set="i" t-value="i+1"/>
+						</t>
+					</div>
+					<div style="width: 100%; height: 1px; background-color:#666666; overflow: hidden; margin:10px 0;"/> 				
+				</div>
+
+			</div>
+			<div class="footer">
+				<div style="margin-bottom:80px;font-family:Calibri;font-size:9px;margin-left:5px;">
+					<span style="line-height:10px;">Pólo Universitário ­<span t-if="o.university_center_id">- <span t-field="o.university_center_id.name"/></span></span><br/>
+					<span style="line-height:10px;">Processado por computador por <br/><span t-field="user.email"/> em <span t-esc="time.strftime('%Y-%m-%d')"/> <span t-esc="time.strftime('%H:%M')"/></span><br/><br/><br/><br/><br/><br/>
+				</div>
+			</div>
+
+		</t>
+	</t>
+</template>
+
+<template id="report_class">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="emsprime_core.report_class_document" t-lang="doc.create_uid.lang"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
