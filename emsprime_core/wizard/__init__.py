@@ -26,5 +26,6 @@ from . import ems_enrollment_import
 from . import ems_enrollment_inscricao_subject
 from . import student_course_user_create
 from . import ems_report_university_center_course_student
+from . import mail_student_select
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

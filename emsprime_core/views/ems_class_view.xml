@@ -25,6 +25,9 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <form string="Class">
+                    <header>
+                        <button name="action_send_email" type="object" string="Email to Students" class="oe_highlight"/>
+                    </header>
                     <sheet>
                         <group colspan="4" col="4" name="main">
 							<field name="academic_year" />

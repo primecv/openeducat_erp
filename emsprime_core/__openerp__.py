@@ -95,6 +95,8 @@
         'report/report_menu.xml',
 
         'wizard/ems_enrollment_inscricao_subject_view.xml',
+        'wizard/mail_compose_message_students.xml',
+        'wizard/mail_student_select.xml',
         'menu/emsprime_core_menu.xml',
         'menu/faculty_menu.xml',
         'menu/student_menu.xml',

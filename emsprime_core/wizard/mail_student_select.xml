@@ -1,0 +1,28 @@
+<openerp>
+	<data>
+
+		<record id="mail_student_select_form" model="ir.ui.view">
+			<field name="name">mail.student.select.form</field>
+			<field name="model">mail.student.select</field>
+			<field name="arch" type="xml">
+				<form string="Select Students to send Email Notification">
+					<group string="Select Student(s) from below list to send Email notification.">						
+						<field name="student_ids" nolabel="1" colspan="4">
+							<tree string="Class Students" editable="bottom" create="0" delete="0">
+								<field name="select_student" string=""/>
+								<field name="student_id" readonly="1"/>
+							</tree>
+						</field>
+					</group>
+					<footer>
+						<button name="select_all" type="object" string="Select All"/>
+						<button name="deselect_all" type="object" string="DeSelect All"/>
+						<button name="action_send_email" type="object" string="Send Email" class="oe_highlight"/> or 
+						<button name="cancel" special="cancel" string="cancel" class="oe_link"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+	</data>
+</openerp>

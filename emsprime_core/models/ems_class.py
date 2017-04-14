@@ -243,6 +243,26 @@ class EmsClass(models.Model):
             if new_enrollments:
                 self.write({'enrollment_ids': [[6,0, new_enrollments]]})'''
 
+    @api.multi
+    def action_send_email(self):
+        for rec in self:
+            students = []
+            temp = [students.append(l.student_id.id) for l in rec.enrollment_line]
+            wizard_id = self.env['mail.student.select'].create({})
+            if not students:
+                raise ValidationError('Student list unknown for class %s.'%(rec.name))
+            for student in students:
+                self.env['mail.student.select.line'].create({'student_id':student, 'wizard_id':wizard_id.id})
+        return {
+            'name': 'Student Email Notification',
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.student.select',
+            'target': 'new',
+            'res_id': int(wizard_id.id)
+        }
+
     def init(self, cr):
         cr.execute("""
 CREATE OR REPLACE FUNCTION last_subject_enrollment(character varying, integer, integer, integer, integer, integer)
