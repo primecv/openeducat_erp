@@ -6,14 +6,12 @@
 
         <menuitem id="menu_ems_dashboard_student" name="Dashboard" sequence="10"
             parent="menu_ems_student_root" action="open_board_student" />
+		<delete id="menu_ems_dashboard_student" model="ir.ui.menu"/>
 
-        <menuitem id="menu_ems_student_main_student" name="Students"
-            parent="menu_ems_student_root" sequence="20"
-            groups="group_ems_student" />
+        <menuitem id="menu_ems_student_main_student" name="Students" sequence="15" parent="menu_ems_student_root" />
 
-        <menuitem id="menu_ems_student_sub_student" name="Students"
-            parent="menu_ems_student_main_student" sequence="10"
-            action="act_open_ems_student_view" groups="group_ems_student" />
+        <menuitem id="menu_ems_student_sub_student" name="Students" 
+			parent="menu_ems_student_main_student" sequence="10" action="act_open_ems_student_view" />
 
         <menuitem id="menu_ems_general_student" parent="menu_ems_student_root" sequence="20" name="General" />
     </data>

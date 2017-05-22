@@ -42,13 +42,6 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
-        <record model="ir.rule" id="student_login_rule">
-            <field name="name">Student Login rule</field>
-            <field name="model_id" ref="model_ems_student" />
-            <field name="groups"
-                eval="[(4, ref('emsprime_core.group_ems_student'))]" />
-            <field name="domain_force"> [('user_id','=',user.id)]</field>
-        </record>
         <record id="group_ems_attendant" model="res.groups">
             <field name="name">Atendimento</field>
             <field name="category_id" ref="module_category_emsprime"/>
@@ -56,19 +49,21 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 		
-        <!-- Show My Faculty rule -->
+        <!-- Show Faculty rule -->
         <record id="faculty_personal_rule" model="ir.rule">
             <field name="name">My Faculty</field>
             <field ref="model_ems_faculty" name="model_id"/>
             <field name="domain_force">[('user_id','=',user.id)]</field>
             <field name="groups" eval="[(4, ref('emsprime_core.group_ems_faculty'))]"/>
         </record>
-        <!--record id="faculty_partner_personal_rule" model="ir.rule">
-            <field name="name">My Faculty Partner</field>
-            <field ref="base.model_res_partner" name="model_id"/>
-            <field name="domain_force">[('id','=',user.partner_id.id)]</field>
-            <field name="groups" eval="[(4, ref('emsprime_core.group_ems_faculty'))]"/>
-        </record-->
+
+        <!-- Show Student rule -->
+        <record id="student_personal_rule" model="ir.rule">
+            <field name="name">My Student</field>
+            <field ref="model_ems_student" name="model_id"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('emsprime_core.group_ems_student'))]"/>
+        </record>
 
     </data>
 </openerp>
