@@ -262,7 +262,7 @@
 								<tr>
 									<td><span t-field="enroll.roll_number"/></td>
 									<td><span t-field="enroll.type"/></td>
-									<td><span t-escc="enroll.course_id.name"/></td>
+									<td><span t-esc="enroll.course_id.name"/></td>
 									<td><span t-field="enroll.enrollment_date"/></td>
 								 </tr>
 							</t>
