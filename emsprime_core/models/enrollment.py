@@ -576,5 +576,6 @@ class EmsEnrollmentInscriptionSubject(models.Model):
     course_year = fields.Char(string='Course Year')
     ordering = fields.Integer(compute="_get_course_plan_ordering", string="Ordering", store=True)
     course_report = fields.Char('Course Report')
+    academic_year = fields.Selection(string='Student', related='inscription_id.academic_year', store=True)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

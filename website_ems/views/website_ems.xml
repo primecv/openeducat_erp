@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<!-- Layout add nav and footer -->
+<template id="header_footer_custom" inherit_id="website.footer_default" name="Footer Students Link">
+    <xpath expr="//ul[@id='products']" position="inside">
+        <li><a href="/student">Students</a></li>
+    </xpath>
+</template>
+
+<!-- Page -->
+<template id="index" name="Students">
+    <t t-call="website.layout">
+      <div id="wrap">
+        <div class="oe_structure"/>
+        <div class="container">
+            <div class="row mt8">
+                <div class="col-sm-5">
+                    <ol class="breadcrumb mb0">
+                        <li>
+                            <a href="/student">Our Students</a>
+                        </li>
+                        <li t-if="current_university_center"><t t-esc="current_university_center.name"/></li>
+                        <li t-if="current_course"><t t-esc="current_course.name"/></li>
+                    </ol>
+                </div><div class="col-sm-7">
+                    <t t-call="website.pager" >
+                        <t t-set="classname">pull-right</t>
+                    </t>
+                </div>
+            </div>
+            <div class="row mt32 mb32">
+                <div class="col-md-12" id="middle_column">
+                    <div class="text-center text-muted" t-if="not student_ids">
+                      <h1>No student found</h1>
+                      <t groups="base.group_website_publisher">
+                          <p groups="emsprime_core.group_ems_back_office_admin">Use the top menu <i>'Content'</i> to create your first student.</p>
+                      </t>
+                    </div>
+					<ul class="media-list">
+						<li t-foreach="student_ids" t-as="student" class="media">
+							<div class="col-md-4" id="students_personal_file">
+								<div style="border:1px solid #cccccc;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'register' or ''}"><img alt="Photo" class="img-responsive" width="100%" height="100%" src="/website_ems/static/src/img/personal_file.png" style=""/></a></div>
+								<div style="text-align:center;font-weight:bold;font-size:16px;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'register' or ''}">Personal File</a></div>
+							</div>
+							<div class="col-md-4" id="students_grade">
+								<div style="border:1px solid #cccccc;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'grades' or ''}"><img alt="Photo" class="img-responsive" width="100%" height="100%" src="/website_ems/static/src/img/grades.png" style=""/></a></div>
+								<div style="text-align:center;font-weight:bold;font-size:16px;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'grades' or ''}">Grades</a></div>
+							</div>
+						</li>
+					</ul>
+                </div>
+            </div>
+        </div>
+        <div class="oe_structure"/>
+      </div>
+    </t>
+</template>
+
+<template id="student_left_column" customize_show="True" inherit_id="website_ems.index" name="Filters">
+    <xpath expr="//div[@id='middle_column']" position="attributes">
+        <attribute name="class">col-md-9</attribute>
+    </xpath>
+    <xpath expr="//div[@id='middle_column']" position="before">
+        <div class="col-md-3 css_noprint" id="left_column">
+            <form class="row" action="/student" method="GET">
+
+				<div class="col-sm-12">
+					<label for="university_center">University Center</label>
+					<select name="university_center" class="form-control">
+						<t t-foreach="university_centers" t-as="university_center">
+							<t t-if="university_center['university_center_id']">
+								<option
+									t-att-value="university_center['university_center_id'][0]"
+									t-esc="'%s (%s)' % (
+										university_center['university_center_id'][1],
+										university_center['university_center_id_count'])"
+									t-att-selected=
+										"university_center['university_center_id'][0] == (
+											current_university_center and
+											current_university_center.id) and
+										 'selected'"/>
+							</t>
+						</t>
+					</select>
+				</div>
+				<div class="col-sm-12">
+					<label for="course">Course</label>
+					<select name="course" class="form-control">
+						<t t-foreach="courses" t-as="course">
+							<t t-if="course['course_id']">
+								<option
+									t-att-value="course['course_id'][0]"
+									t-esc="'%s (%s)' % (
+										course['course_id'][1],
+										course['course_id_count'])"
+									t-att-selected=
+										"course['course_id'][0] == (
+											current_course and
+											current_course.id) and
+										 'selected'"/>
+							</t>
+						</t>
+					</select>
+				</div>
+				<div>
+					<div class="col-sm-6" style="margin-top:10px;">
+						<button class="btn btn-primary" type="submit">Search</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+    </xpath>
+</template>
+
+<template id="student_course" inherit_id="website_ems.student_left_column" active="False" customize_show="True" name="Filter by Course">
+    <xpath expr="//div[@id='left_column']" position="inside">
+        <ul class="nav nav-pills nav-stacked mt32">
+            <t t-foreach="courses" t-as="course">
+                <li t-if="course['course_id']" t-att-class="searches.get('course') == str(course['course_id'] and course['course_id'][0]) and 'active' or ''">
+                    <a t-attf-href="/student?{{ keep_query('type', 'date', course=course['course_id'][0]) }}"><t t-esc="course['course_id'][1]"/>
+                        <span class="badge pull-right"><t t-esc="course['course_id_count']"/></span>
+                    </a>
+                </li>
+            </t>
+        </ul>
+    </xpath>
+</template>
+
+<template id="layout">
+    <t t-call="website.layout">
+      <div id="wrap" class="js_student o_website_student">
+        <div class="container">
+            <div class="row mt8">
+                <div class="col-sm-7" id="student_menu">
+                    <ol class="breadcrumb mb0" t-if="not student.menu_id">
+                        <li><a href="/student">Panel</a></li>
+                        <!--<li t-if="student.university_center_id">
+                            <a t-attf-href="/student?type=#{student.university_center_id.id}" t-esc="student.university_center_id.name"/>
+                        </li>
+                        <li t-if="student.course_id">
+                            <a t-attf-href="/student?country=#{student.course_id.id}" t-esc="student.course_id.name"/>
+                        </li>-->
+                        <li class="active">
+                            <span t-field="student.name"/>
+                        </li>
+                    </ol>
+                    <!--<ol name="Student Menu" class="breadcrumb mb0" id="student_menu" t-if="student.menu_id" t-att-data-content_menu_id="editable and student.menu_id.id">
+                        <t t-foreach="student.menu_id.child_id" t-as="submenu">
+                            <t t-call="website.submenu"/>
+                        </t>
+                    </ol>-->
+                </div>
+                <div class="col-sm-5" groups="emsprime_core.group_ems_back_office_admin">
+                    <t t-call="website.publish_management">
+                      <t t-set="object" t-value="student"/>
+                      <t t-set="publish_edit" t-value="True"/>
+                      <t t-set="action" t-value="'emsprime_core.act_open_ems_student_view'"/>
+                    </t>
+                </div>
+            </div>
+        </div>
+        <t t-raw="0"/>
+        <div class="oe_structure"/>
+      </div>
+    </t>
+</template>
+
+
+<template id="default_page">
+    <t t-call="website.layout">
+        <div class="oe_structure oe_empty"/>
+    </t>
+</template>
+
+<template id="student_details">
+    <t t-call="website_ems.layout">
+        <div itemscope="itemscope" itemtype="http://schema.org/Student" class="container">
+            <div class="row mt32 mb32">
+                <t t-raw="0"/>
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="student_pages">
+    <t t-call="website_ems.layout">
+        <div itemscope="itemscope" itemtype="http://schema.org/Student" class="container">
+            <div class="row mt32 mb32">
+                <t t-raw="0"/>
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="404">
+    <t t-call="website.layout">
+        <div id="wrap">
+            <div class="oe_structure oe_empty">
+                <div class="container">
+                    <h1 class="mt32">Student not found!</h1>
+                    <p>Sorry, the requested student is not available anymore.</p>
+                    <p><a t-attf-href="/student">Return to the student list.</a></p>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="student_description_full">
+    <t t-call="website_ems.student_details">
+        <div class="col-md-12">
+			<div class="col-md-2 css_noprint">
+				<div class="clearfix"/>
+
+				<div class="panel panel-default">
+					<t t-if="student.photo">
+						<img itemprop="photo" width="80" height="100" class="img"
+							 t-att-src="'data:image/png;base64,' + student.sudo().photo"/>
+					</t>
+					<t t-if="not student.photo">
+						<img alt="Photo" class="img-responsive" width="80" height="80" src="/website_ems/static/src/img/placeholder.png" style=""/>
+					</t>
+				</div>
+			</div>
+			<div class="col-md-10 css_noprint">
+				<h4><strong>Personal Data </strong></h4>
+
+				<strong>Name</strong>: <span t-field="student.complete_name" style="text-transform:uppercase;"/><br/>
+				<strong>Birth Date</strong>: <span t-field="student.birth_date"/><br/>
+				<strong>Place of Birth</strong>: <span t-field="student.parish_id.name"/><span t-if="student.parish_id.name"> - </span> 
+				<span t-field="student.county_id.name"/><span t-if="student.county_id.name"> - </span>
+				<span t-field="student.island_id.name"/><span t-if="student.island_id.name"> - </span>
+				<span t-field="student.country_id.name"/><br/>
+				<strong>Nationality</strong>: <span t-field="student.nationality.citizenship"/><br/>
+				<strong>Filiation</strong>: <span t-field="student.father"/>
+				<span t-if="student.mother"> e <span t-field="student.mother"/></span><br/>
+
+				<strong>Identification</strong>: <span t-if="student.document_type == 'idCard'"><strong>BI Nº</strong> </span><span t-if="student.document_type == 'passport'"><strong>Passport Nº</strong> </span><span t-field="student.passport_no"/><span t-if="student.issue_date"> - <strong>Emission</strong>: </span> 
+				<span t-field="student.issue_date"/><span t-if="student.issuer"> - <strong>Archive</strong>: </span>
+				<span t-field="student.issuer"/>
+			</div>
+				<br/>
+				<br />
+			<div class="col-md-12 css_noprint">
+				<h4><strong>Enrollments </strong></h4>
+
+				<t t-if="student.roll_number_line">
+					<table itemprop="offers" class="table table-striped">
+						<thead>
+							<tr>
+								<th style="width:130px">Roll Number</th>
+								<th style="width:100px">Type</th>
+								<th>Course</th>
+								<th>Edition</th>
+								<th style="width:130px">Enrollment Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<t t-foreach="student.roll_number_line" t-as="enroll">
+								<tr>
+									<td><span t-field="enroll.roll_number"/></td>
+									<td><span t-field="enroll.type"/></td>
+									<td><span t-field="enroll.course_id"/></td>
+									<td><span t-field="enroll.edition_id"/></td>
+									<td><span t-field="enroll.enrollment_date"/></td>
+								 </tr>
+							</t>
+						</tbody>
+					</table>
+				</t>
+			</div>
+            <div class="clearfix"/>
+        </div>
+    </t>
+</template>
+
+<template id="student_classes">
+    <t t-call="website_ems.student_pages">
+		<div class="col-md-12 css_noprint">
+			<h4><strong>Classes </strong></h4>
+
+			<t t-if="class_ids">
+				<table itemprop="offers" class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:130px">Academic Year</th>
+							<th style="width:160px">Class</th>
+							<th>Faculty</th>
+							<th>Subject</th>
+						</tr>
+					</thead>
+					<tbody>
+						<t t-foreach="class_ids" t-as="cls">
+							<tr>
+								<td><span t-field="cls.class_id.academic_year"/></td>
+								<td><span t-field="cls.class_id.name"/></td>
+								<td><span t-field="cls.class_id.faculty_id"/></td>
+								<td><span t-field="cls.class_id.subject_id"/></td>
+							 </tr>
+						</t>
+					</tbody>
+				</table>
+			</t>
+		</div>
+	</t>
+</template>
+
+<template id="student_grades">
+    <t t-call="website_ems.student_pages">
+		<div class="col-md-12 css_noprint">
+			<h4><strong>Grades</strong></h4>
+
+			<t t-if="grades_ids">
+				<table itemprop="offers" class="table table-striped">
+					<thead>
+						<tr>
+							<th style="max-width:130px">Academic Year</th>
+							<th style="max-width:130px">Course Year</th>
+							<th>Subject</th>
+							<th style="max-width:100px">Grade</th>
+						</tr>
+					</thead>
+					<tbody>
+						<t t-foreach="grades_ids" t-as="grade">
+							<tr>
+								<td><span t-field="grade.inscription_id.academic_year"/></td>
+								<td><span t-field="grade.course_year"/></td>
+								<td><span t-field="grade.subject_id"/></td>
+								<td>
+									<t t-if="not equivalence">
+										<span t-field="grade.grade"/>
+									</t>
+									<t t-if="equivalence">
+										<span>Got Equivalence</span>
+									</t>
+								</td>
+							 </tr>
+						</t>
+					</tbody>
+				</table>
+			</t>
+		</div>
+	</t>
+</template>
+
+
+</data>
+</openerp>

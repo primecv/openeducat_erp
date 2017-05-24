@@ -285,7 +285,7 @@ class EmsStudent(models.Model):
         context = self._context or {}
         user = context.get('uid', False)
         imd = self.env['ir.model.data']
-        student_access_groups = ['emsprime_core.group_ems_faculty', 
+        student_access_groups = ['emsprime_core.group_ems_faculty', 'emsprime_core.group_ems_student',
                                  'emsprime_core.group_ems_back_office', 
                                  'emsprime_core.group_ems_back_office_admin','emsprime_core.group_ems_admin_sga' ]
         allowed_group_ids = []
