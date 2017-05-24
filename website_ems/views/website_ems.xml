@@ -19,7 +19,7 @@
                 <div class="col-sm-5">
                     <ol class="breadcrumb mb0">
                         <li>
-                            <a href="/student">Our Students</a>
+                            <a href="/student">Panel</a>
                         </li>
                         <li t-if="current_university_center"><t t-esc="current_university_center.name"/></li>
                         <li t-if="current_course"><t t-esc="current_course.name"/></li>
@@ -40,12 +40,12 @@
                     </div>
 					<ul class="media-list">
 						<li t-foreach="student_ids" t-as="student" class="media">
-							<div class="col-md-4" id="students_personal_file">
-								<div style="border:1px solid #cccccc;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'register' or ''}"><img alt="Photo" class="img-responsive" width="100%" height="100%" src="/website_ems/static/src/img/personal_file.png" style=""/></a></div>
+							<div class="col-md-3" id="students_personal_file">
+								<div style="border:1px solid #cccccc; padding:20px;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'register' or ''}"><img alt="Photo" class="img-responsive" src="/website_ems/static/src/img/personal_file.png" style="margin:0 auto;"/></a></div>
 								<div style="text-align:center;font-weight:bold;font-size:16px;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'register' or ''}">Personal File</a></div>
 							</div>
-							<div class="col-md-4" id="students_grade">
-								<div style="border:1px solid #cccccc;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'grades' or ''}"><img alt="Photo" class="img-responsive" width="100%" height="100%" src="/website_ems/static/src/img/grades.png" style=""/></a></div>
+							<div class="col-md-3" id="students_grade">
+								<div style="border:1px solid #cccccc; padding:20px;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'grades' or ''}"><img alt="Photo" class="img-responsive" src="/website_ems/static/src/img/grades.png" style="margin:0 auto;"/></a></div>
 								<div style="text-align:center;font-weight:bold;font-size:16px;"><a itemprop="url" t-att-class="student.state == 'done' and 'text-success'" t-attf-href="/student/#{ slug(student) }/#{(not student.menu_id) and 'grades' or ''}">Grades</a></div>
 							</div>
 						</li>
@@ -245,7 +245,7 @@
 				<br/>
 				<br />
 			<div class="col-md-12 css_noprint">
-				<h4><strong>Enrollments </strong></h4>
+				<h4><strong>Relations with the University</strong></h4>
 
 				<t t-if="student.roll_number_line">
 					<table itemprop="offers" class="table table-striped">
@@ -254,7 +254,6 @@
 								<th style="width:130px">Roll Number</th>
 								<th style="width:100px">Type</th>
 								<th>Course</th>
-								<th>Edition</th>
 								<th style="width:130px">Enrollment Date</th>
 							</tr>
 						</thead>
@@ -263,8 +262,7 @@
 								<tr>
 									<td><span t-field="enroll.roll_number"/></td>
 									<td><span t-field="enroll.type"/></td>
-									<td><span t-field="enroll.course_id"/></td>
-									<td><span t-field="enroll.edition_id"/></td>
+									<td><span t-escc="enroll.course_id.name"/></td>
 									<td><span t-field="enroll.enrollment_date"/></td>
 								 </tr>
 							</t>
