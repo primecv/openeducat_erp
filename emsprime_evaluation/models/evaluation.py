@@ -289,6 +289,7 @@ class OpEvaluation(models.Model):
         subject_id=self.subject_id.id
         academic_year=self.academic_year
         float_grade=0.0
+        status=''
         if self.continuous_evaluation is False:
             if self.attendees_line:
                 for attendee in self.attendees_line:
@@ -300,7 +301,11 @@ where e.id=rel.inscription_id and e.student_id=%s and e.academic_year='%s' and r
                     if result:
                         id_grade = result[0]
                         grade = self.env['ems.enrollment.inscription.subject'].browse(id_grade)
-                        grade.write({'grade': final_grade})
+                        if final_grade>=10:
+                            status='approved'
+                        else:
+                            status='failed'
+                        grade.write({'grade': final_grade,'status':status})
 
         else:
             if self.student_line:
@@ -314,7 +319,11 @@ where e.id=rel.inscription_id and e.student_id=%s and e.academic_year='%s' and r
                     if result:
                         id_grade = result[0]
                         grade = self.env['ems.enrollment.inscription.subject'].browse(id_grade)
-                        grade.write({'grade': int_grade})
+                        if int_grade>=10 and student.status=='Aprovado':
+                            status='approved'
+                        else:
+                            status='failed'
+                        grade.write({'grade': int_grade,'status':status})
 
         self.publish_date=datetime.now().date()
         self.publisher_id=self._uid

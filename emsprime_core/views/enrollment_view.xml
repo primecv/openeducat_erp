@@ -76,6 +76,7 @@
 									<field name="grade"/>
 									<field name="evaluation_type"/>
 									<field name="equivalence"/>
+									<field name="status"/>
 								</tree>
 							</field>
 						</group>
@@ -128,6 +129,7 @@
 									<field name="grade"/>
 									<field name="evaluation_type"/>
 									<field name="equivalence"/>
+									<field name="status"/>
 								</tree>
 							</field>
 						</group>
@@ -195,6 +197,7 @@
 									<field name="grade"/>
 									<field name="evaluation_type"/>
 									<field name="equivalence"/>
+									<field name="status"/>
 									<field name="edition_id" invisible="1"/>
 								</tree>
 							</field>
