@@ -565,7 +565,7 @@
 					<field name="institutional_email" />
                     <filter name="is_transferred" string="Transferred" domain="[('transferred', '=', True)]" context="{}" />
                     <filter name="is_course_completed" string="Course Completed?" domain="[('course_completed', '=', True)]" context="{}" />
-					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
+					<filter name="inactive_students" string="Inactive" domain="[('active','=',False)]" context="{}"/>
 					<field name="age" />
 					<field name="birth_year" />
                     <field name="transferred" />
@@ -591,8 +591,8 @@
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,pivot,form</field>
             <field name="search_view_id" ref="view_ems_student_search_trainee" />
-            <field name="domain">[('active','=',False)]</field>
-			<field name="context">{'default_active': False}</field>
+            <field name="domain">[]</field>
+			<field name="context">{'search_default_inactive_students': 1}</field>
 			<field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 Click to add new Students.
