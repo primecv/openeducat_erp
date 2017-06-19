@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_ems_student_trainee_root" name="Students" sequence="40"
+            groups="group_ems_trainee" />
+
+        <menuitem id="menu_ems_student_trainee_student" name="Students" sequence="15" parent="menu_ems_student_trainee_root" />
+
+        <menuitem id="menu_ems_trainee_sub_student" name="Students" 
+			parent="menu_ems_student_trainee_student" sequence="10" action="act_open_ems_student_view_trainee" />
+
+    </data>
+</openerp>

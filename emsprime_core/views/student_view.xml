@@ -391,5 +391,232 @@
               </p>
 			</field>
         </record>
+
+        <!-- Trainees - Students -->
+
+        <record model="ir.ui.view" id="kanban_view_student_trainee">
+            <field name="name">Student Kanban</field>
+            <field name="model">ems.student</field>
+            <field name="arch" type="xml">
+                <kanban class="o_hr_employee_kanban">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <a type="open">
+                                        <img t-att-src="kanban_image('ems.student', 'photo', record.id.value)" class="oe_employee_picture"/>
+                                    </a>
+                                </div>
+                                <div class="oe_kanban_details">
+									<h3><field name="roll_number" /></h3>
+                                    <h4>
+                                        <a type="open">
+                                            <field name="name" />
+                                            <t t-if="record.middle_name.raw_value">
+                                                <field name="middle_name" />
+                                            </t>
+                                            <t t-if="record.last_name.raw_value">
+                                                <field name="last_name" />
+                                            </t>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li t-if="record.edition_id.raw_value">
+                                            <field name="edition_id" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <script> $('.oe_employee_picture').load(function() {
+                                if($(this).width() > $(this).height()) {
+                                $(this).addClass('oe_employee_picture_wide') } });
+                            </script>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_ems_student_tree_trainee" model="ir.ui.view">
+            <field name="name">ems.student.tree.trainee</field>
+            <field name="model">ems.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="roll_number" />
+                    <field name="complete_name" />
+					<field name="course_id" />
+                    <field name="edition_id" />
+                </tree>
+            </field>
+        </record>
+		
+        <record id="view_ems_student_form_trainee" model="ir.ui.view">
+            <field name="name">ems.student.form.trainee</field>
+            <field name="model">ems.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div name="title_name" class="oe_title">
+							<h3><field name="roll_number" class="oe_inline" attrs="{'invisible':[('roll_number','=',False)]}"/></h3>
+                            <h1><table>
+                                <tr>
+                                <td><field name="name" required="1" placeholder="First Name" style="padding-right:10px" /></td>
+                                <td><field name="middle_name" placeholder="Middle Name" style="padding-right:10px" /></td>
+                                <td><field name="last_name" placeholder="Last Name" style="padding-right:10px" /></td>
+                                </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <!--<label for="active"/>
+                        <field name="active"/>-->
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="gender" />
+                                    <field name="birth_date" />
+                                    <field name="father" />		
+                                    <field name="mother" />
+									<separator string="Personal Id" colspan="4"/>						
+                                    <field name="nationality" domain="[('level','=','1')]" context="{'form_view_ref':'emsprime_core.hr_location_country_form_view', 'default_level':'1'}" options="{'no_create':1, 'create':0}"/>
+									<field name="document_type"/>
+									<field name="passport_no"/>
+									<field name="issue_date"/>
+									<field name="issuer"/>
+									<separator string="Place of Birth" colspan="4"/>
+									<field name="country_id" domain="[('level','=','1')]" context="{'form_view_ref':'emsprime_core.hr_location_country_form_view', 'default_level':'1'}" options="{'no_create':1, 'create':0}"/>
+									<field name="island_id" domain="[('level','=','2'),('parent_id','=',country_id)]" context="{'form_view_ref':'emsprime_core.hr_location_island_form_view', 'default_level':'2'}" options="{'no_create':1, 'create':0}"/>
+									<field name="county_id" domain="[('level','=','3'),('parent_id','=',island_id)]" context="{'form_view_ref':'emsprime_core.hr_location_county_form_view', 'default_level':'3'}" options="{'no_create':1, 'create':0}"/>
+									<field name="parish_id" domain="[('level','=','4'),('parent_id','=',county_id)]" context="{'form_view_ref':'emsprime_core.hr_location_parish_form_view', 'default_level':'4'}" options="{'no_create':1, 'create':0}"/>
+                                </group>
+                            </page>
+                            <page name="contacts" string="Contacts">
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Contacts" />
+                                    <field name="phone" />
+                                    <field name="mobile" />
+                                    <field name="institutional_email" string="Email"/>
+                                    <field name="email" string="Institutional Email"/>
+                                </group>
+                                <group col="4" colspan="4">
+                                    <separator colspan="4" string="Professional Contacts" />
+                                    <field name="pro_phone" />
+                                    <field name="pro_mobile" />
+                                    <field name="pro_email" />
+                                </group>
+								<group>
+						            <group string="Academic Address">
+							            <label for="street" string="Address"/>
+							            <div name="div_address">
+							                <field name="street" placeholder="Street..."/>
+							                <field name="street2"/>
+							                <div class="address_format">
+							                    <field name="city" placeholder="City" style="width: 50%%"/>
+							                    <field name="zip" placeholder="Postcode" style="width: 40%%"/>
+							                </div>
+							                <field name="acountry_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "create":0, "no_create":1}' domain="[('level','=','1')]"/>
+							            </div>
+									</group>
+									<group string="Permanent Address">
+										<label for="pstreet" string="Address"/>
+										<div name="div_paddress">
+										    <field name="pstreet" placeholder="Street..."/>
+										    <field name="pstreet2"/>
+										    <div class="address_format">
+										        <field name="pcity" placeholder="City" style="width: 50%%"/>
+										        <field name="pzip" placeholder="Postcode" style="width: 40%%"/>
+										    </div>
+										    <field name="pcountry_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "create":0, "no_create":1}' domain="[('level','=','1')]"/>
+										</div>
+									</group>
+								</group>
+                            </page>	
+                        </notebook>
+                    </sheet>
+					<div class="oe_chatter">
+		                <field name="message_follower_ids" widget="mail_followers"/>
+		                <field name="message_ids" widget="mail_thread"/>
+					</div>
+                </form>
+            </field>
+        </record>
+        <record id="view_ems_student_search_trainee" model="ir.ui.view">
+            <field name="name">ems.student.search.trainee</field>
+            <field name="model">ems.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Student">
+                    <field name="name" />
+                    <field name="roll_number" />
+                    <field name="id_number" />
+                    <field name="course_id" />
+                    <field name="edition_id" />
+                    <field name="state" />
+                    <field name="type_current_enroll" />
+					<field name="institutional_email" />
+                    <filter name="is_transferred" string="Transferred" domain="[('transferred', '=', True)]" context="{}" />
+                    <filter name="is_course_completed" string="Course Completed?" domain="[('course_completed', '=', True)]" context="{}" />
+					<filter name="Inactive" string="Inactive" domain="[('active','=',False)]" context="{}"/>
+					<field name="age" />
+					<field name="birth_year" />
+                    <field name="transferred" />
+                    <field name="course_completed" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter name="course" string="Course" domain="[]"
+                            context="{'group_by':'course_id'}" />
+                        <filter name="edition" string="Edition" domain="[]" context="{'group_by':'edition_id'}" />
+						<filter name="university_center_id" string="University Center" domain="[]" context="{'group_by':'university_center_id'}"/>
+                        <filter name="state" string="State" domain="[]" context="{'group_by':'state'}" />
+                        <filter name="type_current_enroll" string="Type of current enrollment" domain="[]" context="{'group_by':'type_current_enroll'}" />
+                        <filter name="age" string="Age" domain="[]" context="{'group_by':'age'}" />
+                        <filter name="birth_year" string="Birth Year" domain="[]" context="{'group_by':'birth_year'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_ems_student_view_trainee">
+            <field name="name">Students</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ems.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,pivot,form</field>
+            <field name="search_view_id" ref="view_ems_student_search_trainee" />
+            <field name="domain">[('active','=',False)]</field>
+			<field name="context">{'default_active': False}</field>
+			<field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add new Students.
+              </p>
+			</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_student_view_form_trainee">
+            <field name="act_window_id" ref="act_open_ems_student_view_trainee" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ems_student_form_trainee" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_student_view_tree_trainee">
+            <field name="act_window_id" ref="act_open_ems_student_view_trainee" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ems_student_tree_trainee" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ems_student_view_kanban_trainee">
+            <field name="act_window_id" ref="act_open_ems_student_view_trainee" />
+            <field name="sequence" eval="5" />
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="kanban_view_student_trainee" />
+        </record>
+
     </data>
 </openerp>

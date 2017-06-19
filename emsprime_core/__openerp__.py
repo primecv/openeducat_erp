@@ -100,6 +100,7 @@
         'menu/emsprime_core_menu.xml',
         'menu/faculty_menu.xml',
         'menu/student_menu.xml',
+        'menu/trainee_menu.xml',
         #admin tools:
         'wizard/ems_enrollment_import_view.xml',
         'wizard/student_course_user_create.xml',
