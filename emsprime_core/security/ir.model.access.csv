@@ -3,7 +3,7 @@ access_ems_student_student,ems_student_student,model_ems_student,group_ems_stude
 access_ems_student_faculty,ems_student_faculty,model_ems_student,group_ems_faculty,1,1,1,0
 access_ems_student_back_office,name_ems_student_back_office,model_ems_student,group_ems_back_office,1,1,1,0
 access_ems_student_back_office_admin,name_ems_student_back_office_admin,model_ems_student,group_ems_back_office_admin,1,1,1,1
-access_ems_student_trainee,ems_student_trainee,model_ems_trainee,group_ems_trainee,1,1,1,0
+access_ems_student_trainee,ems_student_trainee,model_ems_student,group_ems_trainee,1,1,1,0
 ,,,,,,,
 access_ems_course_faculty,name_ems_course_faculty,model_ems_course,group_ems_faculty,1,0,0,0
 access_ems_course_student,name_ems_course_student,model_ems_course,group_ems_student,1,0,0,0
