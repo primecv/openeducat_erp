@@ -27,12 +27,14 @@
             parent="menu_ems_school_exam_result" sequence="50"
             action="act_open_ems_evaluation_student_attendee_admin_view"
             groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
+		<delete id="menu_ems_evaluation_attendees_admin_sub" model="ir.ui.menu"/>
 
         <menuitem id="menu_ems_continuous_evaluation_admin_sub" name="Continuous Evaluation Grades"
             parent="menu_ems_school_exam_result" sequence="60"
             action="act_open_ems_evaluation_student_element_admin_view"
             groups="emsprime_core.group_ems_back_office,emsprime_core.group_ems_back_office_admin,emsprime_core.group_ems_admin_sga" />
-	
+			<delete id="menu_ems_continuous_evaluation_admin_sub" model="ir.ui.menu"/>
+
         <menuitem id="menu_ems_student_grades_view_sub" name="Student Grades"
             parent="menu_ems_school_exam_result" sequence="70"
             action="act_open_student_grades_view_view"
